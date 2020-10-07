@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-stock-status-table",
+  "source": 100,
+  "type": "fragment",
+  "title": "Product Stock Status table",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

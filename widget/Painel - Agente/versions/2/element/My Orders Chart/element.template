@@ -1,0 +1,40 @@
+<!-- ko if: initialized() -->
+  <h2 id="cc-my-ordersChart-heading" class="cc-dashboard-ellipse dashboard-heading-reports" 
+    data-bind="widgetLocaleText: 'ordersChartHeading'">
+  </h2>
+  <div>
+    <!-- ko if: chartLoadStatus_orders() === $data.ERROR_STATUS -->
+    <div class="well oj-chart-basic" tabindex="0" data-bind="widgetLocaleText:{attr:'aria-label', value:'recentOrdersLoadingErrorText'}"
+    id="cc-barChart-ordersChart-created-error-section">
+      <span data-bind="widgetLocaleText: 'recentOrdersLoadingErrorText'"></span>      
+    </div>
+    <!-- /ko -->
+    <!-- ko if: chartLoadStatus_orders() === $data.SUCCESS_STATUS -->
+    <!-- inline style is needed so that height is defined before rendering on chart.
+    Otherwise incorrect heigth is used by ojet chart and chart shrinks when we revisit dashboard. -->
+      <div  style="height: 20rem" data-bind="ojComponent: {
+            component: 'ojChart', 
+            type: 'lineWithArea', 
+            orientation: orientationValue_orders,
+            stack: stackValue_orders,
+            series: series_orders,
+            groups: groups_orders,
+            dataCursor: 'on',
+            dataCursorBehavior: 'snap',
+            splitDualY: dualY_orders,
+            animationOnDisplay: 'auto',
+            animationOnDataChange: 'auto',
+            y2Axis:  {title: $data.y2AxisText_orders(), tickLabel: {scaling: 'none'}},
+            xAxis: {min : $data.minValueX_orders(), max: $data.maxValueX_orders()},
+            hoverBehavior: 'dim',
+            styleDefaults: {colors: {}, dataCursor:{lineColor:'#333333'}},
+            yAxis: {title: $data.yAxisText_orders(), minStep: 1, tickLabel: {scaling: 'none'}},
+            valueFormats: [{type: 'y2', converter: ko.toJS(y2AxisConverter_orders), scaling:'none'},
+                           {type: 'y', converter: ko.toJS(yAxisConverter_orders), scaling:'none'}],
+            legend: {position: 'bottom'},
+            footnote: {text: $data.footNote_orders(), halign: 'center'}
+            }, attr: {id: 'cc-chart-for-ordersChart'}" aria-labelledby="cc-my-ordersChart-heading" class="oj-chart-basic">
+      </div>
+    <!-- /ko -->
+  </div>
+<!-- /ko -->

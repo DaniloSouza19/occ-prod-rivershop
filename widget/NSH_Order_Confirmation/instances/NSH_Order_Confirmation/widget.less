@@ -1,0 +1,147 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+
+  .order_confirmation {
+    .paymentform {
+      margin-left: 100px;
+    }
+
+    .title {
+      padding       : 5px;
+      background    : #ff1538;
+      color         : #fff;
+      text-transform: uppercase;
+      font-size     : 18px;
+    }
+
+    .panel-footer,
+    .panel-body,
+    .panel.mod,
+    #CC-orderDetails-priceDetails-mobile {
+      background : #fff;
+      font-size  : 17px;
+      line-height: 1.3em;
+    }
+
+    #order-info th {
+      font-weight: bold;
+      border     : 0;
+      background : #d3d3d3;
+    }
+
+    .well {
+      background-color: white;
+      font-size       : 17px;
+      line-height     : 1.3em;
+    }
+
+    #orderConfirmation {
+      .alignChild {
+        left    : -14px;
+        position: relative;
+
+      }
+
+      .image img {
+        max-width: 62px;
+      }
+
+      #order-info {
+        th {
+          border: 0;
+        }
+
+        td {
+          border-top      : 0;
+          background-color: #ffffff !important
+        }
+
+        .name {
+          color      : @grayDark;
+          font-weight: bold;
+        }
+
+        &>thead {
+          >tr {
+            font-weight: bold;
+            border     : 0;
+            background : #e2f5ff;
+          }
+        }
+
+        &>tbody {
+
+          border-bottom: 1px solid #eee;
+
+          &>tr.item {
+            border-top    : 1px solid #eee;
+            vertical-align: top;
+            background    : #FFF !important;
+          }
+
+          small {
+            color      : @gray;
+            font-size  : 17px;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .summary-table {
+        margin-bottom: 25px;
+
+        td {
+          vertical-align: top;
+        }
+      }
+
+      .summary-table-title {
+        width      : 150px;
+        font-weight: bold;
+      }
+
+      .CC-confirmation-displayShippingSurcharge {
+        font-weight: 600;
+        font-size  : 11px;
+      }
+
+      @media screen and (max-width: @screen-sm-max) {
+        h3.od-shipping-title {
+          font-size: 18px;
+        }
+      }
+    }
+
+    #boleto-line {
+      padding: 0;
+      height : 28px;
+    }
+
+    table tr,
+    table td {
+      font-size  : 17px;
+      line-height: 1.3em;
+    }
+
+    #order-info {
+      line-height: 0.5em !important;
+    }
+
+
+    .discount {
+      padding-left: 15px;
+    }
+  }
+
+  .panel {
+    background-color: transparent !important;
+  }
+
+
+  .formaPag {
+    @media (max-width: 767px) {
+      display: table;
+    }
+
+  }
+
+}

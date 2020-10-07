@@ -1,0 +1,106 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+#CC-contactRegistration{
+#CC-contactRegistration-listing{
+  .CC-contact-search-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+  }
+  hr{
+    border-top: 1px solid lightgrey;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  #CC-contactRegistrationList-tableSection {
+    margin-bottom: 12px;
+    th {
+      font-weight: bold; 
+      border: 0;
+      background: @lightBlue;
+    }
+    td {
+      border-top: 0;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+      background: #FFF !important;
+    }
+    .notify {
+      text-align: left;
+      padding-left: -8px;
+    }
+    .statusIcon{
+      width:1rem; 
+      height:0.5rem; 
+      float:left;
+    }
+    
+    .rejectedIcon{
+      color: #ff0000;
+      font-size: 16px;
+    } 
+    
+    .moreInfoNeededIcon{
+      color: #d2691e;
+      font-size: 16px;
+    }
+    .cc-text-overflow-table {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+#CC-selfRegistrationProfile{
+    .disabled-input {
+      background-color: transparent !important;
+      border-color: transparent !important;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      border-left-width: 0;
+      border-right-width: 0;
+      padding: 0;
+      color: #333333;
+      cursor:auto;
+    }
+    .description {
+      margin: 5px 0 5px 0;
+    }
+    ::placeholder {
+      opacity: 0.6;
+      font-style: italic;
+    }
+}
+    .comments-area ::placeholder {
+      opacity: 0.6;
+      font-style: italic;
+    }
+    .comments-area::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      opacity: 0.6;
+      font-style: italic;
+    }
+    .comments-area::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      opacity: 0.6;
+      font-style: italic;
+    }
+    .comments-area:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      opacity: 0.6;
+      font-style: italic;
+    }
+    .cc-customer-profile-button{
+      margin-left:5px;
+    }
+    .contactLinkDisabled{
+      cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+    }
+    .icon-bar{
+    background-image: none;
+    color: #333333;
+    background-color: #ffffff;
+    }
+}
+}

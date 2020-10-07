@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-addpayment",
+  "source": 100,
+  "type": "fragment",
+  "title": "Adicionar Seção Pagamento",
+  "widgetType": "splitPayments",
+  "version": 3
+}

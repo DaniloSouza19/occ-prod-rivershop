@@ -1,0 +1,8 @@
+{
+  "tag": "product-price",
+  "source": 100,
+  "type": "fragment",
+  "title": "Preço",
+  "widgetType": "productDetails",
+  "version": 14
+}

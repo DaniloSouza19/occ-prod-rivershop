@@ -1,0 +1,185 @@
+{
+  "imports": [
+    "confirmation",
+    "shippingCountries"
+  ],
+  "translations": [
+    {
+      "name": "NSH_Order_Confirmation [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Order_Confirmation",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Order_Confirmation [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Order_Confirmation [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Order_Confirmation [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Order_Confirmation [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Order_Confirmation [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Order_Confirmation [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Order_Confirmation [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Order_Confirmation [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Order_Confirmation [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Order_Confirmation [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Order_Confirmation [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Order_Confirmation [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Order_Confirmation [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Order_Confirmation [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Order_Confirmation [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Order_Confirmation [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Order_Confirmation [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Order_Confirmation [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Order_Confirmation [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Order_Confirmation [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Order_Confirmation [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Order_Confirmation [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Order_Confirmation [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Order_Confirmation [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Order_Confirmation [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Order_Confirmation [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Order_Confirmation [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Order_Confirmation [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Order_Confirmation [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Order_Confirmation [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Order_Confirmation [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Order_Confirmation [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Order_Confirmation [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Order_Confirmation [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Order_Confirmation [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Order_Confirmation [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Order_Confirmation [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Order_Confirmation [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Order_Confirmation [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Order_Confirmation [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Order_Confirmation [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

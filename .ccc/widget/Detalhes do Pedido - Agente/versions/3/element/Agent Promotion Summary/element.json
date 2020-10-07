@@ -1,0 +1,8 @@
+{
+  "tag": "agent-promotion-summary",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Promotion Summary",
+  "widgetType": "agentAccountOrderDetails",
+  "version": 3
+}

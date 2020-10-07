@@ -1,0 +1,21 @@
+{
+  "stackType": "verticalTabs",
+  "regions": [
+    {
+      "repositoryId": "verticalTabsSectionOne",
+      "name": "Um"
+    },
+    {
+      "repositoryId": "verticalTabsSectionTwo",
+      "name": "Dois"
+    },
+    {
+      "repositoryId": "verticalTabsSectionThree",
+      "name": "Três"
+    }
+  ],
+  "version": 1,
+  "displayName": "Guias Verticais",
+  "maxVariants": 10,
+  "canEditSubRegion": true
+}

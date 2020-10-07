@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_product_listing",
+  "version": 1,
+  "displayName": "NSH_Product_Listing",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_product_listing",
+  "source": 101,
+  "javascript": "nsh_product_listing"
+}

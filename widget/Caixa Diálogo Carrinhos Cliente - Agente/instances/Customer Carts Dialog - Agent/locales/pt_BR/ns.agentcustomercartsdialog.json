@@ -1,0 +1,13 @@
+{
+  "resources": {
+    "cartColumnHeaderText": "Carrinho",
+    "B2BProfileType": "b2b_user",
+    "newCart": "Novo Carrinho",
+    "noSiteForAccountError": "A conta selecionada não tem um contrato válido nos sites.",
+    "selectCart": "Selecionar Carrinho",
+    "accountText": "Conta",
+    "siteText": "Site",
+    "delimiterText": ":",
+    "recentCart": "Carrinho Recente"
+  }
+}

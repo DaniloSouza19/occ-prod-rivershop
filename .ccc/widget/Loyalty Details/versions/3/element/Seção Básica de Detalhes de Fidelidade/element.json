@@ -1,0 +1,8 @@
+{
+  "tag": "loyalty-details-basic",
+  "source": 100,
+  "type": "fragment",
+  "title": "Seção Básica de Detalhes de Fidelidade",
+  "widgetType": "loyaltyDetails",
+  "version": 3
+}

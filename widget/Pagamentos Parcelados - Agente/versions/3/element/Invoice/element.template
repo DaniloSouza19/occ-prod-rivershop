@@ -1,0 +1,405 @@
+<!-- ko ifnot: isSinglePayment() -->
+  <div id="splitPaymentsInvoicePanel">
+    <fieldset data-bind="disable: order().isPaymentDisabled()">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <div class="control">
+            <input type="text" class="col-sm-12 form-control"
+              name="poNumber" id="CC-splitPayments-poNumber"
+              data-bind="validatableValue: $data.paymentViewModel().PONumber, widgetLocaleText : {value:'poNumberText', attr:'placeholder'}" />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <!-- ko if: billingAddressEnabled() && !$data.order().isAnonymousCheckout && !$data.user().isB2BUser() && invoiceViewModel().isDefaultAddressValid() -->
+          <div class="form-group" >
+            <div class=" checkbox">
+              <label for="CC-splitpayments-invoice-useAsBillingAddress">
+                <input type="checkbox" name="useDefaultBillingAddress"
+                       data-bind="checked: invoiceViewModel().useDefaultBillingAddress, event:{'change':setDefaultBillingAddress.bind($data, $data.invoiceViewModel()}"
+                       id="CC-splitpayments-invoice-useDefaultBillingAddress">
+                <span data-bind="widgetLocaleText:'useDefaultBillingAddressText'"></span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- /ko -->
+      
+          <!-- ko if: !invoiceViewModel().useDefaultBillingAddress() || $data.user().isB2BUser() -->
+            <div id="collapsibleBillingAddress">
+              <span class="billingAddressText" data-bind="widgetLocaleText:'billingAddressText'"></span>
+              <!-- ko if: !order().isAnonymousCheckout && showAddressBook() -->
+              <button class="cc-button-primary pull-right" id="cc-paymentMethods-show-address-book"
+                data-bind="widgetLocaleText: 'addressBookText', event:{ click: function(data,event){ return $data.toggleAddressBook.bind($data, 'show', 'invoice', event.currentTarget)();}}"></button>
+                <!-- ko if:(userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+                <span class="pull-right">
+                  <button class="cc-button-primary" id="BillingAddressEditButton-invoice"
+                    data-bind="click: $data.confirmUnsavedChangesEditButton.bind($data, $element.id, 'invoice'), attr:{'disabled' : !$data.billingAddressSelected()}, widgetLocaleText : {value: 'lockIconScreenMessage', attr: 'aria-label', attr: 'title' }">
+                    <!-- ko ifnot: editBillingAddress -->
+                      <i class="fa fa-lock" aria-hidden="true"></i>
+                    <!-- /ko -->
+                    <!-- ko if: editBillingAddress -->
+                      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    <!-- /ko -->
+                  </button>
+                </span>
+                <!-- /ko -->
+              <!-- /ko -->
+              <fieldset id="billingAddress" data-bind="with: paymentViewModel().billingAddress">
+
+              <div class="row first-row">
+                <div class="form-group col-sm-4">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-bfirstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bfirstname-error" data-bind="validationMessage: firstName" role="alert"></span>
+                  <div class="control">
+                    <input type="text" class="col-md-12 form-control" name="bFirstName" id="CC-splitpayments-invoice-bfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'},css: {'sf-error' : firstName ? ! firstName.__valid__() : false}" >
+                  </div>
+                </div>
+                <div class="form-group col-sm-4">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-blastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-blastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+                  <div class="control">
+                    <input type="text" class="col-md-12 form-control" name="bLastName" id="CC-splitpayments-invoice-blastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'},css: {'sf-error' : lastName ? ! lastName.__valid__() : false}">
+                  </div>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                  <p class="text-danger " data-bind="validationMessage: firstName" role="alert"></p>
+                  <p class="text-danger" id="CC-splitpayments-invoice-blastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-8">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-bcountry" data-bind="widgetLocaleText:'countryText'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bcountry-error" data-bind="validationMessage: country" role="alert"></span>
+                  <div class="control">
+                    <select class="col-md-12 form-control" name="bCountry" id="CC-splitpayments-invoice-bcountry" aria-required="true"
+                      data-bind="options: $parent.billingCountries(), optionsText: 'displayName', optionsValue: 'countryCode',
+                                   optionsCaption: $parent.resources().countryText, value: selectedCountry,
+                                   validatableTarget: country, validationElement: country,attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                  <p class="text-danger" id="CC-splitpayments-invoice-bcountry-error" data-bind="validationMessage: country" role="alert"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-8">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-baddress1" data-bind="widgetLocaleText:'addressLine1Text'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-baddress1-error" data-bind="validationMessage: address1" role="alert"></span>
+                  <div class="control">
+                    <input type="text" class="col-md-12 form-control" name="bAddressLine1" id="CC-splitpayments-invoice-baddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText : {value : 'addressLine1Text', attr:'placeholder'},css: {'sf-error' : address1 ? ! address1.__valid__(): false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                  </div>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                  <p class="text-danger" id="CC-splitpayments-invoice-baddress1-error" data-bind="validationMessage: address1" role="alert"></p>
+                </div>
+              </div>
+               <div class="row">
+                <div class="form-group col-sm-8">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-baddress2" data-bind="widgetLocaleText:'addressLine2Text'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-baddress2-error" data-bind="validationMessage: address2" role="alert"></span>
+                  <div class="control">
+                    <input type="text" class="col-md-12 form-control" name="bAddressLine2" id="CC-splitpayments-invoice-baddress2" data-bind="validatableValue: address2, widgetLocaleText : {value : 'addressLine2Text', attr:'placeholder'},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                  </div>
+                </div>
+                <div class="col-md-4 hidden-xs">
+                  <p class="text-danger" id="CC-splitpayments-invoice-baddress2-error" data-bind="validationMessage: address2" role="alert"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-8">
+                    <label class="control-label inline" for="CC-splitpayments-baddress3" data-bind="widgetLocaleText:'addressLine3Text'"></label> <span class="text-danger visible-xs" id="CC-splitpayments-phone-baddress3-error" data-bind="validationMessage: address3" role="alert"></span>
+                    <div class="control">
+                        <input type="text" class="col-md-12 form-control" name="bAddressLine3" id="CC-splitpayments-baddress3" data-bind="validatableValue: address3, widgetLocaleText:{value:'addressLine3Text',attr:'placeholder'},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs">
+                    <p class="text-danger" id="CC-splitpayments-baddress3-error" data-bind="validationMessage: address3" role="alert"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-8">
+                    <label class="control-label inline" for="CC-splitpayments-invoice-bcounty" data-bind="widgetLocaleText:'countyText'"></label> <span class="text-danger visible-xs" id="CC-splitpayments-phone-bcounty-error" data-bind="validationMessage: county" role="alert"></span>
+                    <div class="control">
+                        <input type="text" class="col-md-12 form-control" name="bCounty" id="CC-splitpayments-invoice-bcounty" data-bind="validatableValue: county, widgetLocaleText:{value:'countyText',attr:'placeholder'},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs">
+                    <p class="text-danger" id="CC-splitpayments-invoice-bcounty-error" data-bind="validationMessage: county" role="alert"></p>
+                </div>
+            </div>
+              <div class="row">
+                <div class="form-group col-sm-4">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-bcity" data-bind="widgetLocaleText:'cityText'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bcity-error" data-bind="validationMessage: city" role="alert"></span>
+                  <div class="control">
+                    <input type="text" class="col-md-12 form-control" name="bCity" id="CC-splitpayments-invoice-bcity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText : {value : 'cityText', attr:'placeholder'},css: {'sf-error' : city ?! city.__valid__() : false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                  </div>
+                </div>
+                <div class="form-group col-sm-4">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-bstate" data-bind="widgetLocaleText:'stateText'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bstate-error" data-bind="validationMessage: state" role="alert"></span><div class="control">
+                    <select class="col-md-12 form-control" name="bState" id="CC-splitpayments-invoice-bstate" aria-required="true"
+                      data-bind="options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation',
+                                   optionsCaption: $parent.resources().stateRegionText, value: selectedState,
+                                 validatableTarget: state, validationElement: state, enable: (stateList().length && $parent.editInvoiceBillingAddress())">
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                  <p class="text-danger" id="CC-splitpayments-invoice-bcity-error" data-bind="validationMessage: city" role="alert"></p>
+                  <p class="text-danger" id="CC-splitpayments-invoice-bstate-error" data-bind="validationMessage: state" role="alert"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-sm-4">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-bzipcode" data-bind="widgetLocaleText:'zipCodeText'"></label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+                  <div class="control">
+                    <input type="text" class="col-md-12 form-control" name="bZip" id="CC-splitpayments-invoice-bzipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'},css: {'sf-error' : postalCode ? ! postalCode.__valid__() : false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                  </div>
+                </div>
+                <div class="form-group col-sm-4">
+                  <label class="control-label inline" for="CC-splitpayments-invoice-bphone" data-bind="widgetLocaleText:'phoneNumberText'">
+                  </label>
+                  <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bphone-error" data-bind="validationMessage: phoneNumber" role="alert">
+                  </span>
+                  <div class="control">
+                    <input type="tel" class="col-md-12 form-control" name="bPhone" id="CC-splitpayments-invoice-bphone" aria-required="true" data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                  </div>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                  <p class="text-danger" id="CC-splitpayments-invoice-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+                </div>
+              </div>
+              <!-- ko if:$data.dynamicProperties &&  $data.dynamicProperties().length >0 -->
+                <fieldset id="cc-shippingAddress-update-dynamic-properties" data-bind="disable: ($parent.user().isB2BUser() && !$parent.editInvoiceBillingAddress())">
+                 <!-- ko with: $parent -->
+                  <!-- ko setContextVariable:{name:'context', value:  paymentViewModel().billingAddress().dynamicProperties} -->
+                    <div data-bind="element: 'dynamic-property' , attr: { id: 'dynamic-property-grid-' + $data.id()}"></div>
+                      <!-- /ko -->
+                   <!-- /ko -->
+                   </fieldset>
+               <!-- /ko -->
+            </fieldset>
+
+            </div>
+      <!-- /ko -->
+<!-- /ko -->
+
+<!-- ko if: isSinglePayment() -->
+  <!-- Single Payment Invoice Section -->
+    <!-- ko if : $.inArray("invoice", $data.paymentsContainer().enabledTypes) > -1 && !(paymentsContainer().isPaypalVerified())-->
+        <div id="splitPaymentsInvoicePanel">
+          <div id="CC-singlePayment-invoice">
+                <div id="CC-singlePayment-invoice-checkbox" class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group col-sm-5 checkbox">
+                            <label for="CC-singlePayment-displayInvoicePayment">
+                                <input type="checkbox" name="invoicePaymentDetails"
+                                    id="CC-singlePayment-displayInvoicePayment" class="checkbox"
+                                    data-bind="checked: isDisplayInvoiceDetails, disable:  validateInvoiceToBeDisabled() || order().isPaymentDisabled() ">
+                                    <span data-bind="widgetLocaleText:'invoicePaymentMsg'"></span>
+                            </label>
+                        </div>
+                     </div>
+                </div>
+                <!-- ko if: isDisplayInvoiceDetails() -->
+                    <div id="singlePaymentInvoicePanel">
+                        <fieldset data-bind="disable: order().isPaymentDisabled()">
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <div class="control">
+                                        <input type="text" class="col-sm-12 form-control"
+                                            name="poNumber" id="CC-singlePayment-poNumber"
+                                            data-bind="validatableValue: $data.invoiceViewModel().PONumber, widgetLocaleText : {value:'poNumberText', attr:'placeholder'}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                <!-- ko if: ($data.ASACustomPaymentPropertiesMetadataMap && $data.ASACustomPaymentPropertiesMetadataMap["invoice"] && $data.ASACustomPaymentPropertiesMetadataMap["invoice"].length > 0) -->
+                <!-- ko setContextVariable:{name: 'context', value: $data.ASACustomPaymentPropertiesMetadataMap["invoice"]} -->
+                   <div data-bind="element: 'dynamic-property'" ></div>
+                <!-- /ko -->
+                <!-- /ko -->
+                    </div>
+                <!-- ko if: billingAddressEnabled() && !$data.order().isAnonymousCheckout && !$data.user().isB2BUser() && invoiceViewModel().isDefaultAddressValid() -->
+                    <div class="form-group">
+                        <div class=" checkbox">
+                            <label for="CC-splitpayments-invoice-useAsBillingAddress">
+                                <input type="checkbox" name="useDefaultBillingAddress"
+                                    data-bind="checked: invoiceViewModel().useDefaultBillingAddress, event:{'change':setDefaultBillingAddress.bind($data, $data.invoiceViewModel()}"
+                                    id="CC-splitpayments-invoice-useDefaultBillingAddress">
+                                    <span data-bind="widgetLocaleText:'useDefaultBillingAddressText'"></span>
+                            </label>
+                        </div>
+                    </div>
+                <!-- /ko -->
+                <!-- ko if: !invoiceViewModel().useDefaultBillingAddress() || $data.user().isB2BUser() -->
+                    <div id="collapsibleBillingAddress">
+                        <span class="billingAddressText" data-bind="widgetLocaleText:'billingAddressText'"></span>
+                        <!-- ko if: !order().isAnonymousCheckout && showAddressBook() -->
+                        <button class="cc-button-primary pull-right" id="cc-paymentMethods-show-address-book"
+                          data-bind="widgetLocaleText: 'addressBookText', event:{click: function(data,event){return $data.toggleAddressBook.bind($data, 'show', 'invoice', event.currentTarget)();}}"></button>
+                          <!-- ko if:(userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+                          <span class="pull-right">
+                            <button class="cc-button-primary" id="BillingAddressEditButton-invoice"
+                              data-bind="click: $data.confirmUnsavedChangesEditButton.bind($data, $element.id, 'invoice'), attr:{'disabled' : !$data.billingAddressSelected()}, widgetLocaleText : {value: 'lockIconScreenMessage', attr: 'aria-label', attr: 'title' }">
+                              <!-- ko ifnot: editBillingAddress -->
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                              <!-- /ko -->
+                              <!-- ko if: editBillingAddress -->
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                              <!-- /ko -->
+                            </button>
+                          </span>
+                          <!-- /ko -->
+                        <!-- /ko -->
+                        <fieldset id="billingAddress" data-bind="with: invoiceViewModel().billingAddress">
+                            <div class="row first-row">
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-bfirstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bfirstname-error" data-bind="validationMessage: firstName" role="alert"></span>
+                                    <div class="control">
+                                        <input type="text" class="col-md-12 form-control" name="bFirstName" id="CC-splitpayments-invoice-bfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'},css: {'sf-error' : firstName ? ! firstName.__valid__() : false}" >
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-blastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-blastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+                                    <div class="control">
+                                        <input type="text" class="col-md-12 form-control" name="bLastName" id="CC-splitpayments-invoice-blastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'},css: {'sf-error' : lastName ? ! lastName.__valid__() : false}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 hidden-xs">
+                                    <p class="text-danger " data-bind="validationMessage: firstName" role="alert"></p>
+                                    <p class="text-danger" id="CC-splitpayments-invoice-blastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-8">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-bcountry" data-bind="widgetLocaleText:'countryText'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bcountry-error" data-bind="validationMessage: country" role="alert"></span>
+                                    <div class="control">
+                                        <select class="col-md-12 form-control" name="bCountry" id="CC-splitpayments-invoice-bcountry" aria-required="true"
+                                            data-bind="options: $parent.billingCountries(), optionsText: 'displayName', optionsValue: 'countryCode',
+                                            optionsCaption: $parent.resources().countryText, value: selectedCountry,
+                                            validatableTarget: country, validationElement: country,attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 hidden-xs">
+                                    <p class="text-danger" id="CC-splitpayments-invoice-bcountry-error" data-bind="validationMessage: country" role="alert"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-8">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-baddress1" data-bind="widgetLocaleText:'addressLine1Text'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-baddress1-error" data-bind="validationMessage: address1" role="alert"></span>
+                                    <div class="control">
+                                    <input type="text" class="col-md-12 form-control" name="bAddressLine1" id="CC-splitpayments-invoice-baddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText : {value : 'addressLine1Text', attr:'placeholder'},css: {'sf-error' : address1 ? ! address1.__valid__(): false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 hidden-xs">
+                                    <p class="text-danger" id="CC-splitpayments-invoice-baddress1-error" data-bind="validationMessage: address1" role="alert"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-8">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-baddress2" data-bind="widgetLocaleText:'addressLine2Text'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-baddress2-error" data-bind="validationMessage: address2" role="alert"></span>
+                                    <div class="control">
+                                        <input type="text" class="col-md-12 form-control" name="bAddressLine2" id="CC-splitpayments-invoice-baddress2" data-bind="validatableValue: address2, widgetLocaleText : {value : 'addressLine2Text', attr:'placeholder'},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 hidden-xs">
+                                    <p class="text-danger" id="CC-splitpayments-invoice-baddress2-error" data-bind="validationMessage: address2" role="alert"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                             <div class="form-group col-sm-8">
+                               <label class="control-label inline" for="CC-splitpayments-baddress3" data-bind="widgetLocaleText:'addressLine3Text'"></label> <span class="text-danger visible-xs" id="CC-splitpayments-phone-baddress3-error" data-bind="validationMessage: address3" role="alert"></span>
+                            <div class="control">
+                              <input type="text" class="col-md-12 form-control" name="bAddressLine3" id="CC-splitpayments-baddress3" data-bind="validatableValue: address3, widgetLocaleText:{value:'addressLine3Text',attr:'placeholder'}, css: {'sf-error' : address3 ? ! address3.__valid__() : false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                           </div>
+                          </div>
+                          <div class="col-md-4 hidden-xs">
+                            <p class="text-danger" id="CC-splitpayments-baddress3-error" data-bind="validationMessage: address3" role="alert"></p>
+                           </div>
+                          </div>
+                          <div class="row">
+                           <div class="form-group col-sm-8">
+                            <label class="control-label inline" for="CC-splitpayments-invoice-bcounty" data-bind="widgetLocaleText:'countyText'"></label> <span class="text-danger visible-xs" id="CC-splitpayments-phone-bcounty-error" data-bind="validationMessage: county" role="alert"></span>
+                           <div class="control">
+                             <input type="text" class="col-md-12 form-control" name="bCounty" id="CC-splitpayments-invoice-bcounty" data-bind="validatableValue: county, widgetLocaleText:{value:'countyText',attr:'placeholder'}, css: {'sf-error' : county ? ! county.__valid__() : false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                           </div>
+                         </div>
+                         <div class="col-md-4 hidden-xs">
+                           <p class="text-danger" id="CC-splitpayments-invoice-bcounty-error" data-bind="validationMessage: county" role="alert"></p>
+                         </div>
+                       </div>
+                            <div class="row">
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-bcity" data-bind="widgetLocaleText:'cityText'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bcity-error" data-bind="validationMessage: city" role="alert"></span>
+                                    <div class="control">
+                                        <input type="text" class="col-md-12 form-control" name="bCity" id="CC-splitpayments-invoice-bcity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText : {value : 'cityText', attr:'placeholder'},css: {'sf-error' : city ?! city.__valid__() : false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-bstate" data-bind="widgetLocaleText:'stateText'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bstate-error" data-bind="validationMessage: state" role="alert"></span><div class="control">
+                                    <select class="col-md-12 form-control" name="bState" id="CC-splitpayments-invoice-bstate" aria-required="true"
+                                        data-bind="options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation',
+                                        optionsCaption: $parent.resources().stateRegionText, value: selectedState,
+                                        validatableTarget: state, validationElement: state, enable: (stateList().length && $parent.editInvoiceBillingAddress())">
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-sm-4 hidden-xs">
+                                    <p class="text-danger" id="CC-splitpayments-invoice-bcity-error" data-bind="validationMessage: city" role="alert"></p>
+                                    <p class="text-danger" id="CC-splitpayments-invoice-bstate-error" data-bind="validationMessage: state" role="alert"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-bzipcode" data-bind="widgetLocaleText:'zipCodeText'"></label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+                                    <div class="control">
+                                        <input type="text" class="col-md-12 form-control" name="bZip" id="CC-splitpayments-invoice-bzipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'},css: {'sf-error' : postalCode ? ! postalCode.__valid__() : false},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="control-label inline" for="CC-splitpayments-invoice-bphone" data-bind="widgetLocaleText:'phoneNumberText'">
+                                    </label>
+                                    <span class="text-danger visible-xs" id="CC-splitpayments-invoice-phone-bphone-error" data-bind="validationMessage: phoneNumber" role="alert">
+                                    </span>
+                                    <div class="control">
+                                        <input type="tel" class="col-md-12 form-control" name="bPhone" id="CC-splitpayments-invoice-bphone" aria-required="true" data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'},attr: { 'disabled': !$parent.editInvoiceBillingAddress() }">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 hidden-xs">
+                                    <p class="text-danger" id="CC-splitpayments-invoice-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+                                </div>
+                            </div>
+                            <!-- ko if:$data.dynamicProperties &&  $data.dynamicProperties().length >0 -->
+                              <fieldset id="cc-shippingAddress-update-dynamic-properties" data-bind="disable: ($parent.user().isB2BUser() && !$parent.editInvoiceBillingAddress())">
+                              <!-- ko with: $parent -->
+                                <!-- ko setContextVariable:{name:'context', value:  invoiceViewModel().billingAddress().dynamicProperties} -->
+                                  <div data-bind="element: 'dynamic-property' , attr: { id: 'dynamic-property-grid-' + $data.id()}"></div>
+                                <!-- /ko -->
+                              <!-- /ko -->
+                              </fieldset>
+                           <!-- /ko -->
+                        </fieldset>
+                    </div>
+                 <!-- /ko -->
+               <!-- /ko -->
+            </div>
+        </div>
+    <!-- /ko -->
+<!-- /ko -->

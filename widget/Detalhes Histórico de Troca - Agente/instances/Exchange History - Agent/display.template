@@ -1,0 +1,131 @@
+<div class="row">
+<!--  ko if:   $data.orderDetailsWrapper.isRenderComplete() -->
+<!-- ko if : $data.populateExchangeHistoryDetails() > 0 -->
+<div id="cc-horizontalLine-orderDetails" class="col-xs-12">
+    <hr class="line agent-line">
+  </div>
+<div class="col-md-12 table-layout-fixed-break-word">
+  <div class="row" id="cc-exchangeHistoryHeader">
+    <div class="col-md-4 cc-returnRequest-header"
+      id="cc-exchangeRequest-header"
+      data-bind="
+      visible: (exchangeRequests() != undefined && exchangeRequests().length > 0)">
+      <h4 class="cc-order-header-font-size" id="cc-exchange-requests-title"
+        data-bind="widgetLocaleText: 'exchangeHistoryCaptionText'"></h4>
+    </div>
+  </div>
+  <table summary="Exchange-History-Table" id="cc-exchangeHistoryTableHeader-table"
+    class="table-header-styling table table-bordered table-striped tableHeader cc-exchange-history-table-header-column-layout"
+    data-bind="
+     visible: (exchangeRequests() != undefined && exchangeRequests().length > 0)">
+    <thead>
+      <tr>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnRequestIdText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'rmaNumberText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'exchangeOrderText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnRequestDateText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnTotalQuantityText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'refundText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnStatusText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnActionText'"></th>
+      </tr>
+    </thead>
+  </table>
+  <div id="cc-exchangeRequestHistoryTblBodyContainer"
+    class="cc-return-history-table-body-container"
+    data-bind="
+     visible: (exchangeRequests() != undefined && exchangeRequests().length > 0)">
+    <table role='presentation'
+      class="table table-bordered table-striped table-header 
+        cc-exchange-history-table-body-column-layout"
+      id="cc-returnRequestForExchangeData-table"
+      data-bind="css: {'cc-exchange-history-table-body-column-layout-scrollbar':
+      (exchangeRequests().length > 3), 'cc-exchange-history-table-body-column-layout'
+      :(exchangeRequests().length <= 3)}">
+      <tbody data-bind="foreach:exchangeRequests">
+        <tr>
+          <td class="col-md-12"
+            data-bind="attr: {id: 'cc-return-request-id-' + returnRequestId }">
+            <!-- ko if: ( operation === '' || ( operation === 'processExchangeOrder' && !isSubmitExchangeOrderAllowed ))-->
+            <a href=# id="cc-view-return-request-link"
+            data-bind="click: $parent.showReturnRequest.bind($parent, returnRequestId, $parent.orderDetailsWrapper.orderDetails().id)">
+              <span data-bind="text: returnRequestId"></span>
+            </a>
+            <!-- /ko -->
+            <!-- ko ifnot: ( operation === '' || (operation === 'processExchangeOrder' && !isSubmitExchangeOrderAllowed)) -->
+            <span data-bind="text: returnRequestId"></span>
+            <!-- /ko -->
+          </td>
+          <td class="cc-table-column-word-wrap">
+            <span data-bind="text: returnRequestId != authorizationNumber ? authorizationNumber : '-'"></span>
+          </td>
+          <td
+            data-bind="attr: {id: 'cc-exchange-order-for-' + returnRequestId }">
+            <a href="#" data-bind="attr: {id: 'cc-order-details-'+ replacementOrder}, click: $parent.clickOrderDetails.bind($parent, replacementOrder),
+                       text:replacementOrder">
+            </a>
+          </td>
+          <td
+            data-bind="attr: {id: 'cc-return-request-date-' + returnRequestId }">
+            <span data-bind="ccDateTime: {date: createdDate, format: 'datetime',
+                                 dateFormat: 'medium',
+                                 timeFormat: 'short'}">
+            </span>
+          </td>
+          <td
+            data-bind="attr: {id: 'cc-return-total-quanity-' + returnRequestId }">
+            <div data-bind="text: totalReturnQuantity"></div>
+          </td>
+          <td data-bind="attr: {id: 'cc-return-refund-' + returnRequestId }">
+            <!-- ko if: ($parents[0].isPayShippingInSecondaryCurrency() || $parents[0].isPayTaxInSecondaryCurrency()) -->
+           <div
+              data-bind="text:$parent.convertToAmountInProperFormatForRefundOrExchange(totalRefundMap)"></div>
+            <!-- /ko -->
+            <!-- ko ifnot: ($parents[0].isPayShippingInSecondaryCurrency() || $parents[0].isPayTaxInSecondaryCurrency()) -->
+           <div
+              data-bind="currency: {price: totalRefund,
+                                    currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency}"></div>
+            <!-- /ko -->
+          </td>
+          <td data-bind="attr: {id: 'cc-return-status-' + returnRequestId }">
+            <div data-bind="text: state"></div>
+          </td>
+          <td data-bind="attr: {id: 'cc-action-' + returnRequestId }">
+           <!-- ko if: operation === 'submitExchangeOrder' -->
+             <a href="#" id="cc-exchange-submit-link"
+              data-bind="click: $parent.processExchangedOrder.bind($parent, returnRequestId, $parent.orderDetailsWrapper.orderDetails().id, replacementOrder)">
+             <span data-bind="widgetLocaleText: 'processExchangeOrderText'"></span>
+             </a>
+           <!-- /ko  -->
+           <!-- ko if: operation === 'refund'  -->
+            <a href="#" id="cc-exchange-refund-link"
+              data-bind="click: $parent.refundReturn.bind($parent, returnRequestId, $parent.orderDetailsWrapper.orderDetails().id)">
+                <span data-bind="widgetLocaleText: 'linkActionRefundText'"></span>
+             </a>
+           <!-- /ko  -->
+           <!-- ko if: operation === 'processExchangeRequest' -->
+           <a href="#" id="cc-exchange-receive-link"
+            data-bind="click: $parent.processExchange.bind($parent, returnRequestId, $parent.orderDetailsWrapper.orderDetails().id)">
+            <span data-bind="widgetLocaleText: 'linkActionReceiveText'"></span>
+           </a>
+           <!-- /ko  -->
+           <!--  ko if: operation == 'markAsComplete'   -->
+           <!--  ko if: manualRefundAmount >= 0 -->
+	          <a href="#" id="cc-mark_for_complete-link" data-toggle="modal",
+                       data-bind="click: $parent.initReturnMarkForComplete.bind($parent,returnRequestId, manualRefundAmount)" data-target="#cc-exchange-mark-for-complete" >
+              <span data-bind="widgetLocaleText: 'markComplete'"></span>
+              </a>
+           <!--  /ko -->
+	       <!--  /ko -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="cc-exchange-mark-for-complete" class="modal width-fixed fade cc-modalForm" tabindex="-1"
+    data-bind="template: { name: $data.templateAbsoluteUrl('/templates/return-mark-complete.template'), templateUrl: '' }">
+  </div>
+</div>
+<!--  /ko -->
+<!--  /ko -->
+</div>

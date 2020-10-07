@@ -1,0 +1,47 @@
+<!-- ko if: $data.user().loggedIn() -->
+<div id="loyaltyDetailsBasicPanel">
+  <fieldset id="fieldset-loyaltyDetails">
+  
+    <!-- Program ID -->
+    <div class="row">
+      <label class="control-label col-sm-4" id="loyaltyDetailsBasic-programId-label"
+          for="loyaltyDetailsBasic-programId" data-bind="widgetLocaleText: 'programId'">Program ID -
+	  </label>
+	  <label class="control-label col-sm-8" id="loyaltyDetailsBasic-programId-value" 
+	      data-bind="text: programId">
+	  </label>
+  	</div>
+  	
+  	<!-- Membership ID -->
+    <div class="row">
+      <label class="control-label col-sm-4" id="loyaltyDetailsBasic-membershipId-label"
+          for="loyaltyDetailsBasic-membershipId" data-bind="widgetLocaleText: 'membershipId'">Membership ID -
+	  </label>
+	  <label class="control-label col-sm-8" id="loyaltyDetailsBasic-membershipId-value" 
+	      data-bind="text: membershipId">
+	  </label>
+  	</div>
+  	
+  	<!-- Category -->
+    <div class="row">
+      <label class="control-label col-sm-4" id="loyaltyDetailsBasic-category-label"
+          for="loyaltyDetailsBasic-category" data-bind="widgetLocaleText: 'category'">Category -
+	  </label>
+	  <label class="control-label col-sm-8" id="loyaltyDetailsBasic-category-value" 
+	      data-bind="text: category">
+	  </label>
+  	</div>
+  	
+  	<!-- Total loyalty points accrued -->
+    <div class="row">
+      <label class="control-label col-sm-4" id="loyaltyDetailsBasic-totalPointsAccrued-label"
+          for="loyaltyDetailsBasic-totalPointsAccrued" data-bind="widgetLocaleText: 'totalPointsAccrued'">Total loyalty points accrued -
+	  </label>
+	  <label class="control-label col-sm-8" id="loyaltyDetailsBasic-totalPointsAccrued-value" 
+	      data-bind="text: totalPointsAccrued()">
+	  </label>
+  	</div>
+  	
+  </fieldset>
+</div>
+<!-- /ko -->

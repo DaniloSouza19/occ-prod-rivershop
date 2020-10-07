@@ -1,0 +1,146 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "60092": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60092",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/ofertas_do_dia/category/ofertas_do_dia",
+      "src": "/file/v5462349419620434218/general/destaque ofertas.png",
+      "titleText": "${occ:widgetCustomText('1000027')}",
+      "titleTextId": "1000027",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60093": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60093",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/combo",
+      "src": "/file/v9059090118071591347/general/destaque combo.png",
+      "titleText": "${occ:widgetCustomText('1000028')}",
+      "titleTextId": "1000028",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60094": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60094",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/limpeza/category/limpeza",
+      "src": "/file/v2955843421621960086/general/destaque limpeza.png",
+      "titleText": "${occ:widgetCustomText('900039')}",
+      "titleTextId": "900039",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60095": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60095",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/lancamento_havaianas/category/lancamento_havaianas",
+      "src": "/file/v8512764658209934090/general/DESTAQUE HAVAIANAS DESKTOP.png",
+      "titleText": "${occ:widgetCustomText('800055')}",
+      "titleTextId": "800055",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+
+<!-- ko ifnot: isMobile() -->
+<div class="hero_image container">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60092'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-1">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60093'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-2">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60095'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-3">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60094'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+
+</div>
+<!-- /ko -->

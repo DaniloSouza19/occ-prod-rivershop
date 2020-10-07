@@ -1,0 +1,7 @@
+<div id="splitPaymentsPayuPanel">
+  <!-- ko if: selectedPaymentType() == "payULatamWebcheckout" -->
+    <a data-bind="attr : { id: 'CC-splitPayments-checkoutWithPayULatam'}, click: handleAddPayment " href="#">
+      <img class="img-responsive center-block" alt="checkoutWithPayULatam" src="/img/payumoney.png">
+    </a>
+  <!-- /ko -->
+</div>

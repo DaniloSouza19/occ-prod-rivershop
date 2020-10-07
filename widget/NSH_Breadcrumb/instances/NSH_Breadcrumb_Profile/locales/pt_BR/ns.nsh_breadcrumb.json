@@ -1,0 +1,7 @@
+{
+  "resources": {
+    "searchBreadcrumb": "Resultados da Pesquisa \"__searchTerm__\"",
+    "breadcrumbDelimiter": "/",
+    "homeLinkText": "Início"
+  }
+}

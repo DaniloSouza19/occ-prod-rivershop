@@ -1,0 +1,22 @@
+<div id="splitPaymentsPaypalPanel">
+  <!-- ko if : $data.payment().gateways.paypalGateway.enabled -->
+  <!-- ko ifnot : (paymentsContainer().isPaypalEnabledForApproval) -->
+  <!-- ko ifnot : (paymentsContainer().isPaypalVerified()) -->
+  <div class="collapse-heading">
+    <h4>  <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#CC-splitPayments-paypal" data-bind="widgetLocaleText:'payWithPaypalText'"></span></h4>
+  </div>
+  <div id="CC-splitPayments-paypal" class="checkout row collapse">
+    <!-- ko if: (order().showSchedule() && !order().paymentDetails().isPaypalEnabledForScheduledOrder()) -->
+    <span id="CC-splitPayments-paymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+    <img class="img-responsive" alt="checkoutWithPayPal" data-bind="attr: {src: 'https://fpdbs.paypal.com/dynamicimageweb?cmd=_dynamic-image'}">
+    <!-- /ko -->
+    <!-- ko ifnot: (order().showSchedule() && !order().paymentDetails().isPaypalEnabledForScheduledOrder()) -->
+    <a data-bind="attr : { id: 'CC-splitPayments-checkoutWithPaypal'}, disabled: {condition: cart().items().length == 0 || order().paymentDetails().isPaypalDisabled, click: handlePaypalWebCheckout }" href="#">
+      <img class="img-responsive" alt="checkoutWithPayPal" data-bind="attr: {src: 'https://fpdbs.paypal.com/dynamicimageweb?cmd=_dynamic-image'}">
+    </a>
+    <!-- /ko -->
+  </div>
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- /ko -->
+</div>

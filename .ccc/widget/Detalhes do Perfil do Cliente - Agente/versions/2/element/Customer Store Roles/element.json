@@ -1,0 +1,8 @@
+{
+  "tag": "customer-store-roles",
+  "source": 100,
+  "type": "fragment",
+  "title": "Customer Store Roles",
+  "widgetType": "customerProfileDetails",
+  "version": 2
+}

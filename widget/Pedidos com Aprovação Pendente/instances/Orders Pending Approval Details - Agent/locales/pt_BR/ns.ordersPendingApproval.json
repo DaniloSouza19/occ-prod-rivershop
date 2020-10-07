@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "headerOrderTotal": "Total do Pedido",
+    "ordersPendingApprovalText": "Pedidos com Aprovação Pendente",
+    "NoItemDisplayMessage": "Não há itens para exibição.",
+    "searchOrderId": "Pesquisar ID do Pedido",
+    "notApproverMessage": "O usuário não tem permissões suficientes para ver os pedidos finalizados desta organização",
+    "headerOrderID": "ID do Pedido",
+    "show": "Mostrar",
+    "approvalReason": "Motivo da Aprovação",
+    "itemsPerPageText": "itens por página",
+    "tableFooter": "__start__-__end__ de __total__ itens",
+    "headerSubmittedBy": "Enviado Por",
+    "myAccount": "Minha Conta",
+    "headerOrderDate": "Data do Pedido"
+  }
+}

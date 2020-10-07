@@ -1,0 +1,54 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Imagem_10017",
+      "styles": {},
+      "tag": "image@10017",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "GIF",
+        "zoomEnabled": "0",
+        "fileName": "Sale-GIF.gif"
+      }
+    },
+    {
+      "customTitle": "Imagem_10016",
+      "styles": {},
+      "tag": "image@10016",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Mix",
+        "zoomEnabled": "0",
+        "fileName": "Banner home 1.png"
+      }
+    }
+  ]
+}

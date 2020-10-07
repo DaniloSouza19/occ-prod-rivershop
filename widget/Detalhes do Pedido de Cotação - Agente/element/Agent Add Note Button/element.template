@@ -1,0 +1,4 @@
+<button class="cc-button-primary pull-right" tabindex="0" data-bind=" enable: (($data.user().loggedIn() == true) && ($data.CCConstants.QUOTED_STATES == ($data.orderDetailsWrapper.orderDetails().hasOwnProperty('stateString') ? $data.orderDetailsWrapper.orderDetails().stateString : $data.orderDetailsWrapper.orderDetails().state))),
+  click: $parent.displayNotes.bind($parent, true)">
+  <span data-bind="widgetLocaleText: 'buttonAddNote'"></span>
+</button>

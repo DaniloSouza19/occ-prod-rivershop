@@ -1,0 +1,42 @@
+<!-- ko if: displayNotesArea-->
+  <div class="modal width-fixed fade cc-modalForm" id="cc-addNewQuoteNotesModal"
+    tabindex="-1" data-bind="modal: 0, modalTabbingContraint">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id="cc-newNotes-close"
+            type="button" class="close" data-dismiss="modal"
+  		      data-bind="click: $parent.clearCommentTextArea, widgetLocaleText: {value:'closeText', attr:'aria-label'}"></button>
+          <h3 data-bind="widgetLocaleText: 'addNewNotesModalHeaderText'"></h3>
+        </div>
+        <div class="modal-body cc-notes-modal-body" id="cc-newNotesModalPane">
+          <textarea class="col-md-3 form-control" rows="4" id="cc-notes"
+            data-bind="value: $data.commentsViewModel().comment, valueUpdate: 'afterkeydown',attr:{'aria-label':'textArea'}">
+          </textarea>
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <!-- clear button -->
+            <div id="CC-checkoutOrderSummary-placeOrder-clear" class="col-md-2">
+              <button class="cc-button-secondary details-enabled-secondary-button col-xs-12 agent-notes-footer-button" data-bind="click: $data.clearCommentTextArea, disabled: !$data.commentsViewModel().comment()" >
+                <span data-bind="widgetLocaleText:'buttonClearText'"></span>
+              </button>
+            </div>
+            <div class="col-md-9 pull-right">
+              <div id="CC-checkoutOrderSummary-placeOrder-save-cancel" class="">
+                <button class="cc-button-secondary details-enabled-secondary-button agent-notes-footer-button" data-bind="click: $data.clearCommentTextArea" data-dismiss="modal">
+                  <span data-bind="widgetLocaleText:'buttonCancelText'"></span>
+                </button>
+                <button class="cc-button-primary details-enabled-primary-button agent-notes-footer-button"
+                data-bind="click: $data.createQuoteNotes.bind($data,$data.commentsViewModel().comment())
+                , disabled: !$data.commentsViewModel().comment() " data-dismiss="modal">
+                  <span data-bind="widgetLocaleText:'buttonSaveText'"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->

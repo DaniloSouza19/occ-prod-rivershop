@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-backorder-message",
+  "source": 100,
+  "type": "dynamicFragment",
+  "title": "Backorder Message",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

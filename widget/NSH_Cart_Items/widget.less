@@ -1,0 +1,230 @@
+#shoppingCartSummary_v15-shoppingCartSummaryInst_v15 {
+    /* -------------------------------------------------- */
+    /*  Shopping Cart
+    /* -------------------------------------------------- */
+    #cc-cartSummary {
+       .cart-inner {padding: 0;}
+       .bold { color: @grayDark; font-weight: bold; }
+      #cart-info-details {
+        .thead {
+          background: @lightBlue;
+          padding: 10px 0px;
+          color: #3d3d3d;
+          font-weight: bold;
+        }
+        .alignChild {
+          left: -14px;
+          position: relative;
+        }
+        margin-bottom: 6px;
+        .item {
+          border-bottom: 1px solid #eee;
+          padding-top: 10px;
+          padding-bottom: 7px;
+        }
+         .image.span2 {
+          font-weight: bold;
+          border: 0;
+          background: @white;
+          border-bottom: 1px solid #eee;
+        }
+        .input-qty {
+          width: 45px;
+          margin-bottom: 10px;
+          height: 30px;
+          padding-left: 6px;
+          padding-right: 6px;
+        }
+        .image img { max-width: 62px; }
+        .price, .total {  text-align: left; }
+        .quantity {
+          white-space: nowrap;
+          a, input {display: inline-block; }
+        }
+        .price {
+          white-space: nowrap;
+        }
+        .notify { text-align: left; padding-left: -8px;}
+        .name > a { color: @grayDark; font-weight: bold; }
+        .btn-update {
+          .btn-xs;
+          border-radius: @ButtonPrimaryBorderRadius;
+          display: none;
+        }
+      }
+      small {
+        color: #666666;
+        font-size: @fontSizeMini;
+        line-height: @smallLineHeight;
+      }
+      .instock{
+        color: @instock !important;
+        font-size: @fontSizeMini;
+        font-weight: bold !important;
+      }
+      .lowstock{
+        color: @lowstock !important;
+        font-size: @fontSizeMini;
+        font-weight: bold !important;
+      }
+      .outofstock{
+        color: @outofstock;
+        font-size: @fontSizeMini;
+        font-weight: bold;
+      }
+      .shippingdate{
+        color: @outofstock;
+        font-size: @fontSizeMini;
+        font-weight: bold;
+      }
+      .buttons{
+        margin-bottom: 10px;
+      }
+      .CC-shoppingCart-shippingSurcharge {
+        font-weight: 600;
+        font-size: 11px;
+      }
+      .padding-border {
+        padding-top:10px;
+        border-bottom: 1px solid #eee;
+      }
+      .placeHolderButton {
+        padding: 4px 35px;
+        font-size: 12px;
+        color: @white !important;
+      }
+      #CC-giftSelectionpane img {
+        max-height: 200px;
+      }
+      #CC-giftSelectionpane .variantOptions {
+        padding-top: 25px;
+      }
+      #CC-giftSelectionpane .cc-skuDropdown {
+        font-size: 1rem;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 20px;
+      }
+      .padding-top {
+        padding-top: 5px;
+      }
+      .total-cart-padding-top {
+        padding-top: 20px;
+      }
+      .padding-right {
+        padding-right: 6px;
+      }
+      .padding-zero {
+        padding:0px;
+      }
+      @media (max-width: @screen-xs-max) {
+        .even {
+          background-color: @grayLightest;
+        }
+      }
+      .giftIcon {
+        font-size: 4.5em;
+      }
+      /* -------------------------------------------------- */
+      /*  Cart Total
+      /* -------------------------------------------------- */
+      #total-cart {
+        margin-bottom: 10px;
+        margin-top: 0;
+        .inner { padding: 12px; background: #f9f9f9; overflow: hidden; }
+        table { margin: 0 12px 0 0; float: right; margin-bottom:12px; }
+        th {
+          padding-right: 6px;
+          //border-bottom: 1px solid #eee;
+          //font-size: @fontSizeLarge;
+          font-weight: bold;
+        }
+        td {
+          padding: 0;
+          text-align: right;
+          //border-bottom: 1px solid #eee;
+          //font-size: @fontSizeLarge;
+          font-weight: bold;
+          vertical-align: top;
+        }
+        td.total.last {
+          //font-size: @fontSizeLarge;
+          font-weight: bold;
+        }
+      }
+      
+      #continue-shopping { margin-top: 0px; }
+      .row-item {
+        padding : 5px;
+      }
+      .shipping-truck:before {
+        font-family: 'FontAwesome';  /* essential for enabling 'FontAwesome */
+        content: "\f0d1";
+        float: left;
+        color: #0088ff;
+        font-size:1.5em;
+        padding-right: 5px;
+      }
+      .shopping-bag:before {
+        font-family: 'FontAwesome';  /* essential for enabling 'FontAwesome */
+        content: "\f290";
+        float: left;
+        color: #0088ff;
+        font-size:1.5em;
+        padding-right: 5px;
+      }
+      .shopping-bag-disable:before {
+        font-family: 'FontAwesome';  /* essential for enabling 'FontAwesome */
+        content: "\f290";
+        float: left;
+        color: #655f5f;
+        font-size:1.5em;
+        padding-right: 5px;
+      }
+      .availability-check:before {
+        font-family: 'FontAwesome';  /* essential for enabling 'FontAwesome */
+        content: "\f00c";
+        float: left;
+        color: #008000;
+        font-size:1.5em;
+        padding-right: 5px;
+      }
+      .non-availability-check:before {
+        font-family: 'FontAwesome';  /* essential for enabling 'FontAwesome */
+        content: "\f00d";
+        float: left;
+        color: #f10606;
+        font-size:1.5em;
+        padding-right: 5px;
+      }
+      .cell-padding {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .stores {
+        overflow-y: auto;
+        max-height: 300px;
+        background-color: #dce0e4;
+        position: relative;
+        padding-top: 10px;
+      }
+      .empty-stores {
+        overflow-y: auto;
+        max-height: 300px;
+        background-color: #dce0e4;
+        position: relative;
+      }
+      .store-item {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: #ffffff;
+      }
+      .button-text-nowrap {
+        white-space: nowrap;
+      }
+    }
+    
+    }

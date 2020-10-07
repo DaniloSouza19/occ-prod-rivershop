@@ -1,0 +1,114 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "30030": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "30030",
+    "image": {
+      "isProductImage": false,
+      "link": "https://ccadmin-test-z2za.oracleoutsourcing.com/dica-modelo2",
+      "src": "/file/v8923318345224365639/general/banner-img-1.png",
+      "titleText": "banner-1",
+      "titleTextId": "100047",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "30031": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "30031",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v6636688882287818591/general/banner-img-2.png",
+      "titleText": "banner-2",
+      "titleTextId": "100048",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "30032": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "30032",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v4908832872860475188/general/banner-img-3.png",
+      "titleText": "banner-3",
+      "titleTextId": "100049",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+
+<!-- ko ifnot: isMobile() -->
+<div class="hero_image container">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-0">
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-1">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '30030'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-2">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '30031'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-3">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '30032'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+
+</div>
+<!-- /ko -->

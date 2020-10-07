@@ -1,0 +1,24 @@
+{
+  "resources": {
+    "updateCancelModalMessage": "Você tem alterações não salvas. Deseja salvá-las?",
+    "updateCancelModalClose": "Descartar",
+    "myAccountText": "Minha Conta",
+    "phoneNumberInvalid": "Entrada inválida. Informe um número de telefone válido.",
+    "updateCancelModalSave": "Salvar",
+    "updateSuccessMsg": "Atualização salva com sucesso.",
+    "preferredLocaleNotInSupportedLocalesError": " Seu idioma preferido não é mais suportado e foi revertido para a definição padrão. Verifique suas definições e atualize conforme necessário.",
+    "userDetailsHeader": "Para alterar o nome, clique nos campos apropriados.",
+    "preferredLanguageText": "Selecione seu idioma preferido.",
+    "emailPreferences": "Preferências de e-mail",
+    "myProfileText": "Meu perfil",
+    "wishListSettingsText": "Configurações da Lista de Desejos",
+    "marketingMailsText": "Quero receber atualizações por e-mail.",
+    "emailMarketingMailsRequired": "O campo de e-mail marketing é obrigatório.",
+    "personalizationConsentText": "Mostrar conteúdo relevante e promoções do site durante a navegação.",
+    "updateFailedMsg": "Falha ao salvar as alterações.",
+    "updateErrorMsg": "Verifique se preencheu todos os campos obrigatórios e corrigiu todas as entradas inválidas.",
+    "updateCacelModalTitle": "Alterações Não Salvas",
+    "localeText": "Idioma preferido:",
+    "userDetailsText": "Detalhes da Conta"
+  }
+}

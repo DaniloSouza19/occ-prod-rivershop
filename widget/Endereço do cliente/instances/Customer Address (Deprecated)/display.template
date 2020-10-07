@@ -1,0 +1,223 @@
+<div id="checkout-customer-details">
+  <fieldset id="shippingAddress" data-bind="with: shippingAddress, disable: shippingCountries().length == 0">
+    <legend data-bind="widgetLocaleText:'shippingAddressText'"></legend>
+    <div id="CC-shippingAddressLoadingModal">
+      <div class="row first-row">
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-sfirstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-sfirstname-error" data-bind="validationMessage: firstName" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="sFirstName" id="CC-checkoutCustomerDetails-sfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-slastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-slastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="sLastName" id="CC-checkoutCustomerDetails-slastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText',attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+          <p class="text-danger" id="CC-checkoutCustomerDetails-sfirstname-error" data-bind="validationMessage: firstName" role="alert"></p>
+          <p class="text-danger" id="CC-checkoutCustomerDetails-slastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-scountry" data-bind="widgetLocaleText:'countryText'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-scountry-error" data-bind="validationMessage: country" role="alert"></span>
+          <div class="control">
+            <select class="col-md-12 form-control" name="sCountry" id="CC-checkoutCustomerDetails-scountry" aria-required="true"
+              data-bind="enable: $parent.shippingCountries().length, options: $parent.shippingCountries, optionsText: 'displayName',
+                         optionsValue: 'countryCode', optionsCaption: $parent.resources().countryText, value: selectedCountry, 
+                         validatableTarget: country, validationElement: country">
+            </select>
+          </div>
+        </div>
+        <div class="col-md-offset-4 col-md-4 hidden-xs">
+          <p class="text-danger" id="CC-checkoutCustomerDetails-scountry-error" data-bind="validationMessage: country" role="alert"></p>
+        </div>
+      </div>
+       <div class="row">
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-saddress1" data-bind="widgetLocaleText:'addressLine1Text'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-saddress1-error" data-bind="validationMessage: address1" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="sAddressLine1" id="CC-checkoutCustomerDetails-saddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText:{value:'addressLine1Text',attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-saddress2" data-bind="widgetLocaleText:'addressLine2Text'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-saddress2-error" data-bind="validationMessage: address2" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="sAddressLine2" id="CC-checkoutCustomerDetails-saddress2" data-bind="validatableValue: address2, widgetLocaleText:{value:'addressLine2Text',attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+          <p class="text-danger" id="CC-checkoutCustomerDetails-saddress1-error" data-bind="validationMessage: address1" role="alert"></p>
+          <p class="text-danger" id="CC-checkoutCustomerDetails-saddress2-error" data-bind="validationMessage: address2" role="alert"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-scity" data-bind="widgetLocaleText:'cityText'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-scity-error" data-bind="validationMessage: city" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="sCity" id="CC-checkoutCustomerDetails-scity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText:{value:'cityText',attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-sstate" data-bind="widgetLocaleText:'stateText'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-sstate-error" data-bind="validationMessage: state" role="alert"></span>
+          <div class="control">
+            <select class="col-md-12 form-control" name="sState" id="CC-checkoutCustomerDetails-sstate" aria-required="true"
+              data-bind="enable: stateList().length, options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation',
+                         optionsCaption: $parent.resources().stateRegionText, value: selectedState, 
+                         validatableTarget: state, validationElement: state">
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+          <p class="text-danger" id="CC-checkoutCustomerDetails-scity-error" data-bind="validationMessage: city" role="alert"></p>
+          <p class="text-danger" id="CC-checkoutCustomerDetails-sstate-error" data-bind="validationMessage: state" role="alert"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-szipcode" data-bind="widgetLocaleText:'zipCodeText'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-szipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="sZip" id="CC-checkoutCustomerDetails-szipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-checkoutCustomerDetails-sphone" data-bind="widgetLocaleText:'phoneNumberText'"></label>
+          <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-sphone-error" data-bind="validationMessage: phoneNumber" role="alert"></span>
+          <div class="control">
+            <input type="tel" class="col-md-12 form-control" name="bPhone" id="CC-checkoutCustomerDetails-sphone" aria-required="true" data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+          <p class="text-danger" id="CC-checkoutCustomerDetails-szipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+          <p class="text-danger" id="CC-checkoutCustomerDetails-sphone-error" data-bind="validationMessage: phoneNumber" role="alert"></p>
+        </div>
+      </div>
+    </div>
+
+      <div class="row" data-bind="visible: (!$parent.skipBillingDetails() && $parent.displayUseAsBillAddress()) ">
+         <div class="form-group col-md-12" >
+           <div class=" checkbox">
+             <label for="CC-checkoutCustomerDetails-useAsBillAddress">
+               <input type="checkbox" name="useAsBillAddress" 
+                      data-bind="checked: $parent.useAsBillAddress" id="CC-checkoutCustomerDetails-useAsBillAddress" 
+                      class="checkbox" >
+                  <span data-bind="widgetLocaleText:'useBillingAddressText'"></span>
+               </label>
+           </div>
+         </div>
+      </div>
+      <div class="text-danger" data-bind="visible: (!$parent.skipBillingDetails() && !$parent.displayUseAsBillAddress())" role="alert" aria-live="rude">      
+        <span data-bind="widgetLocaleText: 'invalidBillingAddressText'"></span>
+      </div>
+    </fieldset>
+  <!-- ko if: (!skipBillingDetails()) -->   
+  <div id="collapsibleBillingAddress" data-bind="visible: ((!displayUseAsBillAddress()) || (!useAsBillAddress()))">
+  	<fieldset id="billingAddress" data-bind="with: billingAddress, inTabFlow: ((!displayUseAsBillAddress()) || (!useAsBillAddress()))">
+    
+    <legend data-bind="widgetLocaleText:'billingAddressText'"></legend>
+    <div class="row first-row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-bfirstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-bfirstname-error" data-bind="validationMessage: firstName" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bFirstName" id="CC-checkoutCustomerDetails-bfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}" >
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-blastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-blastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bLastName" id="CC-checkoutCustomerDetails-blastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}">
+        </div>
+      </div>
+      <div class="col-md-4 hidden-xs">
+        <p class="text-danger " id="CC-checkoutCustomerDetails-bfirstname-error" data-bind="validationMessage: firstName" role="alert"></p>
+        <p class="text-danger" id="CC-checkoutCustomerDetails-blastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-bcountry" data-bind="widgetLocaleText:'countryText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-bcountry-error" data-bind="validationMessage: country" role="alert"></span>
+        <div class="control">
+          <select tabindex="1" class="col-md-12 form-control" name="bCountry" id="CC-checkoutCustomerDetails-bcountry" aria-required="true"
+            data-bind="options: $parent.billingCountries(), optionsText: 'displayName', optionsValue: 'countryCode',
+                         optionsCaption: $parent.resources().countryText, value: selectedCountry, 
+                         validatableTarget: country, validationElement: country">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-offset-4 col-md-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutCustomerDetails-bcountry-error" data-bind="validationMessage: country" role="alert"></p>
+      </div>
+    </div>
+     <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-baddress1" data-bind="widgetLocaleText:'addressLine1Text'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-baddress1-error" data-bind="validationMessage: address1" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bAddressLine1" id="CC-checkoutCustomerDetails-baddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText : {value : 'addressLine1Text', attr:'placeholder'}">
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-baddress2" data-bind="widgetLocaleText:'addressLine2Text'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-baddress2-error" data-bind="validationMessage: address2" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bAddressLine2" id="CC-checkoutCustomerDetails-baddress2" data-bind="validatableValue: address2, widgetLocaleText : {value : 'addressLine2Text', attr:'placeholder'}">
+        </div>
+      </div>
+      <div class="col-md-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutCustomerDetails-baddress1-error" data-bind="validationMessage: address1" role="alert"></p>
+        <p class="text-danger" id="CC-checkoutCustomerDetails-baddress2-error" data-bind="validationMessage: address2" role="alert"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-bcity" data-bind="widgetLocaleText:'cityText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-bcity-error" data-bind="validationMessage: city" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bCity" id="CC-checkoutCustomerDetails-bcity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText : {value : 'cityText', attr:'placeholder'}">
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-bstate" data-bind="widgetLocaleText:'stateText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-bstate-error" data-bind="validationMessage: state" role="alert"></span><div class="control">
+          <select tabindex="1" class="col-md-12 form-control" name="bState" id="CC-checkoutCustomerDetails-bstate" aria-required="true"
+            data-bind="options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation',
+                         optionsCaption: $parent.resources().stateRegionText, value: selectedState,
+                       validatableTarget: state, validationElement: state, enable: stateList().length">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutCustomerDetails-bcity-error" data-bind="validationMessage: city" role="alert"></p>
+        <p class="text-danger" id="CC-checkoutCustomerDetails-bstate-error" data-bind="validationMessage: state" role="alert"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutCustomerDetails-bzipcode" data-bind="widgetLocaleText:'zipCodeText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutCustomerDetails-phone-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bZip" id="CC-checkoutCustomerDetails-bzipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'}">
+        </div>
+      </div>
+      <div class="col-md-offset-4 col-md-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutCustomerDetails-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+      </div>
+    </div>
+  </fieldset>
+ 
+  </div>
+  <!-- /ko -->
+</div>

@@ -1,0 +1,8 @@
+{
+  "tag": "cart-shipping-address",
+  "source": 100,
+  "type": "fragment",
+  "title": "Endereço de Remessa",
+  "widgetType": "cartShippingDetails",
+  "version": 14
+}

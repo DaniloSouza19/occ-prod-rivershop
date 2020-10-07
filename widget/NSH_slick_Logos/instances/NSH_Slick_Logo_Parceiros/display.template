@@ -1,0 +1,361 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "60161": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60161",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v3385632541321146034/general/30106300_1548212540.png",
+      "titleText": "ScJohnson",
+      "titleTextId": "700129",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60162": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60162",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v4316151576299245485/general/59516500_1548212705.png",
+      "titleText": "UniLever",
+      "titleTextId": "700130",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60163": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60163",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v5804142599677325404/general/75502800_1548212796.png",
+      "titleText": "Unilever",
+      "titleTextId": "700131",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60164": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60164",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v6636958434151304117/general/08009500_1548212891.png",
+      "titleText": "Colgate",
+      "titleTextId": "700132",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60166": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60166",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v4966583767853180387/general/71038700_1548212994.png",
+      "titleText": "KraftHeinz",
+      "titleTextId": "700133",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60167": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60167",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v8593434554743103400/general/74138300_1548213092.png",
+      "titleText": "Pernod",
+      "titleTextId": "700134",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60168": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60168",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v7141060465888736306/general/00836800_1548213302.png",
+      "titleText": "Condor",
+      "titleTextId": "700135",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60169": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60169",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v6891106087547285775/general/10675100_1548213439.png",
+      "titleText": "Reckitt",
+      "titleTextId": "700136",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60170": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60170",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v8401944485855767810/general/logo_lolreal.png",
+      "titleText": "Loral",
+      "titleTextId": "700137",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60171": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60171",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v6058671966385382779/general/logo_mondelez.png",
+      "titleText": "Mondez",
+      "titleTextId": "700138",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+
+
+<div class="nsh_slick_logos">
+
+  <div class="templateRegion container" id="nsh_slick_logos" data-oc-id="nsh_slick_logos">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="img-fluid" data-bind=" attr:{id: id}, onRender: $widgetViewModel.addSlick()">
+
+          <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60161'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60162'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60163'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60164'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-4-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60166'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-5-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60167'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-6-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60168'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-7-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60169'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-8-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60170'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-9-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60171'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

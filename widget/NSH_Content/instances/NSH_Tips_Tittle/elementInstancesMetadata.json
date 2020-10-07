@@ -1,0 +1,38 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Rich_Text_10022",
+      "styles": {},
+      "tag": "rich-text@30016",
+      "text": null,
+      "richTextConfig": {
+        "content": "<p class=\"text1\">NOSSAS</p>\n\n<p class=\"text2\">DICAS EXCLUSIVAS</p>\n"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    },
+    {
+      "customTitle": null,
+      "styles": {
+        "font-size": "1.13rem",
+        "font-style": "normal",
+        "color": "#707070",
+        "font-weight": "normal",
+        "display": "block",
+        "text-decoration": "none"
+      },
+      "tag": "generic-text@30017",
+      "text": "Preparamos dicas especiais para você.",
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Rich_Text_10078",
+      "styles": {},
+      "tag": "rich-text@10079",
+      "text": null,
+      "richTextConfig": {
+        "content": "<p class=\"tituloCategoria\">MAIS PEDIDOS: HIGIENE E BELEZA</p>\n<span class=\"line\"></span>\n"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    }
+  ]
+}

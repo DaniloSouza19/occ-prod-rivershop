@@ -1,0 +1,203 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Rich_Text_10018",
+      "styles": {},
+      "tag": "rich-text@10018",
+      "text": null,
+      "richTextConfig": {
+        "content": "<p class=\"h1\">Nossos</p>\n\n<p class=\"h2\">Combos Exclusivos</p>\n"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    },
+    {
+      "customTitle": "Imagem_10051",
+      "styles": {},
+      "tag": "image@10051",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10050",
+      "styles": {},
+      "tag": "image@10050",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10042",
+      "styles": {},
+      "tag": "image@10042",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10048",
+      "styles": {},
+      "tag": "image@10048",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10047",
+      "styles": {},
+      "tag": "image@10047",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10049",
+      "styles": {},
+      "tag": "image@10049",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Rich_Text_10022",
+      "styles": {},
+      "tag": "rich-text@10022",
+      "text": null,
+      "richTextConfig": {
+        "content": "<p class=\"text1\">NOSSOS</p>\n\n<p class=\"text2\">DESCONTOS&nbsp; EXCLUSIVOS</p>\n"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    },
+    {
+      "customTitle": null,
+      "styles": {
+        "font-size": "1.14rem",
+        "font-style": "normal",
+        "color": "#707070",
+        "font-weight": "normal",
+        "display": "block",
+        "text-decoration": "none"
+      },
+      "tag": "generic-text@10019",
+      "text": "Preparamos diversos descontos especiais com os produtos que você precisa, com valores mais atrativos e de encontro às maiores demandas.",
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    }
+  ]
+}

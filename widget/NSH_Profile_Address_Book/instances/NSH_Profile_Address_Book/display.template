@@ -1,0 +1,328 @@
+<!-- ko if: (user().loggedIn() || user().isUserSessionExpired()) -->
+<div class="profile_address_book p-t-50 p-b-60">
+<div id="CC-customerProfile" data-bind="onRender: addEventHandlersForAnchorClick" class="col-xs-12 instiucionais">
+  <div class="col-xs-12">
+
+    <!-- ko with: user -->
+    <fieldset id="CC-customerProfile-edit-fields">
+      <div id="CC-customerProfile-shippingAddress-label">
+        <div id="CC-customerProfile-addressBook-title " class="col-lg-9 col-md-9 m-t-40 p-b-15 font-padrao"
+          data-bind="widgetLocaleText:'shippingAddressText'">
+        </div>
+        <!-- <button class="cc-button-primary pull-right visible-xs" id="cc-customer-profile-shipping-address-add-mobile"
+          data-bind="click:$parent.handleCreateShippingAddress, visible: !$parent.isUserProfileShippingEdited()">
+          <span data-bind="widgetLocaleText: 'addText'"></span>
+        </button> -->
+
+      </div>
+      <div class="row"  data-bind="visible: !$parent.isUserProfileShippingEdited()"
+        id="CC-customerProfile-shippingAddress-view">
+        <!-- View Begins -->
+        <div class="col-sm-10" id="CC-customerProfile-shippingAddress-view-region">
+          <!-- ko foreach: shippingAddressBook -->
+          <!-- ko if: postalCode -->
+          <address class="CC-customerProfile-shipping-address cc-customer-profile-shipping-address-view col-sm-6 col-xs-11 col-md-4 col-lg-4  m-t-15">
+            <div class="cont_adress">
+            <div class="pull-right">
+              <!-- ko if: $parent.shippingAddressBook().length > 1 -->
+              <button  class="btn btn-default btn-sm " data-bind="click: $parents[1].handleSelectDefaultShippingAddress,
+                                   disable: isDefaultAddress(),
+                                   attr: {id: 'CC-customerProfile-select-default-addr-btn-' + $index()},
+                                   widgetLocaleText: {value:'selectDefaultAddressBtnTitle', attr:'title'}">
+                <!-- ko if: isDefaultAddress() -->          
+                <img src="/file/general/font-awesome_4-7-0_check-circle-o_10_0_ffffff_none.png" width="10"  height="10px"  alt="">
+                <!-- /ko -->
+                <!-- ko ifnot: isDefaultAddress() -->
+                <img src="/file/general/circle-o_10.png" width="10"  height="10px"  alt="">
+              
+                <!-- /ko -->
+              </button>
+              <!-- /ko -->
+            </div>
+            <!-- ko if: isDefaultAddress -->
+            <span class="cc-customer-profile-default-address"
+              data-bind="widgetLocaleText: 'defaultAddressLabel'"></span>
+            <br />
+            <!-- /ko -->
+            <span class="address-field" data-bind="text: firstName"></span>&nbsp;<span class="address-field"
+              data-bind="text: lastName"></span>
+            <br />
+            <span class="address-field" data-bind="text: address1"></span>
+            <!-- ko if: address2 -->
+            <br />
+            <span class="address-field" data-bind="text: address2"></span>
+            <!-- /ko -->
+            <br />
+            <span class="address-field" data-bind="text: city"></span>, <span class="address-field"
+              data-bind="text: state"></span>, <span class="address-field" data-bind="text: postalCode"></span>
+            <br />
+            <span class="address-field" data-bind="text: country"></span>
+            <!-- ko if: phoneNumber -->
+            <br />
+            <span class="address-field" data-bind="text: phoneNumber"></span>
+            <!-- /ko -->
+            <br />
+          </div>
+          </address>
+          <!-- /ko -->
+          <!-- /ko -->
+          <!-- ko if: shippingAddressBook().length == 0 -->
+          <span data-bind="widgetLocaleText: 'noAddressesText'"></span>
+          <!-- /ko -->
+        </div>
+        <!-- View ends -->
+      </div>
+      <div id="CC-customerProfile-shippingAddress-edit" data-bind="visible: $parent.isUserProfileShippingEdited()">
+        <!-- Edit begin -->
+        <!-- ko with: editShippingAddress -->
+        <div id="CC-customerProfile-shippingAddress-edit-region">
+          <div class="row first-row">
+            <div class="col-md-4">
+              <label class="control-label inline" for="CC-customerProfile-sfirstname"
+                data-bind="widgetLocaleText:'firstNameText'"></label>
+            </div>
+            <div class="col-md-4">
+              <label class="control-label inline" for="CC-customerProfile-slastname"
+                data-bind="widgetLocaleText:'lastNameText'"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="p-t-10 col-md-6 ">
+              <span class="text-danger visible-xs" id="CC-customerProfile-sfirstname-phone-error"
+                data-bind="validationMessage: firstName" role="alert"></span>
+              <div class="control">
+                <input aria-required="true" type="text" class="col-md-12 form-control" name="sFirstName"
+                  id="CC-customerProfile-sfirstname"
+                  data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="p-t-10 col-md-6  ">
+              <span class="text-danger visible-xs" id="CC-customerProfile-slastname-phone-error"
+                data-bind="validationMessage: lastName" role="alert"></span>
+              <div class="control">
+                <input aria-required="true" type="text" class="col-md-12 form-control" name="sLastName"
+                  id="CC-customerProfile-slastname"
+                  data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-customerProfile-sfirstname-error-tablet"
+                data-bind="validationMessage: firstName" role="alert"></p>
+              <p class="text-danger" id="CC-customerProfile-slastname-error-tablet"
+                data-bind="validationMessage: lastName" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <label class="control-label inline" for="CC-customerProfile-scountry"
+                data-bind="widgetLocaleText:'countryText'"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="p-t-10 col-md-12">
+              <span class="text-danger visible-xs" id="CC-customerProfile-scountry-phone-error"
+                data-bind="validationMessage: country" role="alert"></span>
+              <div class="control">
+                <select aria-required="true" class="form-control col-md-12" name="sCountry"
+                  id="CC-customerProfile-scountry" data-bind="enable: $parents[1].shippingCountries().length, optionsValue: 'countryCode',
+                                     options: $parents[1].shippingCountries(), optionsText: 'displayName',
+                                     optionsCaption: $parents[1].resources().countryText, value: selectedCountry, 
+                                     validatableTarget: country, validationElement: country">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-customerProfile-scountry-error-tablet"
+                data-bind="validationMessage: country" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <label class="control-label inline" for="CC-customerProfile-saddress1"
+                data-bind="widgetLocaleText:'addressLine1Text'" role="alert"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="p-t-10 col-md-12">
+              <span class="text-danger visible-xs" id="CC-customerProfile-saddress1-phone-error"
+                data-bind="validationMessage: address1" role="alert"></span>
+              <div class="control">
+                <input aria-required="true" type="text" class="col-md-12 form-control" name="sAddressLine1"
+                  id="CC-customerProfile-saddress1"
+                  data-bind="validatableValue: address1, widgetLocaleText:{value:'addressLine1Text',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-customerProfile-saddress1-error-tablet"
+                data-bind="validationMessage: address1" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <label class="control-label inline" for="CC-customerProfile-saddress2"
+                data-bind="widgetLocaleText:'addressLine2Text'"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="p-t-10 col-md-12">
+              <span class="text-danger visible-xs" id="CC-customerProfile-saddress2-phone-error"
+                data-bind="validationMessage: address2" role="alert"></span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sAddressLine2" id="CC-customerProfile-saddress2"
+                  data-bind="validatableValue: address2, widgetLocaleText:{value:'addressLine2Text',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-customerProfile-saddress2-error-tablet"
+                data-bind="validationMessage: address2" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label class="control-label inline" for="CC-customerProfile-scity"
+                data-bind="widgetLocaleText:'cityText'"></label>
+            </div>
+            <div class="col-md-4">
+              <label class="control-label inline" for="CC-customerProfile-sstate"
+                data-bind="widgetLocaleText:'stateText'"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="p-t-10 col-md-6">
+              <span class="text-danger visible-xs" id="CC-customerProfile-scity-phone-error"
+                data-bind="validationMessage: city" role="alert"></span>
+              <div class="control">
+                <input aria-required="true" type="text" class="col-md-12 form-control" name="sCity"
+                  id="CC-customerProfile-scity"
+                  data-bind="validatableValue: city, widgetLocaleText:{value:'cityText',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="p-t-10 col-md-6">
+              <span class="text-danger visible-xs" id="CC-customerProfile-sstate-phone-error"
+                data-bind="validationMessage: state" role="alert"></span>
+              <div class="control">
+                <select aria-required="true" class="form-control col-md-12" name="sState" id="CC-customerProfile-sstate"
+                  data-bind="enable: stateList().length, options: stateList,
+                                     optionsText: 'displayName', optionsValue: 'abbreviation',
+                                     optionsCaption: $parents[1].resources().stateRegionText, value: selectedState, 
+                                     validatableTarget: state, validationElement: state">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-customerProfile-scity-error-tablet" data-bind="validationMessage: city"
+                role="alert"></p>
+              <p class="text-danger" id="CC-customerProfile-sstate-error-tablet" data-bind="validationMessage: state"
+                role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label class="control-label inline" for="CC-customerProfile-szipcode"
+                data-bind="widgetLocaleText:'zipCodeText'"></label>
+            </div>
+            <div class="col-md-4">
+              <label class="control-label inline" for="CC-customerProfile-sphone"
+                data-bind="widgetLocaleText:'phoneNumberText'"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="p-t-10 col-md-6">
+              <span class="text-danger visible-xs" id="CC-customerProfile-szipcode-phone-error"
+                data-bind="validationMessage: postalCode" role="alert"></span>
+              <div class="control">
+                <input aria-required="true" type="text" class="col-md-12 form-control" name="sZip"
+                  id="CC-customerProfile-szipcode"
+                  data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="p-t-10 col-md-6">
+              <span class="text-danger visible-xs" id="CC-customerProfile-sphone-phone-error"
+                data-bind="validationMessage: phoneNumber" role="alert"></span>
+              <div class="control">
+                <input type="tel" class="col-md-12 form-control" name="bPhone" id="CC-customerProfile-sphone"
+                  data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-customerProfile-szipcode-error-tablet"
+                data-bind="validationMessage: postalCode" role="alert"></p>
+              <p class="text-danger" id="CC-customerProfile-sphone-error-tablet"
+                data-bind="validationMessage: phoneNumber" role="alert"></p>
+            </div>
+          </div>
+          <!-- ko if: (!$parent.isAddressSaved($data) && $parent.shippingAddressBook().length > 0) ||
+                        ($parent.isAddressSaved($data) && (!isDefaultAddress() || isDefaultAddress.isModified()) && $parent.shippingAddressBook().length > 1) -->
+          <div>
+            <div class="p-t-10 col-md-12 m-l-15 checkbox">
+              <div class="control">
+                <input type="checkbox" id="CC-customerProfile-sdefault" data-bind="checked: isDefaultAddress" />
+              </div>
+              <label for="CC-customerProfile-sdefault"
+                data-bind="widgetLocaleText:'selectDefaultAddressBtnTitle'"></label>
+            </div>
+          </div>
+          <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <!-- Edit ends -->
+      </div>
+    </fieldset>
+    <!-- /ko -->
+  </div>
+  <div class="col-md-12">
+    <div id="CC-customerProfile-save-cancel-control" class="row cc-customer-profile-save-cancel"
+      data-bind="visible:(isUserProfileShippingEdited()||isUserProfileDefaultAddressEdited())">
+      <div class="col-md-6 p-l-0  m-t-15">
+
+        <button class="cc-button-secondary col-sm-2 col-xs-12 pull-left  pull-right cc-customer-profile-button"
+          id="CC-customerProfile-cancel"
+          data-bind="click: handleCancelUpdateForAddressBook, event: { mousedown: handleMouseDown, mouseup: handleMouseUp}">
+          <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+        </button>
+
+
+      </div>
+      <div class="col-md-6 p-r-0 m-t-15 ">
+        <button class="cc-button-primary col-sm-2 col-xs-12 pull-right cc-customer-profile-button"
+          id="CC-customerProfile-save"
+          data-bind="click: handleUpdateProfileForAddressBook, event: { mousedown: handleMouseDown, mouseup: handleMouseUp}">
+          <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CC-customerProfileModalPane -->
+  <div class="modal fade" id="CC-customerProfile-modal-3" tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+    <div class="modal-dialog" id="CC-customerProfile-modal-dialog-3">
+      <div class="modal-content" id="CC-customerProfileModalContent-3">
+        <div class="modal-header cc-profile-modal-heading cc-profile-confirm-icon"
+          id="CC-customerProfile-modal-header-3">
+          <button type="button" class="close" data-dismiss="modal" id="CC-customerProfile-modal-headerClose-3"
+            aria-hidden="true">&times;</button>
+          <h4 data-bind="widgetLocaleText:'updateCacelModalTitle'" id="CC-customerProfile-modal-headerText-3"></h4>
+        </div>
+        <div class="modal-body cc-profile-body-modal" id="CC-customerProfile-modal-modalBody-3">
+          <p data-bind="widgetLocaleText:'updateCancelModalMessage'" align="center"
+            id="CC-customerProfile-modal-bodyText-3"></p>
+        </div>
+        <div class="modal-footer cc-profile-modal-footer" id="CC-customerProfile-modal-footer-3">
+          <button class="btn cc-button-secondary" id="CC-customerProfile-modal-cancel-3"
+            data-bind="click: handleModalCancelUpdateDiscard">
+            <span id="CC-customerProfile-modal-discard-3" data-bind="widgetLocaleText:'updateCancelModalClose'"></span>
+          </button>
+          <button class="btn cc-button-primary" id="CC-customerProfile-modal-submit-3"
+            data-bind="click: handleModalUpdateProfile">
+            <span id="CC-customerProfile-modal-save-3" data-bind="widgetLocaleText:'updateCancelModalSave'"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- /ko -->

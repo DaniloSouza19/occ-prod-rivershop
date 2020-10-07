@@ -1,0 +1,187 @@
+{
+  "imports": [
+    "payment",
+    "order",
+    "paymentauthorization",
+    "shippingmethods"
+  ],
+  "translations": [
+    {
+      "name": "NSH_Cart_Order_Summary [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Cart_Order_Summary [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_order_confirmation_summary",
+  "version": 1,
+  "displayName": "NSH_Order_Confirmation_Summary",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_order_confirmation_summary",
+  "source": 101,
+  "javascript": "nsh_order_confirmation_summary"
+}

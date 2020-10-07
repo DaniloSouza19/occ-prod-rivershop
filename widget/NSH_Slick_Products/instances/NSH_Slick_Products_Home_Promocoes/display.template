@@ -1,0 +1,36 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<!-- ko if: $widgetViewModel.isReady() -->
+<!-- ko if: ($widgetViewModel.arrProducts() && $widgetViewModel.arrProducts().length > 0) -->
+<div class="slick_products_home">
+    <section class="card card-modify">
+        <div class="container">
+
+
+            <!--ko if: $widgetViewModel._slickTitle() && $widgetViewModel._slickTitle() != '' -->
+            <div class="section-title mb-40 instagram-title">
+                <h2 class="tituloCategoria" data-bind="text:_slickTitle"></h2>
+            </div>
+            <!--/ko-->
+
+
+
+
+
+
+            <!--ko ifnot: $widgetViewModel._slickTitle() != '' -->
+            <div class="section-title mb-40 instagram-title">
+                <h2 class="tituloCategoria" data-bind="text:_slickTitle"></h2>
+            </div>
+
+            <!--/ko-->
+
+            <div data-bind="element: 'nsh_product'"></div>
+
+
+
+        </div>
+    </section>
+</div>
+<!-- /ko -->
+<!-- /ko -->

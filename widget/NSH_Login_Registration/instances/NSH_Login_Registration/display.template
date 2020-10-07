@@ -1,0 +1,1062 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<div class="login_registration" data-bind="onRender: rendered">
+   <div class="containerss">
+      <div class="limiter">
+         <!---------------- Inicio LOGIN ----------------------->
+            <div class="container">
+               <div class="login-banner col-xs-12 col-lg-8 col-md-12 col-sm-12"
+                  data-bind="data: $widgetViewModel._mediaImage">
+                  <!-- <img class="m-t-40"  src="file/general/997 x 550px.png" width="100%" alt=""> -->
+                  <img class="m-t-40" data-bind="attr: {src: $widgetViewModel._mediaImage.src()}" width="100%" />
+               </div>
+               <div class="login-register col-xs-12 col-lg-4 col-md-12 col-sm-12">
+                  <div id="login" class="wrap-login100 ">
+                     <div class="row">
+                        <div>
+                           <div class="mdl-cnt__box log-box col-xs-12">
+                              <span class="login100-form-title p-b-15">
+                                 <img src="file/general/logo-login.news_black.png" width="100%" alt="River Shop"
+                                    title="River Shop">
+                              </span>
+                              <div>
+                                 <div class="login100-form validate-form ">
+                                    <div>
+                                       <div>
+                                          <!-- <div id="CC-messages-login" data-bind="visible: showErrorMessage" role="alert">
+                                   <div role="alert" class="text-danger cc-error-message" data-bind="text: modalMessageText"></div>
+                                   </div> -->
+                                          <div class="">
+                                             <div id="CC-userLogin" class="login100-form validate-form"
+                                                data-bind="with: user">
+                                                <div class="title">
+                                                   <span> Faça o Login</span>
+                                                </div>
+                                                <div class="subtitle p-b-15 p-t-15">
+                                                   <!-- ko if: $widgetViewModel.login_blocked() -->
+                                                   <span id="blocked" class="login-blocked">Usuário em processo de aprovação.</span>
+                                                   <!-- /ko -->
+                                                   <span>Preencha os dados para entrar</span>
+                                                </div>
+                                                <div class="">
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <span role="alert" class="text-danger" id="CC-login-error"
+                                                         data-bind="validationMessage: login"></span>
+                                                      <input type="email" class="input100" id="CC-login-input"
+                                                         aria-required="true"
+                                                         data-bind="validatableValue: login, valueUpdate: 'afterkeydown',
+                                               widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.handleLogin.bind(data, $parents[1], event)() }, blur: $parent.emailAddressLostFocus.bind($parents[1], $parents[1]), focus: $parent.emailAddressFocused.bind($parents[1], $parents[1])}" />
+                                                   </div>
+                                                </div>
+                                                <div class="">
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <span role="alert" class="text-danger"
+                                                         id="CC-login-password-input-error"
+                                                         data-bind="validationMessage: password"></span>
+                                                      <input type="password" class="input100"
+                                                         id="CC-login-password-input" aria-required="true"
+                                                         data-bind="validatableValue: password,
+                                               widgetLocaleText : {value:'passwordText', attr:'placeholder'}, valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.handleLogin.bind(data, $parents[1], event)() }}" />
+                                                   </div>
+                                                </div>
+                                                <div class="wrap-input100 p-b-19">
+                                                   <span>
+                                                      <a href="#CC-headermodalpane" data-toggle="modal"
+                                                         class="col-form-label" data-original-title="forgotPassword"
+                                                         data-bind="click: $widgetViewModel.showForgotPasswordSection,widgetLocaleText: 'ESQUECI/REDEFINIR MINHA SENHA', event: {}"></a>
+                                                   </span>
+                                                </div>
+                                                <div class="container-login100-form-btn">
+                                                   <a type="button" id="login-button" class="login100-form-btn m-b-15"
+                                                      data-bind="click: function(data, event) { handleLogin.bind(data, $parent, event)() }, event: {mousedown: $parent.handleMouseDown, mouseup: $parent.handleMouseUp}">
+                                                      <span>Entrar</span>
+                                                      <!-- <span class="fa-stack">
+                                               <i class="fa fa-circle fa-inverse fa-stack-2x"></i>
+                                               <i class="fa fa-sign-in fa-primary fa-stack-1x"></i>
+                                               </span> -->
+                                                   </a>
+                                                </div>
+                                                <div class="wrap-input100 boder-radius p-b-15">
+                                                   <span>
+                                                      <div> <a
+                                                            data-bind="click: $widgetViewModel.showForgotRegistreSection, event: {}">
+                                                            Não
+                                                            sou cadastrado</a>
+                                                      </div>
+                                                   </span>
+                                                   <span>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                             <div id="CC-forgotPasswordSectionPane" style="display: none;">
+                                                <div class="title">
+                                                   <h3 class="modal-title" id="CC-forgotPwdText-title"
+                                                      data-bind="widgetLocaleText: 'resetPwdText'"></h3>
+                                                </div>
+                                                <div class="bg-white">
+                                                   <div class="modal-body cc-modal-body ">
+                                                      <div>
+                                                         <div id="CC-forgotPassword-messagePart1"
+                                                            data-bind="widgetLocaleText: 'forgotPasswordHelpText'">
+                                                         </div>
+                                                      </div>
+                                                      <div id="CC-forgotPasswordSection" class="m-t-30"
+                                                         data-bind="with: $data.user">
+                                                         <div class="">
+                                                            <div class="controls col-md-12 m-b-30">
+                                                               <label class="control-label inline"
+                                                                  for="CC-forgotPwd-input"
+                                                                  data-bind="widgetLocaleText:'emailAddressText'"></label>
+                                                               <span role="alert" class="text-danger"
+                                                                  id="CC-forgotPwd-emailAddress-error"
+                                                                  data-bind="validationMessage: emailAddressForForgottenPwd"></span>
+                                                               <input type="email" class="input100 "
+                                                                  id="CC-forgotPwd-input" aria-required="true"
+                                                                  data-bind="validatableValue: emailAddressForForgottenPwd, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'emailAddressText', attr:'placeholder'},
+                                                        event:{keydown: function(data, event) { return $parent.resetForgotPassword.bind(data, $parents[1], event)() }, blur: $parent.emailAddressLostFocus.bind($parents[1]), focus: $parent.emailAddressFocused.bind($parents[1]) }" />
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="modal-footer CC-header-modal-footer ">
+                                                      <div class="validate-input ">
+                                                         <div class="container-login100-form-btn p-b-10">
+                                                            <button type="button" id="CC-sendRequestCancel"
+                                                               class="login100-form-btn col-xs-12 mt-20 m-b-5"
+                                                               data-bind="widgetLocaleText: 'buttonCancel', click: function(data, event) { cancelForgotPasswordSection.bind(data, $parent, event)() }, event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}"
+                                                               data-dismiss="modal"></button>
+                                                            <button type="button" id="CC-sendRequestSubmit"
+                                                               class="login100-form-btn col-xs-12 mt-20"
+                                                               data-bind="widgetLocaleText: 'sendRequestText', click: function(data, event) { resetForgotPassword.bind($data, $parent, event)() }, event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}"></button>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div style="display: none;" id="CC-forgotPasswordMessagePane">
+                                                <div class="title">
+                                                   <h3 class="modal-title" id="CC-forgotPwdText-titleMessage"
+                                                      data-bind="widgetLocaleText: 'resetPwdText'"></h3>
+                                                </div>
+                                                <div class="bg-white">
+                                                   <div class="modal-body cc-modal-body">
+                                                      <div id="CC-forgotPassword-message" class="alert alert-success"
+                                                         data-bind="widgetLocaleText: 'resetPasswordMessage'"></div>
+                                                      <br>
+                                                   </div>
+                                                   <div class="modal-footer CC-header-modal-footer">
+                                                      <div class="">
+                                                         <button type="button" id="CC-messagePaneClose"
+                                                            class="login100-form-btn col-xs-12 mt-20 w-auto"
+                                                            data-bind="widgetLocaleText: 'closeText', click: cancelForgotPasswordSection"
+                                                            data-dismiss="modal"></button>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div style="display: none;" id="CC-updatePasswordPane">
+                                                <div class="title">
+                                                   <h3 data-bind="widgetLocaleText:'updatePasswordText'"></h3>
+                                                </div>
+                                                <div class="bg-white">
+                                                   <div class="modal-body cc-modal-body">
+                                                      <div id="CC-updatePassword" data-bind="with: $data.user">
+                                                         <div class="">
+                                                            <div class="wrap-input100 validate-input p-b-12">
+                                                               <label class="control-label inline"
+                                                                  for="CC-updatePassword-email"
+                                                                  data-bind="widgetLocaleText:'emailAddressText'"></label>
+                                                               <div class="password-errors" role="alert">
+                                                                  <div class="text-danger"
+                                                                     id="CC-updatePassword-email-error"
+                                                                     data-bind="validationMessage: emailAddressForForgottenPwd">
+                                                                  </div>
+                                                               </div>
+                                                               <input type="text" class="input100"
+                                                                  id="CC-updatePassword-email" aria-required="true"
+                                                                  data-bind="validatableValue: emailAddressForForgottenPwd, widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, event:
+                                                        {keydown: function(data, event) { return $parent.savePassword.bind(data, $parents[1], event)() }, blur: 
+                                                        $parent.emailAddressLostFocus.bind($parents[1], $parents[1]), focus: $parent.emailAddressFocused.bind($parents[1], $parents[1]}" />
+                                                            </div>
+                                                         </div>
+                                                         <div class="">
+                                                            <div class="wrap-input100 validate-input p-b-12">
+                                                               <label class="control-label inline"
+                                                                  for="CC-updatePassword-password"
+                                                                  data-bind="widgetLocaleText:'newPasswdText'"></label>
+                                                               <div class="password-errors" role="alert">
+                                                                  <div class="text-muted"
+                                                                     id="CC-updatePassword-password-embeddedAssistance"
+                                                                     data-bind="embeddedAssistance: newPassword"></div>
+                                                                  <div class="text-danger"
+                                                                     id="CC-updatePassword-password-error"
+                                                                     data-bind="validationMessage: newPassword"></div>
+                                                               </div>
+                                                               <input type="password" class="input100"
+                                                                  id="CC-updatePassword-password" aria-required="true"
+                                                                  data-bind="validatableValue: newPassword, widgetLocaleText : {value:'newPasswdText', attr:'placeholder'}, 
+                                                        event:{keydown: function(data, event) { return $parent.savePassword.bind(data, $parents[1], event)() }, blur: 
+                                                        $parent.passwordFieldLostFocus.bind($parents[1]), focus: $parent.passwordFieldFocused.bind($parents[1])}" />
+                                                            </div>
+                                                         </div>
+                                                         <div class="">
+                                                            <div class="controls update-password col-md-12">
+                                                               <label class="control-label inline"
+                                                                  for="CC-updatePassword-confirmPassword"
+                                                                  data-bind="widgetLocaleText:'newConfirmPasswordText'"></label>
+                                                               <span role="alert" class="text-danger"
+                                                                  id="CC-updatePassword-cPassword-error"
+                                                                  data-bind="validationMessage: confirmPassword"></span>
+                                                               <input type="password" class="col-md-5 input100 "
+                                                                  id="CC-updatePassword-confirmPassword"
+                                                                  aria-required="true"
+                                                                  data-bind="validatableValue: confirmPassword, widgetLocaleText : {value:'confirmPasswordText', attr:'placeholder'},valueUpdate: 'afterkeydown',event:
+                                                        {keydown: function(data, event) { return $parent.savePassword.bind(data, $parents[1], event)() },blur: 
+                                                        $parent.confirmPwdFieldLostFocus.bind($parents[1]), focus: $parent.confirmPwdFieldFocused.bind($parents[1])}"
+                                                                  required="required"
+                                                                  placeholder="Confirm New Password">
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="modal-footer CC-header-modal-footer ajust">
+                                                      <div class="">
+                                                         <button class="login100-form-btn col-xs-12 mt-20 m-t-20"
+                                                            id="CC-updatePasswordCancel" data-dismiss="modal"
+                                                            data-bind="click: function(data, event) { cancelForgotPasswordSection.bind(data, $parent, event)() }, widgetLocaleText: 'buttonCancel', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}"></button>
+                                                         <button type="button"
+                                                            class="login100-form-btn col-xs-12 m-t-20"
+                                                            id="CC-updatePasswordSave"
+                                                            data-bind="click: function(data, event) { savePassword.bind(data, $parent, event)() }, widgetLocaleText: 'buttonSave', event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}"></button>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div style="display: none;" id="CC-updatePasswordMessagePane">
+                                                <div class="title">
+                                                   <h3 class="modal-title" id="CC-updatePasswordMsg-titleMessage"
+                                                      data-bind="widgetLocaleText: 'updatePasswordText'"></h3>
+                                                </div>
+                                                <div class="modal-body cc-modal-body">
+                                                   <div id="CC-updatePasswordMsg-message" class="alert alert-success"
+                                                      data-bind="widgetLocaleText: 'updatePasswordSuccessMessage'">
+                                                   </div>
+                                                   <br>
+                                                </div>
+                                                <div class="modal-footer CC-header-modal-footer">
+                                                   <div class="">
+                                                      <button type="button" id="CC-updatePasswordMsgContinue"
+                                                         class="login100-form-btn registro"
+                                                         data-bind="click: function(data, event) { handleSuccessForgottenPassword.bind(data, $parent, event)() }, widgetLocaleText: 'continueText'"
+                                                         data-dismiss="modal"></button>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div style="display: none;" id="CC-updatePasswordErrorMessagePane">
+                                                <div class="title">
+                                                   <h3 class="modal-title" id="CC-updatePasswordErrorMsg-titleMessage"
+                                                      data-bind="widgetLocaleText: 'updatePasswordText'"></h3>
+                                                </div>
+                                                <div class="modal-body cc-modal-body">
+                                                   <div id="CC-updatePasswordErrorMsg-message" class="alert alert-error"
+                                                      data-bind="widgetLocaleText: 'updatePasswordErrorMessage'"></div>
+                                                   <br>
+                                                </div>
+                                                <div class="modal-footer CC-header-modal-footer">
+                                                   <div class="">
+                                                      <button type="button" id="CC-updatePasswordErrorMsgContinue"
+                                                         class="login100-form-btn"
+                                                         data-bind="click: function(data, event) { cancelForgotPasswordSection.bind(data, $parent, event)() }, widgetLocaleText: 'continueText'"
+                                                         data-dismiss="modal"></button>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div id="Registration" class="Registration" style="display: none;">
+                                                <div id="CC-userRegistration" data-bind="with: user">
+                                                   <div class="title">
+                                                      <span> Cadastro</span>
+                                                   </div>
+                                                   <div>
+                                                      <div class="wrap-input100 validate-input p-t-23 p-b-12">
+                                                         <label class="control-label inline "
+                                                            for="CC-userRegistration-firstname"
+                                                            data-bind="widgetLocaleText:'firstNameText'"></label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-firstname-error"
+                                                            data-bind="validationMessage: firstName"></span>
+                                                         <input type="text" class="input100 "
+                                                            id="CC-userRegistration-firstname" aria-required="true"
+                                                            data-bind="validatableValue: firstName, valueUpdate: 'afterkeydown',  widgetLocaleText : {value:'firstNameText', attr:'placeholder'} ,event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-lastname"
+                                                            data-bind="widgetLocaleText:'lastNameText'"></label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-lastname-error"
+                                                            data-bind="validationMessage: lastName"></span>
+                                                         <input type="text" class="input100"
+                                                            id="CC-userRegistration-lastname" aria-required="true"
+                                                            data-bind="validatableValue: lastName,  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'lastNameText', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                      </div>
+                                                   </div>
+                                                   <!--new------------------------------------------------------------------------------------------------------------------------>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-CNPJ"
+                                                            data-bind="widgetLocaleText:'CNPJ'"></label>
+                                                         <span role="alert" style="display: none;" class="text-danger"
+                                                            id="CC-userRegistration-CNPJ-error">O CNPJ é
+                                                            obrigatório.</span>
+                                                         <input type="text" class="input100"
+                                                            id="CC-userRegistration-CNPJ" aria-required="true"
+                                                            data-bind="validatableValue: $parent.cnpj, inputmask: {value: $parent.cnpj , mask: '99.999.999/9999-99'}, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'CNPJ', attr:'placeholder'}, event: {focus: function(data, event) { return $parent.setValidations() }}" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-stateRegistration"
+                                                            data-bind="widgetLocaleText:'stateRegistration'"></label>
+                                                         <span role="alert" style="display: none;" class="text-danger"
+                                                            id="CC-userRegistration-stateRegistration-error">A Inscrição
+                                                            Estadual é
+                                                            obrigatória.</span>
+                                                         <input type="text" class="input100"
+                                                            id="CC-userRegistration-stateRegistration"
+                                                            aria-required="true"
+                                                            data-bind="validatableValue: $widgetViewModel.stateRegistration,  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'Inscricão Estadual', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-daytimeTelephoneNumber"
+                                                            data-bind="widgetLocaleText:'daytimeTelephoneNumber'"></label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-daytimeTelephoneNumber-error"></span>
+                                                         <input type="text" class="input100"
+                                                            id="CC-userRegistration-daytimeTelephoneNumber"
+                                                            aria-required="true"
+                                                            data-bind="validatableValue: $widgetViewModel.daytimeTelephoneNumber,  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'Telefone Fixo', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-celular"
+                                                            data-bind="widgetLocaleText:'celular'"></label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-celular-error"
+                                                            data-bind="validationMessage: $parent.celular"></span>
+                                                         <input type="text" class="input100"
+                                                            id="CC-userRegistration-celular" aria-required="true"
+                                                            data-bind="validatableValue: $widgetViewModel.celular,  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'Celular', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-skype"
+                                                            data-bind="widgetLocaleText:'skype'"></label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-skype-error"
+                                                            data-bind="validationMessage: $parent.skype"></span>
+                                                         <input type="text" class="input100"
+                                                            id="CC-userRegistration-skype" aria-required="true"
+                                                            data-bind="validatableValue: $widgetViewModel.skype,  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'Skype', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                      </div>
+                                                   </div>
+                                                   <!---------------------------------------------------------------------------------------------------------------->
+                                                   <div class="input icon-input icon-envelope ">
+                                                      <div class="wrap-input100 validate-input p-b-12">
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-emailAddress"
+                                                            data-bind="widgetLocaleText:'emailAddressText'"></label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-emailAddress-error"
+                                                            data-bind="validationMessage: emailAddress"></span>
+                                                         <input type="email" class="input100"
+                                                            id="CC-userRegistration-emailAddress" aria-required="true"
+                                                            data-bind="validatableValue: emailAddress,
+                                                  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.emailAddressLostFocus.bind($parents[1]), focus: $parent.emailAddressFocused.bind($parents[1])}" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="input icon-input " style="display: none;">
+                                                      <div class="wrap-input100 validate-input">
+                                                         <label class="lb-bold"
+                                                            for="CC-userRegistration-emailAddress">Fecha
+                                                            Nacimiento</label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-emailAddress-error"
+                                                            data-bind="validationMessage: emailAddress"></span>
+                                                         <input type="email" class="input100"
+                                                            id="CC-userRegistration-emailAddress"
+                                                            aria-required="true" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="input icon-input " style="display: none;">
+                                                      <div class="wrap-input100 validate-input">
+                                                         <label class="lb-bold"
+                                                            for="CC-userRegistration-emailAddress">Sexo</label>
+                                                         <select class="input100" name="select">
+                                                            <option value="valor1">Masculino</option>
+                                                            <option value="valor2" selected>Feminino</option>
+                                                         </select>
+                                                      </div>
+                                                   </div>
+                                                   <!-- <div class="input">
+                                            <div class="wrap-input100 validate-input">
+                                                <label class="lb-bold" for="userRegistration-cpf"
+                                                    data-bind="widgetLocaleText:'cpfText'"></label>
+                                                <span role="alert" class="text-danger"
+                                                    id="userRegistration-cpf-error"
+                                                    data-bind="validationMessage: $parent.cpf"></span>
+                                                <input type="text" class="field type" id="userRegistration-cpf"
+                                                    aria-required="true" data-bind="
+                                            
+                                            validatableValue: $parent.cpf,
+                                            event: {focus: function(data, event) { return $parent.setValidations() }},
+                                            inputmask: {value: $parent.cpf , mask: '999.999.999-99'}" />
+                                            </div>
+                                            </div> -->
+                                                   <!-- <div class="">
+                                            <div class="controls col-md-12">
+                                              <label class="control-label inline" for="userRegistration-birthday" data-bind="widgetLocaleText:'birthdayText'"></label>
+                                              <span role="alert" class="text-danger" id="userRegistration-birthday-error" data-bind="validationMessage: $parent.birthday"></span>
+                                              <input type="text" class="col-md-5 field input-gray type2" id="userRegistration-birthday" aria-required="true" data-bind="
+                                                    widgetLocaleText : {value:'birthdayText', attr:'placeholder'},
+                                                    validatableValue: $parent.birthday,
+                                                    event: {focus: function(data, event) { return $parent.setValidations() }},
+                                                    inputmask: {value: $parent.birthday , mask: '99/99/9999'}"/>
+                                            </div>
+                                            </div>
+                                            -->
+                                                   <div class="input icon-input icon-phone2" style="display: none;">
+                                                      <div class="wrap-input100 validate-input">
+                                                         <label class="lb-bold" for="userRegistration-phone">
+                                                            Teléfono *</label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="userRegistration-phone-error"
+                                                            data-bind="validationMessage: $parent.phone"></span>
+                                                         <input type="text" class="input100 input__location"
+                                                            id="userRegistration-phone" aria-required="true"
+                                                            data-bind="
+                                                  validatableValue: $parent.phone,
+                                                  event: {focus: function(data, event) { return $parent.setValidations() }},
+                                                  inputmask: {value: $parent.phone , mask: ['(99) 9999-9999', '(99) 99999-9999']}" />
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input" style="display: none;">
+                                                      <div>
+                                                         <label class="lb-bold"
+                                                            for="CC-userRegistration-emailAddress">Tipo de uso</label>
+                                                         <select class="input100" name="select">
+                                                            <option value="valor1">Casa</option>
+                                                            <option value="valor2">Celular</option>
+                                                            <option value="valor3">Otros</option>
+                                                            <option value="valor4">Recados</option>
+                                                            <option value="valor5">Trabajo</option>
+                                                         </select>
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-password"
+                                                            data-bind="widgetLocaleText:'passwordText'"></label>
+                                                         <div class="password-errors" role="alert">
+                                                            <div class="password-errors" role="alert">
+                                                               <div class="text-muted"
+                                                                  id="cc-userRegistration-password-embeddedAssistance"
+                                                                  data-bind="embeddedAssistance: newPassword"></div>
+                                                               <div class="text-danger"
+                                                                  id="CC-userRegistration-password-error"
+                                                                  data-bind="validationMessage: newPassword"></div>
+                                                            </div>
+                                                            <input type="password" class="input100"
+                                                               id="CC-userRegistration-password" aria-required="true"
+                                                               data-bind="validatableValue: newPassword,  valueUpdate: 'afterkeydown', widgetLocaleText : {value:'passwordText', attr:'placeholder'},
+                                                     event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.passwordFieldLostFocus.bind($parents[1]), focus: $parent.passwordFieldFocused.bind($parents[1])}" />
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="wrap-input100 validate-input p-b-12">
+                                                      <div>
+                                                         <label class="control-label inline"
+                                                            for="CC-userRegistration-confirmPassword"
+                                                            data-bind="widgetLocaleText:'confirmPasswordText'"></label>
+                                                         <span role="alert" class="text-danger"
+                                                            id="CC-userRegistration-cPassword-error"
+                                                            data-bind="validationMessage: confirmPassword"></span>
+                                                         <input type="password" class="input100"
+                                                            id="CC-userRegistration-confirmPassword"
+                                                            aria-required="true"
+                                                            data-bind="validatableValue: confirmPassword, valueUpdate: 'afterkeydown',widgetLocaleText : {value:'confirmPasswordText', attr:'placeholder'},
+                                                  event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.confirmPwdFieldLostFocus.bind($parents[1]), focus: $parent.confirmPwdFieldFocused.bind($parents[1])}" />
+                                                      </div>
+                                                   </div>
+                                                   <div
+                                                      class="wrap-input100 validate-input p-t-12 p-b-12 text-center p-l-0">
+                                                      <div class="controls">
+                                                         <div class="checkbox">
+                                                            <label for="CC-emailUpdates">
+                                                               <input type="checkbox" id="CC-emailUpdates"
+                                                                  data-bind="checked: emailMarketingMails, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}">
+                                                               <span
+                                                                  data-bind="widgetLocaleText: 'marketingMailsText'"></span>
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div
+                                                      class="wrap-input100 validate-input p-t-12 p-b-12 text-center p-l-0">
+                                                      <div class="controls">
+                                                         <div class="checkbox">
+                                                            <label>
+                                                               <input type="checkbox" id="privacy-policy">
+                                                               <span>Aceito os termos de políticas de privacidade</span>
+                                                            </label>
+                                                         </div>
+                                                      </div>
+                                                      <span style="display: none;" class="policy-erro text-danger">Você
+                                                         precisa aceitar os
+                                                         termos</span>
+                                                   </div>
+                                                </div>
+                                                <div class="container-login100-form-btn p-b-10">
+                                                   <button type="button" id="CC-sendRequestCancel"
+                                                      class="login100-form-btn registro"
+                                                      data-bind="widgetLocaleText: 'buttonCancel', click: function(data, event) { cancelForgotregisterSection.bind(data, $parent, event)() }, event: {mousedown: handleMouseDown.bind($data, $parent), mouseup: handleMouseUp.bind($data, $parent)}"
+                                                      data-dismiss="modal"></button>
+                                                </div>
+                                                <div class="container-login100-form-btn p-b-15 border-radius">
+                                                   <a class="login100-form-btn" id="CC-userRegistrationSubmit"
+                                                      data-bind="click: function(data, event) { registerUser.bind(data, $parent, event)() }, event: {mousedown: handleMouseDown, mouseup: handleMouseUp}">
+                                                      <span> Registrar usuario</span>
+                                                      <!-- <span class="fa-stack">
+                                               <i class="fa fa-circle fa-inverse fa-stack-2x"></i>
+                                               <i class="fa fa-user fa-primary fa-stack-1x"></i>
+                                               </span> -->
+                                                   </a>
+                                                </div>
+                                                <div
+                                                   class="wrap-input100 validate-input p-t-5 p-b-25 text-center p-l-0">
+                                                   <div class="controls">
+                                                      <div class="atencao">
+                                                         <span><b>ATENÇÃO:</b> Para a sua segurança o endereço de
+                                                            entrega será o mesmo
+                                                            registrado no SINTEGRA.</span>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <span>
+                                                </span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <span class="politica_privacidade dis-block text-center ">
+                                 <a data-toggle="modal" data-target="#myModal" title="Politica de privacidade"
+                                    class="text-center">LEIA NOSSA POLÍTICA DE
+                                    PRIVADICADE</a>
+
+
+
+                              </span>
+                           </div>
+                        </div>
+                        <!---------------- Fim LOGIN ----------------------->
+                        <!---------------- Inicio REGISTRO ----------------------->
+                        <div id="registro" class="limiter" style="display: none;">
+                           <div class="container-login100">
+                              <div class="wrap-login100 p-b-50">
+                                 <div class="row">
+                                    <div class="mdl-cnt__box log-box col-xs-12">
+                                       <span class="login100-form-title p-b-15">
+                                          <img src="/static/img/logo-login.6916914.png"
+                                             width="100%">
+                                       </span>
+                                       <span class="row">
+                                          <div class="login100-form validate-form p-b-23 ">
+                                             <div class="">
+                                                <div>
+                                                   <!-- <div id="CC-messages-registration" data-bind="visible: showErrorMessage">
+                                         <div role="alert" class="text-danger cc-error-message" data-bind="text: modalMessageText"></div>
+                                         </div> -->
+                                                   <div id="CC-userRegistration" data-bind="with: user">
+                                                      <div>
+                                                         <div class="wrap-input100 validate-input">
+                                                            <label class="lb-bold"
+                                                               for="CC-userRegistration-firstname">Nombre
+                                                               *</label>
+                                                            <span role="alert" class="text-danger"
+                                                               id="CC-userRegistration-firstname-error"
+                                                               data-bind="validationMessage: firstName"></span>
+                                                            <input type="text" class="input100 "
+                                                               id="CC-userRegistration-firstname" aria-required="true"
+                                                               data-bind="validatableValue: firstName, valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="wrap-input100 validate-input">
+                                                         <div>
+                                                            <label class="lb-bold" for="CC-userRegistration-lastname">
+                                                               Apellido Paterno</label>
+                                                            <span role="alert" class="text-danger"
+                                                               id="CC-userRegistration-lastname-error"
+                                                               data-bind="validationMessage: lastName"></span>
+                                                            <input type="text" class="field type"
+                                                               id="CC-userRegistration-lastname" aria-required="true"
+                                                               data-bind="validatableValue: lastName,  valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="input">
+                                                         <div class="wrap-input100 validate-input">
+                                                            <label class="lb-bold" for="CC-userRegistration-lastname">
+                                                               Apellido Materno</label>
+                                                            <span role="alert" class="text-danger"
+                                                               id="CC-userRegistration-lastname-error"
+                                                               data-bind="validationMessage: lastName"></span>
+                                                            <input type="text" class="field type"
+                                                               id="CC-userRegistration-lastname" aria-required="true" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="input icon-input icon-envelope">
+                                                         <div class="wrap-input100 validate-input">
+                                                            <label class="lb-bold"
+                                                               for="CC-userRegistration-emailAddress">Correo
+                                                               electrónico *</label>
+                                                            <span role="alert" class="text-danger"
+                                                               id="CC-userRegistration-emailAddress-error"
+                                                               data-bind="validationMessage: emailAddress"></span>
+                                                            <input type="email" class="input100"
+                                                               id="CC-userRegistration-emailAddress"
+                                                               aria-required="true"
+                                                               data-bind="validatableValue: emailAddress,
+                                                  valueUpdate: 'afterkeydown', event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.emailAddressLostFocus.bind($parents[1]), focus: $parent.emailAddressFocused.bind($parents[1])}" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="input icon-input ">
+                                                         <div class="wrap-input100 validate-input">
+                                                            <label class="lb-bold"
+                                                               for="CC-userRegistration-emailAddress">Fecha
+                                                               Nacimiento</label>
+                                                            <span role="alert" class="text-danger"
+                                                               id="CC-userRegistration-emailAddress-error"
+                                                               data-bind="validationMessage: emailAddress"></span>
+                                                            <input type="email" class="input100"
+                                                               id="CC-userRegistration-emailAddress"
+                                                               aria-required="true" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="input icon-input ">
+                                                         <div class="wrap-input100 validate-input">
+                                                            <label class="lb-bold"
+                                                               for="CC-userRegistration-emailAddress">Sexo</label>
+                                                            <select class="input100" name="select">
+                                                               <option value="valor1">Masculino</option>
+                                                               <option value="valor2" selected>Feminino</option>
+                                                            </select>
+                                                         </div>
+                                                      </div>
+                                                      <!-- <div class="input">
+                                            <div class="wrap-input100 validate-input">
+                                                <label class="lb-bold" for="userRegistration-cpf"
+                                                    data-bind="widgetLocaleText:'cpfText'"></label>
+                                                <span role="alert" class="text-danger"
+                                                    id="userRegistration-cpf-error"
+                                                    data-bind="validationMessage: $parent.cpf"></span>
+                                                <input type="text" class="field type" id="userRegistration-cpf"
+                                                    aria-required="true" data-bind="
+                                            
+                                            validatableValue: $parent.cpf,
+                                            event: {focus: function(data, event) { return $parent.setValidations() }},
+                                            inputmask: {value: $parent.cpf , mask: '999.999.999-99'}" />
+                                            </div>
+                                            </div> -->
+                                                      <!-- <div class="">
+                                            <div class="controls col-md-12">
+                                              <label class="control-label inline" for="userRegistration-birthday" data-bind="widgetLocaleText:'birthdayText'"></label>
+                                              <span role="alert" class="text-danger" id="userRegistration-birthday-error" data-bind="validationMessage: $parent.birthday"></span>
+                                              <input type="text" class="col-md-5 field input-gray type2" id="userRegistration-birthday" aria-required="true" data-bind="
+                                                    widgetLocaleText : {value:'birthdayText', attr:'placeholder'},
+                                                    validatableValue: $parent.birthday,
+                                                    event: {focus: function(data, event) { return $parent.setValidations() }},
+                                                    inputmask: {value: $parent.birthday , mask: '99/99/9999'}"/>
+                                            </div>
+                                            </div>
+                                            -->
+                                                      <div class="input icon-input icon-phone2">
+                                                         <div class="wrap-input100 validate-input">
+                                                            <label class="lb-bold" for="userRegistration-phone">
+                                                               Teléfono *</label>
+                                                            <span role="alert" class="text-danger"
+                                                               id="userRegistration-phone-error"
+                                                               data-bind="validationMessage: $parent.phone"></span>
+                                                            <input type="text" class="input100 input__location"
+                                                               id="userRegistration-phone" aria-required="true"
+                                                               data-bind="
+                                                  validatableValue: $parent.phone,
+                                                  event: {focus: function(data, event) { return $parent.setValidations() }},
+                                                  inputmask: {value: $parent.phone , mask: ['(99) 9999-9999', '(99) 99999-9999']}" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="wrap-input100 validate-input">
+                                                         <div>
+                                                            <label class="lb-bold"
+                                                               for="CC-userRegistration-emailAddress">Tipo de
+                                                               uso</label>
+                                                            <select class="input100" name="select">
+                                                               <option value="valor1">Casa</option>
+                                                               <option value="valor2">Celular</option>
+                                                               <option value="valor3">Otros</option>
+                                                               <option value="valor4">Recados</option>
+                                                               <option value="valor5">Trabajo</option>
+                                                            </select>
+                                                         </div>
+                                                      </div>
+                                                      <div class="wrap-input100 validate-input">
+                                                         <div>
+                                                            <label class="lb-bold"
+                                                               for="CC-userRegistration-password">Contraseña</label>
+                                                            <div class="password-errors" role="alert">
+                                                               <div class="text-muted"
+                                                                  id="cc-userRegistration-password-embeddedAssistance"
+                                                                  data-bind="embeddedAssistance: newPassword"></div>
+                                                               <div class="text-danger"
+                                                                  id="CC-userRegistration-password-error"
+                                                                  data-bind="validationMessage: newPassword"></div>
+                                                            </div>
+                                                            <input type="password" class="input100"
+                                                               id="CC-userRegistration-password" aria-required="true"
+                                                               data-bind="validatableValue: newPassword,  valueUpdate: 'afterkeydown',
+                                                  event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.passwordFieldLostFocus.bind($parents[1]), focus: $parent.passwordFieldFocused.bind($parents[1])}" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="wrap-input100 validate-input">
+                                                         <div>
+                                                            <label class="lb-bold"
+                                                               for="CC-userRegistration-confirmPassword">
+                                                               Confirmar contraseña</label>
+                                                            <span role="alert" class="text-danger"
+                                                               id="CC-userRegistration-cPassword-error"
+                                                               data-bind="validationMessage: confirmPassword"></span>
+                                                            <input type="password" class="input100"
+                                                               id="CC-userRegistration-confirmPassword"
+                                                               aria-required="true"
+                                                               data-bind="validatableValue: confirmPassword, valueUpdate: 'afterkeydown',
+                                                  event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }, blur: $parent.confirmPwdFieldLostFocus.bind($parents[1]), focus: $parent.confirmPwdFieldFocused.bind($parents[1])}" />
+                                                         </div>
+                                                      </div>
+                                                      <div class="wrap-input100 validate-input">
+                                                         <div class="controls update-password col-md-12">
+                                                            <div class="checkbox">
+                                                               <label for="CC-emailUpdates">
+                                                                  <input type="checkbox" id="CC-emailUpdates">
+                                                                  <span>
+                                                                     Accepto Los termos</span>
+                                                               </label>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="wrap-input100 validate-input">
+                                                         <div class="controls">
+                                                            <div class="checkbox">
+                                                               <label for="CC-emailUpdates">
+                                                                  <input type="checkbox" id="CC-emailUpdates"
+                                                                     data-bind="checked: emailMarketingMails, event: {keydown: function(data, event) { return $parent.registerUser.bind(data, $parents[1], event)() }}">
+                                                                  <span>
+                                                                     Quiero recibir actualizaciones por correo
+                                                                     electrónico.</span>
+                                                               </label>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="container-login100-form-btn ">
+                                                   <a class="login100-form-btn" id="CC-userRegistrationSubmit"
+                                                      data-bind="click: function(data, event) { registerUser.bind(data, $parent, event)() }, event: {mousedown: handleMouseDown, mouseup: handleMouseUp}">
+                                                      <span> Registrar usuario</span>
+                                                      <!-- <span class="fa-stack">
+                                            <i class="fa fa-circle fa-inverse fa-stack-2x"></i>
+                                            <i class="fa fa-user fa-primary fa-stack-1x"></i>
+                                            </span> -->
+                                                   </a>
+                                                </div>
+                                             </div>
+                                          </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!---------------- Fim REGISTRO ----------------------->
+                  </div>
+               </div>
+            </div>
+      </div>
+   </div>
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+               <div class="container">
+                  <div class="col-md-10 col-xs-10 p-l-0">
+                     <h2 class="modal-title">Termos de uso</h2>
+                  </div>
+                  <div class="col-md-2 col-xs-2">
+
+                     <img src="file/general/logo_login.png" width="59" height="50" alt="River Shop" title="River Shop">
+                  </div>
+               </div>
+
+
+            </div>
+            <div class="modal-body">
+               <section id="termos-orcamentoDescription" class="termos-orcamento-popup-body">
+                  <h4>Termos e Condições de Uso do SuperON - Contrato do Usuário</h4>
+                  <p>Estes Termos e Condições de Uso do Marketplace (ou Contrato) aplicam-se aos usuários.</p>
+                  <p>Compradores dos serviços oferecidos pela LIFEAPPS SOLUÇÕES LTDA. ME, pessoa jurídica de
+                     direito privado, inscrita no CNPJ sob o nº 24.790.753/0001-06, com sede na Rua C-48, nº 273, Apto
+                     2303, Edifício
+                     Visage Sudoeste, Goiânia Goiás, CEP: 74.305-280, por meio do aplicativo mobile SuperON (App).</p>
+                  <p>Qualquer pessoa (adiante denominado usuário), que utilize o aplicativo SuperON (produto da
+                     empresa LifeApps Soluções Ltda) deverá ter lido, entendido e aceitado estes Termos e Condições de
+                     Uso do
+                     SuperON, os Termos e Condições de Uso Gerais do App, bem Política de Privacidade e demais políticas
+                     do Site.</p>
+                  <p>1. Objeto</p>
+                  <p>1.1. O objeto deste Contrato é estabelecer as regras e condições para a compra, pelos
+                     Usuários, Compradores, de produtos e/ou serviços disponibilizados no aplicativo SuperON pelos
+                     Usuários
+                     Vendedores.</p>
+                  <p>1.2. A LifeApps autoriza os Usuários Vendedores a anunciarem seus produtos e serviços
+                     diretamente na plataforma digital do Aplicativo (SuperON), desde que respeitados os termos e
+                     condições deste
+                     Contrato., bem como da legislação nacional vigente.</p>
+                  <p>2. Das Obrigações e Responsabilidade do Usuário Vendedor Para Ciência.</p>
+                  <p>2.1. As características, a qualidade, o preço, a forma e o prazo de entrega e as demais
+                     condições dos produtos e serviços ofertados no aplicativo SuperON serão de absoluta e exclusiva
+                     responsabilidade
+                     do Usuário Vendedor, sem interferência da empresa LifeApps ou do App SuperON.</p>
+                  <p>2.2. O usuário Vendedor é o único responsável pelos anúncios e condições das suas ofertas de
+                     produtos e serviços disponibilizados no Marketplace (App SuperON) tendo declarado estar ciente que
+                     deverá honrar
+                     integralmente todas as ofertas anunciadas, incluindo, mas não se limitando, àquelas que
+                     eventualmente possuam
+                     erros de preços e/ou equívocos de quaisquer condições dos produtos e serviços disponibilizados pelo
+                     Usuário
+                     Vendedor.</p>
+                  <p>2.3. O Usuário Vendedor deverá reparar eventuais vícios e/ou defeitos dos produtos e/ou
+                     serviços por ele anunciados. Neste caso, caberá ao Usuário Vendedor realizar a coleta do produto
+                     cancelado no
+                     endereço indicado pelo Usuário Comprador, sem ônus adicional.</p>
+                  <p>2.4. Por ter definido as condições da oferta, o Usuário Vendedor se torna integralmente e
+                     exclusivamente responsável pelos produtos e/ou serviços disponibilizados aos Usuários Compradores
+                     no Aplicativo
+                     SuperON, responsabilizando, inclusive, por eventuais reparações de danos decorrentes da não entrega
+                     do produto
+                     ou entrega de produto diverso ou fora dos padrões de qualidade.</p>
+                  <p>2.5 É de responsabilidade exclusiva do Usuário Vendedor inativar imediatamente a divulgação e
+                     venda de produtos e/ou serviços cuja disponibilização e comercialização esteja impossibilitada por
+                     qualquer
+                     motivo. As obrigações acima expostas são do Usuário Vendedor e foram firmadas através de contrato
+                     próprio,
+                     estando expostas neste instrumento apenas para ciência do Usuário Comprador.</p>
+                  <p>3. Obrigações do usuário Comprador</p>
+                  <p>3.1. Para realizar transações no aplicativo SuperON da LifeApps Soluções Ltda, o Usuário
+                     Comprador deverá ler, compreender e aceitar expressamente o presente Termo e Condições de Uso, bem
+                     como os
+                     demais documentos neste relacionados.</p>
+                  <p>3.2. O usuário Comprador declara estar ciente das responsabilidades e obrigações dos Usuários
+                     Vendedores descritas neste Contrato, reconhecendo que ao comprar um produto e/ou serviço exposto
+                     pelo Usuário
+                     Vendedor no aplicativo SuperON, a LifeApps Soluções Ltda não possuirá qualquer responsabilidade
+                     pelo conteúdo,
+                     prazo de entrega, atendimento e condições da oferta do Usuário Vendedor, cabendo à LifeApps
+                     Soluções Ltda apenas
+                     promover a aproximação entre os Usuários Vendedor e Comprador, por meio da sua plataforma de
+                     Marketplace, qual
+                     seja: Aplicativo Mobile SuperON.</p>
+                  <p>3.3. Ao realizar transações no Aplicativo SuperON da LifeApps Soluções Ltda, o Usuário
+                     Comprador autoriza, expressamente, que a LifeApps armazene e disponibilize seus dados ao Usuário
+                     Vendedor do
+                     qual será adquirido o produto ou serviço pelo Usuário Comprador, para que este efetue a entrega dos
+                     produtos
+                     adquiridos.</p>
+                  <p>3.4. Os Termos e Condições de Uso do SuperON estão sujeitos a constante melhoria e
+                     aprimoramento. Assim, a LifeApps se reserva no direito de modificar a qualquer momento, de forma
+                     unilateral, o
+                     presente documento. Os novos Termos e Condições de uso do SuperON entrarão em vigor após 10 (dez)
+                     dias contados
+                     de sua publicação no Aplicativo Mobile. Caso o Usuário Comprador não esteja de acordo com as novas
+                     regras,
+                     deverá entrar em contato com os canais de atendimento do SuperON, hipótese em que se considerará
+                     rescindido seu
+                     vínculo contratual com a LifeApps, devendo, no entanto, ser cumpridas todas as obrigações assumidas
+                     até o
+                     momento da efetiva rescisão.</p>
+                  <p>3.5. O Usuário Comprador deverá cumprir com suas próprias obrigações tributárias, em
+                     cumprimento à legislação em vigor, não podendo imputar à LifeApps quaisquer ônus em relação ao
+                     cumprimento
+                     destas obrigações.</p>
+                  <p>3.6. O Usuário Comprador se compromete a prestar informações verdadeiras no momento de
+                     realização de seu cadastro, assumindo toda responsabilidade (nas esferas cível, penal e tributária)
+                     pelas
+                     informações falsas ou incompletas por ele prestadas no momento da realização de seu cadastro.</p>
+                  <p>3.7. O Usuário Comprador se compromete a não tentar burlar as regras contidas no presente
+                     contrato, não hackear o aplicativo mobile (ou portal), não utilizar imagens dos produtos aqui
+                     expostos ou das
+                     próprias telas do App SuperON, haja vista que estas são devidamente registradas e protegidas pelo
+                     Direito de
+                     Imagem, devendo reparar os danos decorrentes de tais atitudes.</p>
+                  <p>3.8. O Usuário Comprador se declara ciente de que as imagens dos produtos expostas no
+                     Aplicativo SuperON, disponibilizadas pelo Usuário Vendedor, são meramente ilustrativas.</p>
+                  <p>3.9 O Usuário Comprador se declara ciente de que eventual contato relacionado a status do
+                     pedido deverá ser feita diretamente com o Usuário Vendedor através do Chat disponibilizado dentro
+                     do Aplicativo.
+                  </p>
+                  <p>4. Obrigações da LifeApps Soluções Ltda</p>
+                  <p>4.1. A LifeApps é a responsável pelo desenvolvimento do aplicativo SuperON, incluindo, mas não
+                     se limitando a, toda estrutura tecnológica para a manutenção do serviço prestado.</p>
+                  <p>4.1.1. A LifeApps oferecerá ainda as ferramentas necessárias ao checkout e processo de
+                     pagamento (diretamente ou por meio de serviços prestados por terceiros), bem como ferramentas para
+                     comunicações
+                     via e-mail (contato@lifeapps.com.br) relacionadas ao comportamento do aplicativo SuperON.</p>
+                  <p>4.2.Obriga-se a LifeApps a:</p>
+                  <p>(i) Manter seu aplicativo SuperON funcionando de forma que os produtos e/ou serviços
+                     oferecidos pelo Usuário Vendedor sejam disponibilizados publicamente a todos os usuários
+                     Compradores, dentro da
+                     região destinada àquele vendedor;</p>
+                  <p>(ii) Manter em seu Aplicativo, por si ou por terceiros, ferramentas destinadas ao registro das
+                     informações dos Usuários Compradores, especialmente em relação às informações cadastrais, registro
+                     das vendas e
+                     gerenciamento de pagamentos;</p>
+                  <p>(iii) Promover um ambiente seguro (por si ou por terceiros) para realização de pagamentos e
+                     inserção de dados pessoais pelos Usuários Compradores.</p>
+                  <p>4.3. A LifeApps poderá oferecer atendimento pós-venda básico, com os seguintes serviços:
+                     confirmação de pagamento, problemas no pagamento, informações de pedido, status do pedido, prazo de
+                     entrega
+                     estabelecido pelo Usuário Vendedor.</p>
+                  <p>4.4. Quando o cancelamento da compra for solicitado pelo Usuário Comprador através do
+                     aplicativo SuperON, a LifeApps deverá endereçar referida solicitação ao respectivo Usuário Vendedor
+                     para que
+                     este adote todas as providências necessárias.</p>
+                  <p>5. Tarifas e Pagamentos</p>
+                  <p>5.1. O Usuário Comprador se declara ciente de que o presente serviço não é prestado de forma
+                     gratuita, devendo pagar ao Usuário Vendedor, no ato da compra, um valor a título de taxa de
+                     conveniência, qual
+                     será fixo e cobrado a cada compra realizada.</p>
+                  <p>5.2. Este valor não será o mesmo para todo Município podendo existir variação de acordo com
+                     cada região metropolitana.</p>
+                  <p>5.3. A emissão das Notas Fiscais ou Recibos referentes ao valor total da compra e aos produtos
+                     adquiridos serão de responsabilidade do Usuário Vendedor e serão por estes entregues juntamente com
+                     os produtos.
+                  </p>
+                  <p>6. Demais Considerações.</p>
+                  <p>6.1. O usuário Vendedor é o único responsável pelos produtos e/ou serviços por ele oferecidos
+                     no SuperON, pela entrega destes, bem como pelo serviço de pós-venda relacionado ao atendimento aos
+                     Usuários
+                     Compradores;</p>
+                  <p>6.2. A LifeApps é o única responsável pelos danos causados a seus usuários por defeitos ou
+                     vícios relativos exclusivamente à prestação do serviço de Marketplace no aplicativo SuperON, desde
+                     que a
+                     LifeApps tenha dado causa aos referidos defeitos ou vícios.</p>
+                  <p>6.3. Nenhuma das Partes terá qualquer tipo de responsabilidade, frente à outra Parte, por
+                     defeitos técnicos e/ou operacionais oriundos do sistema de Usuários Compradores.</p>
+                  <p>6.4. As Partes reconhecem que não é de responsabilidade da LifeApps qualquer dano, prejuízo ou
+                     perda sofridos pelo Usuário Comprador em razão de falhas na internet, no sistema ou no servidor
+                     utilizado pelo
+                     Usuário Comprador decorrentes de condutas de terceiros, vírus ou caso fortuito e/ou força maior.
+                  </p>
+                  <p>7. Propriedade Intelectual</p>
+                  <p>7.1. A LifeApps é titular do aplicativo SuperON e detém todos os direitos sobre a aparência,
+                     design, funcionalidade e todos os demais aspectos do App, sendo que tais direitos não poderão ser
+                     utilizados,
+                     reproduzidos e/ou copiados sem a expressa autorização da LifeApps.</p>
+                  <p>8. Vigência e Rescisão</p>
+                  <p>8.1. Este Contrato vigorará desde a data do seu aceite e por prazo indeterminado. As Partes
+                     poderão rescindi-lo mediante o envio de comunicação prévia e por escrito com antecedência de 30
+                     (trinta) dias,
+                     sem qualquer ônus ou indenizações, ressalvadas as obrigações pendentes.</p>
+                  <p>8.2. O presente Contrato poderá ainda ser automaticamente rescindido, a qualquer tempo, de
+                     pleno direito, nas seguintes hipóteses: (i) Fraude praticada pelo Usuário Comprador; (ii)
+                     inadimplemento, por
+                     qualquer das PARTES, de qualquer das cláusulas e/ou condições do Contrato, caso a Parte
+                     inadimplente não sane a
+                     falta no prazo de 30 (trinta) dias corridos após o recebimento de notificação por escrito pela
+                     Parte inocente,
+                     relatando o inadimplemento, hipótese esta em que a Parte inocente terá o direito de reclamar
+                     indenização; e,
+                     (iii) não observância às práticas vedadas no presente contrato.</p>
+                  <p>9. Condições Gerais para atendimento ou cancelamento do pedido do usuário Comprador</p>
+                  <p>9.1. Nos casos de cancelamento do pedido pelo usuário Comprador, especialmente decorrente de
+                     falhas ocasionadas pelo Usuário Vendedor, serão normalmente cobradas pela LifeApps as tarifas por
+                     utilização do
+                     serviço do Aplicativo.</p>
+                  <p>10. Disposições Gerais</p>
+                  <p>10.1. As Partes declaram que detém todos os direitos necessários à formalização deste
+                     Contrato, assumindo, a tal respeito, toda a responsabilidade perante a outra Parte e/ou terceiros.
+                  </p>
+                  <p>10.2. As Partes deverão cumprir (i) todas as normas legais (leis federais, estaduais,
+                     municipais e internacionais, regras e regulamentos e exigências governamentais) atualmente
+                     vigentes, bem como
+                     normas que se tornarem vigentes relacionadas à privacidade, confidencialidade ou segurança das
+                     informações
+                     obtidas; (ii) todos os padrões da indústria aplicáveis às matérias de privacidade, proteção de
+                     dados,
+                     confidencialidade ou segurança da informação; (iii) as políticas de privacidade aplicáveis,
+                     declarações ou
+                     notificações que sejam fornecidos por escrito.</p>
+                  <p>10.3. Este Contrato substitui quaisquer declarações prévias ou outros acordos orais, escritos
+                     ou subentendidos e constitui o acordo definitivo entre as Partes acerca de seu objeto.</p>
+                  <p>10.4. A eventual invalidação, nulidade ou não exequibilidade de qualquer dispositivo
+                     contratual não afetará as demais disposições deste instrumento, as quais continuarão válidas e
+                     exequíveis.</p>
+                  <p>10.5. Qualquer omissão ou tolerância de qualquer das Partes em exigir o fiel cumprimento dos
+                     termos e condições deste Contrato não constituirá novação, perdão ou renúncia, nem afetará o
+                     direito da Parte de
+                     exigir seu cumprimento a qualquer tempo.</p>
+                  <p>10.6. Qualquer alteração de endereço físico ou eletrônico do Usuário Comprador deverá ser
+                     imediatamente atualizado no Aplicativo. Até que seja feita essa atualização, serão válidos e
+                     eficazes os avisos,
+                     as comunicações, as notificações e as interpelações enviadas para o endereço informado. As Partes
+                     reconhecem que
+                     todas as mensagens enviadas por meio eletrônico constituem evidência e prova legal em âmbito
+                     judicial.</p>
+                  <p>10.7. Os compromissos e obrigações assumidos pelas Partes no âmbito do presente Contrato são
+                     passíveis de execução específica, nos termos do Código de Processo Civil, servindo este instrumento
+                     como título
+                     executivo extrajudicial, reconhecendo as Partes, desde logo, que o simples pagamento de perdas e
+                     danos poderá
+                     não constituir a compensação total e adequada no caso de inadimplemento de obrigação assumida neste
+                     Contrato.
+                  </p>
+                  <p>11. Lei aplicável e foro de eleição</p>
+                  <p>Estes Termos e Condições de Uso do SuperON são regidos pelas Leis do Brasil. Para todas
+                     ascontrovérsias e questões relacionadas e estes Termos e Condições as partes elegem o foro da
+                     Comarca de Goiânia
+                     - GO.</p>
+               </section>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default btmodal" data-dismiss="modal"
+                  title="Concordo">Concordo</button>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</div>

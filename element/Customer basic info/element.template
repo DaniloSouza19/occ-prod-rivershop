@@ -1,0 +1,53 @@
+<!-- ko if: initialized() -->
+  <!-- ko if: user -->
+    <!-- ko with: user -->
+    <div class="row">
+      <!-- ko if: firstName() || lastName() -->
+      <div class="col-md-3" tabindex="0" aria-labelledby="cc-customer-basic-info-customerName-label cc-customer-basic-info-firstName-value cc-customer-basic-info-lastName-value">
+        <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" data-bind="widgetLocaleText: {attr: 'title', value: 'customerNameText'}">
+          <span id="cc-customer-basic-info-customerName-label"
+            data-bind="widgetLocaleText: 'customerNameText'">
+          </span>          
+        </div>
+        <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" data-bind="attr:{title : firstName() + ' ' + lastName()}">
+          <span id="cc-customer-basic-info-firstName-value"
+            data-bind="text: firstName, visible: firstName">
+          </span>
+          <span id="cc-customer-basic-info-lastName-value"
+            data-bind="text: lastName, visible: lastName">
+          </span>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: emailAddress -->
+      <div class="col-md-3" tabindex="0" aria-labelledby="cc-customer-basic-info-customerEmail-label cc-customer-basic-info-customerEmail-value">
+        <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" data-bind="widgetLocaleText: {attr: 'title', value: 'emailIdText'}">
+          <span id="cc-customer-basic-info-customerEmail-label"
+            data-bind="widgetLocaleText: 'emailIdText'">
+          </span>
+        </div>
+        <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" data-bind="attr:{title : emailAddress}">
+          <span id="cc-customer-basic-info-customerEmail-value"
+            data-bind="text: emailAddress">
+          </span>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if:  $data.primaryShippingAddress() && $data.primaryShippingAddress().phoneNumber -->
+        <div class="col-md-3" tabindex="0" aria-labelledby="cc-customer-basic-info-customerPhone-label cc-customer-basic-info-customerPhone-value">
+          <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" data-bind="widgetLocaleText: {attr: 'title', value: 'phoneNumberText'}">
+            <span id="cc-customer-basic-info-customerPhone-label"
+              data-bind="widgetLocaleText: 'phoneNumberText'">
+            </span>
+          </div>
+          <div style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" data-bind="attr:{title : $data.primaryShippingAddress().phoneNumber}">
+            <span id="cc-customer-basic-info-customerPhone-value"
+              data-bind="text: $data.primaryShippingAddress().phoneNumber">
+            </span>
+          </div>
+        </div>
+      <!-- /ko -->
+    </div>
+    <!-- /ko -->
+  <!-- /ko -->
+<!-- /ko -->

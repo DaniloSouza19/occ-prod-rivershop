@@ -1,0 +1,27 @@
+<!-- ko if: ($data.user().isApprover() && (($data.orderDetails() &&
+ $data.orderDetails().state === "PENDING_APPROVAL" && $data.user().currentOrganization().repositoryId===$data.orderDetails().organizationId) ||
+($data.scheduledOrder() && $data.scheduledOrder().templateOrder() && $data.user().currentOrganization().repositoryId===$data.scheduledOrder().templateOrder().organizationId &&
+$data.scheduledOrder().templateOrder().state === "PENDING_APPROVAL_TEMPLATE")))-->
+<div id="CC-orderApproval">
+    <div>
+      <textarea id = "CC-orderApproval-comments"
+                placeholder = "Comments..."
+                data-bind = "value: approverComments, valueUpdate: 'keyup'"></textarea>
+      <span data-bind="widgetLocaleText : {value:'approverComments', attr:'placeholder'}, validationMessage: approverComments"
+        class="text-danger"
+        id="CC-orderApproval-name-error"
+        role="alert">
+      </span>
+      <div id = "CC-order-approval-buttonPanel" class = "text-right button-group">
+        <button id="CC-orderApproval-buttonReject" data-bind = "widgetLocaleText: 'buttonReject', click: rejectOrder"
+                type = "button" 
+                class = "btn btn-default btn-md">
+        </button>
+        <button id = "CC-orderApproval-buttonApprove" data-bind = "widgetLocaleText: 'buttonApprove', click: approveOrder" 
+                type = "submit"
+                class = "btn btn-primary btn-md">
+        </button>
+      </div>
+    </div>
+</div>
+ <!-- /ko -->

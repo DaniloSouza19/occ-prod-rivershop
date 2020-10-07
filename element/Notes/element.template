@@ -1,0 +1,99 @@
+<!-- ko if: $data.initialized() && $data.elements.hasOwnProperty('agent-notes') -->
+<!-- ko if: $data.elements['agent-notes'].commentsViewModel -->
+<!-- ko with: $data.elements['agent-notes'].commentsViewModel -->
+
+<div class="cc-agent-customer-notes">
+  <div class="row" id="cc-notesHeader">
+    <div class="col-md-4 cc-notes-header" id="cc-blankNotesHeader" data-bind="
+      visible: (commentsDetails() != undefined && commentsDetails().length > 0)">
+      <h4 class="title agent-subheadings" id="cc-notes-title" data-bind="widgetLocaleText: 'notesCaptionText'">
+      </h4>
+    </div>
+    <div class="col-md-4 cc-notes-header" id="cc-noNotesHeader"
+      data-bind="visible: (commentsDetails() != undefined && commentsDetails().length === 0)">
+      <span data-bind="widgetLocaleText: 'noNotesText'"></span>
+    </div>
+    <div class="col-md-4 col-md-offset-4">
+      <button class="cc-button-secondary pull-right details-enabled-secondary-button" id="cc-addNewNotes-button" 
+        data-toggle="modal" data-bind="click: $parent.elements['agent-notes'].showNotesPopup.bind($parent, false)">
+        <i class="fa fa-plus">
+        </i>
+        <span data-bind="widgetLocaleText: 'buttonNewNotesText'">
+        </span>
+      </button>
+      
+    </div>
+  </div>
+  <table id="cc-notesTableHeader-table" summary="Notes" role="presentation"
+    class="table table-bordered table-striped tableHeader"
+    data-bind="
+     visible: (commentsDetails() != undefined && commentsDetails().length > 0)">
+   <thead>
+     <tr>
+       <th class="wide" scope="col" data-bind="widgetLocaleText: 'dateText'">
+       </th>
+       <th scope="col" data-bind="widgetLocaleText: 'notesCaptionText'"></th>
+     </tr>
+   </thead>
+	    <tbody data-bind="foreach:$data.commentsDetails">
+	      <tr>
+	        <td class="wide" data-bind="attr: {id: 'cc-date-' 
+                                                          + repositoryId }">
+              <span data-bind="ccDateTime: {date: creationDate,
+                          format: 'datetime', dateFormat: 'medium', timeFormat: 'short'}"></span>
+	        </td>
+	        <td data-bind="attr: {id: 'cc-note-text-' + repositoryId }">
+	          <div data-bind="text: comment"></div>
+	        </td>
+	      </tr>
+	    </tbody>
+	  </table>	  
+	</div>
+
+<div class="modal width-fixed fade cc-modalForm" id="cc-addNewNotesModal" 
+  tabindex="-1" data-bind="modal: 0, modalTabbingContraint">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button id="cc-newNotes-close"
+          type="button" class="close" data-dismiss="modal"
+		      data-bind="click: $parent.elements['agent-notes'].clearCommentTextArea.bind($data), widgetLocaleText: {value:'closeText', attr:'aria-label'}"></button>
+        <h3 data-bind="widgetLocaleText: 'addNewNotesModalHeaderText'"></h3>
+      </div>
+      <div class="modal-body cc-notes-modal-body" id="cc-newNotesModalPane">
+        <textarea class="col-md-3 form-control" rows="4" id="cc-notes"
+          data-bind="value: $data.comment, valueUpdate: 'afterkeydown',attr:{'aria-label':'textArea'}">
+        </textarea>
+      </div>
+<div class="modal-footer">
+  <div class="row">
+            <!-- clear button -->            
+            <div id="CC-checkoutOrderSummary-placeOrder-clear" class="col-md-3">
+              <button class="cc-button-secondary details-enabled-secondary-button col-xs-12 agent-notes-footer-button" data-bind="click: $parent.elements['agent-notes'].clearCommentTextArea.bind($data), disabled: !$data.comment()" >
+                <span data-bind="widgetLocaleText:'buttonClearText'"></span>
+              </button>
+            </div>  
+            
+          
+          
+<div class="col-md-9 pull-right">                             
+            
+<div id="CC-checkoutOrderSummary-placeOrder-save-cancel" class="">
+              <button class="cc-button-secondary details-enabled-secondary-button agent-notes-footer-button" data-bind="click: $parent.elements['agent-notes'].clearCommentTextArea.bind($data)" data-dismiss="modal">
+                <span data-bind="widgetLocaleText:'buttonCancelText'"></span>
+              </button>
+              <button class="cc-button-primary details-enabled-primary-button agent-notes-footer-button" data-bind="click: $data.createComment, disabled: !$data.comment() " data-dismiss="modal">
+                <span data-bind="widgetLocaleText:'buttonSaveText'"></span>
+              </button>
+            </div>
+    </div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<!--/ko-->
+<!--/ko-->
+
+<!-- /ko -->

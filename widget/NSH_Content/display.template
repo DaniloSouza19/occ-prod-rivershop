@@ -1,0 +1,14 @@
+<div class="nsh_content">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <!-- oc layout: panels -->
+  <div class="row">
+    <div class="oc-panel col-md-6" data-oc-id="panel-1">
+     
+</div>
+    <div class="oc-panel col-md-6" data-oc-id="panel-2"></div>
+  </div>
+  <!-- /oc -->
+</div>
+
+</div>

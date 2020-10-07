@@ -1,0 +1,278 @@
+<div id="CC-agentViewReturnRequest" class="col-md-12">
+<!-- ko if: $data.returnViewModel() -->
+<div id="cc-return-request-refund">
+  <div class="row">
+    <div id="cc-return-request-header" class="col-md-12">
+     <h3 class="col-sm-8 agent-headerText" data-bind="text: $data.returnRequestTitle">
+     </h3>
+     <div class="margin-right-30" data-bind="element: 'back-button', attr: { id: 'back-button-'+id()}"></div>
+    </div>
+  </div>
+  <hr class="line agent-line cc-return-hr"/>
+</div>
+
+<div class="col-md-12 cc-return-btn">
+  <!-- ko if: $data.returnViewModel().customerDetails -->
+    <!-- ko with: $data.returnViewModel().customerDetails -->
+      <h4 class="title agent-subheadings add-padding-top-10"
+        data-bind="widgetLocaleText: 'orderDetailsText'">
+      </h4>
+
+      <!-- ko if: $data.hasOwnProperty("organization") -->
+        <span id="cc-orderDetails-accountName"
+          data-bind="widgetLocaleText: 'accountNameText'"></span>
+        <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+        <span id="cc-orderDetails-accountName-value"
+          data-bind="text: organization.name"></span>
+        <br/>
+      <!-- /ko -->
+
+      <!-- ko if: firstName -->
+        <span id="cc-returns-orderDetails-customerName-label"
+          data-bind="widgetLocaleText: 'customerNameText',
+            visible: firstName || lastName">
+        </span>
+        <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+        <span id="cc-returns-orderDetails-firstName-value"
+          data-bind="text: firstName,
+            visible: firstName">
+        </span>
+        <span id="cc-returns-orderDetails-lastName-value"
+          data-bind="text: lastName,
+            visible: lastName">
+        </span>
+        <br />
+      <!-- /ko -->
+
+      <span id="cc-returns-orderDetails-customerEmail-label"
+        data-bind="widgetLocaleText: 'customerEmailText'">
+      </span>
+      <span data-bind="widgetLocaleText:'delimiterText'"></span>
+      <span  id="cc-returns-orderDetails-customerEmail-value"
+        data-bind="text: email">
+      </span>
+      <br/>
+    <!-- /ko -->
+  <!-- /ko -->
+
+  <!-- ko if: $data.returnViewModel().orderInfo() && $data.returnViewModel().orderInfo().submittedDate -->
+    <span id="cc-returns-orderDetails-orderSubmittedDate"
+      data-bind="widgetLocaleText: 'orderSubmittedDateText'">
+    </span>
+    <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+    <span id="cc-returns-orderDetails-orderSubmittedDate-value"
+      data-bind="ccDateTime: {date: $data.returnViewModel().orderInfo().submittedDate,
+        format: 'datetime', dateFormat: 'medium', timeFormat: 'short'}">
+    </span>
+    <br/>
+  <!-- /ko -->
+  <!-- ko if: $data.returnViewModel().priceListGroup() && $data.returnViewModel().priceListGroup().currency  -->
+  <span id="cc-orderDetails-orderPriceGroup"
+        data-bind="widgetLocaleText: 'priceGroupText'">
+  </span>
+  <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+  <span id="cc-orderDetails-orderPriceGroup-Name"
+        data-bind="text: $data.returnViewModel().priceListGroup().displayName,
+                   visible: $data.returnViewModel().priceListGroup().displayName">
+  </span>
+  <span id="cc-orderDetails-orderPriceGroup-Code"
+        data-bind="text: $data.returnViewModel().priceListGroup().currency.currencyCode">
+  </span>
+  <br/>
+  <!-- /ko -->
+
+    <span id="cc-returns-orderDetails-orderSiteId-label"
+      data-bind="widgetLocaleText: 'merchantSiteText'">
+    </span>
+    <span data-bind="widgetLocaleText:'delimiterText'"></span>
+    <span  id="cc-returns-orderDetails-orderSite-value"
+      data-bind="text: $data.orderSiteName">
+    </span>
+    <br/>
+    <!-- ko if: $data.returnViewModel().trackingNumber || $data.returnViewModel().returnLabel-->
+      <h5 class="title" data-bind="widgetLocaleText: 'returnDetailsText'"></h5>
+      <!-- ko if: $data.returnViewModel().trackingNumber -->
+        <span id="cc-payment-tracking-number-label" data-bind="widgetLocaleText: 'trackingNumbers'"></span>
+        <span data-bind="widgetLocaleText:'delimiterText'"></span>
+        <span id="cc-payment-tracking-number-value" data-bind="text: $data.returnViewModel().trackingNumber()"></span>
+        <br/>
+      <!-- /ko -->
+
+      <!-- ko if: $data.returnViewModel().returnLabel -->
+        <span id="cc-payment-return-label" data-bind="widgetLocaleText: 'returnLabel'"></span>
+        <span data-bind="widgetLocaleText:'delimiterText'"></span>
+        <span id="cc-payment-return-value" data-bind="text: $data.returnViewModel().returnLabel()"></span>
+        <br/>
+      <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: $data.hasQuoteInfo -->
+      <span id="cc-returns-orderDetails-hasquoteInfo"
+        data-bind="widgetLocaleText: 'quoteText'">
+      </span>
+    <!-- /ko -->
+  </div>
+  <br/>
+
+  <div id="cc-return-order-separator" class="col-xs-12">
+    <hr class="line order-head col-xs-12"/><br />
+  </div>
+
+  <div class="col-xs-12">
+    <h4 class="title agent-subheadings"
+      data-bind="widgetLocaleText: { value:'returnItems', attr: 'innerText'}">
+    </h4>
+  </div>
+  <br/>
+
+<div class="table-layout-fixed-break-word  col-md-12" id="cc-return-orders">
+  <table summary="returnItems-Header-Table"
+      class="table-header-styling table table-bordered table-striped tableHeader cc-view-returns-table-header">
+    <thead>
+      <tr>
+        <th scope="col" class="vert-align"
+            data-bind="widgetLocaleText: 'productText'"></th>
+        <th scope="col" class="vert-align text-center"
+            data-bind="widgetLocaleText: 'returnedQuantity'" ></th>
+        <th scope="col" class="vert-align"
+            data-bind="widgetLocaleText: 'returnReasonText'"></th>
+        <th scope="col" class="vert-align"
+            data-bind="widgetLocaleText: 'dispositionReason'"></th>
+        <th scope="col" class="vert-align"
+            data-bind="widgetLocaleText: 'comments'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnRefundText'"></th>
+      </tr>
+    </thead>
+  </table>
+    <table summary="returnItems-Data-Table"
+        class="table table-bordered table-striped tableHeader cc-view-returns-table-data">
+      <tbody>
+         <!-- ko with: $data.returnViewModel() -->
+        <!--  ko foreach: $data.returnItemsArray -->
+        <tr>
+          <td scope="row"  data-bind="attr: {rowspan: $parent.length}" class="cc-orderdetails-multiship-bottom-border-remove scrollableTableCell " >
+              <div class="col-md-12">
+                <!-- ko if: $data.promotionAdjustments.length > 0-->
+              <span data-bind="widgetLocaleText: {value:'ItemDisplayNamePromotionAdjusted',  attr:'innerText',
+                           params: {adjustedPromotionReferences: $data.adjustedPromotionReferences,
+                           itemDisplayName : $data.displayName}}">
+              </span>
+              <!-- /ko -->
+
+              <!-- ko ifnot: $data.promotionAdjustments.length > 0-->
+                <span data-bind="text: $data.displayName"></span>
+              <!-- /ko -->
+              <div data-bind="template: { name: $parents[1].templateAbsoluteUrl('/templates/sku-options-external-data-view.template'), templateUrl: '' }">
+              </div>
+
+              <!-- ko with: $data.skuDetailsViewModel -->
+              <div data-bind="attr: {
+                  id: 'cc-returnItem-subSkuItemDetails-' +
+                    ($data.configuratorId ? $data.configuratorId : $parent.catRefId) + '-' + $index()
+                },
+                template: { name: $parents[2].templateAbsoluteUrl('/templates/subSku-items-view.template'), templateUrl: '' }" class="childItemsTreeDisplay">
+              </div>
+              <!-- /ko-->
+              <!-- ko if: Object.keys($data.replacementDynamicProperties).length > 0 -->
+              <!-- ko foreach: $parent.lineAttributes() -->
+              <!-- ko if: $parent[id()]() != null -->
+                <div >
+                    <small>
+                    <!-- ko if: $parent.hasOwnProperty($data.id()) && ($parent[$data.id()]() !=  null) -->
+                    <span data-bind = "text: $data.label"></span> : <span data-bind = "text: $parent[$data.id()]()"></span><br>
+                    <!-- /ko -->
+                    </small>
+                </div>
+             <!-- /ko -->
+             <!-- /ko -->
+              <!-- /ko -->
+                <!-- ko if: $data.nonreturnable -->
+                  <br/>
+                  <span data-bind="widgetLocaleText: 'nonreturnableText'"></span>
+                <!-- /ko -->
+                </div>
+              </div>
+          </td>
+          <td data-bind="text: $data.quantityReceived"></td>
+          <td>
+            <span data-bind="text: $data.returnReason"></span>
+          </td>
+          <td>
+            <span data-bind="text: $data.dispositionReason"></span>
+          </td>
+          <td>
+            <span data-bind="text: $data.comments" class="break-word"></span>
+          </td>
+          <td>
+            <span data-bind= "text: $data.unAdjustedActualRefund">
+            </span>
+          </td>
+        </tr>
+        <!--  /ko -->
+        <!--  /ko -->
+      </tbody>
+    </table>
+</div>
+<div id="cc-manualAdjustment" class="col-xs-12 col-md-5 pull-right"
+     data-bind="template: { name: $data.templateAbsoluteUrl('/templates/returnSummaryView.template'), templateUrl: '' }">
+  </div>
+  <!-- ko with: $data.returnViewModel() -->
+    <div id="cc-returnsRefund-refundMode" class="col-xs-12 col-md-6 pull-left">
+      <div class="row">
+        <!-- ko if: promotionAdjustments() && promotionAdjustments().promotionAdjustmentsCount > 0 -->
+          <div id="cc-return-refund-promotion-adjustemnts-content" class=" col-md-12"
+            data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/return-promotion-adjustments.template'), templateUrl: '' }">
+          </div>
+        <!-- /ko -->
+      </div>
+    </div>
+    <!-- ko if: paymentReversalInfoArray() &&  paymentReversalInfoArray().length > 0 -->
+      <div id="cc-returnsView-refundMode" class="col-md-6">
+        <!-- ko if:paymentReversalInfoArray()[0].refundType == "returnCredit"-->
+          <div id="cc-return-refund-mode"
+            data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/exchange-accepted-view.template'), templateUrl: '' }">
+          </div>
+        <!-- /ko -->
+        <!-- ko ifnot:paymentReversalInfoArray()[0].refundType == "returnCredit"-->
+          <div id="cc-return-refund-mode-display"
+            data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/returnRefundDisplay.template'), templateUrl: '' }">
+          </div>
+        <!-- /ko -->
+      </div>
+    <!-- /ko -->
+    <!-- ko if:comments -->
+  <div id="cc-return-comments-separator" class="col-xs-12">
+    <hr class="line order-head col-xs-12"/><br />
+  </div>
+  <div class="col-md-12">
+  <table id="cc-returnCommentsHead-table" class="table table-bordered table-striped tableHeader">
+   <thead>
+     <tr>
+       <th class="wide" scope="col" data-bind="widgetLocaleText: 'dateText'">
+       </th>
+       <th scope="col" data-bind="widgetLocaleText: 'comment'"></th>
+     </tr>
+   </thead>
+  </table>
+  <div id="cc-returnComments" class="cc-notes-table-body-container">
+    <table class="table table-bordered table-striped tableHeader" id="cc-returnComments-table">
+      <tbody data-bind="foreach:comments">
+        <tr>
+          <td class="wide">
+            <span  data-bind="ccDateTime: {date: creationDate, format: 'datetime',
+                                 dateFormat: 'medium',
+                                 timeFormat: 'short'}"></span>
+          </td>
+          <td>
+            <div data-bind="text: $data.comment"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <!-- /ko -->
+
+<!-- /ko -->
+
+<!-- /ko -->
+</div>

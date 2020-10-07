@@ -1,0 +1,2 @@
+<textarea class="form-control cc-notes-history" rows="4" data-bind="value: getNotesHistory()" readonly>
+</textarea>

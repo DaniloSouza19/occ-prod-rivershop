@@ -1,0 +1,159 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "30010": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "30010",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/mix_protex/category/mix_protex",
+      "src": "/file/v1715654212662448386/general/Dica 2.png",
+      "titleText": "${occ:widgetCustomText('700126')}",
+      "titleTextId": "700126",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "30011": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "30011",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "src": "/file/v6523474061412185941/general/Suco uva - Casa Madeira - TIPS.png",
+      "titleText": "${occ:widgetCustomText('900059')}",
+      "titleTextId": "900059",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "30012": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "30012",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/chocolates_lacta/category/chocolates_lacta",
+      "src": "/file/v3796837091887533832/general/CHOC LACTA.png",
+      "titleText": "${occ:widgetCustomText('null')}",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "30013": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "30013",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "src": "/file/v3760406550748127187/general/condor tips.png",
+      "titleText": "${occ:widgetCustomText('null')}",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+
+
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+
+
+<div class="nsh_content container">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <div class="img-block" data-bind=" attr:{id: id}, onRender: $widgetViewModel.addSlick()">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '30010'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '30011'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '30012'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '30013'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+</div>
+
+</div>

@@ -1,0 +1,8 @@
+{
+  "tag": "registration-request-details",
+  "source": 100,
+  "type": "fragment",
+  "title": "Registration Request Details",
+  "widgetType": "agentAccountDetails",
+  "version": 2
+}

@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Shopper_Context_Selector [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Shopper_Context_Selector [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

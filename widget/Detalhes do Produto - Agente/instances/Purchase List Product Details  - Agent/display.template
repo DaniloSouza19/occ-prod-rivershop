@@ -1,0 +1,71 @@
+<!--
+ /**
+  *
+  * Product Details Add to Purchase List template
+  *
+  */
+-->
+<!-- ko if: loaded -->
+<div class="templateRegion" id="cc-product-details" data-oc-id="cc-product-details" data-bind="css:scrollClass">
+<!-- ko if: product -->
+
+  <!-- oc layout: panels -->
+  <div class="row">
+    <div class="oc-panel col-md-6" data-oc-id="panel-1">
+
+      <!-- oc section: agent-product-details-product-image -->
+        <div data-bind="element: 'agent-product-details-product-image'" class="text-center"></div>
+      <!-- /oc -->
+
+      <!-- oc section: agent-product-details-product-image-carousel -->
+        <div data-bind="element: 'agent-product-details-product-image-carousel'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: agent-product-details-product-long-description -->
+        <div data-bind="element: 'agent-product-details-product-long-description'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: dynamic-property -->
+        <!--  ko if:showProductProperties() -->
+          <!-- ko setContextVariable:{name:'context', value: $data.productProperties} -->
+            <div style="padding-top:1.5rem; padding-bottom:1rem" data-bind="element: 'dynamic-property'"></div>
+           <!--/ko-->
+        <!--/ko-->
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-2">
+
+      <!-- oc section: agent-product-details-product-title -->
+        <h2 data-bind="element: 'agent-product-details-product-title'" class="productTitle"></h2>
+      <!-- /oc -->
+
+      <!-- oc section: agent-product-details-product-variants -->
+        <div data-bind="element: 'agent-product-details-product-variants'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: agent-product-details-product-quantity -->
+        <div data-bind="element: 'agent-product-details-product-quantity'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: dynamic-property -->
+        <!--  ko if:showSkuProperties() -->
+          <!-- ko setContextVariable:{name:'context', value: $data.skuProperties} -->
+            <div style="padding-top:1.5rem; padding-bottom:0.5rem" data-bind="element: 'dynamic-property'"></div>
+          <!--/ko-->
+        <!--/ko-->
+      <!-- /oc -->
+
+       <!-- oc section: agent-product-details-add-item-to-purchase-list -->
+        <div data-bind="element: 'agent-product-details-add-item-to-purchase-list'"></div>
+      <!-- /oc -->
+
+    </div>
+  </div>
+  <!-- /oc -->
+
+<!-- /ko -->
+</div>
+<!-- /ko -->

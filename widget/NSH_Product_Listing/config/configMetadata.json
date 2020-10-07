@@ -1,0 +1,102 @@
+{
+  "widgetDescriptorName": "nsh_product_listing",
+  "properties": [
+    {
+      "id": "displayOptionsSection",
+      "helpTextResourceId": "",
+      "labelResourceId": "displayOptionsTitle",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "name": "isScrollEnabled",
+      "id": "isScrollEnabled",
+      "helpTextResourceId": "shouldUseScrollableCollectionHelpText",
+      "labelResourceId": "shouldUseScrollableCollectionTextLabel",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": true,
+      "name": "shouldUseStyleBased",
+      "id": "shouldUseStyleBased",
+      "helpTextResourceId": "shouldUseStyleBasedHelpText",
+      "labelResourceId": "shouldUseStyleBasedTextLabel",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": "12",
+      "name": "fields",
+      "id": "productsPerPage",
+      "helpTextResourceId": "productsPerPageRequiredHelpText",
+      "labelResourceId": "productsPerPageRequiredLabel",
+      "type": "stringType",
+      "required": true
+    },
+    {
+      "defaultValue": true,
+      "name": "showResultsPerPageOption",
+      "id": "showResultsPerPageOption",
+      "helpTextResourceId": "showResultsPerPageOptionHelpText",
+      "labelResourceId": "showResultsPerPageOptionLabel",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": false,
+      "name": "showListViewOption",
+      "id": "showListViewOption",
+      "helpTextResourceId": "showListViewOptionHelpText",
+      "labelResourceId": "showListViewOptionLabel",
+      "type": "booleanType"
+    },
+    {
+      "id": "webApplicationConfigSection",
+      "helpTextResourceId": "",
+      "labelResourceId": "webApplicationConfigTitle",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": "product",
+      "name": "tag",
+      "id": "listType",
+      "helpTextResourceId": "listTypeHelpText",
+      "labelResourceId": "listTypeTextLabel",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": "",
+      "name": "fields",
+      "pattern": "^[a-zA-Z0-9-_,.()]+$",
+      "id": "fields",
+      "helpTextResourceId": "productListingFieldsRequiredHelpText",
+      "labelResourceId": "productListingFieldsRequiredLabel",
+      "type": "stringType",
+      "maxLength": 5000,
+      "required": false
+    },
+    {
+      "defaultValue": "60",
+      "name": "fields",
+      "id": "blockSize",
+      "helpTextResourceId": "blockSizeRequiredHelpText",
+      "labelResourceId": "blockSizeRequiredLabel",
+      "type": "stringType",
+      "required": true
+    },
+    {
+      "defaultValue": false,
+      "name": "isViewModelCacheEnabled",
+      "id": "isViewModelCacheEnabled",
+      "helpTextResourceId": "shouldUseViewModelCachingHelpText",
+      "labelResourceId": "shouldUseViewModelCachingTextLabel",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": "3",
+      "name": "viewModelCacheLimit",
+      "id": "viewModelCacheLimit",
+      "helpTextResourceId": "viewModelCacheLimitHelpText",
+      "labelResourceId": "viewModelCacheLimitTextLabel",
+      "type": "stringType"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_checkout_promotion",
+  "version": 1,
+  "displayName": "NSH_Checkout_Promotion",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_checkout_promotion",
+  "source": 101,
+  "javascript": "nsh_checkout_promotion"
+}

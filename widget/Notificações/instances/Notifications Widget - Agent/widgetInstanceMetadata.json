@@ -1,0 +1,9 @@
+{
+  "configuration": {
+    "timeoutMessageTypes": "info,success,error,warning",
+    "fixed": false,
+    "timeoutEnabled": true,
+    "timeout": "5"
+  },
+  "displayName": "Notifications Widget - Agent"
+}

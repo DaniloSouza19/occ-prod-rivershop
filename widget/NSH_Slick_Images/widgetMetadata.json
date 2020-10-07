@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Slick_Images [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Slick_Images",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Slick_Images [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Slick_Images [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Slick_Images [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Slick_Images [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Slick_Images [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Slick_Images [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Slick_Images [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Slick_Images [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Slick_Images [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Slick_Images [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Slick_Images [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Slick_Images [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Slick_Images [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Slick_Images [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Slick_Images [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Slick_Images [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Slick_Images [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Slick_Images [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Slick_Images [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Slick_Images [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Slick_Images [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Slick_Images [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Slick_Images [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Slick_Images [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Slick_Images [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Slick_Images [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Slick_Images [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Slick_Images [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Slick_Images [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Slick_Images [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Slick_Images [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Slick_Images [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Slick_Images [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Slick_Images [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Slick_Images [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Slick_Images [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Slick_Images [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Slick_Images [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Slick_Images [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Slick_Images [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Slick_Images [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

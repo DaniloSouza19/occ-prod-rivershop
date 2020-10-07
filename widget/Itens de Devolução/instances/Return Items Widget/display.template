@@ -1,0 +1,373 @@
+
+<!-- ko if: $data.returnViewModel() -->
+
+<div id="CC-returnItems">
+    <!-- ko setContextVariable:{name:'widgetViewModel',value:$data} -->
+
+  <div id="CC-returnItems-account-title" class="row">
+    <div id="CC-myaccount-return-header" class="col-sm-8">
+      <h2 data-bind="widgetLocaleText:{value: 'returnRequest', attr: 'innerText', params: {orderId: $data.orderId()}}"></h2>
+      
+    </div>
+   
+    <div id="CC-backToMyAccount" class="col-sm-4">
+      <a id="CC-backToMyAccount-link" href="#" data-bind="click: user().validatePrivilagePageRequest.bind(user()), ccLink: 'profile',
+        widgetLocaleText:'backToMyAccountLink'"></a>
+    </div>
+    
+  </div>
+  <div id="CC-returnItems-legend">
+    <legend id="CC-returnItems-title" class="cc-profile-legend-title" data-bind="widgetLocaleText:'orderDetailsText'">Order Details</legend>
+  </div>
+ 
+<!-- ko if: $data.returnViewModel().orderInfo() -->
+  <div>
+    <section id="CC-returnItemsHeader" class="section-returnItems">
+      <table id="CC-returnItemsHeaderTable" role="presentation">
+        <tbody>
+          <tr>
+            <td><span class="titleText " data-bind="widgetLocaleText: 'orderDateText'"></span></td>
+            <td><span id="CC-returnItems-orderDate" data-bind="ccDate: {date: $data.returnViewModel().orderInfo().submittedDate? $data.returnViewModel().orderInfo().submittedDate: $data.returnViewModel().orderInfo().creationDate, returnedDate: 'medium'}"></span></td>
+          </tr>
+          <tr>
+            <td><span class="titleText" data-bind="widgetLocaleText: 'orderNumberText'"></span></td>
+            <td><span id="CC-returnItems-orderNumber" data-bind="text:  $data.returnViewModel().orderInfo().orderId"></span></td>
+          </tr> 
+
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+
+ <!-- /ko  -->
+  <div id="returnItem-header" >
+   <hr>
+   <div>
+   <h4 class="titleText" data-bind="widgetLocaleText: 'returnItems'"></h4>
+   </div>
+   <div>
+   <span  data-bind="widgetLocaleText: 'selectText'"></span>
+    </div>
+  </div>
+ 
+   <div id="CC-returnItems-table">
+    <div>
+      <!--ko ifnot : $data.viewportViewModel().viewportDesignation()== "xs" -->
+      <section class="hidden-xs section-returnItems-return">
+        <!-- ko with: $data.returnViewModel() -->    
+        <table id="CC-returnItemsTable" class="table" summary="Order Details Return Table">
+          <thead>
+            <tr>
+              <th colspan="2" data-bind="widgetLocaleText: 'itemText'" scope="row"></th>
+              <th data-bind="widgetLocaleText: 'priceText'" scope="col" class="centeredText"></th>
+              <th data-bind="widgetLocaleText: 'quantityText'" scope="col" class="centeredText"></th>
+              <th data-bind="widgetLocaleText: 'returnReasonText'" scope="col" class="centeredText"></th>
+            </tr>
+          </thead>
+          <tbody data-bind="foreach :returnItemsArray">
+            <tr>
+              <td class="hidden-xs image col-xs-1">
+                <!-- ko if: $data.itemInfo().active  -->
+                    <img data-bind="attr:{id: 'CC-returnItems-productImage-' +productId +catRefId, title: itemInfo().primaryImageTitle}, productVariantImageSource: {src: $data.itemInfo(), imageType: 'thumb', alt: $data.itemInfo().primaryImageAltText, errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'}"/>
+                <!--/ko -->
+                <!-- ko if: (itemInfo().primaryThumbImageURL && !itemInfo().active) -->
+                  <img data-bind="attr:{id: 'CC-returnItems-productImage-' +productId +catRefId, title: itemInfo().primaryImageTitle}, productVariantImageSource: {src: $data.itemInfo(), imageType: 'thumb', alt: $data.itemInfo().primaryImageAltText, errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'}"/>
+                <!--/ko -->
+                <!-- ko ifnot: $data.itemInfo().primaryThumbImageURL -->
+                  <img data-bind="attr:{id: 'CC-returnItems-productImage-' +productId +catRefId, src: '/img/no-image.jpg', alt: 'Missing Product Image'}"/>
+                <!--/ko -->
+              </td>
+              <td class="product-name col-xs-7">
+                <span  data-bind="text: displayName"></span>
+                <!-- ko if: $data.itemInfo().variant -->  
+                  <div data-bind="attr: { id: 'CC-returnItems-productVariant'+ productId + '-' + catRefId }" >
+                    <small  data-bind="foreach: $data.itemInfo().variant"> 
+                       <!-- ko if: optionValue -->
+                        <span  class="col-xs-12" data-bind="widgetLocaleText : { value:'option', attr:'innerText', params: {optionName: optionName, optionValue: optionValue}},
+                         attr: { id: 'CC-returnItems-productOptions-'+$parent.productId + $parent.catRefId + optionValue }">
+                        </span>
+                      <!-- /ko -->
+  
+                    </small>
+
+                  </div>
+                <!-- /ko -->
+                 <!-- ko if: $data.configuratorId || $data.childItems -->
+                <div class="hidden-xs" data-bind="attr: { id: 'CC-returnItems-productConfigurationDetails-' + productId + catRefId + $index()}">
+                  <small>
+                    <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-returnItems-configDetails-' + productId + catRefId + $index()}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+                    <div data-bind="attr: { id: 'CC-returnItems-configDetails-' + productId + catRefId + $index()}" class="collapse">
+                      <ul data-bind="template: {name: 'expand-item', foreach: $data.childItems}">
+                      </ul>
+                    </div>
+                  </small>
+                </div>
+                <!-- /ko -->
+              </td>
+              <td class="col-xs-1 centeredText" data-bind="currency: { price: unitPrice, currencyObj: $parent.priceListGroup().currency}, attr: { id:'CC-returnItems-unitprice' +
+                productId + '-' + catRefId }">
+              </td>
+              <td>
+             <label class="label-hidden" data-bind="widgetLocaleText : {value:'selectedQuantityLabel', attr:'innerText',
+                params: {productName: displayName +'-'+catRefId}},attr: { for: 'CC-return-item-quantity'+productId +catRefId }">
+             </label>
+              <input  class="form-control centeredText" aria-required="true" type="text"  data-bind="value: selectedQuantity, attr :{ id:'CC-return-item-quantity'+productId +catRefId},valueUpdate: 'keyup'  ,enable: returnableItem ,validatableValue: selectedQuantity">  
+              <span class="text-danger" role="alert" aria-live="assertive"
+               data-bind="validationMessage: selectedQuantity, attr:{id:'returnValidationMessage'+productId +catRefId}"></span>
+              </td>
+
+ 
+              <td class="centeredText">
+               <!-- ko if: $data.returnableItem --> 
+               <label class="label-hidden"  data-bind="attr: { for: 'CC-return-item-reason-text' + productId + catRefId}"> </label>
+                <select class="form-control shiftText" data-bind="attr: { id: 'CC-return-item-reason-text' + productId + catRefId},options: $parent.returnReasons(), optionsText:'displayName', 
+                   value: selectedReason, optionsCaption :$parents[1].resources().selectReasonText">
+                </select>
+               
+               <!-- /ko -->
+               
+               <!-- ko ifnot: $data.returnableItem -->
+                 <span  data-bind="widgetLocaleText: 'nonReturnable'"></span>
+               <!-- /ko -->
+               
+              </td>
+              
+            </tr>
+
+           </tbody> 
+         </table> 
+         <!-- /ko --> 
+      </section>
+      <!-- /ko -->
+    </div>
+
+    
+    
+    
+    <!--ko if : $data.viewportViewModel().viewportDesignation()== "xs" -->
+    <div id="CC-returnItems-mobile" class="visible-xs">
+      <section class="section-returnItems-return">
+        <!-- ko with: $data.returnViewModel() -->    
+        <table id="CC-returnItemsTable" class="table" summary="Order Details Return Table">
+
+          <tbody data-bind="foreach :returnItemsArray">
+            <tr>
+              <th data-bind="widgetLocaleText: 'itemText'" scope="row" class="centeredText"></th>
+              <th data-bind="widgetLocaleText: 'priceText'" scope="col" class="centeredText"></th>
+              <th data-bind="widgetLocaleText: 'quantityText'" scope="col" class="centeredText"></th>
+       
+            </tr>
+            <tr>
+
+              <td class="product-name col-xs-3">
+                <span  data-bind="text: displayName"></span>
+                <!-- ko if: $data.itemInfo().variant -->  
+                  <div data-bind="attr: { id: 'CC-returnItems-productVariant'+ productId + '-' + catRefId }" >
+                    <small  data-bind="foreach: $data.itemInfo().variant"> 
+                       <!-- ko if: optionValue -->
+                        <span  class="col-xs-12" data-bind="widgetLocaleText : { value:'option', attr:'innerText', params: {optionName: optionName, optionValue: optionValue}},
+                         attr: { id: 'CC-returnItems-productOptions-'+$parent.productId + $parent.catRefId + optionValue }">
+                        </span>
+                      <!-- /ko -->
+  
+                    </small>
+
+                  </div>
+                <!-- /ko -->
+              </td>
+              <td class="col-xs-3 centeredText" data-bind="currency: { price: unitPrice, currencyObj: $parent.priceListGroup().currency}, attr: { id:'CC-returnItems-unitprice' +
+                productId + '-' + catRefId }">
+              </td>
+              <td class="col-xs-3">
+              <label class="label-hidden" data-bind="widgetLocaleText : {value:'selectedQuantityLabel', attr:'innerText',
+                params: {productName: displayName +'-'+catRefId}},attr: { for: 'CC-return-item-quantity'+productId +catRefId }">
+             </label>
+              <input  class="form-control" aria-required="true" type="text"  data-bind="value: selectedQuantity, attr :{ id:'CC-return-item-quantity'+ productId + catRefId},valueUpdate: 'keyup'  ,enable: returnableItem,validatableValue: selectedQuantity">  
+              <span class="text-danger" role="alert" aria-live="assertive"
+               data-bind="validationMessage: selectedQuantity, attr:{id:'returnValidationMessage'+productId +catRefId}"></span>
+              </td>
+
+ 
+
+              
+            </tr>
+            <hr>
+            <tr>
+            
+            <td><span class="col-xs-3" data-bind="widgetLocaleText: 'returnReasonText'"></span></td>
+            <td colspan="2" class="col-xs-8" scope="row">
+                <!-- ko if: $data.returnableItem  -->
+               <label class="label-hidden"  data-bind="attr: { for: 'CC-return-item-reason-text' + productId + catRefId}"> </label>
+                <select class="form-control shiftText" data-bind="attr: { id: 'CC-return-item-reason-text' + productId + catRefId},options: $parent.returnReasons(), optionsText:'displayName', 
+                   value: selectedReason, optionsCaption :$parents[1].resources().selectReasonText">
+                </select>
+               <!-- /ko -->
+               <!-- ko ifnot: $data.returnableItem -->
+                 <span  data-bind="widgetLocaleText: 'nonReturnable'"></span>
+               <!-- /ko -->
+               
+            </td>
+            
+            </tr>
+
+           </tbody> 
+         </table> 
+         <!-- /ko --> 
+      </section>
+    
+    
+    </div>
+    <!-- /ko -->
+    
+    
+  </div>
+  
+  <!--ko ifnot : $data.viewportViewModel().viewportDesignation()== "xs" -->
+  <div id="CC-returnItems-submit-cancel">
+    <button class="btn cc-button-primary col-sm-2 col-xs-12 pull-right" data-bind="click:handleSubmitReturnRequest.bind($data),attr: {id: 'CC-return-request-submit-button'}">
+        <span id="CC-return-request-submit-button-content" data-bind="widgetLocaleText:'submit'"></span>
+       </button>
+    <button class="btn cc-button-secondary col-sm-2 col-xs-12 pull-right" data-bind="click:handleCancleReturnRequest.bind($data),attr: {id: 'CC-return-request-cancel-button'}" >
+        <span id="CC-return-request-cancel-button-content" data-bind="widgetLocaleText:'cancel'"></span>
+    </button>
+  </div>
+  <!-- /ko -->
+    <!--ko if : $data.viewportViewModel().viewportDesignation()== "xs" -->
+  <div id="CC-returnItems-submit-cancel">
+      <button class="btn cc-button-secondary col-sm-2 col-xs-12 pull-right" data-bind="click:handleCancleReturnRequest.bind($data),attr: {id: 'CC-return-request-cancel-button'}" >
+        <span id="CC-return-request-cancel-button-content" data-bind="widgetLocaleText:'cancel'"></span>
+    </button>
+    <button class="btn cc-button-primary col-sm-2 col-xs-12 pull-right" data-bind="click:handleSubmitReturnRequest.bind($data),attr: {id: 'CC-return-request-submit-button'}">
+        <span id="CC-return-request-submit-button-content" data-bind="widgetLocaleText:'submit'"></span>
+       </button>
+  </div>
+  <!-- /ko -->
+  
+  
+ <script type='text/html' id='expand-item'>
+  <li style="display : inline;">
+    <!-- Expanding the childItems -->
+    <!-- ko if: !$data.childItems -->
+      <div>
+        <!-- ko if: !$data.addOnItem -->
+          <a data-bind="ccLink: $data">
+            <span data-bind="text: displayName"></span>
+          </a>
+          <!-- ko if: selectedOptions -->
+            <!-- ko foreach: selectedOptions -->
+              <!-- ko if: optionValue -->
+                (<span data-bind="widgetLocaleText : { value:'option', attr:'innerText', params: {optionName: optionName, optionValue: optionValue}},
+                attr: { id: 'CC-returnItems-childProductOptions-'+$parent.productId + $parent.catRefId + optionValue }">
+                </span>)
+              <!-- /ko -->
+            <!-- /ko -->
+          <!-- /ko -->
+          <span class="currency" data-bind="currency: { price: $data.externalPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+          <!-- ko if: $data.actionCode -->
+            (<span data-bind="text: actionCode"></span>)
+          <!-- /ko -->
+          <!-- ko foreach: externalData -->
+            <div>
+            <!-- ko with: values -->
+              <span data-bind="text: $data.label"></span>
+              <span data-bind="text: $data.displayValue"></span>
+            <!-- /ko -->
+            <!-- ko if: $data.actionCode -->
+              (<span data-bind="text: actionCode"></span>)
+            <!-- /ko -->
+            </div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: $data.addOnItem -->
+          <br>
+          <strong>
+            <span data-bind="text: $data.displayName"></span>
+          </strong>
+          <span>&nbsp; - &nbsp;</span>
+          <span data-bind="currency: {price: $data.detailedItemPriceInfo[0].detailedUnitPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span>
+          <br>
+          <!-- ko foreach: Object.keys($data.shopperInput) -->
+            <span data-bind="text: $data"></span>
+            <span>: &nbsp;</span>
+            <span data-bind="text: $parent.shopperInput[$data]"></span><br>
+          <!-- /ko -->
+          <span data-bind="text: $data.displayName"></span>
+          <span>: &nbsp;</span>
+          <span data-bind="text: $data.catRefId"></span>
+          <br>
+        <!-- /ko -->
+      </div>
+    <!-- /ko -->
+    <!-- ko if: $data.childItems -->
+      <div class = "alignChild"><a data-bind="click: $widgetViewModel.toggleExpandedFlag.bind($data, $element), attr: { href: '#CC-returnItems-configDetails-' + $data.id}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+
+        <!-- ko if: !$data.addOnItem -->
+          <a data-bind="ccLink: $data">
+            <span data-bind="text: displayName"></span>
+          </a>
+          <!-- ko if: selectedOptions -->
+            <!-- ko foreach: selectedOptions -->
+              <!-- ko if: optionValue -->
+                (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                optionValue: $data.optionValue}}">
+                </span>)
+              <!-- /ko -->
+            <!-- /ko -->
+          <!-- /ko -->
+          <!-- ko ifnot: ($data.expanded) -->
+            <span class="currency" data-bind="currency: { price: $data.amount, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+          <!-- /ko -->
+          <!-- ko if: ($data.expanded) -->
+            <span class="currency" data-bind="currency: { price: $data.externalPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+          <!-- /ko -->
+          <!-- ko if: $data.actionCode -->
+            (<span data-bind="text: actionCode"></span>)
+          <!-- /ko -->
+          <!-- ko foreach: externalData -->
+            <div>
+            <!-- ko with: values -->
+              <span data-bind="text: $data.label"></span>
+              <span data-bind="text: $data.displayValue"></span>
+            <!-- /ko -->
+            <!-- ko if: $data.actionCode -->
+              (<span data-bind="text: actionCode"></span>)
+            <!-- /ko -->
+            </div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: $data.addOnItem -->
+          <br>
+          <strong>
+            <span data-bind="text: $data.displayName"></span>
+          </strong>
+          <span>&nbsp; - &nbsp;</span>
+          <span data-bind="currency: {price: $data.detailedItemPriceInfo[0].detailedUnitPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span>
+          <br>
+          <!-- ko foreach: Object.keys($data.shopperInput) -->
+            <span data-bind="text: $data"></span>
+            <span>: &nbsp;</span>
+            <span data-bind="text: $parent.shopperInput[$data]"></span><br>
+          <!-- /ko -->
+          <span data-bind="text: $data.displayName"></span>
+          <span>: &nbsp;</span>
+          <span data-bind="text: $data.catRefId"></span>
+          <br>
+        <!-- /ko -->
+        <ul data-bind="template: {name: 'expand-item', foreach: $data.childItems}, attr: { id: 'CC-returnItems-configDetails-' + $data.id}" class="collapse">
+        </ul>
+      </div>
+    <!-- /ko -->
+  </li>
+  </script>  
+  
+  
+  
+  
+
+ <!-- /ko  -->
+</div>
+
+ <!-- /ko  -->
+ 
+ 

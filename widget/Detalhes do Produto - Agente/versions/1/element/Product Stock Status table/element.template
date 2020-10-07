@@ -1,0 +1,22 @@
+<!-- ko if: showStockStatusTable() -->
+  <div class="stockTable table-header-styling table table-striped tableHeader cc-stock-status-table-header-column-layout cc-stock-status-header-row" data-bind="visible: (stockStatuses().length > 0),widgetLocaleText : {value:'stockInfo', attr:'summary'}">
+    <div class="stockTableHeading">
+      <div class="stockTableCell">
+        <p class="c-text-overflow-table stockTableTitle" data-bind="text: stockStatusTableColumnName, attr:{'title': stockStatusTableColumnName}"></p>
+      </div>
+      <div class="stockTableCell">
+        <p class="stockTableTitle" data-bind="widgetLocaleText : 'stockText'"></p>
+       </div>
+    </div>
+    <!--ko foreach:stockStatuses() -->
+    <div class="stockTableRow" data-bind="style: { backgroundColor: ($index()%2===0) ? '#e8e8e8' : '#ffffff' }">
+      <div class="stockTableCell cc-text-overflow-table">
+        <p data-bind="text: displayValue, attr:{id: 'cc-display-value-' + skuID ,'title':displayValue}"></p>
+      </div>
+      <div class="stockTableCell">
+        <p data-bind="text: skuCount, attr: {id: 'cc-stock-value-'+skuID}"></p>
+      </div>
+    </div>
+    <!--/ko-->
+  </div>
+<!-- /ko -->

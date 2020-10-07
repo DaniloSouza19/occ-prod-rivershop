@@ -1,0 +1,47 @@
+<!-- ko if: !($data.cart().orderShippingGroups() && $data.cart().orderShippingGroups().length > 1) || $data.cart().isSplitShipping() -->
+<div id="CC-placeOrderSummary">
+  <!-- ko if:$data.cart().dynamicProperties &&  $data.cart().dynamicProperties().length >0 -->
+    <!-- ko setContextVariable:{name:'context', value: $data.cart().dynamicProperties} -->
+      <div data-bind="element: 'dynamic-property' "></div>
+    <!-- /ko -->
+  <!-- /ko -->
+  <!-- ko if : $data.cart().isSplitShipping()  -->
+    <div id="CC-splitToSingleShip-button" class="checkout row">
+      <button class="cc-button-primary pull-right padding-right" data-bind="click: navigateToAgentCheckout, widgetLocaleText : 'shipToSingleAddressText', visible: !(($data.cart().currentOrderState == 'PENDING_PAYMENT') || 
+      ($data.cart().currentOrderState == 'PENDING_PAYMENT_TEMPLATE')">
+      </button>
+    </div>
+    <br>
+  <!-- /ko -->
+  <div id="CC-checkoutOrderSummary-placeOrder" class="row checkout pull-right">
+    <button class="cc-button-secondary" data-bind="click: handleCancel"> <span data-bind="widgetLocaleText:'cancelText'"></span></button>
+    <!-- ko ifnot : (user().clonedOrderId() != "") -->
+      <!-- ko ifnot : (order().showSchedule) -->
+        <button class="cc-button-primary" data-bind="click: handleCreateOrder, enable: allowPlaceOrder()"> <span data-bind="widgetLocaleText:'placeOrderText'"></span></button>
+      <!-- /ko -->
+      <!-- ko if : (order().showSchedule) -->
+        <button class="cc-button-primary" data-bind="click: handleCreateOrder, enable: allowPlaceOrder()"> <span data-bind="widgetLocaleText:'scheduleOrderText'"></span></button>
+      <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if : (user().clonedOrderId() != "") -->
+      <button class="cc-button-primary" data-bind="click: handleCompleteOrder"> <span data-bind="widgetLocaleText:'completeOrderText'"></span></button>
+      <div class="modal fade" id="cc-approval-confirmation-dialog" tabindex="-1" role="dialog">
+        <div class="modal-dialog cc-modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header cc-modal-header">
+              <h4 id="cc-approval-confirmation-dialog-header" data-bind="widgetLocaleText: 'approvalRequiredText'" ></h4>
+            </div>
+            <div class="modal-body cc-modal-body">
+              <span id="cc-approval-confirmation-dialog-body" data-bind="widgetLocaleText: 'completeOrderConfirmationPopUp'"></span>
+            </div>
+            <div class="modal-footer CC-header-modal-footer">
+              <button data-dismiss="modal" data-bind="widgetLocaleText: 'cancelText'" type="button" class="cc-button-secondary">No</button>
+              <button data-dismiss="modal" data-bind="widgetLocaleText: 'okText', click: handleAmendmentForOrderApproval" type="button" class="cc-button-primary">Yes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- /ko -->
+  </div>
+</div>
+<!-- /ko -->

@@ -1,0 +1,8 @@
+{
+  "tag": "recent-orders",
+  "source": 100,
+  "type": "fragment",
+  "title": "Recent orders",
+  "widgetType": "agentdashboard",
+  "version": 2
+}

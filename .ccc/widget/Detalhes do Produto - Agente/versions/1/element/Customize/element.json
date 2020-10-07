@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-configure",
+  "source": 100,
+  "type": "fragment",
+  "title": "Customize",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

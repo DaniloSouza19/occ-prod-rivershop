@@ -1,0 +1,20 @@
+<div id="CC-reviewOrderWidget">
+ <div class="row">
+  <div class="col-xs-12 padding">
+    <div id="cc-reviewOrder" data-oc-id="cc-reviewOrder">
+      <!-- oc layout: panels -->
+        <div>
+          <div class="oc-panel" data-oc-id="panel-1">
+            <!-- oc section: reviewOrder-widget-title -->
+              <div data-bind="element: 'reviewOrder-widget-title'"></div>
+            <!-- /oc -->
+            <!-- oc section: reviewOrder-order-item-details -->
+              <div data-bind="element: 'reviewOrder-order-item-details'"></div>
+            <!-- /oc -->
+          </div>
+        </div>
+      <!-- /oc -->
+    </div>
+  </div>
+ </div>
+</div>

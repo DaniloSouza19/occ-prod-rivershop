@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-on-sale",
+  "source": 100,
+  "type": "container",
+  "title": "On Sale",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

@@ -1,0 +1,13 @@
+{
+  "widgetDescriptorName": "nsh_profile_order_history",
+  "properties": [
+    {
+      "defaultValue": false,
+      "name": "includeScheduledInformation",
+      "id": "includeScheduledInformation",
+      "helpTextResourceId": "includeScheduledHelpText",
+      "labelResourceId": "includeScheduledTextLabel",
+      "type": "booleanType"
+    }
+  ]
+}

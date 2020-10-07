@@ -1,0 +1,13 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Global",
+      "language": "pt_BR"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

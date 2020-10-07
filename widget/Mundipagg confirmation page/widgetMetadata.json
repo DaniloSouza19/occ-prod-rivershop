@@ -1,0 +1,25 @@
+{
+  "imports": [
+    "confirmation",
+    "shippingCountries",
+    "order",
+    "payment"
+  ],
+  "translations": [
+    {
+      "name": "Mundipagg confirmation page",
+      "language": "en"
+    },
+    {
+      "name": "Mundipagg pagina de confirma��o",
+      "language": "pt"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "pageTypes": [
+    "confirmation"
+  ],
+  "config": {}
+}

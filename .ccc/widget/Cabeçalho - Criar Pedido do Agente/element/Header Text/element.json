@@ -1,0 +1,8 @@
+{
+  "tag": "header-text",
+  "source": 100,
+  "type": "fragment",
+  "title": "Header Text",
+  "widgetType": "createOrderHeader",
+  "version": 1
+}

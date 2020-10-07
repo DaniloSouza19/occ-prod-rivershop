@@ -1,0 +1,14 @@
+{
+  "resources": {
+    "subtotalText": "Subtotal:",
+    "pickUpCollectText": "A ser coletado por:",
+    "reviewOrderHeader": "Rever Pedido",
+    "shippingMethodText": "Método de Remessa:",
+    "reviewOrderShippingAddressSummary": "Rever Endereço de Remessa do Pedido",
+    "pickUpDetailsText": "Detalhes da coleta para retirada na loja",
+    "pickupInStoreLabel": "Retirar na Loja em",
+    "reviewOrderShippingMethodSummary": "Rever Método de Remessa do Pedido",
+    "shippingAddressAndMethodText": "Endereço e Método de Remessa",
+    "shipToText": "Enviar para"
+  }
+}

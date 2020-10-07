@@ -1,0 +1,293 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('nsh_product') -->
+<div data-bind="
+    attr:{
+        id: id, 
+        'class': $data.hasOwnProperty('productGrid') ? 'card text-center col-xs-11 col-lg-12 col-md-12 col-sm-12 p-t-0 p-l-0 p-r-0' : 'card text-center'
+    },
+    foreach: $data.hasOwnProperty('productGrid') ? productGrid : { data: $widgetViewModel.arrProducts(), as: 'product'},
+    onRender: !$data.hasOwnProperty('productGrid') ? $widgetViewModel.addSlick() : ''
+    ">
+
+    <!--  ko foreach: Array.isArray($data) ? $data : [product] -->
+    <div class="card__item">
+        <div class="card__inside">
+            <div class="bg_card">
+                <a data-bind="ccLink: {route: typeof route == 'function' ? route() : route},
+                        attr: {
+                            'class': 
+                                $widgetViewModel.elements['nsh_product'].embalagensType()[$data.hasOwnProperty('filteredSKUs') ? 
+                                typeof (typeof filteredSKUs == 'function' ? filteredSKUs() : filteredSKUs)[0].embalagem_c == 'function'
+                                ? (typeof filteredSKUs == 'function' ? filteredSKUs() : filteredSKUs)[0].embalagem_c()
+                                : (typeof filteredSKUs == 'function' ? filteredSKUs() : filteredSKUs)[0].embalagem_c
+                                : '']
+                            }
+                        ">
+                    <div class="desconto">
+
+
+                        <!-- ko if:   $data.hasOwnProperty('textoDesconto_c') -->
+                        <span class="desconto_cont max_caracte"
+                            data-bind="html: textoDesconto_c , attr: 
+                                    {
+                                        'style': 
+                                            typeof corDeFundoDesconto_c == 'function' ? 'background-color:' + corDeFundoDesconto_c() + ';color:' + corDoTextoDesconto_c() + ';' :  'background-color:' + corDeFundoDesconto_c + ';color:' + corDoTextoDesconto_c + ';' } ">
+                        </span>
+                        <!-- /ko -->
+
+
+                        <!-- ko if:   $data.hasOwnProperty('product') -->
+                        <!-- ko if:   $data.hasOwnProperty('product.corDeFundoDesconto_c')  -->
+                        <!-- ko if:   $data.hasOwnProperty('product.textoDesconto_c')  -->
+
+                        <span class="desconto_cont"
+                            data-bind="html: $data['product.textoDesconto_c']()[0], 
+                            attr:  {'style': 'background-color:' + $data['product.corDeFundoDesconto_c']()[0] + '; color:' + $data['product.corDoTextoDesconto_c']()[0] + ';' }"></span>
+
+                        <!-- /ko -->
+                        <!-- /ko -->
+                        <!-- /ko -->
+
+
+                    </div>
+                    <!-- ko if: $data.hasOwnProperty('primaryFullImageURL') -->
+                    <figure class="image">
+                        <img class="image__item" data-bind="attr: {
+                                src: primaryFullImageURL, 
+                                title: $data.hasOwnProperty('primaryImageTitle') ? primaryImageTitle : 'Image', 
+                                alt: $data.hasOwnProperty('primaryImageAltText') ? primaryImageAltText : 'Image'}"
+                            style="width: 300px" />
+                    </figure>
+                    <!-- /ko -->
+                    <div class="title-txt-ad">
+
+
+
+                        <p class="title title__subtitle font-bold font-color-one title__bold"
+                            data-bind="text: displayName">
+                        </p>
+                    </div>
+                </a>
+                <div class="card-price clearfix">
+                    <!-- product-price -->
+
+
+                    <!-- HAVE LISTPRICE AND STOCK -->
+                    <!-- ko if: disponible -->
+                    <!--ko if: (typeof listPrice == 'function' ? listPrice() : listPrice) && (!$data.hasOwnProperty('filteredSKUs') || ($data.hasOwnProperty('filteredSKUs') && ko.toJSON(filteredSKUs)[0].quantity != 0))  -->
+                    <!-- ko if:  typeof salePrice == 'function' -->
+                    <div data-bind="
+                                if: 
+                                    (
+                                        !$data.hasOwnProperty('hasPriceRange') ||
+                                        (
+                                            $data.hasOwnProperty('hasPriceRange') &&
+                                            !hasPriceRange
+                                        )
+                                    ) && 
+                                    (
+                                        !salePrice() ||
+                                        salePrice() === null ||
+                                        isNaN(salePrice())
+                                    )" data-oc-id="product-list-price-only" role="alert">
+                        <span
+                            data-bind="currency: {price: typeof listPrice == 'function' ? listPrice() : listPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '', prependNull: false}, attr: {role: !salePrice ? 'alert' : null}"
+                            aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price "></span>
+
+
+                    </div>
+
+                    <div data-bind="
+                                if: 
+                                    (
+                                        !$data.hasOwnProperty('hasPriceRange') ||
+                                        (
+                                            $data.hasOwnProperty('hasPriceRange') &&
+                                            !hasPriceRange
+                                        )
+                                    ) && 
+                                    (
+                                        salePrice() &&
+                                        salePrice() !== null && 
+                                        !isNaN(salePrice())
+                                    )" data-oc-id="product-on-sale" role="alert">
+                        <span
+                            data-bind="currency: {price: typeof listPrice == 'function' ? listPrice() : listPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '', prependNull: false}"
+                            role="alert" aria-atomic="true" aria-live="polite"
+                            style="text-decoration: line-through;"></span>
+                        <span
+                            data-bind="currency: {price: salePrice(), currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '', prependNull: false}"
+                            role="alert" aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price "></span>
+
+                    </div>
+                    <!--/ko-->
+
+                    <!-- ko ifnot:  typeof salePrice == 'function' -->
+                    <div data-bind="
+                                    if: 
+                                        (
+                                            !$data.hasOwnProperty('hasPriceRange') ||
+                                            (
+                                                $data.hasOwnProperty('hasPriceRange') &&
+                                                !hasPriceRange
+                                            )
+                                        ) && 
+                                        (
+                                            !salePrice ||
+                                            salePrice === null ||
+                                            isNaN(salePrice)
+                                        )" data-oc-id="product-list-price-only" role="alert">
+                        <span
+                            data-bind="currency: {price: typeof listPrice == 'function' ? listPrice() : listPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '', prependNull: false}, attr: {role: !salePrice ? 'alert' : null}"
+                            aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price "></span>
+
+
+                    </div>
+
+                    <div data-bind="
+                                    if: 
+                                        (
+                                            !$data.hasOwnProperty('hasPriceRange') ||
+                                            (
+                                                $data.hasOwnProperty('hasPriceRange') &&
+                                                !hasPriceRange
+                                            )
+                                        ) && 
+                                        (
+                                            salePrice &&
+                                            salePrice !== null && 
+                                            !isNaN(salePrice)
+                                        )" data-oc-id="product-on-sale" role="alert">
+                        <span
+                            data-bind="currency: {price: typeof listPrice == 'function' ? listPrice() : listPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '', prependNull: false}"
+                            role="alert" aria-atomic="true" aria-live="polite"
+                            style="text-decoration: line-through;"></span>
+                        <span
+                            data-bind="currency: {price: salePrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '', prependNull: false}"
+                            role="alert" aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price "></span>
+
+                    </div>
+                    <!--/ko-->
+
+                    <div data-bind="
+                                if: 
+                                    $data.hasOwnProperty('hasPriceRange') && hasPriceRange
+                                " data-oc-id="product-price-varies" role="alert">
+                        <span role="alert" aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price ">
+                            <span class="sr-only" data-bind="widgetLocaleText:'priceRangeText'"></span>
+                            <span id="CC-prodDetails-priceMin"
+                                data-bind="currency: {price: minPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>&#45;
+                            <span class="sr-only" data-bind="widgetLocaleText:'toText'"></span>
+                            <span id="CC-prodDetails-priceMax"
+                                data-bind="currency: {price: maxPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                        </span>
+
+                    </div>
+                    <!--/ko-->
+
+                    <!-- ko ifnot: 
+                            (typeof listPrice == 'function' ? listPrice() : listPrice) 
+                            ||
+                            (
+                                !$data.hasOwnProperty('filteredSKUs') 
+                                || 
+                                (
+                                    $data.hasOwnProperty('filteredSKUs') 
+                                    && 
+                                    ko.toJSON(filteredSKUs)[0].quantity == 0
+                                )
+                            )  -->
+                    <div data-oc-id="product-list-price-only" role="alert">
+                        <span aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price ">Indisponível</span>
+                    </div>
+                    <!--/ko-->
+                    <!--ko if: (typeof listPrice == 'function' ? isNaN(listPrice()) : isNaN(listPrice))   -->
+                    <div data-oc-id="product-list-price-only" role="alert">
+                        <span aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price ">Indisponível</span>
+                    </div>
+                    <!--/ko-->
+                    <!--/ko-->
+
+                    <!-- DONT HAVE STOCK -->
+                    <!-- ko ifnot: disponible -->
+                    <div data-oc-id="product-list-price-only" role="alert">
+                        <span aria-atomic="true" aria-live="polite"
+                            class="font-color-eight font-bold  discounted-price ">Sem
+                            estoque</span>
+                    </div>
+                    <!--/ko-->
+
+                </div>
+                <div class="card__description">
+                    <div class="col-lg-12 col-reset">
+                        <div class="col-lg-12 col-xs-12 col-l txt-productos-info">
+
+                            <p class="text text-medium font-color-nine product-info m-b-70">
+
+                                <!-- ko if:  product.childSKUs[0].embalagem_c -->
+                                <span class="max_caracte" data-bind="text: product.childSKUs[0].embalagem_c"></span>
+                                <!-- /ko -->
+
+                                <!-- ko if:  $data.hasOwnProperty('sku.embalagem_c') && $data['sku.embalagem_c'] -->
+                                <span class="max_caracte" data-bind="text: $data['sku.embalagem_c']()[0]"></span>
+                                <!-- /ko -->
+
+                                <!-- ko if: product.id -->
+                                <span class="max_caracte" data-bind="html: 'CÓD. PRODUTO: ' +  product.id"></span>
+                                <!-- /ko -->
+                                <br>
+                                <!-- ko if:  product.childSKUs[0].barcode -->
+                                <span class="max_caracte"
+                                    data-bind="text:  'CÓD. BARRAS:' +  product.childSKUs[0].barcode"></span>
+                                <!-- /ko -->
+
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="add_cart"
+                data-bind="attr: {id: typeof id == 'function' ? 'add_cart-'+$widgetViewModel.id()+'-'+id() : 'add_cart-'+$widgetViewModel.id()+'-'+id }">
+                <input type="number" value="1" class="input-qty form-control qtd_itens" placeholder="Quantidade" min="1"
+                    max="9999"
+                    data-bind="enable: (typeof listPrice == 'function' ? 
+                    listPrice() ? true : false : 
+                    listPrice ? true : false) && disponible,
+                    attr: {
+                        id: typeof id == 'function' ? 'qtd_itens-'+$widgetViewModel.id()+'-'+id() : 'qtd_itens-'+$widgetViewModel.id()+'-'+id } " />
+                <div class="btns">
+                    <button class="more"
+                        data-bind="enable: (typeof listPrice == 'function' ? 
+                        listPrice() ? true : false : 
+                        listPrice ? true : false) && disponible,
+                         click : function () {var id = typeof product.id == 'function' ? product.id() : product.id;$widgetViewModel.elements['nsh_product'].moreQuantity($widgetViewModel.id(), id)}">
+                        +</button>
+                    <button class="less"
+                        data-bind="enable: (typeof listPrice == 'function' ? 
+                        listPrice() ? true : false : 
+                        listPrice ? true : false) && disponible,
+                         click : function () {var id = typeof product.id == 'function' ? product.id() : product.id;$widgetViewModel.elements['nsh_product'].removeQuantity($widgetViewModel.id(), id)}">
+                        -</button>
+                </div>
+                <button class="btn_add_cart_min"
+                    data-bind="
+                    enable: (typeof listPrice == 'function' ? 
+                        listPrice() ? true : false : 
+                        listPrice ? true : false) && disponible,
+                    click: function(){$widgetViewModel.elements['nsh_product'].handleAddToCart($widgetViewModel.id(),$data)}"></button>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>
+<!-- /ko -->

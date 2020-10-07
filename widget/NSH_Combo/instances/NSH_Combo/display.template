@@ -1,0 +1,23 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<div class="combo">
+    <div class="container">
+
+        <div class="items row" data-bind="attr:{id: id}, 
+    foreach:{ data: $widgetViewModel.arrCombos()}">
+            <div class="col-sm-6 col-xs-12 col-lg-3  col-md-6">
+                <a data-bind="attr: {href: link}">
+                    <!--ko if : $data.src -->
+                    <img data-bind="attr: {src: src}" />
+                    <!--/ko-->
+                    <!--ko ifnot : $data.src  -->
+                    <img src="/file/general/cinza.png"/>
+                    <!--/ko-->
+                    <p data-bind="text: text, attr: {href: link}"></p>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

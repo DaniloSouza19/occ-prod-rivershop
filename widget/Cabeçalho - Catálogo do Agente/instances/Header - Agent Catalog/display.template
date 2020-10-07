@@ -1,0 +1,24 @@
+<div class="agentcategoryheader" data-bind="attr:{id: 'agentCategoryHeader'+id()}">
+  <div class="row">
+    <div class="col-md-7">
+    </div>
+    <div class="col-md-5">
+      <div data-bind="element: 'dropdown-minicart'"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <div class="customerName">
+        <!-- ko if: $data.user() && $data.user().firstName -->
+        <span id="agentHeader-customerName-label" data-bind="widgetLocaleText: 'customerNameText', visible: $data.user().firstName() || $data.user().lastName()"></span> 
+        <span data-bind="text:':',visible: $data.user().firstName() || $data.user().lastName()"></span>
+        <span class="nameFontWeight" id="cc-orderDetails-firstName-value" data-bind="text: $data.user().firstName, visible: $data.user().firstName"></span>
+        <span class="nameFontWeight" id="cc-orderDetails-lastName-value" data-bind="text: $data.user().lastName(), visible: $data.user().lastName()"></span>
+        <!-- /ko -->
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div data-bind="element: 'search'"></div>
+    </div>
+  </div>  
+</div>

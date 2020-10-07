@@ -1,0 +1,225 @@
+<!-- ko if: initialized() -->
+  <!-- ko with:user().currentOrganizationDetails() -->
+  <div class="cc-account-general-info">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- Account Status -->
+        <label id="cc-account-status-label" class="account-details-label" for="cc-account-status-checkbox" data-bind="widgetLocaleText: 'accountStatusText'"></label>
+        <div class="checkbox">
+          <label>
+            <input id="cc-account-status-checkbox" type="checkbox" data-bind="
+               checked: active,
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'activeHeaderText'"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <!-- Account Id -->
+        <label id="cc-account-id-label" class="account-details-label" for="cc-account-id-value" data-bind="widgetLocaleText: 'accountIdText'"></label>
+        <div id="cc-account-id">
+          <span id="cc-account-id-value" data-bind="text: id()"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <!-- Account Description -->
+        <label id="cc-account-description-label" class="account-details-label" for="cc-account-description-input" data-bind="widgetLocaleText: 'descriptionText'"></label>
+        <div>
+          <textarea id="cc-account-description-input" class="form-control disabled-input" style="visibility: visible" data-bind="
+                value: (!description() && !$parent.isPrincipalAccount()) ? derivedDescription() : description(),
+                attr:{ placeholder: !derivedDescription() ? $parent.componentPlaceholder : null, readonly: true}"></textarea>
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: !description() && !$parent.isPrincipalAccount(),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <!-- Account Classification -->
+        <label id="cc-account-classification-label" class="account-details-label" for="cc-account-classification-input" data-bind="widgetLocaleText: 'customerTypeText'"></label>
+        <div>
+          <select id="cc-account-classification-input" class="form-control" data-bind="
+               options: $parent.allowedAccountCustomerTypes(),
+               optionsText: 'label',
+               optionsValue: 'value',
+               optionsCaption: (!$parent.isPrincipalAccount() && !customerType() && !derivedCustomerType()) ?
+                    $parent.componentPlaceholder : $parent.propertyDropdownSelectText,
+               value: (!customerType() && !$parent.isPrincipalAccount()) ? derivedCustomerType() : customerType(),
+               enable: false,
+               css: { placeHolderSelect: !customerType() && !derivedCustomerType() }">
+          </select>
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: (!customerType() && !$parent.isPrincipalAccount()),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+
+      <div class="form-group col-md-3 col-md-offset-3">
+      <!-- Account DUNS Number -->
+        <label id="cc-account-duns-number-label" class="account-details-label" for="cc-account-duns-number-input" data-bind="widgetLocaleText: 'dunsNumberText'"></label>
+        <div>
+          <input id="cc-account-duns-number-input" class="form-control account-details-input-field disabled-input" data-bind="
+                    value: (!dunsNumber() && !$parent.isPrincipalAccount()) ? derivedDunsNumber() : dunsNumber(),
+                    attr:{ placeholder: !derivedDunsNumber() ? $parent.componentPlaceholder : null , readonly: true}">
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: (!dunsNumber() && !$parent.isPrincipalAccount()),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+      <!-- Account Type -->
+        <label id="cc-account-type-label" class="account-details-label" for="cc-account-type-input" data-bind="widgetLocaleText: 'typeText'"></label>
+        <div>
+          <select id="cc-account-type-input" class="form-control" data-bind="
+                  options: $parent.allowedAccountTypes(),
+                  optionsText: 'label',
+                  optionsValue: 'value',
+                  optionsCaption: (!$parent.isPrincipalAccount() && !type() && !derivedType()) ?
+                    $parent.componentPlaceholder : $parent.propertyDropdownSelectText,
+                  value: !type() && !$parent.isPrincipalAccount() ? derivedType() : type(),
+                  enable: false,
+                  css: { placeHolderSelect: !type() && !derivedType() }">
+          </select>
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: !type() && !$parent.isPrincipalAccount(),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+
+      <div class="form-group col-md-3 col-md-offset-3">
+        <!-- Account UIN -->
+        <label id="cc-account-uin-label" class="account-details-label" for="cc-account-uin-input" data-bind="widgetLocaleText: 'uniqueIdText'"></label>
+        <div>
+          <input id="cc-account-uin-input" class="form-control account-details-input-field disabled-input" data-bind="
+                 value: (!uniqueId() && !$parent.isPrincipalAccount()) ? derivedUniqueId() : uniqueId(),
+                 attr:{ placeholder: !derivedUniqueId() ? $parent.componentPlaceholder : null, readonly: true}">
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: !uniqueId() && !$parent.isPrincipalAccount(),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <!-- Account TAX Reference Number -->
+        <label id="cc-account-tax-reference-label" class="account-details-label" for="cc-account-tax-reference-input" data-bind="widgetLocaleText: 'taxReferenceNumberText'"></label>
+        <div>
+          <input id="cc-account-tax-reference-input" class="form-control account-details-input-field disabled-input" data-bind="
+               value: (!taxReferenceNumber() && !$parent.isPrincipalAccount()) ? derivedTaxReferenceNumber() : taxReferenceNumber(),
+               attr:{ placeholder: !derivedTaxReferenceNumber() ? $parent.componentPlaceholder : null, readonly: true}">
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: !taxReferenceNumber() && !$parent.isPrincipalAccount(),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+
+      <div class="form-group col-md-3 col-md-offset-3">
+        <!-- Account VAT Reference Number -->
+        <label id="cc-account-vat-reference-label" class="account-details-label" for="cc-account-vat-reference-input" data-bind="widgetLocaleText:'vatReferenceNumberText'"></label>
+        <div>
+          <input id="cc-account-vat-reference-input" class="form-control account-details-input-field disabled-input" data-bind="
+                  value: (!vatReferenceNumber() && !$parent.isPrincipalAccount()) ? derivedVatReferenceNumber() : vatReferenceNumber(),
+                  attr:{ placeholder: !derivedVatReferenceNumber() ? $parent.componentPlaceholder : null, readonly: true}">
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: !vatReferenceNumber() && !$parent.isPrincipalAccount(),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <!-- Allow Punchout Shopping -->
+        <label id="cc-account-allow-punchout-label" class="account-details-label" for="cc-account-allow-punchout-checkbox" data-bind="widgetLocaleText: 'allowPunchoutShoppingText'"></label>
+        <div class="checkbox">
+          <label>
+            <input id="cc-account-allow-punchout-checkbox" type="checkbox" data-bind="
+               checked: ((allowPunchoutShopping() === null) && !$parent.isPrincipalAccount()) ? derivedAllowPunchoutShopping() : allowPunchoutShopping(),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'confirmationYes'"></span>
+          </label>
+        </div>
+
+        <!-- ko if: $parent.showInheritedCheckbox() -->
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" data-bind="
+               checked: (allowPunchoutShopping() === null) && !$parent.isPrincipalAccount(),
+               enable: false"/>
+            <span data-bind="widgetLocaleText: 'inheritText'"></span>
+          </label>
+        </div>
+        <!-- /ko -->
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+<!-- /ko -->

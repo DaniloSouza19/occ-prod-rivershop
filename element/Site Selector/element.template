@@ -1,0 +1,17 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('site-selector') -->
+  <div class="row" data-bind="if: $data['elements']['site-selector'].accountAndSiteSelector.activeSites().length > 0">
+    <div class="col-sm-2 site-selector-label" data-bind="widgetLocaleText: {attr: 'title', value: 'siteText'}" style="margin-top:5px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
+      <label for="cc-site-selector" class="control-label" data-bind="widgetLocaleText:'siteText', attr: {id: id()+'_cc-site-selector-label'}"> </label>
+    </div>
+    <div class="col-sm-6 select-wrapper-control" style="padding-left: 1px">
+      <select id="cc-site-selector"  class="form-control"  style="width: auto; margin-bottom: 1rem;" data-bind="
+        options: $data['elements']['site-selector'].accountAndSiteSelector.activeSites,
+        value: $data['elements']['site-selector'].accountAndSiteSelector.selectedSite,
+        disable: $data['elements']['site-selector'].disableSiteSelector(),
+        optionsText: 'name', optionsValue: 'id',
+        event: {change: $data['elements']['site-selector'].handleSiteSelection.bind($data)}
+        ">        
+      </select>
+    </div>
+  </div>
+<!-- /ko -->

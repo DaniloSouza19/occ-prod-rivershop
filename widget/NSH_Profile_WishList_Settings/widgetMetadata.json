@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Profile_WishList_Settings [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Profile_WishList_Settings [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

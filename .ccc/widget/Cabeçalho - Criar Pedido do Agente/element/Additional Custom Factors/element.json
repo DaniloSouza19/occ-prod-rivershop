@@ -1,0 +1,8 @@
+{
+  "tag": "additional-custom-factors",
+  "source": 100,
+  "type": "fragment",
+  "title": "Additional Custom Factors",
+  "widgetType": "createOrderHeader",
+  "version": 1
+}

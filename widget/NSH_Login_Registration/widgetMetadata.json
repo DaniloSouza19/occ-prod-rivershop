@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Login_Registration [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Login_Registration",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Login_Registration [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Login_Registration [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Login_Registration [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Login_Registration [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Login_Registration [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Login_Registration [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Login_Registration [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Login_Registration [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Login_Registration [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Login_Registration [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Login_Registration [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Login_Registration [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Login_Registration [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Login_Registration [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Login_Registration [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Login_Registration [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Login_Registration [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Login_Registration [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Login_Registration [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Login_Registration [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Login_Registration [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Login_Registration [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Login_Registration [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Login_Registration [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Login_Registration [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Login_Registration [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Login_Registration [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Login_Registration [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Login_Registration [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Login_Registration [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Login_Registration [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Login_Registration [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Login_Registration [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Login_Registration [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Login_Registration [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Login_Registration [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Login_Registration [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Login_Registration [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Login_Registration [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Login_Registration",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Login_Registration [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

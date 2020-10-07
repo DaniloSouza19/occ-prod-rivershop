@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_checkout_address_book",
+  "version": 1,
+  "displayName": "NSH_Checkout_Address_Book",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_checkout_address_book",
+  "source": 101,
+  "javascript": "nsh_checkout_address_book"
+}

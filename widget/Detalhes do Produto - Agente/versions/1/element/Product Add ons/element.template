@@ -1,0 +1,78 @@
+<!-- ko if: initialized() -->
+<div class="col-md-12">
+  <!--  ko if: $data.addOnPopulated -->
+  <div data-bind="foreach: addOnProducts">
+    <br>
+    <div style="border: .5px solid #a1a1a1;padding: 10px 40px;border-radius: 7px;display: inline-block;background-color: #EEEEEE;margin-bottom: 10px;" class="col-md-12">
+      <div class="col-md-12" style="left: -10px; padding-bottom: 1rem;">
+        <input type="checkbox" data-bind="checked: isSelected" />
+          &nbsp;<span style="font-weight: bold" data-bind="text: $data.displayName"></span>
+      </div>
+      <div class="col-md-12" data-bind="if: isSelected">
+        <div class="col-md-12">
+
+        <!-- ko foreach: addOnOptions -->
+        <!-- ko if: isSelected -->
+        <!-- ko with: $data.shopperInput -->
+          <!-- ko foreach: $data -->
+            <!-- ko if: ($data.type() != "checkbox") -->
+              <label data-bind="text: $data.id, css: {'add-on-required': $data.required }"></label>
+            <!-- /ko -->
+            <!-- ko if: ($data.type() == "shortText") -->
+              <input  class="form-control" type="text" data-bind="validatableValue: $data.value"><br>
+            <!-- /ko -->
+            <!-- ko if: ($data.type() == "longText") -->
+              <textarea class="form-control" data-bind="validatableValue: $data.value"></textarea><br>
+            <!-- /ko -->
+            <!-- ko if: ($data.type() == "number") -->
+              <input  class="form-control" type="number" data-bind="validatableValue: $data.value"><br>
+            <!-- /ko -->
+            <!-- ko if: ($data.type() == "date") -->
+              <input data-bind="validatableValue: $data.value,
+                     datepicker: $data.value,
+                     dpOptions: {
+                     autoclose: true,
+                     format: 'mm/dd/yyyy',
+                     }" type="text" class="form-control" aria-required="true" placeholder="mm/dd/yyyy" /><br>
+            <!-- /ko -->
+            <!-- ko if: ($data.type() == "checkbox") -->
+              <input type="checkbox" data-bind="checked: $data.value, validatableValue: $data.value">
+              <label style="margin-left:0.5rem" data-bind="text: $data.id"></label><br>
+            <!-- /ko -->
+            <!-- ko if: ($data.type() == "enumerated") -->
+			  <select class="form-control" type="text"  data-bind="options: $data.values, optionsCaption: $data.propertyCaption, validatableValue: $data.value" ></select><br>
+            <!-- /ko -->
+            <!-- Validation message place holder -->
+            <div>
+              <p class="text-danger" id="CC-shopperInput-error" style="color: #ac1e05;"
+              data-bind="validationMessage: $data.value" role="alert"></p>
+            </div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <!--/ko-->
+        <!--/ko-->
+
+
+        </div>
+        <!-- ko if: ($data.addOnOptions && $data.addOnOptions.length > 0) -->
+            <div class="col-md-12" style="margin-top:0.5rem;">
+              <!-- ko foreach: $data.addOnOptions -->
+                <input type="radio" data-bind="id:{name: $data.repositoryId}, checked: $parent.selectedAddonSku, value: $data.repositoryId, click: $parents[2].addOnRadioChanged.bind($parents[2], $parent) ">
+                  <span id="cc-add-on-product-name" data-bind="text : $data.product.childSKUs[0].displayName? $data.product.childSKUs[0].displayName: $data.product.displayName"></span>
+                  <span id="cc-add-on-separator">/</span>
+                  <span id="cc-add-on-product-id" data-bind="text : $data.sku.repositoryId "></span>
+                  <span id="cc-add-on-product-price" data-bind="currency: {price: $parents[1].addonProductPrice($data.product), currencyObj: $parents[2].site().selectedPriceListGroup().currency, nullReplace: $parents[2].priceUnavailableText(), prependNull: false}"></span>
+                </input><br>
+              <!-- /ko -->
+            </div>
+        <!-- /ko -->
+        <div class="col-md-12" class="text-danger" >
+          <br>
+          <span data-bind="text: $data.stockValidationMessage "></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->

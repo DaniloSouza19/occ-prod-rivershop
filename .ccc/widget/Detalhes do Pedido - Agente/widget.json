@@ -1,0 +1,6 @@
+{
+  "widgetType": "agentAccountOrderDetails",
+  "version": 4,
+  "displayName": "Detalhes do Pedido - Agente",
+  "elementized": true
+}

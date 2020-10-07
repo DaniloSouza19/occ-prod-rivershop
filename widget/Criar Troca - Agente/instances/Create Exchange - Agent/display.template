@@ -1,0 +1,658 @@
+<div id="CC-CreateExchange">
+<!-- ko if: $data.exchangeViewModel() -->
+<div id="cc-initiate-exchange">
+  <div class="row">
+    <div id="cc-return-request-header" class="col-md-12">
+     <h3 class="col-sm-8 agent-headerText" data-bind="text: $data.returnRequestTitle">
+     </h3>
+     <div class="margin-right-30" data-bind="element: 'back-button', attr: { id: 'back-button-'+id()}"></div>
+    </div>
+  </div>
+  <hr class="line agent-line cc-return-hr">
+</div>
+<div class="col-md-12 cc-return-btn">
+<!-- ko if: $data.exchangeViewModel().customerDetails -->
+    <!-- ko with: $data.exchangeViewModel().customerDetails -->
+      <h4 class="title agent-subheadings add-padding-top-10"
+        data-bind="widgetLocaleText: 'orderDetailsText'">
+      </h4>
+
+      <!-- ko if: $data.hasOwnProperty("organization") -->
+        <span id="cc-orderDetails-accountName"
+          data-bind="widgetLocaleText: 'accountNameText'"></span>
+        <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+        <span id="cc-orderDetails-accountName-value"
+          data-bind="text: organization.name"></span>
+        <br/>
+      <!-- /ko -->
+
+      <!-- ko if: firstName -->
+        <span id="cc-exchanges-orderDetails-customerName-label"
+          data-bind="widgetLocaleText: 'customerNameText',
+            visible: firstName || lastName">
+        </span>
+        <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+        <span id="cc-exchanges-orderDetails-firstName-value"
+          data-bind="text: firstName,
+            visible: firstName">
+        </span>
+        <span id="cc-exchanges-orderDetails-lastName-value"
+          data-bind="text: lastName,
+            visible: lastName">
+        </span>
+        <br />
+      <!-- /ko -->
+
+      <span id="cc-exchanges-orderDetails-customerEmail-label"
+        data-bind="widgetLocaleText: 'customerEmailText'">
+      </span>
+      <span data-bind="widgetLocaleText:'delimiterText'"></span>
+      <span  id="cc-exchanges-orderDetails-customerEmail-value"
+        data-bind="text: email">
+      </span>
+      <br/>
+    <!-- /ko -->
+  <!-- /ko -->
+
+  <!-- ko if: $data.exchangeViewModel().orderInfo() && $data.exchangeViewModel().orderInfo().submittedDate -->
+    <span id="cc-exchanges-orderDetails-orderSubmittedDate"
+      data-bind="widgetLocaleText: 'orderSubmittedDateText'">
+    </span>
+    <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+    <span id="cc-exchanges-orderDetails-orderSubmittedDate-value"
+      data-bind="ccDateTime: {date: $data.exchangeViewModel().orderInfo().submittedDate,
+        format: 'datetime', dateFormat: 'medium', timeFormat: 'short'}">
+    </span>
+    <br/>
+  <!-- /ko -->
+
+  <br/>
+  <span id="cc-returns-orderDetails-orderSiteId-label"
+      data-bind="widgetLocaleText: 'merchantSiteText'">
+    </span>
+    <span data-bind="widgetLocaleText:'delimiterText'"></span>
+    <span  id="cc-returns-orderDetails-orderSite-value"
+      data-bind="text: $data.orderSite">
+    </span>
+  <br/>
+  <!-- ko if: $data.exchangeViewModel().trackingNumber || $data.exchangeViewModel().returnLabel-->
+      <h5 class="title" data-bind="widgetLocaleText: 'returnDetailsText'"></h5>
+      <!-- ko if: $data.exchangeViewModel().trackingNumber -->
+        <span id="cc-payment-tracking-number-label" data-bind="widgetLocaleText: 'trackingNumbers'"></span>
+        <span data-bind="widgetLocaleText:'delimiterText'"></span>
+        <span id="cc-payment-tracking-number-value" data-bind="text: $data.exchangeViewModel().trackingNumber()"></span>
+        <br/>
+      <!-- /ko -->
+
+      <!-- ko if: $data.exchangeViewModel().returnLabel -->
+        <span id="cc-payment-return-label" data-bind="widgetLocaleText: 'returnLabel'"></span>
+        <span data-bind="widgetLocaleText:'delimiterText'"></span>
+        <span id="cc-payment-return-value" data-bind="text: $data.exchangeViewModel().returnLabel()"></span>
+        <br/>
+      <!-- /ko -->
+      <!-- ko if: $data.hasQuoteInfo -->
+        <span id="cc-returns-orderDetails-quote"
+          data-bind="widgetLocaleText: 'quoteText'">
+        </span>
+      <!-- /ko -->
+    <!-- /ko -->
+</div>
+<div id="cc-exchanges-order-separator" class="col-xs-12">
+  <hr class="line order-head col-xs-12"/><br />
+</div>
+<div class="col-xs-12" id="cc-exchanges-returnItemsText">
+  <h4 class="title agent-subheadings"
+      data-bind="widgetLocaleText: 'exchangeItemsText'">
+  </h4>
+</div>
+<br/>
+<div class="table-layout-fixed-break-word  col-md-12" id="cc-exchanges-orders">
+  <table id="cc-exchange-order-header" class="table-header-styling table table-bordered table-striped tableHeader cc-exchange-item-table-headers"
+  summary="Exchange-Orders-Header-Table">
+    <thead>
+      <tr>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'productText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'priceText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'quantityText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'exchangeReasonText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'exchangedItemText'"></th>
+        <th scope="col" class="vert-align">
+          <div style="display: inline-table">
+            <span data-bind="widgetLocaleText: 'exchangeAmountText'" ></span>
+            <button id="exchange-info-popover" data-toggle="popover" class="btn popover-dismiss return-pop"
+                data-bind="infoPopover: {trigger: 'hover',container: '#cc-exchanges-orders',
+                                                placement: 'top',
+                                                name: 'info-popover', zIndex: 550,
+                                                minHeight: '70px', minWidth: '230px',
+                                                model: $data.translate('priceDiffInfoText'),
+                                                focusOn: '#cc-info-popover-close'},
+                            attr: {'aria-label' : $data.translate('priceDiffInfoText')}">
+              <span class="fa fa-info-circle"></span>
+            </button>
+          </div>
+        </th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnFrom'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'shippingMethod'"></th>
+      </tr>
+    </thead>
+  </table>
+  <table id="cc-exchange-order-data" class="table table-bordered table-striped tableHeader cc-exchange-item-table-data "
+  summary="Exchange-Orders-Data">
+    <tbody>
+     <!-- ko with: $data.exchangeViewModel() -->
+        <!--  ko foreach: returnItemsArrayGroupedWithCommerceItemId -->
+        <!--  ko foreach: $data -->
+        <!--  ko if: $index() == 0 -->
+          <tr data-bind="css: {'info': $data.isValid()}">
+           <td scope="col" class=" vert-align scrollableTableCell"  data-bind="attr: {rowspan: $parent.length}" class="cc-orderdetails-multiship-bottom-border-remove ">
+           <div class="row">
+            <div class="col-md-12">
+              <span data-bind="text: $data.displayName"></span>
+              <div data-bind="template: { name: $parents[2].templateAbsoluteUrl('/templates/sku-options-external-data-view.template'), templateUrl: '' }">
+              </div>
+              <!-- ko with: $data.skuDetailsViewModel -->
+              <div data-bind="attr: {
+                  id: 'cc-returnItem-subSkuItemDetails-view-' +
+                    ($data.configuratorId ? $data.configuratorId : $parent.catRefId) + '-' + $index()
+                },
+                template: { name: $parents[3].templateAbsoluteUrl('/templates/subSku-items-view.template'), templateUrl: '' }" class="childItemsTreeDisplay">
+              </div>
+              <!-- /ko-->
+
+              <!-- ko if: Object.keys($data.replacementDynamicProperties).length > 0 -->
+              <!-- ko foreach: $parents[1].lineAttributes() -->
+              <!-- ko if: $parent[id()]() != null -->
+                <div >
+                    <small>
+                    <!-- ko if: $parent.hasOwnProperty($data.id()) && ($parent[$data.id()]() !=  null) -->
+                    <span data-bind = "text: $data.label"></span> : <span data-bind = "text: $parent[$data.id()]()"></span><br>
+                    <!-- /ko -->
+                    </small>
+                </div>
+             <!-- /ko -->
+             <!-- /ko -->
+              <!-- /ko -->
+
+             <!-- ko if: $data.nonreturnable -->
+             </br>
+              <span data-bind="widgetLocaleText: 'nonreturnableText'"></span>
+              </br>
+                <!-- ko if: nonReturnableReason -->
+                  <span data-bind="widgetLocaleText: 'reasonText'"></span>
+                  <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+                  <span data-bind="text: nonReturnableReason"></span>
+                <!-- /ko -->
+             <!-- /ko -->
+            </div>
+          </div>
+        </td>
+
+        <td scope="col"   data-bind="attr: {rowspan: $parent.length}"  class="cc-orderdetails-multiship-bottom-border-remove vert-align">
+          <!-- ko foreach: $data.detailedItemPriceInfo -->
+              <div class="padding-right-0">
+                <span data-bind="text:quantity"/>
+                <span data-bind="widgetLocaleText: 'volumePriceSeparatorText'"/>
+                <span data-bind="currency: {price: detailedUnitPrice,
+                             currencyObj: $parents[2].priceListGroup().currency}">
+                </span></br>
+              </div>
+          <!-- /ko -->
+        </td>
+        <td scope="col" class="cc-orderdetails-multiship-bottom-border-remove vert-align">
+         <div class="col-md-9 no-padding">
+            <!-- ko if: $data.quantityAvailableForReturn > 0  && !$data.nonreturnable-->
+            <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId + '-'+  $index()}">
+            <input
+                class="form-control"
+                data-bind="value: $data.selectedQuantity,
+                           valueUpdate: 'afterkeydown',
+                           attr: {id: 'cc-return-quantity-' + $data.catRefId + '-'+  $index(),
+                                  'aria-label' :
+                                      $data.selectedQuantity.error?
+                                        $data.selectedQuantity.error: $parents[2].translate('ariaQuantityText')}"/>
+            </label>
+            <span class="text-danger" role="alert"
+                data-bind="validationMessage: $data.selectedQuantity"></span>
+            <!-- /ko -->
+            <!-- ko if: $data.quantityAvailableForReturn === 0 || $data.nonreturnable -->
+            <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId + '-'+  $index()}">
+              <input
+                  class="form-control"
+                  data-bind="value: $data.selectedQuantity,
+                             enable: false,
+                             attr: {id: 'cc-return-quantity-' + $data.catRefId + '-'+  $index(),
+                             'aria-label' :
+                                      $data.selectedQuantity.error?
+                                        $data.selectedQuantity.error:$parents[2].translate('ariaQuantityText')}"/>
+          </label>
+          <!-- /ko -->
+         </div>
+         <div class="col-md-2">
+           <button  class="popover-dismiss return-pop" data-toggle="popover"
+             data-bind="infoPopover: {trigger: 'hover',container: '#cc-exchanges-orders',
+                                                placement: 'top',
+                                                name: 'return-quantity-popover', zIndex: 550,
+                                                minHeight: '110px', minWidth: '190px',
+                                                focusOn: '#cc-return-popover-close'},
+                           attr: {id: 'cc-return-popover-' + $data.catRefId + '-'+  $index(),
+                                 'aria-label': $data.quantityAvailableForReturnText +
+                                  $data.quantityAvailableForReturn}">
+              <span class="fa fa-info-circle"></span>
+            </button>
+         </div>
+         <br>
+         <!-- <p class="col-md-12">
+                <span class="text-danger font-13" role='alert' data-bind="text: $parents[2].configuratorDisableMessage()"></span>
+              </p>
+          -->
+        </td>
+        <td scope="col" class="vert-align cc-orderdetails-multiship-bottom-border-remove">
+        <!-- ko if: $data.quantityAvailableForReturn > 0 && !$data.nonreturnable-->
+        <label data-bind="attr: {for: 'cc-exchange-reasons-' + $data.catRefId + '-'+  $index()}">
+          <select class="form-control padding-left-3"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId + '-'+  $index()}">
+          </select>
+          </label>
+        <!-- /ko -->
+        <!-- ko if: $data.quantityAvailableForReturn === 0  || $data.nonreturnable -->
+        <label data-bind="attr: {for: 'cc-exchange-reasons-' + $data.catRefId + '-'+  $index()}">
+        <select class="form-control padding-left-3"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       enable: false,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId + '-'+  $index()}">
+        </select>
+        </label>
+        <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove scrollableTableCell vert-align " scope="col">
+          <div  class="row">
+            <!-- ko if: $data.replacementSkuId && $data.isValid() -->
+            <div class="col-md-12">
+              <span data-bind="text: $data.displayName"></span>
+
+              <div data-bind="template:{
+                  name: $parents[2].templateAbsoluteUrl('/templates/sku-options-external-data-view.template'), templateUrl: '',
+                  data: {
+                    actionCode: $data.actionCode,
+                    skuOptionInfo: replacementSkuOptionInfo,
+                    externalData: externalData
+                  }
+                }">
+              </div>
+              <!-- ko with: $data.skuDetailsViewModel -->
+              <div data-bind="attr: {
+                  id: 'cc-returnItem-subSkuItemDetails-view-exchange-' +
+                    ($data.configuratorId ? $data.configuratorId : $parent.catRefId) + '-'+  $index()},
+                  template: { name: $parents[3].templateAbsoluteUrl('/templates/subSku-items-view-exchange.template'), templateUrl: ''}" class="childItemsTreeDisplay">
+              </div>
+              <!-- /ko -->
+              <!-- ko if: Object.keys($data.replacementDynamicProperties).length > 0 -->
+              <!-- ko foreach: $parents[1].lineAttributes() -->
+              <!-- ko if: $parent[id()]() != null -->
+             <div >
+                    <small>
+                    <!-- ko if: $parent.hasOwnProperty($data.id()) && ($parent[$data.id()]() !=  null) -->
+                    <span data-bind = "text: $data.label"></span> : <span data-bind = "text: $parent.replacementDynamicProperties()[id()]"></span><br>
+                    <!-- /ko -->
+                    </small>
+                    </div>
+             <!-- /ko -->
+             <!-- /ko -->
+              <!-- /ko -->
+             <br>
+             <!-- ko if: $data.quantityAvailableForReturn >= $data.selectedQuantity()-->
+               <!-- ko if: $data.backOrderableQuantity() > 0 -->
+                  <span class="title" data-bind="text: $data.backOrderableQuantity()"> </span>
+                  <span class="title" data-bind="widgetLocaleText: 'backOrderText'"> </span>
+               <!-- /ko -->
+               <!-- ko if: $data.preOrderableQuantity() > 0  -->
+                 <span class="title" data-bind="text: $data.preOrderableQuantity()"> </span>
+                 <span class="title" data-bind="widgetLocaleText: 'preOrderText'"> </span>
+               <!-- /ko -->
+               <!-- ko if: $data.availabilityDate() &&($data.preOrderableQuantity() > 0 || $data.backOrderableQuantity()) -->
+                 <span class="title" data-bind="widgetLocaleText: 'hiphenText'"></span>
+                 <span class="title" data-bind="widgetLocaleText: 'available'"> </span>
+                 <span class="title" data-bind="ccDate: {date: $data.availabilityDate(), returnedDate: 'medium'}"></span>
+               <!-- /ko -->
+             <!-- /ko -->
+               <div id="cc-customize-link" data-bind="visible: hasDynamicProperties ">
+                <label for="cc-customize-text" class="inline"
+                            data-bind="widgetLocaleText:$parents[2].translate('customizeText')"></label>
+                <a name="customize" href="#"
+                           data-bind="text:$parents[2].translate('customizeText'), click: $parents[2].handleCustomizeLineItem.bind($parents[2], $data),
+                           attr: {id: 'cc-customize-text-' + $data.catRefId + '-'+  $index()}">
+                </a>
+               </div>
+
+              <!-- ko ifnot: $data.isSkuActive() -->
+                <span class="text-danger font-13" data-bind="widgetLocaleText: 'itemUnavailableText'"></span>
+              <!-- /ko -->
+              <!-- ko ifnot: $data.isChildSkuActive()-->
+                <span class="text-danger font-13" data-bind="widgetLocaleText: 'childItemUnavailableText'"></span>
+                <!-- /ko -->
+              <br>
+                <div>
+                <!-- ko if: ( $data.skuOptionInfo() && $data.skuOptionInfo().length > 0 && $data.isProductActive() && $data.configuratorId  == undefined )-->
+                  <a name="changeItem" class="add-underline" href="#"
+                    data-bind="click: $parents[2].getProductDetails.bind($parents[2], $data.productId, $data.catRefId, $popupId, false),
+                               attr: {id: 'cc-select-items-link-' + $data.catRefId + '-'+  $index()}">
+                      <span data-bind="text:$parents[2].translate('changeItemText')"></span>
+                  </a>
+                <!-- /ko -->
+                </div>
+            </div>
+
+            <!-- /ko -->
+          </div>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove vert-align" scope="col">
+          <!-- ko if: $data.replacementItemPrice -->
+          <!-- ko if: $data.currentPrice -->
+          <div class="cc-refund-newValue">
+            <s class="strike-through row col-md-12"
+            data-bind="currency: {price: $data.getCurrentSubTotal(),
+                                          currencyObj: $parents[1].priceListGroup().currency}">
+            </s>
+            <div class="row col-md-12"
+                 data-bind="currency: {price: $data.replacementItemPrice(),
+                                          currencyObj: $parents[1].priceListGroup().currency}">
+            </div>
+          </div>
+         <!-- /ko -->
+         <!-- ko ifnot: $data.currentPrice -->
+          <div class="cc-refund-newValue">
+            <span data-bind="currency: {price: $data.replacementItemPrice(),
+                                        currencyObj: $parents[1].priceListGroup().currency}">
+            </span>
+          </div>
+         <!-- /ko -->
+         <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove cc-text-overflow-table">
+            <a href="#" data-toggle="modal" data-bind="click: $parents[2].showAddressDetails.bind($parents[2], $data.shippingGroup.shippingAddress),
+                attr: { id: 'cc-orderdetails-multiship-' +  $data.catRefId + '-'+  $index() }">
+            <span data-bind="text: $parents[2].getTextForAddress($data.shippingGroup.shippingAddress)"></span></a>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <span data-bind="text: $data.shippingGroup.shippingMethod.shippingMethodDescription"></span>
+        </td>
+      </tr>
+       <!-- /ko -->
+       <!--  ko if: $index() != 0 -->
+          <tr data-bind="css: {'info': $data.isValid()}">
+           <td scope="col" class="cc-orderdetails-multiship-bottom-border-remove vert-align">
+           <div class="col-md-9 no-padding">
+            <!-- ko if: $data.quantityAvailableForReturn > 0  && !$data.nonreturnable-->
+            <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId + '-'+  $index()}">
+            <input
+                class="form-control"
+                data-bind="value: $data.selectedQuantity,
+                           valueUpdate: 'afterkeydown',
+                           attr: {id: 'cc-return-quantity-' + $data.catRefId + '-'+  $index(),
+                                  'aria-label' :
+                                      $data.selectedQuantity.error?
+                                        $data.selectedQuantity.error: $parents[2].translate('ariaQuantityText')} "/>
+            </label>
+            <span class="text-danger" role="alert"
+                data-bind="validationMessage: $data.selectedQuantity"></span>
+            <!-- /ko -->
+            <!-- ko if: $data.quantityAvailableForReturn === 0 || $data.nonreturnable -->
+              <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId + '-'+  $index()}">
+              <input
+                  class="form-control"
+                  data-bind="value: $data.selectedQuantity,
+                             enable: false,
+                             attr: {id: 'cc-return-quantity-' + $data.catRefId + '-'+  $index(),
+                             'aria-label' :
+                                      $data.selectedQuantity.error?
+                                        $data.selectedQuantity.error: $parents[2].translate('ariaQuantityText')} "/>
+          </label>
+          <!-- /ko -->
+         </div>
+         <div class="col-md-2">
+           <button  class="popover-dismiss return-pop" data-toggle="popover"
+             data-bind="infoPopover: {trigger: 'hover',container: '#cc-exchanges-orders',
+                                                placement: 'top',
+                                                name: 'return-quantity-popover', zIndex: 550,
+                                                minHeight: '110px', minWidth: '190px',
+                                                focusOn: '#cc-return-popover-close'},
+                           attr: {id: 'cc-return-popover-' + $data.catRefId + '-'+  $index(),
+                                 'aria-label': $data.quantityAvailableForReturnText +
+                                  $data.quantityAvailableForReturn}">
+              <span class="fa fa-info-circle"></span>
+            </button>
+         </div>
+         <br>
+         <!-- <p class="col-md-12">
+                <span class="text-danger font-13" role='alert' data-bind="text: $parents[2].configuratorDisableMessage()"></span>
+              </p>
+          -->
+        </td>
+        <td scope="col" class="vert-align cc-orderdetails-multiship-bottom-border-remove">
+        <!-- ko if: $data.quantityAvailableForReturn > 0 && !$data.nonreturnable-->
+        <label data-bind="attr: {for: 'cc-exchange-reasons' + $data.catRefId}">
+          <select class="form-control padding-left-3"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId + '-'+  $index()}">
+          </select>
+          </label>
+        <!-- /ko -->
+        <!-- ko if: $data.quantityAvailableForReturn === 0  || $data.nonreturnable -->
+        <label data-bind="attr: {for: 'cc-exchange-reasons' + $data.catRefId}">
+        <select class="form-control padding-left-3"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       enable: false,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId + '-'+  $index()}">
+        </select>
+        </label>
+        <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove scrollableTableCell vert-align " scope="col">
+          <div  class="row">
+            <!-- ko if: $data.replacementSkuId && $data.isValid()-->
+            <div class="col-md-12">
+              <span data-bind="text: $data.displayName"></span>
+
+              <div data-bind="template:{
+                  name: $parents[2].templateAbsoluteUrl('/templates/sku-options-external-data-view.template'), templateUrl: '',
+                  data: {
+                    actionCode: $data.actionCode,
+                    skuOptionInfo: replacementSkuOptionInfo,
+                    externalData: externalData
+                  }
+                }">
+              </div>
+              <!-- ko with: $data.skuDetailsViewModel -->
+              <div data-bind="attr: {
+                  id: 'cc-returnItem-subSkuItemDetails-view-exchange-' +
+                    ($data.configuratorId ? $data.configuratorId : $parent.catRefId) + '-' + $index()
+                },
+                  template: { name: $parents[3].templateAbsoluteUrl('/templates/subSku-items-view-exchange.template'), templateUrl: ''
+                }" class="childItemsTreeDisplay">
+              </div>
+              <!-- /ko -->
+              <!-- ko if: Object.keys($data.replacementDynamicProperties).length > 0 -->
+              <!-- ko foreach: $parents[1].lineAttributes() -->
+              <!-- ko if: $parent[id()]() != null -->
+             <div >
+                    <small>
+                    <!-- ko if: $parent.hasOwnProperty($data.id()) && ($parent[$data.id()]() !=  null) -->
+                    <span data-bind = "text: $data.label"></span> : <span data-bind = "text: $parent.replacementDynamicProperties()[id()]"></span><br>
+                    <!-- /ko -->
+                    </small>
+                    </div>
+             <!-- /ko -->
+             <!-- /ko -->
+              <!-- /ko -->
+             <br>
+             <!-- ko if: $data.quantityAvailableForReturn >= $data.selectedQuantity()-->
+               <!-- ko if: $data.backOrderableQuantity() > 0 -->
+                  <span class="title" data-bind="text: $data.backOrderableQuantity()"> </span>
+                  <span class="title" data-bind="widgetLocaleText: 'backOrderText'"> </span>
+               <!-- /ko -->
+               <!-- ko if: $data.preOrderableQuantity() > 0  -->
+                 <span class="title" data-bind="text: $data.preOrderableQuantity()"> </span>
+                 <span class="title" data-bind="widgetLocaleText: 'preOrderText'"> </span>
+               <!-- /ko -->
+               <!-- ko if: $data.availabilityDate() &&($data.preOrderableQuantity() > 0 || $data.backOrderableQuantity()) -->
+                 <span class="title" data-bind="widgetLocaleText: 'hiphenText'"></span>
+                 <span class="title" data-bind="widgetLocaleText: 'available'"> </span>
+                 <span class="title" data-bind="ccDate: {date: $data.availabilityDate(), returnedDate: 'medium'}"></span>
+               <!-- /ko -->
+             <!-- /ko -->
+               <div id="cc-customize-link" data-bind="visible: hasDynamicProperties ">
+                <label for="cc-customize-text" class="inline"
+                            data-bind="widgetLocaleText:$parents[2].translate('customizeText')"></label>
+                <a name="customize" href="#"
+                           data-bind="text:$parents[2].translate('customizeText'), click: $parents[2].handleCustomizeLineItem.bind($parents[2], $data),
+                           attr: {id: 'cc-customize-text-' + $data.catRefId + '-'+  $index()}">
+                </a>
+               </div>
+
+              <!-- ko ifnot: $data.isSkuActive() -->
+                <span class="text-danger font-13" data-bind="widgetLocaleText: 'itemUnavailableText'"></span>
+              <!-- /ko -->
+              <!-- ko ifnot: $data.isChildSkuActive()-->
+                <span class="text-danger font-13" data-bind="widgetLocaleText: 'childItemUnavailableText'"></span>
+                <!-- /ko -->
+              <br>
+                <div>
+                <!-- ko if: ( $data.skuOptionInfo() && $data.skuOptionInfo().length > 0 && $data.isProductActive() && $data.configuratorId  == undefined )-->
+                  <a name="changeItem" class="add-underline" href="#"
+                    data-bind="click: $parents[2].getProductDetails.bind($parents[2], $data.productId, $data.catRefId, $popupId, false),
+                    attr: {id: 'cc-select-items-link-' + $data.catRefId + '-'+  $index()}">
+                      <span data-bind="text:$parents[2].translate('changeItemText')"></span>
+                  </a>
+                <!-- /ko -->
+                </div>
+            </div>
+
+            <!-- /ko -->
+          </div>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove vert-align" scope="col">
+          <!-- ko if: $data.replacementItemPrice -->
+          <!-- ko if: $data.currentPrice -->
+          <div class="cc-refund-newValue">
+            <s class="strike-through row col-md-12"
+            data-bind="currency: {price: $data.getCurrentSubTotal(),
+                                          currencyObj: $parents[1].priceListGroup().currency}">
+            </s>
+            <div class="row col-md-12"
+                 data-bind="currency: {price: $data.replacementItemPrice(),
+                                          currencyObj: $parents[1].priceListGroup().currency}">
+            </div>
+          </div>
+         <!-- /ko -->
+         <!-- ko ifnot: $data.currentPrice -->
+          <div class="cc-refund-newValue">
+            <span data-bind="currency: {price: $data.replacementItemPrice(),
+                                        currencyObj: $parents[1].priceListGroup().currency}">
+            </span>
+          </div>
+         <!-- /ko -->
+         <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove cc-text-overflow-table">
+            <a href="#" data-toggle="modal" data-bind="click: $parents[2].showAddressDetails.bind($parents[2], $data.shippingGroup.shippingAddress),
+                attr: { id: 'cc-orderdetails-multiship-' +  $data.catRefId + '-'+  $index() }">
+            <span data-bind="text: $parents[2].getTextForAddress($data.shippingGroup.shippingAddress)"></span></a>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <span data-bind="text: $data.shippingGroup.shippingMethod.shippingMethodDescription"></span>
+        </td>
+      </tr>
+       <!-- /ko -->
+
+       <!-- /ko -->
+       <!-- /ko -->
+    <!-- /ko -->
+   </tbody>
+  </table>
+</div>
+<br/>
+
+<div class="col-md-12">
+  <div class="flex-bar">
+    <div class="flex-bar-end">
+      <button id="cc-exchange-cancel" class="cc-button-secondary secondarybackground cc-exchange-buttons-padding-top"
+         data-bind="click: backToOrderSummary.bind($data)">
+        <span data-bind="widgetLocaleText: 'cancel'"></span>
+      </button>
+      <button id="cc-exchange-create" class="cc-button-primary primarybackground cc-exchange-buttons-padding-top"
+        data-bind="click: createExchangeRequest, disable: createDisabled">
+        <span data-bind="widgetLocaleText: 'operationExchangeText'"></span>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+  <script type="text/html" id="return-quantity-popover">
+  <div>
+  <div class="col-md-12 pull-right datepickerHeaderIcons">
+    <a id="cc-return-popover-close" href="#" class="pull-right cc-popover-x" data-bind='click: close, makeAccess: {readerResource: "ns.returns:resources.close"}'><i class="fa fa-times"></i></a>
+  </div>
+  <div class="margin-onepercent">
+    <label class="quantity-popover-width" data-bind="text: $data.model.quantityShippedText"></label>
+    <span class="pull-right"
+        data-bind="text: $data.model.quantityShipped"></span>
+  </div>
+  <div class="margin-onepercent">
+    <label class="quantity-popover-width" data-bind="text: $data.model.quantityPreviouslyReturnedText"></label>
+    <span class="pull-right"
+        data-bind="text: $data.model.quantityReturned"></span>
+  </div>
+  <div class="margin-onepercent">
+    <label class="quantity-popover-width" data-bind="text: $data.model.quantityAvailableForReturnText"></label>
+    <span class="pull-right"
+        data-bind="text: $data.model.quantityAvailableForReturn"></span>
+  </div>
+</div>
+  </script>
+  
+  <script type="text/html" id="info-popover">
+  <div>
+  <div class="col-md-12 pull-right datepickerHeaderIcons">
+    <a id="cc-info-popover-close" href="#" class="pull-right cc-popover-x" data-bind='click: close, makeAccess: {readerResource: "ns.common:resources.closeText"}'><i class="fa fa-times"></i></a>
+  </div>
+  <div class="margin-onepercent">
+    <span data-bind="text: $data.model"></span>
+  </div>
+</div>
+
+  </script>
+
+<!-- Address book dynamic properties modal -->
+   <div id="cc-return-address-details-content"
+     data-bind="template: { name: $data.templateAbsoluteUrl('/templates/view-address-details.template'), templateUrl: '' }">
+   </div>
+
+ <!-- Item Customization modal -->
+   <div id="cc-return-customization-details-content"
+     data-bind="template: { name: $data.templateAbsoluteUrl('/templates/customization-modal.template'), templateUrl: '' }">
+   </div>
+
+<!-- /ko -->
+</div>

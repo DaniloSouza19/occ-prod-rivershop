@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_combo",
+  "version": 1,
+  "displayName": "NSH_Combo",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_combo",
+  "source": 101,
+  "javascript": "nsh_combo"
+}

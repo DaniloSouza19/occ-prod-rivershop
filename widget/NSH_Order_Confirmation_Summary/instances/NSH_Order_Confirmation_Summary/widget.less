@@ -1,0 +1,75 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+
+.order_confirmation_summary {
+
+  .title {
+    padding: 5px;
+    background: #ff1538;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+  .cont{
+    padding: 12px;
+    font-size: 17px;
+  }
+  small{
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+
+        /* -------------------------------------------------- */
+        /*  Confirmation Summary
+        /* -------------------------------------------------- */
+        #confirmation-summary {
+
+        
+          .confirmation-summary {
+            min-height: 20px;
+            
+            margin-bottom: 20px;
+            background-color: #FFF;
+
+            
+   
+          }
+        
+          .confirmation-total {
+            font-size: @fontSizeLarge;
+            font-weight: bold;
+            margin-top: 15px;
+            border-top: 2px solid @grayLighter;
+            padding-top: 10px;
+            .confirmation-total-ex-tax, .includingtaxtext {
+              font-size: @baseFontSize;
+              padding-bottom: 10px;
+            }
+          }
+        
+          .confirmation-sales-tax {
+            margin-top: 12px;
+          }
+        
+          .confirmation-gift-cards {
+            margin-top: 5px;
+          }
+          
+          /* FF makes continue shopping button too big without this */
+          .confirmation-continue-shopping {
+            a {
+              .btn-lg;
+              border-radius: @ButtonSecondaryBorderRadius;
+              min-height: 20px;
+            }
+          }
+        
+          #confirmationSummary-continueShopping {
+            white-space: normal;
+          }
+        }
+        
+
+}
+
+}

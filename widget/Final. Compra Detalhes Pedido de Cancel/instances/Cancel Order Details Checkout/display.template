@@ -1,0 +1,316 @@
+<!-- ko if: displayOrder -->
+<div id="CC-cancelOrderDetails">
+  <div id="CC-cancelOrderDetails-account-title" class="row">
+  <!-- ko with: originatingOrder -->
+    <div id="CC-myaccount-header" class="col-sm-7">
+      <h3 data-bind="widgetLocaleText:'createRuturnReqText'"> </h3><h3 data-bind="text:id"></h3>
+    </div>
+  <!-- /ko -->
+  <div id="CC-backToMyAccount" class="col-sm-5">
+      <a id="CC-backToMyAccount-link" href="#" data-bind="click: user().validatePrivilagePageRequest.bind(user()), ccLink: 'profile',
+        widgetLocaleText:'backToMyAccountLink'"></a>
+  </div>
+  </div>
+  <div id="CC-cancelOrderDetails-legend">
+  <legend id="CC-cancelOrderDetails-title" class="cc-profile-legend-title" data-bind="widgetLocaleText:'cancelOrderDetailsText'">Order Details</legend>
+  <!-- ko with: cancelOrderJSON().cancelOrder -->
+  <div>
+    <section id="CC-cancelOrderDetailsHeader" class="section-cancelOrderDetails">
+      <table id="CC-cancelOrderDetailsHeaderTable" role="presentation">
+        <tbody>
+          <tr>
+            <td><span class="titleText" data-bind="widgetLocaleText: 'profileNameText'"></span></td>
+            <td><span id="CC-cancelOrderDetails-customerName" data-bind="text: profile.firstName +' '+ profile.lastName"></span></td>
+          </tr> 
+          <tr>
+            <td><span class="titleText" data-bind="widgetLocaleText: 'profileEmailText'"></span></td>
+            <td><span id="CC-cancelOrderDetails-customerEmail" data-bind="widgetLocaleText: profile.email"></span></td>
+          </tr>
+          <tr>
+            <td><span class="titleText " data-bind="widgetLocaleText: 'orderDateText'"></span></td>
+            <td><span id="CC-cancelOrderDetails-orderDate" data-bind="ccDate: {date: $parent.originatingOrder().submittedDate? $parent.originatingOrder().submittedDate: $parent.originatingOrder().creationDate, returnedDate: 'medium'}"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <!-- /ko -->
+  </div>
+<!-- ko if: returnRequest -->
+<div id="CC-return-order-section">
+  <h4 id="CC-return-order-section-header" data-bind="widgetLocaleText: 'returnItemsText'">
+  </h4>
+  <div id="CC-return-order-section-description" data-bind="widgetLocaleText: 'itemsToBeReturnedText'">
+  </div>
+  <!-- ko setContextVariable:{name:'widgetViewModel',value:$data} -->
+  <!-- ko with: returnRequest -->
+  <table  data-bind="attr:{id: 'CC-returnItemDetailsTable'}" class="table returnItemDetailsTable" summary="Return Item Details">
+      <thead>
+        <tr>
+          <th colspan="2" data-bind="widgetLocaleText: 'itemText'" scope="row"></th>
+          <th data-bind="widgetLocaleText: 'priceText'" scope="col" class="centeredText"></th>
+          <th data-bind="widgetLocaleText: 'quantityText'" scope="col" class="centeredText"></th>
+        </tr>
+      </thead>
+      <tbody  data-bind="foreach: returnItemList">
+      <!-- ko setContextVariable:{name:'origCommerceItem',value:$widgetViewModel.getOriginalCommerceItemForReturnItem(commerceItemId)} -->
+        <tr>
+          <td class="image col-xs-1">
+              <a data-bind="ccLink:$data">
+                <img data-bind="attr:{id: 'CC-returnItemDetails-productImage-' +$widgetViewModel.getOriginalCommerceItemForReturnItem(commerceItemId).productId +catalogRefId, title:$origCommerceItem.productDisplayName}, productVariantImageSource: {src: $origCommerceItem, imageType: 'thumb', alt:$origCommerceItem.productDisplayName , errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'}"/>
+              </a>
+          </td>
+          <td scope="row" class="product-name col-xs-7">
+            <a data-bind="attr:{ target:'_blank',href:'/product/'+$origCommerceItem.productId},
+        text:$origCommerceItem.displayName"></a>
+           <!-- ko if: $origCommerceItem.variant -->  
+                  <div data-bind="attr: { id: 'CC-returnOrderDetails-productVariant'+ $origCommerceItem.productId + '-' + $origCommerceItem.catalogRefId }" >
+                    <small  data-bind="foreach: $origCommerceItem.variant"> 
+                      <!-- ko if: optionValue -->
+                        <span  class="col-xs-12" data-bind="widgetLocaleText : { value:'option', attr:'innerText', params: {optionName: optionName, optionValue: optionValue}},
+                         attr: { id: 'CC-returnOrderDetails-productOptions-'+$origCommerceItem.productId+ $origCommerceItem.catalogRefId + optionValue }">
+                        </span>
+                      <!-- /ko --> 
+                    </small>
+                  </div>
+                <!-- /ko -->
+          </td>
+          <td class="col-xs-3 centeredText" data-bind="attr: {id: 'CC-returnItemDetails-price-'+ $origCommerceItem.productId + '-' + catalogRefId}, currency: {price:  refundAmount,currencyObj: $widgetViewModel.site().getCurrency($data.itemCurrencyCode),nullReplace: '0.00', prependNull: true}"></td>
+          <td class="col-xs-3 centeredText" data-bind="attr: {id: 'CC-returnItemDetails-itemQuantity-'+ $origCommerceItem.productId + '-' + $data.catalogRefId}, text: quantityToReturn"></td>
+        </tr>
+        <!-- /ko -->
+      </tbody>
+  </table>
+    <!-- /ko -->
+    <!-- /ko -->
+</div>
+<!-- /ko -->
+</hr>
+<div id="CC-cancel-order-section">
+  <h4 id="CC-cancel-order-section-header" data-bind="widgetLocaleText: 'cancelledItemsText'">
+  </h4>
+  <div id="CC-cancel-order-section-description" data-bind="widgetLocaleText: 'itemsToBeCancelledText'">
+  </div>
+  <div id="CC-cancelOrderDetails-table">
+  <div>
+    <section class="section-cancelOrderDetails">
+      <!-- ko with: $data.cancelOrder-->    
+      <table id="CC-cancelOrderDetailsTable" class="table" summary="Order Details">
+        <thead>
+          <tr>
+            <th colspan="2" data-bind="widgetLocaleText: 'itemText'" scope="row"></th>
+            <th data-bind="widgetLocaleText: 'statusText'" scope="col" class="centeredText"></th>
+            <th data-bind="widgetLocaleText: 'quantityText'" scope="col" class="centeredText"></th>
+          </tr>
+        </thead>
+        <tbody  data-bind="foreach: items">
+          <tr>
+            <td class="image col-xs-1">
+              <!-- ko if: active -->
+                <a data-bind="ccLink:$data">
+                  <img data-bind="attr:{id: 'CC-cancelOrderDetails-productImage-' +productId +catRefId, title: primaryImageTitle}, productVariantImageSource: {src: $data, imageType: 'thumb', alt: primaryImageAltText, errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'}"/>
+                </a>
+              <!--/ko -->
+              <!-- ko if: (primaryThumbImageURL && !active) -->
+                <img data-bind="attr:{id: 'CC-cancelOrderDetails-productImage-' +productId +catRefId, title: primaryImageTitle}, productVariantImageSource: {src: $data, imageType: 'thumb', alt: primaryImageAltText, errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'}"/>
+              <!--/ko -->
+              <!-- ko ifnot: primaryThumbImageURL -->
+                <img data-bind="attr:{id: 'CC-cancelOrderDetails-productImage-' +productId +catRefId, src: '/img/no-image.jpg', alt: 'Missing Product Image'}"/>
+              <!--/ko -->
+            </td>
+            <td scope="row" class="product-name col-xs-7">
+                <!-- ko if: active -->
+                  <a data-bind="ccLink :$data, attr: { id: 'CC-cancelOrderDetails-productName-' + productId + '-' + catRefId }"></a>
+                <!--/ko -->
+                <!-- ko ifnot: active -->
+                  <span data-bind="attr: { id: 'CC-cancelOrderDetails-productName-' + productId + '-' + catRefId }, text: displayName" ></span>
+                <!--/ko -->
+                <!-- ko if: $data.actionCode -->
+                  (<span data-bind="text: actionCode"></span>)
+                <!-- /ko -->
+                <!-- ko if: variant -->  
+                  <div data-bind="attr: { id: 'CC-cancelOrderDetails-productVariant'+ productId + '-' + catRefId }" >
+                    <small  data-bind="foreach: variant"> 
+                      <!-- ko if: optionValue -->
+                        <span  class="col-xs-12" data-bind="widgetLocaleText : { value:'option', attr:'innerText', params: {optionName: optionName, optionValue: optionValue}},
+                         attr: { id: 'CC-cancelOrderDetails-productOptions-'+$parent.productId + $parent.catRefId + optionValue }">
+                        </span>
+                      <!-- /ko --> 
+                    </small>
+                  </div>
+                <!-- /ko -->
+                <!-- ko foreach: $data.externalData -->
+                <div>
+                  <small>
+                    <!-- ko with: values -->
+                      <span data-bind="text: $data.label"></span>
+                      <span data-bind="text: $data.displayValue"></span>
+                    <!-- /ko -->
+                    <!-- ko if: $data.actionCode -->
+                      (<span data-bind="text: actionCode"></span>)
+                    <!-- /ko -->
+                  </small>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: $data.configuratorId || $data.childItems -->
+                <div class="hidden-xs" data-bind="attr: { id: 'CC-cancelOrderDetails-productConfigurationDetails-' + productId + catRefId + $index()}">
+                  <small>
+                    <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-cancelOrderDetails-configDetails-' + productId + catRefId + $index()}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+                    <div data-bind="attr: { id: 'CC-cancelOrderDetails-configDetails-' + productId + catRefId + $index()}" class="collapse">
+                      <ul data-bind="template: {name: 'expand-item', foreach: $data.childItems}">
+                      </ul>
+                    </div>
+                  </small>
+                </div>
+                <!-- /ko -->
+                <div class="titleText">
+                  <!-- ko if: backOrderQuantity != null && backOrderQuantity > 0 && quantity > backOrderQuantity -->
+                    <span data-bind="text: $data.backOrderQuantity"></span>
+                    <span data-bind="widgetLocaleText: 'backOrderText'"></span>
+                    <span data-bind="visible: $data.availabilityDate, text: '-'"></span>
+                  <!-- /ko -->
+                  <!-- ko if: preOrderQuantity != null && preOrderQuantity > 0 && quantity > preOrderQuantity -->
+                    <span data-bind="text: $data.preOrderQuantity"></span>
+                    <span data-bind="widgetLocaleText: 'preOrderText'"></span>
+                    <span data-bind="visible: $data.availabilityDate, text: '-'"></span>
+                  <!-- /ko -->
+                  <!-- ko if: $data.availabilityDate != null -->
+                    <span data-bind="widgetLocaleText: 'availabilityDateText'"></span>
+                    <span data-bind="ccDate: {date: $data.availabilityDate},
+                    attr: { id: 'CC-cancelOrderDetails-item-date-' + $data.productId + '-' + $data.catRefId }"></span>
+                  <!-- /ko -->
+                </div>
+              </td>
+            <td class="col-xs-4 centeredText" data-bind="attr: {id: 'CC-cancelOrderDetails-itemStatus-'+ $data.productId + '-' + $data.catRefId}, text: state"></td>
+            <td class="col-xs-3 centeredText" data-bind="attr: {id: 'CC-cancelOrderDetails-itemQuantity-'+ $data.productId + '-' + $data.catRefId}, text: quantity"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- /ko -->
+    </section>
+  </div>
+  </div>
+</div>
+</div>
+<div id="CC-orderDetails-cancelOrder">
+   <button id="CC-order-details-cancelOrder-cancelbutton"  data-bind="click: $data.handleCancelClick.bind($data),
+   widgetLocaleText:'cancelButton'"  class="cc-button-primary col-sm-2 col-xs-12 pull-right"> </button>
+   <button id="CC-order-details-cancelOrder-confirmbutton"  data-bind="click: $data.handleConfirmCancelOrderClick.bind($data),
+   widgetLocaleText:'confirmButton'"  class="cc-button-primary col-sm-2 col-xs-12 pull-right"> </button>
+</div>
+<!-- /ko -->
+
+<script type='text/html' id='expand-item'>
+  <li style="display : inline;">
+    <!-- Expanding the childItems -->
+    <!-- ko if: !$data.childItems -->
+      <div>
+        <!-- ko if: !$data.addOnItem -->
+          <a data-bind="ccLink: $data">
+            <span data-bind="text: displayName"></span>
+          </a>
+          <!-- ko if: selectedOptions -->
+            <!-- ko foreach: selectedOptions -->
+              <!-- ko if: optionValue -->
+                (<span data-bind="widgetLocaleText : { value:'option', attr:'innerText', params: {optionName: optionName, optionValue: optionValue}},
+                attr: { id: 'CC-cancelOrderDetails-childProductOptions-'+$parent.productId + $parent.catRefId + optionValue }">
+                </span>)
+              <!-- /ko -->
+            <!-- /ko -->
+          <!-- /ko -->
+          <span class="currency" data-bind="currency: { price: $data.externalPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+          <!-- ko if: $data.actionCode -->
+            (<span data-bind="text: actionCode"></span>)
+          <!-- /ko -->
+          <!-- ko foreach: externalData -->
+            <div>
+              <!-- ko with: values -->
+                <span data-bind="text: $data.label"></span>
+                <span data-bind="text: $data.displayValue"></span>
+              <!-- /ko -->
+              <!-- ko if: $data.actionCode -->
+                (<span data-bind="text: actionCode"></span>)
+              <!-- /ko -->
+            </div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: $data.addOnItem -->
+          <br>
+          <strong>
+            <span data-bind="text: $data.displayName"></span>
+          </strong>
+          <span>&nbsp; - &nbsp;</span>
+          <span data-bind="currency: {price: $data.detailedItemPriceInfo[0].detailedUnitPrice, currencyObj: $parents[2].priceListGroup.currency}"></span>
+          <br>
+          <!-- ko foreach: Object.keys($data.shopperInput) -->
+            <span data-bind="text: $data"></span>
+            <span>: &nbsp;</span>
+            <span data-bind="text: $parent.shopperInput[$data]"></span><br>
+          <!-- /ko -->
+          <span data-bind="text: $data.displayName"></span>
+          <span>: &nbsp;</span>
+          <span data-bind="text: $data.catRefId"></span>
+          <br>
+        <!-- /ko -->
+      </div>
+    <!-- /ko -->
+    <!-- ko if: $data.childItems -->
+      <div class = "alignChild"><a data-bind="click: $widgetViewModel.toggleExpandedFlag.bind($data, $element), attr: { href: '#CC-cancelOrderDetails-configDetails-' + $data.id}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+        <!-- ko if: !$data.addOnItem -->
+          <a data-bind="ccLink: $data">
+            <span data-bind="text: displayName"></span>
+          </a>
+          <!-- ko if: selectedOptions -->
+            <!-- ko foreach: selectedOptions -->
+              <!-- ko if: optionValue -->
+                (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                optionValue: $data.optionValue}}">
+                </span>)
+              <!-- /ko -->
+            <!-- /ko -->
+          <!-- /ko -->
+          <!-- ko ifnot: ($data.expanded) -->
+            <span class="currency" data-bind="currency: { price: $data.amount, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+          <!-- /ko -->
+          <!-- ko if: ($data.expanded) -->
+            <span class="currency" data-bind="currency: { price: $data.externalPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+          <!-- /ko -->
+          <!-- ko if: $data.actionCode -->
+            (<span data-bind="text: actionCode"></span>)
+          <!-- /ko -->
+          <!-- ko foreach: externalData -->
+            <div>
+              <!-- ko with: values -->
+                <span data-bind="text: $data.label"></span>
+                <span data-bind="text: $data.displayValue"></span>
+              <!-- /ko -->
+              <!-- ko if: $data.actionCode -->
+                (<span data-bind="text: actionCode"></span>)
+              <!-- /ko -->
+            </div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: $data.addOnItem -->
+          <br>
+          <strong>
+            <span data-bind="text: $data.displayName"></span>
+          </strong>
+          <span>&nbsp; - &nbsp;</span>
+          <span data-bind="currency: {price: $data.detailedItemPriceInfo[0].detailedUnitPrice, currencyObj: $parents[2].priceListGroup.currency}"></span>
+          <br>
+          <!-- ko foreach: Object.keys($data.shopperInput) -->
+            <span data-bind="text: $data"></span>
+            <span>: &nbsp;</span>
+            <span data-bind="text: $parent.shopperInput[$data]"></span><br>
+          <!-- /ko -->
+          <span data-bind="text: $data.displayName"></span>
+          <span>: &nbsp;</span>
+          <span data-bind="text: $data.catRefId"></span>
+          <br>
+        <!-- /ko -->
+        <ul data-bind="template: {name: 'expand-item', foreach: $data.childItems}, attr: { id: 'CC-cancelOrderDetails-configDetails-' + $data.id}" class="collapse">
+        </ul>
+      </div>
+    <!-- /ko -->
+  </li>
+  </script>

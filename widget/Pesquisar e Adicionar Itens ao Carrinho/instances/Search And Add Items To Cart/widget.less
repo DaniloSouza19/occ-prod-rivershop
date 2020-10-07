@@ -1,0 +1,132 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+ .right-inner-addon {
+        position: relative;
+    }
+  .right-inner-addon input {
+        padding-right: 30px;
+    }
+  .right-inner-addon i {
+        position: absolute;
+        right: 0px;
+        padding: 10px 12px;
+        pointer-events: none;
+    }
+  #search-row {
+    margin-bottom: 30px;
+  }
+  
+  
+  .typeahead {
+    /*
+     * margin & width set in JS
+     */
+    padding: 10px;
+    border: 2px solid #ddd;
+  }
+
+  .typeahead li {
+    margin: 0;
+  }
+
+  .search ul.typeahead li,
+  .search ul.typeahead li,
+  .search ul.typeahead li.active,
+  .search ul.typeahead li.active {
+    background: white;
+  }
+
+  .form-search div.input-append {
+    text-align:right;
+  }
+
+  .typeahead li a {
+    .clearfix;
+    padding: 10px;
+  }
+
+  .typeaheadAllProducts {
+    .make-md-column(8);
+  }
+
+  .typeaheadClose {
+     .make-md-column(4);
+    .spanfix;   
+    .pull-right;
+  }
+
+  .typeahead li.typeaheadAllProducts a  {
+    text-align: left;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    color: @linkColor;
+    white-space: normal;
+  }
+
+  .typeahead li.typeaheadClose a {
+    text-align: right;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    color: @linkColor;
+    white-space: normal;
+    
+    @media (max-width: 979px) {
+      padding-right: 0px;
+      padding-left: 0px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    } 
+  }
+
+  .typeahead li.typeaheadAllProducts.active a,
+  .typeahead li.typeaheadClose.active a {
+    color: @dropdownLinkColorHover;
+  }
+
+  .typeahead li.typeaheadClose a {
+    text-align: right;
+  }
+  
+  .typeahead .typeaheadProduct {
+    border-bottom: 1px dotted #ddd;
+  }
+
+  .typeahead .firstResult {
+    clear: both;
+    border-top: 1px dotted #ddd;
+  }
+
+  .typeaheadProductThumbnail {
+    .make-md-column(3);
+    .spanfix;
+    .spanfirst;
+  }
+
+  .typeaheadProductName {
+    .make-md-column(6);
+    white-space: normal;
+    padding-top: 5px;
+    word-wrap: break-word;
+  }
+
+  .text-muted {
+    color: #696969;
+  }
+
+  .typeaheadProductPrice {
+    .make-md-column(3);
+    .pull-right;
+    text-align: right;
+    padding-left: 0px;
+    padding-right: 17px;
+    padding-top:5px;
+    padding-bottom: 0px;
+  }
+
+  .search-and-items-to-cart-headerText {
+    font-weight: 700;
+    border-bottom: 1px solid #A5A4A4;
+  }
+
+
+
+}

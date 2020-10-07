@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "dashboardText": "Painel",
+    "logoutText": "Log-out",
+    "ordersText": "Pedidos",
+    "helpText": "Ajuda",
+    "customersText": "Clientes",
+    "returnsText": "Processamento de Devoluções",
+    "brandText": "Commerce Cloud",
+    "skipToContent": "Ignorar conteúdo"
+  }
+}

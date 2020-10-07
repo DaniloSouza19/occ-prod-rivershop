@@ -1,0 +1,506 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<div class="header_home" data-bind="onRender: $widgetViewModel.rendered()">
+    <!-- ko ifnot: $widgetViewModel.isMobile() -->
+    <div class="header_fixes">
+        <div class="header-top pt-15 pb-15 d-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-5 text-center text-md-left mb-sm-15"><span class="header-top-text">Seja
+                            bem-vindo(a), EMPREENDIMENTOS SOUZA EIRELI</span></div>
+
+                    <div class="col-12 col-md-7">
+                        <div class="header-top-dropdown d-flex justify-content-center justify-content-md-end">
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changeAccount"
+                                    class="white"><span id="accountMenuName">Pedidos <i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="accountList" class="language-currency-list" style="display: none;">
+                                    <ul>
+                                        <li><a href="#/pedidos">Meus Pedidos</a></li>
+                                    </ul>
+                                </div>
+                            </div> <span class="separator pl-15 pr-15">|</span>
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changePayment"
+                                    class="white"><span id="paymentMenuName">Pagamentos <i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="paymentList" class="language-currency-list"
+                                    style="width: 300px; display: none;">
+                                    <ul>
+                                        <li class="selecionado"><a data-id="96131738-a99d-4265-8c0e-753ec9e99d01"
+                                                href="javascript:void(0)">28/35/42 -
+                                                Boleto Bancária</a></li>
+                                        <li class=""><a data-id="6e1df160-63c0-43c3-80cb-801a788bf5c1"
+                                                href="javascript:void(0)"> 7/14/21 -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="deaf46ef-7afa-4094-abe7-1a7e8059c5f7"
+                                                href="javascript:void(0)">21/28/35 -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="2dd687e3-f4f7-4ff1-88e2-feaa3fd1bc70"
+                                                href="javascript:void(0)">35 Dias -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="6fb927c1-4976-4f3d-956c-342483c342be"
+                                                href="javascript:void(0)">7 DIAS -
+                                                Boleto bancário</a></li>
+                                        <li class=""><a data-id="5c393380-b66d-485e-adf5-265832c4bb0f"
+                                                href="javascript:void(0)">7 DIAS -
+                                                COBRANCA BANCARIA</a></li>
+                                        <li class=""><a data-id="d13ae409-0344-48ed-a19a-81991147e8ee"
+                                                href="javascript:void(0)">21 DIAS -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="f03249a9-d8bf-4f4a-a747-e9a3af0ad16d"
+                                                href="javascript:void(0)">7 DIAS
+                                                (FARMA) - COBRANCA BANCARIA</a></li>
+                                        <li class=""><a data-id="0186c768-ca2b-4636-96d2-09d774cb2fa7"
+                                                href="javascript:void(0)">14/21/28 -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="822e28c2-ec2f-4948-8af7-bded3483d0b5"
+                                                href="javascript:void(0)">14 Dias -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="3da0ae9f-09aa-4b29-a492-b523382d246f"
+                                                href="javascript:void(0)">28 DIAS -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="77592f2f-ff8e-45cf-b89e-a3b4ac3a89c3"
+                                                href="javascript:void(0)">CARTAO DE
+                                                CREDITO</a></li>
+                                    </ul>
+                                </div>
+                            </div> <span class="separator pl-15 pr-15">|</span>
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changeCurrency"
+                                    class="white"><span id="currencyName"> Crédito<i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="currencyList" class="language-currency-list " style="display: none;">
+                                    <ul>
+                                        <li><a href="javascript:void(0)">R$
+
+                                                12.385,00</a></li>
+                                    </ul>
+                                </div>
+                            </div> <span class="separator pl-15 pr-15">|</span>
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changeLanguage"
+                                    class="white"><span id="languageName"><i class="fa fa-user"></i> <i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="languageList" class="language-currency-list " style="display: none;">
+                                    <ul>
+                                        <li><a href="#/faturas">Fatura e Títulos</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)">Sair</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-top pt-35 pb-35 pt-sm-20 pb-sm-20 d-block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-2 col-md-2  col-sm-3 text-md-left mb-sm-20">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/file/general/logo-vertical-river.b160c32.png" alt="Rio Vermelho"
+                                    class="logoTopo img-fluid"></a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8 col-md-6 col-sm-6 col-xs-12 mb-sm-20">
+
+                        <form class="search__content autocomplete_search"
+                            data-bind="submit: function(data, event) { $data.handleSearch.bind($data, $data, event)() }, event: { keydown : $data.handleKeyPress }">
+                            <div class="search-bar">
+                                <input autocomplete="off" class="search__item text-gray text__little" data-value=""
+                                    name="s" ngmodel="" type="text" placeholder="Faça sua pesquisa..."
+                                    data-bind="value: searchText, valueUpdate: 'afterkeydown', onRender: $widgetViewModel.initializeSearch($parent), event: { focus: searchSelected}" />
+                                <button class="search__button" type="submit"
+                                    data-bind="event: { keydown : hideSearchDropdown}">
+                                    <img src="/file/general/lnr-magnifier.svg" alt="Faça sua pesquisa...">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-12 col-lg-2 col-md-3 col-sm-3">
+                        <div
+                            class="menu-top-icons d-flex justify-content-center align-items-center justify-content-md-end">
+                            <div class="single-icon">
+                                <a data-bind="visible: cart().allItems().length == 0, ccLink : {route : '/cart'}"
+                                    id="cart-icon" class="carrinho">
+                                    <span class="contadorCarrinho red">
+                                        <span class="icon-cart-counter" data-bind="text: cartLinkText"></span>
+                                    </span>
+                                    <img src="/file/general/carrinho2.76f5e3a.png" class="iconeCarrinho">
+
+                                    <span class="priceTotal" data-bind="text:'R$ ' +  cart().total()"></span>
+
+                                </a>
+                                <a class="red addCard"
+                                    data-bind="visible: cart().allItems().length == 0, ccLink : {route : '/cart'}">FINALIZAR
+                                    COMPRA</span></a>
+                            </div>
+
+                            <div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="navigation-menu desktop">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-3 col-md-3">
+                            <div class="hero-side-category">
+                                <div class="category-toggle-wrap menuBotaoVermelho">
+                                    <button id="category" class="category-toggle">
+                                        <span class="icontext-align"><img
+                                                src="/file/general/lnr-text-align-left.svg"></span>
+                                        <b>DEPARTAMENTOS</b>
+                                        <img class="lnr lnr-chevron-down"
+                                            src="/file/general/lnr-chevron-down.svg"></span></button>
+                                </div>
+
+                                <div class="nav__content nav__large">
+
+                                    <div class="container">
+
+                                        <ul class="nav" data-bind="foreach: categories">
+
+                                            <li class="nav__item">
+
+                                                <!-- ko if: $data.childCategories -->
+                                                <i class="icon icon-arrowDown"></i><i class="icon icon-arrowUp"></i>
+                                                <!-- /ko -->
+                                                </a>
+                                                <!-- ko if: $data.childCategories -->
+
+                                                <ul class="nav__list" data-bind="foreach: childCategories">
+                                                    <li>
+                                                        <a class="nav__link text text-bold text-gray text-medium hasSubMenu"
+                                                            data-bind="ccLink : $data">
+                                                            <span data-bind="text: $data.displayName"></span>
+                                                            <!-- ko if: $data.childCategories -->
+                                                            <i class="icon icon-arrowpurpleRight"></i>
+                                                            <!-- /ko -->
+                                                        </a>
+                                                        <!-- ko if: $data.childCategories -->
+                                                        <ul class="list" data-bind="foreach: childCategories">
+
+                                                            <li>
+                                                                <a class="nav__link text text-bold text-white text-medium"
+                                                                    data-bind="ccLink : $data">
+                                                                    <span data-bind="text: $data.displayName"></span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- /ko -->
+                                                    </li>
+
+                                                </ul>
+
+                                                <!-- /ko -->
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <nav class="category-menu">
+                                    <ul></ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-9 col-md-9">
+                            <div class="main-menu">
+                                <nav>
+                                    <ul>
+                                        <li class="active  menu-item novoMenuItem cinza">
+                                            <a class="red">INICIO</a>
+                                        </li>
+
+                                        <li class="menu-item novoMenuItem cinza">
+                                            <a href="#/dicas">DICAS</a>
+
+                                        </li>
+                                        <li class="menu-item novoMenuItem cinza">
+                                            <a cla href="javascript:void(0)">CONTATO</a>
+
+                                        </li>
+                                        <li class="menuBotaoVermelho" style="background-color: rgb(237, 28, 58);"><a
+                                                href="#/categoria/Todos%20os%20Departamentos/0e4c6426-2df6-4875-a701-c814b90d8c20"
+                                                style="color: white;"><span style="color: rgb(237, 28, 58);">--</span><i
+                                                    class="fa fa-check" style="color: white;"></i> PRODUTOS
+                                                <span style="color: rgb(237, 28, 58);"></span></a></li>
+
+                                    </ul>
+                                </nav>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: $widgetViewModel.isMobile() -->
+    <div class="header_fixes mobile">
+        <div class="header-top pt-15 pb-15 d-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-5 text-center text-md-left mb-sm-15"><span class="header-top-text">Seja
+                            bem-vindo(a), EMPREENDIMENTOS SOUZA EIRELI </span></div>
+
+                    <div class="col-12 col-md-7">
+                        <div class="header-top-dropdown d-flex justify-content-center justify-content-md-end">
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changeAccount"
+                                    class="white"><span id="accountMenuName">Pedidos <i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="accountList" class="language-currency-list" style="display: none;">
+                                    <ul>
+                                        <li><a href="#/pedidos">Meus Pedidos</a></li>
+                                    </ul>
+                                </div>
+                            </div> <span class="separator pl-15 pr-15">|</span>
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changePayment"
+                                    class="white"><span id="paymentMenuName">Pagamentos <i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="paymentList" class="language-currency-list"
+                                    style="width: 300px; display: none;">
+                                    <ul>
+                                        <li class="selecionado"><a data-id="96131738-a99d-4265-8c0e-753ec9e99d01"
+                                                href="javascript:void(0)">28/35/42 -
+                                                Boleto Bancária</a></li>
+                                        <li class=""><a data-id="6e1df160-63c0-43c3-80cb-801a788bf5c1"
+                                                href="javascript:void(0)"> 7/14/21 -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="deaf46ef-7afa-4094-abe7-1a7e8059c5f7"
+                                                href="javascript:void(0)">21/28/35 -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="2dd687e3-f4f7-4ff1-88e2-feaa3fd1bc70"
+                                                href="javascript:void(0)">35 Dias -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="6fb927c1-4976-4f3d-956c-342483c342be"
+                                                href="javascript:void(0)">7 DIAS -
+                                                Boleto bancário</a></li>
+                                        <li class=""><a data-id="5c393380-b66d-485e-adf5-265832c4bb0f"
+                                                href="javascript:void(0)">7 DIAS -
+                                                COBRANCA BANCARIA</a></li>
+                                        <li class=""><a data-id="d13ae409-0344-48ed-a19a-81991147e8ee"
+                                                href="javascript:void(0)">21 DIAS -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="f03249a9-d8bf-4f4a-a747-e9a3af0ad16d"
+                                                href="javascript:void(0)">7 DIAS
+                                                (FARMA) - COBRANCA BANCARIA</a></li>
+                                        <li class=""><a data-id="0186c768-ca2b-4636-96d2-09d774cb2fa7"
+                                                href="javascript:void(0)">14/21/28 -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="822e28c2-ec2f-4948-8af7-bded3483d0b5"
+                                                href="javascript:void(0)">14 Dias -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="3da0ae9f-09aa-4b29-a492-b523382d246f"
+                                                href="javascript:void(0)">28 DIAS -
+                                                Boleto Bancário</a></li>
+                                        <li class=""><a data-id="77592f2f-ff8e-45cf-b89e-a3b4ac3a89c3"
+                                                href="javascript:void(0)">CARTAO DE
+                                                CREDITO</a></li>
+                                    </ul>
+                                </div>
+                            </div> <span class="separator pl-15 pr-15">|</span>
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changeCurrency"
+                                    class="white"><span id="currencyName"> Crédito<i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="currencyList" class="language-currency-list " style="display: none;">
+                                    <ul>
+                                        <li><a href="javascript:void(0)">R$
+
+                                                12.385,00</a></li>
+                                    </ul>
+                                </div>
+                            </div> <span class="separator pl-15 pr-15">|</span>
+                            <div class="single-dropdown"><a href="javascript:void(0)" id="changeLanguage"
+                                    class="white"><span id="languageName"><i class="fa fa-user"></i> <i
+                                            class="fa fa-angle-down"></i></span></a>
+                                <div id="languageList" class="language-currency-list " style="display: none;">
+                                    <ul>
+                                        <li><a href="#/faturas">Fatura e Títulos</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)">Sair</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-top pt-35 pb-35 pt-sm-20 pb-sm-20 d-block">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-12 col-lg-2 col-md-2  text-center text-md-left mb-sm-20">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/file/general/logo-vertical-river.b160c32.png" alt="Rio Vermelho"
+                                    class="logoTopo img-fluid"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-8 col-md-4 col-sm-12 col-xs-12 mb-sm-20 col-xs-12">
+
+                        <form class="search__content autocomplete_search"
+                            data-bind="submit: function(data, event) { $data.handleSearch.bind($data, $data, event)() }, event: { keydown : $data.handleKeyPress }">
+                            <div class="search-bar">
+                                <input autocomplete="off" class="search__item text-gray text__little" data-value=""
+                                    name="s" ngmodel="" type="text" placeholder="Faça sua pesquisa..."
+                                    data-bind="value: searchText, valueUpdate: 'afterkeydown', onRender: $widgetViewModel.initializeSearch($parent), event: { focus: searchSelected}" />
+                                <button class="search__button" type="submit"
+                                    data-bind="event: { keydown : hideSearchDropdown}">
+                                    <img src="/file/general/lnr-magnifier.svg" alt="Faça sua pesquisa...">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-12 col-lg-2 col-md-3 col-xs-12">
+                        <div
+                            class="menu-top-icons d-flex justify-content-center align-items-center justify-content-md-end">
+                            <div class="single-icon">
+                                <a data-bind="visible: cart().allItems().length == 0, ccLink : {route : '/cart'}"
+                                    id="cart-icon" class="carrinho">
+                                    <span class="contadorCarrinho red">
+                                        <span class="icon-cart-counter" data-bind="text: cartLinkText"></span>
+                                    </span>
+                                    <img src="/file/general/carrinho2.76f5e3a.png" class="iconeCarrinho">
+
+                                    <span class="priceTotal" data-bind="text:'R$ ' +  cart().total()"></span>
+
+                                </a>
+                                <a class="red addCard"
+                                    data-bind="visible: cart().allItems().length == 0, ccLink : {route : '/cart'}">FINALIZAR
+                                    COMPRA</span></a>
+                            </div>
+
+                            <div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="navigation-menu ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-3 col-md-4">
+                            <div class="hero-side-category">
+                                <div class="category-toggle-wrap menuBotaoVermelho">
+                                    <button id="category" class="category-toggle">
+                                        <span class="icontext-align"><img
+                                                src="/file/general/lnr-text-align-left.svg"></span>
+                                        <b>DEPARTAMENTOS</b>
+                                        <img class="lnr lnr-chevron-down"
+                                            src="/file/general/lnr-chevron-down.svg"></span></button>
+                                </div>
+
+                                <div class="nav__content nav__large">
+
+                                    <div class="container">
+
+                                        <ul class="nav" data-bind="foreach: categories">
+
+                                            <li class="nav__item">
+
+                                                <!-- ko if: $data.childCategories -->
+                                                <i class="icon icon-arrowDown"></i><i class="icon icon-arrowUp"></i>
+                                                <!-- /ko -->
+                                                </a>
+                                                <!-- ko if: $data.childCategories -->
+
+                                                <ul class="nav__list" data-bind="foreach: childCategories">
+                                                    <li>
+                                                        <a class="nav__link text text-bold text-gray text-medium hasSubMenu"
+                                                            data-bind="ccLink : $data">
+                                                            <span data-bind="text: $data.displayName"></span>
+                                                            <!-- ko if: $data.childCategories -->
+                                                            <i class="icon icon-arrowpurpleRight"></i>
+                                                            <!-- /ko -->
+                                                        </a>
+                                                        <!-- ko if: $data.childCategories -->
+                                                        <ul class="list" data-bind="foreach: childCategories">
+
+                                                            <li>
+                                                                <a class="nav__link text text-bold text-white text-medium"
+                                                                    data-bind="ccLink : $data">
+                                                                    <span data-bind="text: $data.displayName"></span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- /ko -->
+                                                    </li>
+
+                                                </ul>
+
+                                                <!-- /ko -->
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <nav class="category-menu">
+                                    <ul></ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-9">
+                            <div class="main-menu">
+                                <nav>
+                                    <ul class="">
+                                        <li class="active  menu-item novoMenuItem cinza col-12 col-lg-3">
+                                            <a class="red">INICIO</a>
+                                        </li>
+
+                                        <li class="menu-item novoMenuItem cinza col-12 col-lg-3">
+                                            <a href="#/dicas">DICAS</a>
+
+                                        </li>
+                                        <li class="menu-item novoMenuItem cinza col-xs-12">
+                                            <a cla href="javascript:void(0)">CONTATO</a>
+
+                                        </li>
+                                        <li class="menuBotaoVermelho col-12 col-lg-3"><a
+                                                href="#/categoria/Todos%20os%20Departamentos/0e4c6426-2df6-4875-a701-c814b90d8c20"
+                                                class="white"><i class="fa fa-check"></i> PRODUTOS
+                                            </a></li>
+
+                                    </ul>
+                                </nav>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /ko -->
+
+
+
+</div>
+</div>

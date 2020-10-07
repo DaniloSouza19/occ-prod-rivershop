@@ -1,0 +1,21 @@
+{
+  "imports": [
+    "confirmation",
+    "shippingCountries"
+  ],
+  "translations": [
+    {
+      "name": "Google Analytics Order Tracking",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": false,
+  "pageTypes": [
+    "confirmation"
+  ],
+  "config": {
+    "gaTrackingID": "UA-154598912-1"
+  }
+}

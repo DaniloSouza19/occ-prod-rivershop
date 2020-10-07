@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-in-stock",
+  "source": 100,
+  "type": "container",
+  "title": "In Stock",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

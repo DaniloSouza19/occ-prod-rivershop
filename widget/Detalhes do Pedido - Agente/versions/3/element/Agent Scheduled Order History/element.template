@@ -1,0 +1,79 @@
+<div class="row">
+<!-- ko if: $parent.display() -->
+<!-- ko if: $parent.isOwner() -->
+<!-- ko if: $data.scheduledOrder() && $data.scheduledOrder().executionStatusList().length -->
+<div class="col-md-12" id="cc-scheduledOrderExecutionList">
+  <div class="row" id="cc-scheduleOrderHistoryHeader">
+    <div class="col-md-4 cc-scheduledOrderHistory-header"
+      id="cc-scheduledOrderHistory-header"
+      data-bind="
+      visible: ($data.scheduledOrder().executionStatusList().length > 0)">
+      <h4 class="title agent-subheadings" id="cc-scheduled-order-history-title" 
+        data-bind="widgetLocaleText: 'scheduledOrderHistoryCaptionText'"></h4>
+    </div>
+  </div>
+  <table id="cc-scheduledOrderExecutionListTableHeader-table"
+    class="table-header-styling table table-bordered table-striped tableHeader cc-scheduled-history-table-header-column-layout"
+    data-bind="widgetLocaleText:{value:'scheduledOrderHistoryCaptionText',attr:'summary'},
+    visible: ($data.scheduledOrder().executionStatusList().length > 0)">
+    <thead>
+      <tr>
+        <th scope="col" data-bind="widgetLocaleText: 'orderId'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'orderDate'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'orderOutcome'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'orderFailureReason'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'orderTotal'"></th>
+      </tr>
+    </thead>
+  </table>
+  <div id="cc-scheduledOrderHistoryTblBodyContainer"
+    class="cc-scheduled-order-history-table-body-container"
+    data-bind="
+    visible: ($data.scheduledOrder().executionStatusList().length > 0)">
+    <table role='presentation'
+      class="table table-bordered table-striped table-header 
+      cc-scheduled-history-table-body-column-layout"
+      id="cc-scheduledExecutionListData-table"
+      data-bind="css: {'cc-scheduled-history-table-body-column-layout-scrollbar':
+      ($data.scheduledOrder().executionStatusList().length >= 4), 'cc-scheduled-history-table-body-column-layout'
+      :($data.scheduledOrder().executionStatusList().length < 4)}">
+      <tbody data-bind="foreach: $data.scheduledOrder().executionStatusList">
+        <tr>
+          <!-- ko if: $data.orderId -->
+          <td scope="col">
+            <a data-bind="attr: {href: '#',
+              id: 'CC-scheduledOrder-' + $data.orderId},
+              click: $parent.detailsLinkWithLocale.bind($parent, $data.orderId), 
+              text: $data.orderId">
+            </a>
+          </td>
+          <!-- /ko -->
+          <!-- ko ifnot: $data.orderId -->
+          <td scope="col">
+            <span class="text-danger" data-bind="widgetLocaleText:'failureText'"></span>
+          </td>
+          <!-- /ko -->
+          <td data-bind="ccDate: {date: $data.executionDate, returnedDate: 'default'}"
+           ></td>
+          <td data-bind="text : $parent.formatOrderOutcome($data)"
+           ></td>
+          <td data-bind="text : $data.errorMessages"
+           ></td>
+          <td class="text-right">
+            <span data-bind="currency: {
+              price:  $data.orderTotal,
+              currencyObj: $parent.scheduledOrder().templateOrder().priceListGroup ? $parent.scheduledOrder().templateOrder().priceListGroup.currency:
+              $parent.user().selectedPriceListGroup().currency }"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div id="cc-horizontalLine-scheduled-order-history">
+  <hr class="line agent-line col-xs-12">
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->
+</div>

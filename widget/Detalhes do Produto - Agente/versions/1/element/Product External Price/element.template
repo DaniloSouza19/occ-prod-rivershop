@@ -1,0 +1,1 @@
+<div data-bind="currency: {price: externalPrice(),currencyObj: site().selectedPriceListGroup().currency}" id="CC-prodDetails-externalPrice"></div>

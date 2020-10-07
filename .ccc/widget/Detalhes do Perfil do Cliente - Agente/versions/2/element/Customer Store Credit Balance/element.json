@@ -1,0 +1,8 @@
+{
+  "tag": "customer-store-credit-balance",
+  "source": 100,
+  "type": "fragment",
+  "title": "Customer Store Credit Balance",
+  "widgetType": "customerProfileDetails",
+  "version": 2
+}

@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_media",
+  "version": 1,
+  "displayName": "NSH_Media",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_media",
+  "source": 101,
+  "javascript": "nsh_media"
+}

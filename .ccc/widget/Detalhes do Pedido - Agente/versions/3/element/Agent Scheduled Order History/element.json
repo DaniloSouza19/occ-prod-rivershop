@@ -1,0 +1,8 @@
+{
+  "tag": "scheduled-order-executionList",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Scheduled Order History",
+  "widgetType": "agentAccountOrderDetails",
+  "version": 3
+}

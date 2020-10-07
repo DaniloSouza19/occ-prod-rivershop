@@ -1,0 +1,126 @@
+<div id="selfRegistrationDetail" class="container-fluid">
+  <div class="row titleLeftPadding">
+    <div class="col-md-10" id="backToSelfRegistration">
+      <!-- oc section : back-to-self-registration -->
+        <div data-bind="element: 'back-button'" class="back-button"></div>
+      <!-- /oc -->
+    </div>
+  </div>
+  <div class="row titleLeftPadding">
+    <!-- ko ifnot: $data.displayName() == null-->
+      <h3 data-bind="text: displayName"></h3>
+    <!-- /ko -->  
+  </div>
+<!--ko ifnot: $data.isMobile() -->
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    
+    <div id="selfRegistrationDetailTabs" class="hidden-xs">
+      <ul class="nav nav-tabs" role="tablist">
+      <!-- ko foreach : tabs -->
+        <li data-bind="attr:{id: id, class:'nav-item ' + cssClass()}, click: onClick"><a data-bind="widgetLocaleText: label, attr:{'href': href, 'data-toggle': tabToggle}" class="nav-link" role="tab" ></a></li>
+      <!-- /ko -->
+      </ul>
+    </div>
+  </div>
+<!-- /ko -->
+<!-- ko if: $data.isMobile() -->
+  <nav class="navbar" role="navigation" id="cc-mobile-menubar">
+    <div class="mega-menu">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle btn-navbar btn-inverse" 'data-toggle'="collapse" data-target="#mobile-menu-selfRegistrationDetail">
+          <span class="label-hidden" data-bind="widgetLocaleText: 'mobileNavBtnText'"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <h4 data-bind="text:'companyName'"></h4>
+      </div>
+      <div class="collapse navbar-collapse" id="mobile-selfRegistrationDetailTabs">
+      <ul class="nav">
+        <li class="active"><a data-toggle="tab" data-bind="widgetLocaleText : 'requestText'" href="#request_selfRegistrationDetail"></a></li>
+        <li data-bind="css:{disabled:false, pointerEventsClass: false}"><a data-bind="widgetLocaleText : 'generalText', attr:{'data-toggle': true ? 'tab':''}" href="#general_selfRegistrationDetail"></a></li>
+        <li data-bind="css:{disabled:true, pointerEventsClass: true}"><a data-bind="widgetLocaleText : 'contactText', attr:{'data-toggle': false ? 'tab':''}" href="#contact_selfRegistrationDetail"></a></li>
+        <li data-bind="css:{disabled:false, pointerEventsClass: false}"><a data-bind="widgetLocaleText : 'addressesText', click: loadAddressesTab, attr:{'data-toggle': true ? 'tab':''}" href="#addresses_selfRegistrationDetail"></a></li>
+      </ul>
+      </div>
+      </div>
+   </nav>
+<!-- /ko -->
+
+  <div class="container-fluid tab-content">
+    <div class="tab-pane active self-registration-details-tab" id="request_selfRegistrationDetail">
+      <!-- ko template: {name: templateAbsoluteUrl('/templates/selfRegistrationDetailsRequestTab.template') , templateUrl: ''} -->
+      <!-- /ko -->
+      
+      <!-- ko if: $data.requestTabDynamicProperties() && $data.requestTabDynamicProperties().length > 0 -->
+        <div>
+          <!-- ko setContextVariable:{name:'context', value: $data.requestTabDynamicProperties()} -->
+            <div data-bind="element:'dynamic-property'"></div>
+          <!-- /ko -->
+        </div> 
+      <!-- /ko -->
+    </div>
+    
+    <div class="tab-pane self-registration-details-tab" id="general_selfRegistrationDetail">
+      <div id="selfRegistrationDetail-organization-general"
+         data-bind="template: { name: templateAbsoluteUrl('/templates/selfRegistrationDetailsGeneralTab.template') , templateUrl: ''}">
+      </div>
+      <!-- ko if: $data.generalTabDynamicProperties().length > 0 -->
+        <!-- ko setContextVariable:{name:'context', value: $data.generalTabDynamicProperties} -->
+          <div data-bind="element:'dynamic-property'"></div>
+        <!-- /ko -->
+      <!-- /ko -->
+    </div>
+
+    <div class="tab-pane self-registration-details-tab" id="contact_selfRegistrationDetail">
+      <div id="selfRegistrationDetail-organization-contact"
+         data-bind="template: { name: templateAbsoluteUrl('/templates/selfRegistrationDetailsContactTab.template') , templateUrl: ''}">
+      </div>
+      <!-- ko if: $data.contactTabDynamicProperties().length > 0 -->
+        <!-- ko setContextVariable:{name:'context', value: $data.contactTabDynamicProperties} -->
+          <div data-bind="element:'dynamic-property'"></div>
+        <!-- /ko -->
+      <!-- /ko -->
+    </div>
+
+    <div class="tab-pane self-registration-details-tab" id="addresses_selfRegistrationDetail">
+      <!-- ko template: {name: templateAbsoluteUrl('/templates/selfRegistrationDetailsAddressesTab.template') , templateUrl: ''} -->
+      <!-- /ko -->
+
+      <!-- ko if:isEditMode() -->
+        <!-- ko if: $data.addressesTabDynamicProperties() && $data.addressesTabDynamicProperties().length > 0 -->
+          <!-- ko setContextVariable:{name:'context', value: $data.addressesTabDynamicProperties()} -->          
+            <div data-bind="element:'dynamic-property'"></div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <div id="organization-address-cancel-control" class="row">
+          <div class="col-md-10">
+            <button class="self-registration-address-secondary-button pull-right" id="organization-address-cancel" data-bind="click: handleCancel">
+              <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+            </button>
+          </div>
+        </div>
+      <!-- /ko -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="messageModal" data-backdrop="static" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" data-bind="widgetLocaleText: 'errorText'" ></h4>
+      </div>
+      <div class="modal-body">
+        <p data-bind="widgetLocaleText: 'approvedOrDeletedReqeustAlertText'" ></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="widgetLocaleText: 'okText'"></button>
+      </div>
+    </div>
+
+  </div>
+</div>

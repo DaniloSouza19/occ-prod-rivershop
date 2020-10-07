@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_shopper_context_selector",
+  "version": 1,
+  "displayName": "NSH_Shopper_Context_Selector",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_shopper_context_selector",
+  "source": 101,
+  "javascript": "nsh_shopper_context_selector"
+}

@@ -1,0 +1,104 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Imagem_10070",
+      "styles": {},
+      "tag": "image@30013",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "zoomEnabled": "0",
+        "fileName": "condor tips.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10069",
+      "styles": {},
+      "tag": "image@30012",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "link": "/chocolates_lacta/category/chocolates_lacta",
+        "zoomEnabled": "0",
+        "fileName": "CHOC LACTA.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10068",
+      "styles": {},
+      "tag": "image@30011",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Suco Uva Casa Madeira - Nova embalagem",
+        "zoomEnabled": "0",
+        "fileName": "Suco uva - Casa Madeira - TIPS.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10067",
+      "styles": {},
+      "tag": "image@30010",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "link": "/mix_protex/category/mix_protex",
+        "titleText": "protex",
+        "zoomEnabled": "0",
+        "fileName": "Dica 2.png"
+      }
+    }
+  ]
+}

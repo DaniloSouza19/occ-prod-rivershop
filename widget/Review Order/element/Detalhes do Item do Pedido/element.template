@@ -1,0 +1,451 @@
+<!-- ko setContextVariable:{name:'widgetViewModel',value:$parent} -->
+<!-- ko if: $data.cart().items().length > 0 -->
+
+  <!--  ko foreach: $data.cart().orderShippingGroups -->
+  <!-- ko setContextVariable:{name:'shippingGroupIdVariable',value:shippingGroupId} -->
+  <div   class="review-order-info table" >
+    <div class="hidden-xs row thead">
+        <div class="col-lg-4 col-sm-3" data-bind="widgetLocaleText: 'itemText'"></div>
+        <div class="col-lg-1 col-sm-2" data-bind="widgetLocaleText: 'quantityText'" class="text-center"></div>
+        <div class="col-lg-2 col-sm-2 text-center"data-bind="widgetLocaleText: 'itemTotalText'" class="text-center"></div>
+        <div class="col-lg-4 col-sm-4" data-bind="widgetLocaleText: 'shipToText'"></div>
+    </div>
+    
+    <!-- ko foreach: items  -->
+    <!-- ko foreach: $parents[1].cart().items -->
+    
+    <!-- ko if: $data.catRefId === $parent.catRefId && $data.productId === $parent.productId && $data.commerceItemId === $parent.commerceItemId-->
+    <div>
+      <div class="row item">
+         <!-- ko with: productData -->
+         <div class="image col-xs-4 col-sm-2 col-md-2 col-lg-2">
+           <img data-bind="productImageSource: {src: $data, imageType:'thumb',
+             alt: displayName,
+             errorSrc: '/img/no-image.jpg',
+             errorAlt: 'Missing Product Image'
+             }, attr:{id: 'CC-reviewOrder-productImage-' + $parent.productId + $parent.catRefId + $index() }">
+           </img>
+         </div>
+         
+         <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 text-center">
+         <span data-bind="text: displayName" class="name"></span>
+         <!-- ko foreach: $parent.selectedOptions -->
+         <!-- ko if: $index() < 5 -->
+           <div>
+             <small>
+               <span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                   optionValue: $data.optionValue}}"></span>
+             </small>
+           </div>
+         <!--/ko -->
+         <!-- /ko -->
+         <!-- ko with: $parent.discountInfo -->
+           <!-- ko foreach: $data -->
+             <div>
+               <!-- ko ifnot: $data.coupon -->
+                 <small data-bind="text: promotionDesc, 
+                     attr: { id: 'CC-reviewOrder-itemDesc-' + $parents[1].id + '-' + $index() }">
+                 </small>
+               <!-- /ko -->
+               <!-- ko if : $data.coupon -->
+                 <small data-bind="attr: { id: 'CC-reviewOrder-itemDesc-' + $parents[1].id + '-' + $index() }, 
+                     widgetLocaleText : {value:'couponDisplayText', attr: 'innerText', 
+                     params: {description: promotionDesc, code : coupon}}">
+                 </small>
+               <!-- /ko -->
+             </div>
+           <!-- /ko -->
+         <!-- /ko -->
+         
+         <!-- ko if: $parent.configuratorId || $parent.childItems -->
+		 <div class="hidden-xs" data-bind="attr: { id: 'CC-reviewOrder-productConfigurationDetails-' + $parent.productId + $parent.catRefId + $parent.commerceItemId + $shippingGroupIdVariable}">
+		   <small>
+			 <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-reviewOrder-configDetails-' + $parent.productId + $parent.catRefId + $parent.commerceItemId + $shippingGroupIdVariable}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+			 <div data-bind="attr: { id: 'CC-reviewOrder-configDetails-' + $parent.productId + $parent.catRefId + $parent.commerceItemId + $shippingGroupIdVariable}" class="collapse">
+			   <ul data-bind="template: {name: 'expand-item', foreach: $parent.childItems}">
+						
+				 <li>
+				   <strong>
+					 <span data-bind="text: displayName"></span> x <span data-bind="text: quantity"></span>
+				   </strong>
+				   <!-- ko if: $data.actionCode -->
+					 (<span data-bind="text: actionCode"></span>)
+				   <!-- /ko -->
+				   <!-- ko foreach: externalData -->
+					 <div>
+					   <!-- ko with: values -->
+						 <span data-bind="text: $data.label"></span>
+						 <span data-bind="text: $data.displayValue"></span>
+					   <!-- /ko -->
+					   <!-- ko if: $data.actionCode -->
+						 (<span data-bind="text: actionCode"></span>)
+					   <!-- /ko -->
+					 </div>
+				   <!-- /ko -->
+				 </li>
+			   </ul>
+			 </div>
+		   </small>
+		 </div>
+         <!-- /ko -->
+         
+         <!-- ko if: $parent.productData().shippingSurcharge -->
+         <div id="CC-reviewOrder-shippingSurcharge">
+           <span data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+           <span data-bind="currency: {price: $parent.productData().shippingSurcharge, currencyObj: $parents[3].site().selectedPriceListGroup().currency},
+               attr: { id: 'CC-reviewOrder-shippingSurcharge-' + $parent.productId + $parent.catRefId }"></span>
+         </div>
+         <!-- /ko -->
+         </div>
+         <div class="col-xs-1 text-center hidden-xs" data-bind="ccNumber: $parents[1].quantity"></div>
+         <div class="col-xs-2 text-center hidden-xs" data-bind="currency: {price: $widgetViewModel.getDetailedPriceInfo($parents[1].detailedItemPriceInfo), currencyObj: $parents[3].site().selectedPriceListGroup().currency}"></div>
+         
+               
+         <!-- /ko --> <!-- end of with product data -->
+         <div class="col-xs-4 hidden-xs">
+         <!-- ko if: $parents[1].shippingMethod.shippingMethodDescription === 'inStorePickupShippingGroup' -->  
+           <strong data-bind="widgetLocaleText: 'pickupInStoreLabel'"></strong><br/>
+           <span  data-bind="text: $parents[1].store.name" ></span><br/>
+           <span data-bind="text: $parents[1].store.address1"></span>
+           <span data-bind="text: $parents[1].store.address2"></span>,
+           <span data-bind="text: $parents[1].store.city"></span><br/>
+           <span data-bind="text: $parents[1].store.country"></span>,
+           <span data-bind="text: $parents[1].store.stateAddress"></span>,
+           <span data-bind="text: $parents[1].store.postalCode"></span>
+           <span data-bind="text: $parents[1].store.email"></span><br/>
+           <span data-bind="text: $parents[1].store.phoneNumber"></span><br/>
+           <span data-bind="text: $parents[1].store.faxNumber"></span>
+         <!-- /ko -->
+         
+         <!-- ko if: $parents[1].shippingMethod.shippingMethodDescription !== 'inStorePickupShippingGroup' -->  
+           
+           <!-- ko if: $parents[1].shippingAddress && Object.keys($parents[1].shippingAddress).length !== 0-->
+           <!-- ko with: $parents[1].shippingAddress -->
+             <span data-bind="widgetLocaleText : {value: 'fullName', attr: 'innerText', 
+                          params: {firstName: firstName, lastName: lastName}}"></span><br />
+                          
+             <span data-bind="text: address1"></span>,<br />
+	         <!-- ko if: address2 -->
+	           <span data-bind="text: address2"></span>,<br />
+	         <!-- /ko -->
+	         <!-- ko if: state --> 
+	           <span data-bind="widgetLocaleText : {value: 'cityStatePostalCode', attr: 'innerText',
+	                params: {city: city, state: state, postalCode: postalCode}}"></span><br />
+	         <!-- /ko --> 
+	         <!-- ko ifnot: state --> 
+	           <span data-bind="widgetLocaleText : {value: 'cityPostalCode', attr: 'innerText', 
+	                params: {city: city, postalCode: postalCode}}"></span><br />
+	         <!-- /ko --> 
+	         <span data-bind="text: country"></span><br />     
+                   
+           <!-- /ko -->
+           <!-- /ko -->
+           <strong><span data-bind="widgetLocaleText: 'shippingMethodText'" ></span>
+           <span data-bind="text: $parents[1].shippingMethod.shippingMethodDescription"></span></strong><br/>
+         <!-- /ko -->
+       
+         </div>
+       </div>
+       <div class="visible-xs shipping-details-mobile">
+         <div class="bold" data-bind="widgetLocaleText: 'shipToText'"></div>
+         <!-- ko if: $parents[1].shippingMethod.shippingMethodDescription === 'inStorePickupShippingGroup' -->  
+           <strong data-bind="widgetLocaleText: 'pickupInStoreLabel'"></strong><br/>
+           <span  data-bind="text: $parents[1].store.name" ></span><br/>
+           <span data-bind="text: $parents[1].store.address1"></span>
+           <span data-bind="text: $parents[1].store.address2"></span>,
+           <span data-bind="text: $parents[1].store.city"></span><br/>
+           <span data-bind="text: $parents[1].store.country"></span>,
+           <span data-bind="text: $parents[1].store.stateAddress"></span>,
+           <span data-bind="text: $parents[1].store.postalCode"></span>
+           <span data-bind="text: $parents[1].store.email"></span><br/>
+           <span data-bind="text: $parents[1].store.phoneNumber"></span><br/>
+           <span data-bind="text: $parents[1].store.faxNumber"></span>
+         <!-- /ko -->
+
+         <!-- ko if: $parents[1].shippingMethod.shippingMethodDescription !== 'inStorePickupShippingGroup' -->  
+
+           <!-- ko if: $parents[1].shippingAddress && Object.keys($parents[1].shippingAddress).length !== 0  -->
+           <!-- ko with: $parents[1].shippingAddress -->
+             <span data-bind="widgetLocaleText : {value: 'fullName', attr: 'innerText',
+                          params: {firstName: firstName, lastName: lastName}}"></span><br />
+
+             <span data-bind="text: address1"></span>,<br />
+	         <!-- ko if: address2 -->
+	           <span data-bind="text: address2"></span>,<br />
+	         <!-- /ko -->
+	         <!-- ko if: state -->
+	           <span data-bind="widgetLocaleText : {value: 'cityStatePostalCode', attr: 'innerText',
+	                params: {city: city, state: state, postalCode: postalCode}}"></span><br />
+	         <!-- /ko -->
+	         <!-- ko ifnot: state -->
+	           <span data-bind="widgetLocaleText : {value: 'cityPostalCode', attr: 'innerText', 
+	                params: {city: city, postalCode: postalCode}}"></span><br />
+	         <!-- /ko -->
+	         <span data-bind="text: country"></span><br/>
+
+           <!-- /ko -->
+           <!-- /ko -->
+           <strong><span data-bind="widgetLocaleText: 'shippingMethodText'" ></span>
+           <span data-bind="text: $parents[1].shippingMethod.shippingMethodDescription"></span></strong><br/>
+         <!-- /ko -->
+         </div>
+         <div class="row visible-xs padding-border">
+           <div data-bind="widgetLocaleText: 'quantityText'" class="col-xs-4 bold quantity"></div>
+           <div class="col-xs-4" data-bind="ccNumber: $parent.quantity"></div>
+           <div class="col-xs-3 text-right total" data-bind="currency: {price: $widgetViewModel.getDetailedPriceInfo($parent.detailedItemPriceInfo), currencyObj: $parents[2].site().selectedPriceListGroup().currency}"></div>
+         </div>
+     </div>
+     <!-- /ko --> <!-- end of cart items check -->
+     
+     <!-- /ko --> <!-- end of parentcart items -->
+       
+     <!-- /ko --> <!-- end of items in orderShippingGroups-->
+  </div>
+
+  <!-- ko if: shippingMethod.shippingMethodDescription === 'inStorePickupShippingGroup' -->
+  <!-- ko if:firstName -->
+	<div class="paddingTop">
+	  <span class="titleText" data-bind="widgetLocaleText: 'pickUpDetailsText'" ></span><br><br>
+	  <span data-bind="widgetLocaleText: 'pickUpCollectText'"></span><br/>
+	  <span data-bind="text: firstName"></span>
+	  <span data-bind="text: middleName"></span>
+	  <span data-bind="text: lastName"></span><br/>
+	  <span data-bind="text: phoneNumber"></span>
+	</div><hr>
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- /ko -->  <!-- end of shippingGroupId Context -->
+  <!-- /ko -->  <!-- end of orderShippingGroups -->
+
+  <div id="reviewOrder-orderSummary" class="visible-xs">
+    <!-- ko with: $data.cart() -->
+    <!-- Sub-Total -->
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+          <span id="reviewOrder-orderSummary-subTotal-label" class="titleText" data-bind="widgetLocaleText: 'subtotalText'"></span>
+        </div>
+        <div class="col-xs-4 text-right">
+          <span id="reviewOrder-orderSummary-subTotal-value" class="titleText " 
+              data-bind="currency: { price: subTotal(), currencyObj: $parent.site().selectedPriceListGroup().currency },
+              attr: { id:'reviewOrder-orderSummary-productDetails-subTotal' }"></span>
+        </div>
+      </div>
+
+    <!-- Discount -->
+    <!-- ko if: orderDiscount() -->
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+          <span id="reviewOrder-orderSummary-discount-label" class="titleText" data-bind="widgetLocaleText: 'discountText'"></span>
+        </div>
+        <div class="col-xs-4 text-right">
+          <span id="reviewOrder-orderSummary-discount-value" class="breakWord titleText"
+              data-bind="currency: { price: -orderDiscount(), currencyObj: $parent.site().selectedPriceListGroup().currency}">
+          </span>
+        </div>
+      </div>
+    <!-- /ko -->
+
+    <!-- Shipping -->
+    <!-- ko if: $parent.order().selectedShippingOption() -->
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+          <span id="reviewOrder-orderSummary-shippingMethod-value" class="breakWord titleText"
+              data-bind="widgetLocaleText: {value: 'shippingMethodValueText', attr: 'innerText', 
+              params: {shippingMethod :$parent.order().selectedShippingOption().shippingOption.displayName}}">
+          </span>
+        </div>
+        <div class="col-xs-4 text-right">
+          <span id="reviewOrder-orderSummary-shippingPrice-value" class="titleText"
+              data-bind="currency: { price: shipping(), currencyObj: $parent.site().selectedPriceListGroup().currency}">
+          </span>
+        </div>
+      </div>
+    <!-- /ko -->
+    <!-- ko if: shippingDiscount() !== 0 -->
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+          <span id="reviewOrder-orderSummary-shippingDiscount-label" class="titleText"
+              data-bind="widgetLocaleText: 'shippingDiscountText'">
+          </span>
+        </div>
+        <div class="col-xs-4 text-right">
+          <span id="reviewOrder-orderSummary-shippingDiscount-value" class="breakWord titleText"
+              data-bind="currency: { price: -shippingDiscount(), currencyObj: $parent.site().selectedPriceListGroup().currency}">
+          </span>
+        </div>
+      </div>
+    <!-- /ko -->
+
+    <!-- Shipping Surcharge -->
+    <!-- ko if: shippingSurcharge() &&  shippingSurcharge() !== 0 -->
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+          <span id="reviewOrder-orderSummary-shippingSurcharge-label" class="titleText"
+              data-bind="widgetLocaleText: 'shippingSurchargeText'">
+          </span>
+        </div>
+        <div class="col-xs-4 text-right">
+          <span id="reviewOrder-orderSummary-shippingSurcharge-value" class="titleText"
+              data-bind="currency: { price: shippingSurcharge(), currencyObj: $parent.site().selectedPriceListGroup().currency}">
+          </span>
+        </div>
+      </div>
+    <!-- /ko -->
+
+    <!-- Sales Tax -->
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-2">
+          <span id="reviewOrder-orderSummary-salesTax-label" class="titleText" data-bind="widgetLocaleText: 'salesTaxText'">
+          </span>
+        </div>
+        <div class="col-xs-4 text-right">
+          <span id="reviewOrder-orderSummary-salesTax-value" class="titleText"
+              data-bind="currency: { price: tax(), currencyObj: $parent.site().selectedPriceListGroup().currency}">
+          </span>
+        </div>
+      </div>
+      <!-- ko if: orderDiscountDescList() -->
+        <small data-bind="foreach: orderDiscountDescList">
+          <div class="row">
+            <div class="discount col-xs-6 col-xs-offset-2">
+              <span data-bind="widgetLocaleText :promotionDesc, 
+                  attr: { id: 'reviewOrder-orderSummary-orderDiscountDescList-'+$parent.promotionId}">
+              </span>
+            </div>
+          </div>
+        </small>
+      <!-- /ko -->
+      <!-- ko if: claimedCouponMultiPromotions -->
+        <small data-bind="foreach: claimedCouponMultiPromotions">
+          <div data-bind="foreach: $data.promotions()" class="row">
+            <!-- ko if: $index() == "0" -->
+              <div class="discount col-xs-6 col-xs-offset-2">
+                <span data-bind="widgetLocaleText : {value:'orderCouponDisplayText',
+                    attr: 'innerText', params: {description: promotionDesc(), code : $parent.code()}}">
+                </span>
+              </div>
+            <!-- /ko -->
+            <!-- ko ifnot: $index() == "0" -->
+              <div class="discount col-xs-6 col-xs-offset-2">
+                <span data-bind="text: promotionDesc()">
+                </span>
+              </div>
+            <!-- /ko -->
+          </div>
+        </small>
+      <!-- /ko -->
+
+    <!-- Order Total -->
+      <div class="row" id="reviewOrder-orderSummary-orderTotal">
+        <div class="col-xs-6 col-xs-offset-2">
+          <span id="reviewOrder-orderSummary-orderTotal-label" class="titleText" data-bind="widgetLocaleText: 'orderTotalText'">
+          </span>
+        </div>
+        <div class="col-xs-4 text-right">
+          <span id="reviewOrder-orderSummary-orderTotal-value" class="titleText"
+              data-bind="currency: { price: total(), currencyObj: $parent.site().selectedPriceListGroup().currency}">
+          </span>
+        </div>
+      </div>
+
+    <!-- /ko -->
+  </div>
+  <!-- /ko -->
+  <!-- /ko -->
+  <script type='text/html' id='expand-item'>
+  <li style="display : inline;">
+    <!-- Expanding the childItems -->
+    <!-- ko if: !$data.childItems -->
+      <!-- ko if: !$data.addOnItem -->
+        <div><a data-bind="ccLink: productData, attr: { id: 'CC-reviewOrder-configDetails-' + $data.repositoryId}"><span data-bind="text: displayName"></span></a>
+        <!-- ko foreach: $data.selectedOptions -->
+          <!-- ko if: $data.optionValue -->
+            (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+            optionValue: $data.optionValue}},
+            attr: { id: 'CC-reviewOrder-childProductOptions-'+ $parents[1].productId + $parents[1].catRefId  + ($parents[1].commerceItemId ? $parents[1].commerceItemId: '') + $parents[1].removeSpaces($data.optionValue)}">
+            </span>)
+          <!-- /ko --> 
+        <!-- /ko -->
+        <span data-bind="currency: { price: $data.externalPrice(), currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+        <!-- ko foreach: externalData -->
+        <div>
+          <small>
+            <!-- ko with: values -->
+              <span data-bind="text: $data.label"></span>:
+              <span data-bind="text: $data.displayValue"></span>
+            <!-- /ko -->
+            <!-- ko if: actionCode -->
+              (<span data-bind="text: actionCode"></span>)
+            <!-- /ko -->
+          </small>
+        </div>
+        <!-- /ko -->
+        </div>
+      <!-- /ko -->
+      <!-- ko if: $data.addOnItem -->
+      <!-- ko if: $data.productData -->
+      <br>
+      <div data-bind="attr: {id: 'CC-reviewOrder-productAddonItems-' + $parents[1].productId + $parents[1].catRefId + $parents[1].commerceItemId + $index()}">
+        <strong>
+          <span data-bind="text: $data.productData().displayName"></span>
+          <span>&nbsp; - &nbsp;</span>
+          <!-- ko if: ($data.detailedItemPriceInfo) -->
+            <span data-bind="currency:{price:$data.detailedItemPriceInfo()[0].detailedUnitPrice, currencyObj:$widgetViewModel.site().selectedPriceListGroup().currency}"></span>
+          <!-- /ko -->
+          <a href="#" data-bind="click: $parents[4].handleRemoveAddonFromCart.bind($parents[4], $data) ">
+            <img data-bind="widgetLocaleText : {value:'handleRemoveAddonFromCart', attr:'alt'},
+            attr:{id:'CC-reviewOrder-removeAddonItem-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }" src="/img/remove.png" alt="Remove">
+          </a>
+        </strong>
+        <br>
+        <!-- ko if: $data.shopperInput -->
+          <!-- ko foreach: Object.keys($data.shopperInput) -->
+            <span data-bind="text: $data"></span>
+            <span>: &nbsp;</span>
+            <span data-bind="text: $parents[0].shopperInput[$data]"></span><br>
+          <!-- /ko -->
+        <!-- /ko -->
+        <span data-bind="text: $data.productData().displayName"></span>
+        <span>: &nbsp;</span>
+        <span data-bind="text: $data.catRefId"></span>
+        <br>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: $data.childItems -->
+    
+      <div class = "alignChild"><a data-bind="click: $widgetViewModel.setExpandedFlag.bind($data, $element), attr: { href: '#CC-reviewOrder-configDetails-' + $data.commerceItemId + $shippingGroupIdVariable + $data.repositoryId}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a> <a data-bind="ccLink: productData"><span data-bind="text: displayName"></span></a>
+        <!-- ko foreach: $data.selectedOptions -->
+                <!-- ko if: $data.optionValue -->
+                  (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                  optionValue: $data.optionValue}},
+                  attr: { id: 'CC-reviewOrder-productOptions-'+ $parents[0].repositoryId + $parents[0].removeSpaces($data.optionValue)}">
+                  </span>)
+                <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko ifnot: ($data.expanded) -->
+         <span data-bind="if: $data.expanded,currency: { price: $data.itemTotal(), currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+        <!-- /ko -->
+        <!-- ko if: ($data.expanded) -->
+         <span data-bind="currency: { price: $data.externalPrice(), currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+         <!-- /ko -->
+        <!-- ko foreach: externalData -->
+          <div>
+            <small>
+              <!-- ko with: values -->
+                <span data-bind="text: $data.label"></span>:
+                <span data-bind="text: $data.displayValue"></span>
+              <!-- /ko -->
+              <!-- ko if: actionCode -->
+                (<span data-bind="text: actionCode"></span>)
+              <!-- /ko -->
+            </small>
+          </div>
+        <!-- /ko -->
+        <ul data-bind="template: {name: 'expand-item', foreach: $data.childItems}, attr: { id: 'CC-reviewOrder-configDetails-' + $data.commerceItemId + $shippingGroupIdVariable + $data.repositoryId}" class="collapse">
+        </ul>
+      </div>
+    <!-- /ko -->
+  </li>
+  </script>

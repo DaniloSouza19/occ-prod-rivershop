@@ -1,0 +1,8 @@
+{
+  "tag": "cart-shipping-title",
+  "source": 100,
+  "type": "fragment",
+  "title": "Título de Remessa",
+  "widgetType": "cartShippingDetails",
+  "version": 14
+}

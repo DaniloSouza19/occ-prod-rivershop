@@ -1,0 +1,185 @@
+{
+  "imports": [
+    "shippingCountries",
+    "defaultShippingCountry"
+  ],
+  "translations": [
+    {
+      "name": "NSH_Profile_Address_Book [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Profile_Address_Book",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Profile_Address_Book [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

@@ -1,0 +1,229 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+
+    .footer {
+        margin-top: 60px;
+
+        .accountMenuName a {
+            color: @color-zero;
+    
+    
+    
+        }
+    
+        span._nameAccount {
+            font-weight   : 500;
+            text-transform: uppercase;
+        }
+    
+        .iconAccont {
+            width : 30px;
+            height: 40px;
+            float : left;
+    
+            @media (min-width: 993px) {
+                padding-top: 4px;
+            }
+        }
+    
+        .single-icon.carrinho a:hover {
+            text-decoration: none;
+    
+        }
+
+        .user{
+            @media screen and (max-width: 1200px){
+            margin-top: 20px;
+            }
+            @media screen and (max-width: 768px) {
+                text-align: center;
+            }
+        }
+
+        .logo{
+            @media screen and (max-width:768px) {
+                  text-align: center;  
+            }
+            
+        }
+
+        .info{
+            @media screen and (max-width:768px) {
+                display: flex;
+                justify-content: center;
+          }
+        }
+
+        .blocks{
+            @media screen and (max-width:768px) {
+                text-align: center;  
+          }
+        }
+
+        footer {
+            background-color: @color-two;
+            padding         : 38px 0 38px 0;
+            color           : @color-zero;
+
+
+            .link {
+                color: @color-zero;
+            }
+
+            ul.links {
+                margin-top: 15px;
+                @media screen and (max-width: 455px) {
+                    display: flex;
+                }
+                li {
+                    float       : left;
+                    margin-right: 20px;
+                    font-size     : 13px;
+                    line-height   : 15px;
+                    color         : @color-zero;
+                    text-transform: uppercase;
+                    font-weight   : 500;
+                    
+                    @media screen and (max-width: 455px) {
+                        margin-right: 5px; 
+                        text-align: center;
+                    }
+
+                    a {
+                        font-size     : 13px;
+                        line-height   : 15px;
+                        color         : @color-zero;
+                        text-transform: uppercase;
+                        font-weight   : 500;
+                    }
+
+                    img.icon {
+                        margin-right: 10px;
+                        margin-top  : -5px;
+                       
+                    }
+
+                    .home {
+                        border-right : 1px solid @color-zero;
+                        padding-right: 15px;
+                        @media screen and (max-width: 395px ) {
+                            
+                        }
+                    }
+                }
+            }
+
+            .user {
+                span {
+                    font-size: 12px;
+                }
+
+                span.user_name {
+                    font-weight: 500;
+                    margin-left: 40px;
+
+                }
+
+
+                .icon_user {
+
+                    height: 15px;
+                    float : left;
+                    width : 40px;
+                }
+
+
+            }
+
+            .inst {
+                margin-top: 60px;
+
+                span {
+                    text-transform: uppercase;
+                    font-size     : 23px;
+                    font-weight   : 500;
+                    font-stretch  : normal;
+                    font-style    : normal;
+                    line-height   : 1.22;
+                    letter-spacing: normal;
+                    position      : relative;
+
+                    &::after {
+
+                        background: @color-zero;
+                        left      : 105%;
+                        content   : '';
+                        width     : 143px;
+                        top       : 13px;
+                        height    : 2px;
+                        position  : absolute;
+
+                        @media screen and (max-width:768px) {
+                            display: none;
+                        }
+                    }
+                }
+
+                ul.institucional {
+                    margin-top: 20px;
+
+                    li a {
+                        color         : @color-zero;
+                        font-size     : 16px;
+                        font-weight   : 300;
+                        font-stretch  : normal;
+                        font-style    : normal;
+                        line-height   : 23px;
+                        letter-spacing: normal;
+                    }
+
+                }
+            }
+        }
+
+
+        .subfooter {
+            background-color: @color-zero;
+            padding         : 38px 0 38px 0;
+
+            .direitos {
+                font-size     : 16px;
+                font-weight   : 300;
+                font-stretch  : normal;
+                font-style    : normal;
+                line-height   : 1.19;
+                letter-spacing: normal;
+                text-align    : right;
+                color         : @color-two;
+
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            padding-left : 0px !important;
+            padding-right: 0px !important;
+
+            a.link.user {
+                margin-top: 10px;
+            }
+
+            .subfooter .direitos {
+                text-align : left;
+                padding-top: 15px;
+            }
+
+
+        }
+
+
+        @media screen and (max-width: 767px ) {
+            .catalogo {
+                margin-top: 15px;
+                width: 100%;
+               
+            }
+        }
+        
+
+    }
+}

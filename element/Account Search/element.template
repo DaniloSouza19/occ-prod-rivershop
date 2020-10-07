@@ -1,0 +1,14 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('account-search') -->
+  <div class="form-group" id="cc-organization-field">
+    <label for="cc-customer-organization-text" class="control-label" data-bind="text:resources().accountText, attr: {id: id()+'_cc-customer-account-label'}" id=""> </label>
+    <div data-bind="attr: {id: id()+'_search_row'}" class="row">
+      <div class="col-md-12">
+        <div class="right-inner-addon" style="position: relative;">
+          <input id="account-search-box"style="padding-right: 30px;" aria-required="true" type="text" class="form-control" data-bind="attr:{'title':$data['resources']().accountproductSearchPlaceholderText}, widgetLocaleText: {attr: 'placeholder', value:'accountproductSearchPlaceholderText'}, onRender:$data['elements']['account-search'].initializer.bind($data, $element.id),
+            textInput: $data['elements']['account-search'].accountSearchValue">
+          <i class="glyphicon glyphicon-search" style="position: absolute;right: 0px;padding: 10px 12px;pointer-events: none;"></i>
+        </div>
+      </div>
+    </div> 
+  </div>
+<!-- /ko -->

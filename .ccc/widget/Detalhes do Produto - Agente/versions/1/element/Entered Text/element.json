@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-text",
+  "source": 100,
+  "type": "dynamicFragment",
+  "title": "Entered Text",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

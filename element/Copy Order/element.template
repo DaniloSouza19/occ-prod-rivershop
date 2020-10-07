@@ -1,0 +1,50 @@
+ <!-- ko if: initialized() && $data.elements.hasOwnProperty('copy-order')-->
+
+  <!-- ko if: $parent.orderDetailsWrapper.hasIncompleteOrder() -->
+   <button id="CC-mergeOrder" 
+                    class="cc-button-secondary secondarybackground"
+                    style="margin-left: 5px;margin-top: 5px;"
+                    data-bind="widgetLocaleText:'copyOrderText', click: $parent.setSelectedOrder.bind($parent)"
+                    data-toggle="modal"
+                    data-id=$parents[1].orderId
+                    data-target="#cc-copyOrder-modal-agent"
+                    type="button">
+     </button> 
+  <!-- /ko -->
+  <!-- ko ifnot: $parent.orderDetailsWrapper.hasIncompleteOrder() -->
+ <button id="cc-orderDetails-copyOrderNotification-btn"
+                  class="cc-button-secondary secondarybackground"
+                  style="margin-left: 5px;margin-top: 5px;"
+                  data-bind="click: function() { $data.elements['copy-order'].copyOrder()}">
+                  <i class="fa fa-paper-plane-o"></i>
+             <span data-bind="widgetLocaleText: 'copyOrderText'"></span>
+           </button>
+  <!-- /ko -->
+
+<!-- /ko -->
+
+
+<div data-bind="modal: 0,
+  modalTabbingContraint"
+  class="modal width-fixed fade cc-modalForm"
+  id="cc-copyOrder-modal-agent">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <text data-bind="widgetLocaleText:'placeOrderModalMessage'"
+          class="modal-title text-center"></text>
+      </div>
+      <div class="modal-footer">
+        <div><button data-bind="click: function() { $data.elements['copy-order'].copyOrder()},
+          widgetLocaleText:'buttonOk'"
+          data-dismiss="modal"
+          type="button"
+          class="btn btn-primary btn-sm"></button>
+          <button data-bind="widgetLocaleText:'buttonCancel'"
+          data-dismiss="modal"
+          type="button"
+          class="btn btn-primary btn-sm"></button></div>
+        </div>
+      </div>
+    </div>
+  </div>

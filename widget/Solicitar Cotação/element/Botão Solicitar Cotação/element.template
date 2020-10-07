@@ -1,0 +1,4 @@
+<br/>
+<button class="cc-button-primary pull-right" tabindex="0" data-bind=" enable: (($data.user().loggedIn() == true) && ($data.cart().allItems().length > 0) && ($data.cart().currentOrderState() != 'QUOTED')), click: requestQuote">
+  <span data-bind="widgetLocaleText: 'buttonRequestQuote'"></span>
+</button>

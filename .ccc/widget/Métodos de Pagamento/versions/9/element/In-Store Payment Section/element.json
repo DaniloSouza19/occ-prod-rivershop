@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-inStorePayment",
+  "source": 100,
+  "type": "fragment",
+  "title": "In-Store Payment Section",
+  "widgetType": "splitPayments",
+  "version": 9
+}

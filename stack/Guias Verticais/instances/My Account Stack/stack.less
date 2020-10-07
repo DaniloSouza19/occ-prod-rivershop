@@ -1,0 +1,75 @@
+#verticalTabs-profileStack_1 {
+ #verticalTabs-vars-profileStack_1 > .loadVariables();
+.verticalTabs {
+
+  h3 {
+    text-align: center;
+  }
+
+  .nav-tabs {
+    border-bottom: none;
+    padding-top: 2px;
+
+    li {
+      float: none;
+      border-top: 1px solid @activeTabBackgroundColor;
+      margin-bottom: 0;
+
+      a {
+         color:@tabTextColor;
+         margin-right: 0;
+         display:block;
+         background-color: @tabBackgroundColor;
+         border:0;
+         border-radius: 0;
+         text-align: @tabTitleAlignment;
+      }
+
+      &:last-child {
+        border-bottom: 1px solid @activeTabBackgroundColor;
+      }
+    }
+
+    li.active {
+      border-right:1px solid @activeTabBackgroundColor;
+      a {
+        border:0;
+        background-color: @activeTabBackgroundColor;
+        color: @activeTabTextColor;
+      }
+    }
+  }
+
+  #tabsMobileNav {
+    .nav-content-heading {
+      padding:0;
+    }
+
+    .fa-chevron-right {
+      padding-top:4px;
+    }
+  }
+
+  #content {
+    .content-heading {
+      padding:0;
+      padding-bottom:10px;
+      border-bottom:1px solid @activeTabBackgroundColor;
+      margin-bottom:5px;
+      display: table-cell;
+      vertical-align: bottom;
+
+      > h4 {
+        margin:0;
+        float:left;
+      }
+
+      > a {
+        float:right;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+}

@@ -1,0 +1,10 @@
+<!-- ko if: $data.order().selectedShippingOption() -->
+  <div class="col-xs-12 col-md-6 paddingBottom">
+    <div class="row" id="review-order-shipping-method">
+      <div data-bind="widgetLocaleText: 'shippingMethodText'" class="col-xs-7 col-sm-4 col-md-6 titleText shippingMethodLabelMaxWidth breakWord"></div>
+      <div class="col-xs-5 col-sm-8 col-md-6 breakWord noLeftPadding">
+        <span data-bind="text: $data.order().selectedShippingOption().shippingOption.displayName"></span>
+      </div>
+    </div>
+  </div>
+<!-- /ko -->

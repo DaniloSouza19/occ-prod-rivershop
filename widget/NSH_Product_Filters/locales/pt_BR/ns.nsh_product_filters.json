@@ -1,0 +1,16 @@
+{
+  "resources": {
+    "minus": "-",
+    "refinementValueText": "__dataLabel__ (__dataCount__)",
+    "refineByText": "Refinar por",
+    "seeMoreText": "Ver mais...",
+    "guidedNavigationHeader": "Cabeçalho de navegação orientada",
+    "seeLessText": "Ver menos...",
+    "doneText": "Concluído",
+    "expandText": "Expandir",
+    "overlayedGuidedNavigationLoadedText": "A navegação orientada sobreposta é carregada",
+    "collapseText": "Recolher",
+    "plus": "+",
+    "clearAllRefinementsText": "Limpar todos os refinamentos"
+  }
+}

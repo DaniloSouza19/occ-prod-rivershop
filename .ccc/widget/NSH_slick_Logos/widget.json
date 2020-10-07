@@ -1,0 +1,9 @@
+{
+  "widgetType": "nsh_slick_logos",
+  "version": 1,
+  "displayName": "NSH_slick_Logos",
+  "elementized": true,
+  "global": false,
+  "source": 101,
+  "javascript": "nsh_slick_logos"
+}

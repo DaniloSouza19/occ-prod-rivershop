@@ -1,0 +1,108 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Lançamento Havaianas",
+      "styles": {},
+      "tag": "image@70011",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "link": "/lancamento_havaianas/category/lancamento_havaianas",
+        "zoomEnabled": "0",
+        "titleText": "Lançamento Havaianas",
+        "fileName": "DESTAQUE HAVAIANAS MOBILE.png"
+      }
+    },
+    {
+      "customTitle": "Limpeza",
+      "styles": {},
+      "tag": "image@60098",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "link": "/limpeza/category/limpeza",
+        "zoomEnabled": "0",
+        "titleText": "Limpeza",
+        "fileName": "limpeza.png"
+      }
+    },
+    {
+      "customTitle": "Combos Exclusivos",
+      "styles": {},
+      "tag": "image@60097",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "link": "/combo",
+        "zoomEnabled": "0",
+        "titleText": "Combos Exclusivos",
+        "fileName": "combos.png"
+      }
+    },
+    {
+      "customTitle": "Ofertas do Dia",
+      "styles": {},
+      "tag": "image@60096",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "link": "/ofertas_do_dia/category/ofertas_do_dia",
+        "zoomEnabled": "0",
+        "titleText": "Ofertas do dia",
+        "fileName": "ofertas do dia.png"
+      }
+    }
+  ]
+}

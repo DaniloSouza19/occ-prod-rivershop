@@ -1,0 +1,761 @@
+{
+  "widgetDescriptorName": "nsh_slick_images",
+  "properties": [
+    {
+      "id": "_widgetGlobalConfigs",
+      "labelResourceId": "LabelGlobalConfigs",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "name": "autoPlay",
+      "id": "_autoPlay",
+      "helpTextResourceId": "HelpAutoPlay",
+      "labelResourceId": "LabelAutoPlay",
+      "type": "booleanType"
+    },
+    {
+      "id": "_loopSpeed",
+      "helpTextResourceId": "HelpLoopSpeed",
+      "labelResourceId": "LabelLoopSpeedle",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_0",
+      "labelResourceId": "LabelImage_0",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_0",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_0",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_0",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_0",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_0",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_0",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_0",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_0",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_0",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_0",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_1",
+      "labelResourceId": "LabelImage_1",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_1",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_1",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_1",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_1",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_1",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_1",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_1",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_1",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_1",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_1",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_2",
+      "labelResourceId": "LabelImage_2",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_2",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_2",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_2",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_2",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_2",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_2",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_2",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_2",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_2",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_2",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_3",
+      "labelResourceId": "LabelImage_3",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_3",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_3",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_3",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_3",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_3",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_3",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_3",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_3",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_3",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_3",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_4",
+      "labelResourceId": "LabelImage_4",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_4",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_4",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_4",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_4",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_4",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_4",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_4",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_4",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_4",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_4",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_5",
+      "labelResourceId": "LabelImage_5",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_5",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_5",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_5",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_5",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_5",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_5",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_5",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_5",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_5",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_5",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_6",
+      "labelResourceId": "LabelImage_6",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_6",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_6",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_6",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_6",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_6",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_6",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_6",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_6",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_6",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_6",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_7",
+      "labelResourceId": "LabelImage_7",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_7",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_7",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_7",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_7",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_7",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_7",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_7",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_7",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_7",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_7",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_8",
+      "labelResourceId": "LabelImage_8",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_8",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_8",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_8",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_8",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_8",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_8",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_8",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_8",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_8",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_8",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_9",
+      "labelResourceId": "LabelImage_9",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_9",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImageDesktop_9",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_9",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_9",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_9",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_9",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_9",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_9",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_9",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_9",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    },
+    {
+      "id": "_image_10",
+      "labelResourceId": "LabelImage_10",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableImage_10",
+      "helpTextResourceId": "HelpEnableImage",
+      "labelResourceId": "LabelEnableImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_mediaImage_Desktop10",
+      "helpTextResourceId": "HelpMediaImageDesktop",
+      "labelResourceId": "LabelMediaImageDesktop",
+      "type": "mediaType"
+    },
+    {
+      "id": "_mediaImageMobile_10",
+      "helpTextResourceId": "HelpMediaImageMobile",
+      "labelResourceId": "LabelMediaImageMobile",
+      "type": "mediaType"
+    },
+    {
+      "id": "_linkImage_10",
+      "helpTextResourceId": "HelpLinkImage",
+      "labelResourceId": "LabelLinkImage",
+      "type": "stringType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_newTabImage_10",
+      "helpTextResourceId": "HelpNewTabImage",
+      "labelResourceId": "LabelNewTabImage",
+      "type": "booleanType"
+    },
+    {
+      "id": "_titleImage_10",
+      "helpTextResourceId": "HelpTitleImage",
+      "labelResourceId": "LabelTitleImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_altImage_10",
+      "helpTextResourceId": "HelpLinkAltImage",
+      "labelResourceId": "LabelLinkAltImage",
+      "type": "stringType"
+    },
+    {
+      "id": "_embedVideo_10",
+      "helpTextResourceId": "HelpEmbedVideo",
+      "labelResourceId": "LabelEmbedVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_titleVideo_10",
+      "helpTextResourceId": "HelpTitleVideo",
+      "labelResourceId": "LabelTitleVideo",
+      "type": "stringType"
+    },
+    {
+      "id": "_mediaText_10",
+      "helpTextResourceId": "HelpMediaText",
+      "labelResourceId": "LabelMediaText",
+      "type": "stringType"
+    }
+  ]
+}

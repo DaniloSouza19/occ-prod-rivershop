@@ -1,0 +1,10 @@
+{
+  "widgetType": "order-confirmation-boleto",
+  "version": 1,
+  "displayName": "Mundipagg confirmation page",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "locale",
+  "source": 101,
+  "javascript": "account-checkout-confirmation"
+}

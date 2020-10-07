@@ -1,0 +1,160 @@
+      <div id="cc-orderDetails-orderSummary" style=" padding-left: 0px;">
+        <div id="cc-orderDetails-orderSummary-container"
+          class="col-xs-12 col-md-12">
+          <!-- ko if: $data.orderDetailsWrapper.isRenderComplete() -->
+          <!-- ko with: $data.orderDetailsWrapper.orderDetails() -->
+          <!-- Order Summary header -->
+          <div class="col-xs-12">
+            <h3>
+              <span id="cc-orderSummary-title" class="cc-order-header-font-size"
+                data-bind="widgetLocaleText: 'orderSummaryText'"> </span>
+            </h3>
+          </div>
+          <br /> <br />
+          <div class="col-md-12">
+            <!-- Sub-Total -->
+            <div class="confirmation-subtotal">
+              <span id="cc-orderSummary-subTotal-label"
+                data-bind="widgetLocaleText: 'subTotalText'"></span> <span
+                id="cc-orderDetails-subTotal-value"
+                data-bind="currency: {price: priceInfo.subTotal,
+                                   currencyObj: priceListGroup.currency}"
+                class="pull-right"> </span>
+            </div>
+            <!-- Discount -->
+            <!-- ko if: discountInfo.orderDiscount -->
+            <div id="cc-orderDetails-discount">
+              <span data-bind="widgetLocaleText: 'discountText'"> </span>
+              <span id="cc-orderDetails-discount-value"
+                data-bind="currency: {price: -discountInfo.orderDiscount,
+                                     currencyObj: priceListGroup.currency}"
+                class="pull-right"> </span>
+            </div>
+            <!-- /ko -->
+            <!-- Shipping -->
+            <div>
+              <span id="cc-orderDetails-Shipping-label"
+                data-bind="widgetLocaleText: 'shippingText'"></span>
+                <!-- ko if: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency() && $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode  -->
+                  <span
+                     id="cc-orderDetails-Shipping-value"
+                     data-bind="currency: {price: $data.priceInfo.secondaryCurrencyShippingAmount,
+                                    currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}"
+                     class="pull-right"> </span> <br/>
+               <!-- /ko -->
+               <!-- ko ifnot: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency() -->
+                 <span
+                id="cc-orderDetails-Shipping-value"
+                data-bind="currency: {price: priceInfo.shipping,
+                                  currencyObj: priceListGroup.currency}"
+                class="pull-right"> </span> <br/>
+                <!-- /ko -->
+                <!-- ko if: discountInfo.shippingDiscount > 0 -->
+                <span id="cc-orderDetails-ShippingDiscount-label"
+                      data-bind="widgetLocaleText: 'shippingDiscountText'"></span>
+                <!-- ko if: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency() &&  $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode -->
+                 <span id="cc-orderDetails-ShippingDiscount-value"
+                      data-bind="currency: {price: -$data.discountInfo.secondaryCurrencyShippingDiscount,
+                                          currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}"
+                      class="pull-right">
+                </span> <br/>
+                <!-- /ko -->
+               <!-- ko ifnot: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency() -->
+                 <span id="cc-orderDetails-ShippingDiscount-value"
+                      data-bind="currency: {price: -discountInfo.shippingDiscount,
+                                            currencyObj: priceListGroup.currency}"
+                      class="pull-right">
+                </span> <br/>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: priceInfo.shippingSurchargeValue > 0 && !($parent.isExchangeOrder()) -->
+                <span id="cc-orderDetails-ShippingSurchargeValue-label"
+                      data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+                <!-- ko if: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency() &&  $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode -->
+                  <span id="cc-orderDetails-ShippingSurcharge-value"
+                      data-bind="currency: {price: $data.priceInfo.secondaryCurrencyShippingSurchargeValue,
+                                        currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}"
+                      class="pull-right">
+                </span> <br/>
+                <!-- /ko -->
+               <!-- ko ifnot: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency() -->
+                  <span id="cc-orderDetails-ShippingSurcharge-value"
+                      data-bind="currency: {price: priceInfo.shippingSurchargeValue,
+                                            currencyObj: priceListGroup.currency}"
+                      class="pull-right">
+                </span> <br/>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+            <!-- Sales Tax -->
+             <!-- ko ifnot:  taxPriceInfo.isTaxIncluded  -->
+             <!-- ko ifnot: $parent.isExchangeOrder() -->
+            <div class="confirmation-sales-tax">
+              <span id="cc-orderDetails-tax-label"
+                data-bind="widgetLocaleText: 'salesTaxText'"></span>
+                <!-- ko if: $parent.orderDetailsWrapper.isPayTaxInSecondaryCurrency() -->
+                 <span
+                id="cc-orderDetails-tax-value"
+                data-bind="currency: {price: $data.priceInfo.secondaryCurrencyTaxAmount,
+                                currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}"
+                             class="pull-right"> </span>
+            <!-- /ko -->
+                <!-- ko ifnot: $parent.orderDetailsWrapper.isPayTaxInSecondaryCurrency() -->
+                 <span
+                id="cc-orderDetails-tax-value"
+                data-bind="currency: {price: priceInfo.tax,
+                                   currencyObj: priceListGroup.currency}"
+                class="pull-right"> </span>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+            <hr class="solidLine col-md-11" style=" border: solid #d6dfe6;border-width: 1px 0 0; margin: 7px 0;"/>
+            <!-- Order Total -->
+            <div class="confirmation-total">
+              <span id="cc-orderDetails-total-label"
+                data-bind="widgetLocaleText: 'orderTotalText'"></span>
+                <!-- ko if: taxPriceInfo.isTaxIncluded && !$parent.isExchangeOrder()-->
+                  <sup data-bind="widgetLocaleText: 'superScriptIndicator'"></sup>
+                <!-- /ko -->
+                <!-- ko if: $parent.orderDetailsWrapper.isMultiCurrencyOrder() -->
+                <span
+                id="cc-orderDetails-total-value"
+                data-bind="currency: {price: priceInfo.primaryCurrencyTotal,
+                                   currencyObj: priceListGroup.currency}"
+                class="pull-right"> </span>
+                <br />
+                 <span id="cc-orderDetails-shippingGroupShippingAndTax-label"
+                      data-bind="text:$parent.localeTextForShippingAndTaxTotal()" class="cc-order-shippingAndTax"> </span>
+                 <span  class= "pull-right padding-left-21-rm-right" id="cc-orderDetails-shippingGroupShippingAndTax-price"
+                      data-bind="currency: {price: $data.priceInfo.secondaryCurrencyTotal,
+                                       currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}">
+                      </span>
+                <!-- /ko -->
+                <!-- ko ifnot: $parent.orderDetailsWrapper.isMultiCurrencyOrder() -->
+                <span
+                id="cc-orderDetails-total-value"
+                data-bind="currency: {price: priceInfo.total, 
+                                   currencyObj: priceListGroup.currency}"
+                class="pull-right"> </span>
+                <!-- /ko -->
+            </div>
+            <!-- ko if: taxPriceInfo.isTaxIncluded && !$parent.isExchangeOrder()-->
+                <span class="includedTaxText" >
+                <sup data-bind="widgetLocaleText: 'superScriptIndicator'"></sup>
+                <span data-bind="widgetLocaleText: 'includesTaxText'"></span>
+                <!-- ko if: $parent.orderDetailsWrapper.isPayTaxInSecondaryCurrency() -->
+                 <span data-bind="currency: {price: $data.priceInfo.secondaryCurrencyTaxAmount,
+                                      currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)} "></span>
+                <!-- /ko -->
+               <!-- ko ifnot: $parent.orderDetailsWrapper.isPayTaxInSecondaryCurrency() -->
+                   <span data-bind="currency: {price: priceInfo.tax,
+                                    currencyObj: priceListGroup.currency}"></span>
+               <!-- /ko -->
+               </span>
+            <!-- /ko -->
+          </div>
+          <!-- /ko -->
+          <!-- /ko -->
+        </div>
+      </div>

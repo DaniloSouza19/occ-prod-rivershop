@@ -1,0 +1,8 @@
+{
+  "tag": "announcements",
+  "source": 100,
+  "type": "fragment",
+  "title": "announcements",
+  "widgetType": "agentdashboard",
+  "version": 2
+}

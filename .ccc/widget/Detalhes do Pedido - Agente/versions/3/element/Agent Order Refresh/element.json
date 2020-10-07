@@ -1,0 +1,8 @@
+{
+  "tag": "agent-order-refresh",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Order Refresh",
+  "widgetType": "agentAccountOrderDetails",
+  "version": 3
+}

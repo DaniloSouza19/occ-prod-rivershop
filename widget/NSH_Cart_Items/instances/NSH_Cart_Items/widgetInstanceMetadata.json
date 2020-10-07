@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "noOfStoresToDisplay": "10",
+    "isStorePickupEnabled": false
+  },
+  "displayName": "NSH_Cart_Items"
+}

@@ -1,0 +1,8 @@
+{
+  "configuration": {
+    "metaPageType": "agentProfilePage",
+    "displayAndURL": "[{'0':'customerDetailsText','1':'/agentCustomerDetails','2':''},{'0':'accountAddressBookText','1':'/agentAddressBook','2':''},{'0':'accountOrderHistoryText','1':'/agentOrderHistory','2':''},{'0':'accountScheduledOrdersText','1':'/agentScheduledOrder','2':''},{'0':'accountContactsText','1':'/agentAccountContacts','2':'admin'},{'0':'accountDetailsText','1':'/agentAccountDetails','2':'buyer'},{'0':'ordersPendingApprovalText','1':'/agentOrdersPendingApproval','2':'approver'},{'0':'purchaseListsText','1':'/agentPurchaseList','2':''},{'0':'registrationRequestsText','1':'/agentContactRequestListing','2':'admin'}]",
+    "displayOptions": "horizontal"
+  },
+  "displayName": "Profile Navigation - Account Shoppers"
+}

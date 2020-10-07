@@ -1,0 +1,184 @@
+{
+  "imports": [
+    "space"
+  ],
+  "translations": [
+    {
+      "name": "NSH_WishList_Content [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_WishList_Content",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_WishList_Content [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_WishList_Content [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_WishList_Content [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_WishList_Content [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_WishList_Content [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_WishList_Content [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_WishList_Content [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_WishList_Content [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_WishList_Content [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_WishList_Content [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_WishList_Content [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_WishList_Content [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_WishList_Content [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_WishList_Content [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_WishList_Content [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_WishList_Content [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_WishList_Content [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_WishList_Content [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_WishList_Content [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_WishList_Content [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_WishList_Content [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_WishList_Content [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_WishList_Content [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_WishList_Content [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_WishList_Content [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_WishList_Content [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_WishList_Content [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_WishList_Content [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_WishList_Content [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_WishList_Content [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_WishList_Content [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_WishList_Content [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_WishList_Content [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_WishList_Content [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_WishList_Content [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_WishList_Content [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_WishList_Content [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_WishList_Content [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_WishList_Content [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_WishList_Content [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_WishList_Content [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

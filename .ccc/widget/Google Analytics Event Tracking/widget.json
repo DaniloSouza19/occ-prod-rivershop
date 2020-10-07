@@ -1,0 +1,9 @@
+{
+  "widgetType": "googleAnalyticsEventTracking",
+  "version": 1,
+  "displayName": "Google Analytics Event Tracking",
+  "elementized": false,
+  "global": true,
+  "source": 101,
+  "javascript": "gaEventTracking"
+}

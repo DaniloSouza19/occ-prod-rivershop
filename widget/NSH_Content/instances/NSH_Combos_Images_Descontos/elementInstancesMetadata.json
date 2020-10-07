@@ -1,0 +1,622 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Imagem_10053",
+      "styles": {},
+      "tag": "image@10053",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10052",
+      "styles": {},
+      "tag": "image@10052",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10055",
+      "styles": {},
+      "tag": "image@10055",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10054",
+      "styles": {},
+      "tag": "image@10054",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10057",
+      "styles": {},
+      "tag": "image@10057",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10056",
+      "styles": {},
+      "tag": "image@10056",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "Combo.png"
+      }
+    },
+    {
+      "customTitle": "esponja_3m",
+      "styles": {},
+      "tag": "image@90022",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/esponja_3m/category/esponja_3m",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "esponja 3m.png"
+      }
+    },
+    {
+      "customTitle": "sand_hav_color",
+      "styles": {},
+      "tag": "image@90021",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/sand_hav_color/category/sand_hav_color",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "HAVAIANAS.png"
+      }
+    },
+    {
+      "customTitle": "fralda_huggies_jubinho",
+      "styles": {},
+      "tag": "image@110005",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/fralda_huggies_jubinho/category/fralda_huggies_jubinho",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "CMV FRALDA.png"
+      }
+    },
+    {
+      "customTitle": "cera_auto",
+      "styles": {},
+      "tag": "image@110046",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/cera_auto/category/cera_auto",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv cera.png"
+      }
+    },
+    {
+      "customTitle": "repelente_off",
+      "styles": {},
+      "tag": "image@110044",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/repelente_off/category/repelente_off",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv off.png"
+      }
+    },
+    {
+      "customTitle": "marg_delicia",
+      "styles": {},
+      "tag": "image@90028",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/marg_delicia/category/marg_delicia",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "marg delicia.png"
+      }
+    },
+    {
+      "customTitle": "vodka_orloff",
+      "styles": {},
+      "tag": "image@110001",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/vodka_orloff/category/vodka_orloff",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "CMV ORLOFF.png"
+      }
+    },
+    {
+      "customTitle": "limpador_pato",
+      "styles": {},
+      "tag": "image@110045",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/limpador_pato/category/limpador_pato",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv pato.png"
+      }
+    },
+    {
+      "customTitle": "papel_a4_ink",
+      "styles": {},
+      "tag": "image@90020",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/papel_a4_ink/category/papel_a4_ink",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "CMV PAPEL A4.png"
+      }
+    },
+    {
+      "customTitle": "sab brilhante",
+      "styles": {},
+      "tag": "image@120003",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/sab_brilhante/category/sab_brilhante",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "CMV SAB BRILHANTE.png"
+      }
+    },
+    {
+      "customTitle": "copo_americano",
+      "styles": {},
+      "tag": "image@110053",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/copo_americano/category/copo_americano",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv 485.png"
+      }
+    },
+    {
+      "customTitle": "apar_barb_prest_ultragrip",
+      "styles": {},
+      "tag": "image@110051",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/apar_barb_prest_ultragrip/category/apar_barb_prest_ultragrip",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv 3107.png"
+      }
+    },
+    {
+      "customTitle": "suco_aurora_1500ml",
+      "styles": {},
+      "tag": "image@110052",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/suco_aurora_1500ml/category/suco_aurora_1500ml",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv 10429.png"
+      }
+    },
+    {
+      "customTitle": "paratudo",
+      "styles": {},
+      "tag": "image@110035",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/paratudo/category/paratudo",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv 1576.png"
+      }
+    },
+    {
+      "customTitle": "chantily_amelia",
+      "styles": {},
+      "tag": "image@110036",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/chantily_amelia/category/chantily_amelia",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "CMV CHANTILY.png"
+      }
+    },
+    {
+      "customTitle": "lysoform",
+      "styles": {},
+      "tag": "image@110043",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/lysoform/category/lysoform",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "cmv lysoform.png"
+      }
+    },
+    {
+      "customTitle": "sh_co_tresemme",
+      "styles": {},
+      "tag": "image@80053",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/sh_co_tresemme/category/sh_co_tresemme",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "CMV KIT TRESEMME.png"
+      }
+    },
+    {
+      "customTitle": "alvejante_vanish",
+      "styles": {},
+      "tag": "image@80052",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/alvejante_vanish/category/alvejante_vanish",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "desconto ",
+        "fileName": "CMV VANISH.png"
+      }
+    }
+  ]
+}

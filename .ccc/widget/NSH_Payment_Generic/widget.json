@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_payment_generic",
+  "version": 1,
+  "displayName": "NSH_Payment_Generic",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_payment_generic",
+  "source": 101,
+  "javascript": "nsh_payment_generic"
+}

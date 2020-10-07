@@ -1,0 +1,27 @@
+{
+  "resources": {
+    "cartDropDownText_plural": "__count__ itens - __currency____totalPrice__",
+    "totalTableSubTotal": "Subtotal:",
+    "cartHeading": "Seu carrinho de compras",
+    "totalTableSummary": "Totais do carrinho de compras.",
+    "buttonEditCart": "Editar carrinho",
+    "buttonCheckout": "Finalizar compra",
+    "cartOperationsText": "Operações do Carrinho",
+    "miniShoppingCartTitle": "Carrinho de compras",
+    "cartTableSumary": "Esta tabela contém uma lista de itens, atualmente no seu carrinho de compras.",
+    "siteNavigationHeader": "Navegação do site",
+    "skipToContent": "Ir para o conteúdo",
+    "miniShoppingCartScrollUp": "Clique para ver o conjunto anterior de produtos",
+    "minicartText": "Minicarrinho de compras",
+    "cartColHeaderItemTotal": "Total do item",
+    "totalTableTotal": "Total:",
+    "cartColHeaderImage": "Imagem",
+    "shoppingCartHeader": "Resumo do Carrinho de Compras",
+    "cartDropDownText": "__count__ item - __currency____totalPrice__",
+    "buttonRemoveItem": "Remover",
+    "cartColHeaderName": "Nome",
+    "cartColHeaderQuantity": "Quantidade",
+    "updateProfileLocaleModalText": "Salvar sua seleção de idioma para seu perfil?",
+    "miniShoppingCartScrollDown": "Clique para ver o próximo conjunto de produtos"
+  }
+}

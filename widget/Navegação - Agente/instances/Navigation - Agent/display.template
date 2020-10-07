@@ -1,0 +1,64 @@
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div id="agent-navbar">
+    <div class="navbar-brand">
+      <img data-bind="attr: {src: assetMappings[ '/images/oracle_logo.svg'], alt : $data.translate('brandText') }">
+      <span data-bind="widgetLocaleText: 'brandText'"></span>
+    </div>
+    <div class="cc-oracle-nav-spacer">
+      <button id="cc-btn-skipToContent" class="btn btn-default" data-bind="
+                click: skipToContentClickHandler,
+                widgetLocaleText: 'skipToContent'"></button>
+    </div>
+    <div id="agent-nav-menu">
+      <ul class="nav navbar-nav">
+        <li data-bind="css: {selected: $data.selectedPageId() === $data.links().agentHome.name}, attr : {'id' : $data.links().agentHome.name}">
+          <a class="fa fa-home nav-icon" href="#" data-bind="
+                       attr : {'title' : $data.translate('dashboardText')},
+                       click: clickNavigationMenuItem.bind($data, $data.links().agentHome.name)",
+                       hasFocus: $data.selectedPageId() === $data.links().agentHome.name">
+          </a>
+        </li>
+        <li data-bind="css: {selected: $data.selectedPageId() === $data.links().AgentOrderSearch.name}, attr : {'id' : $data.links().AgentOrderSearch.name}">
+          <a class="fa fa-list-ul nav-icon" href="#" data-bind="
+                       attr : {'title' : $data.translate('ordersText')},
+                       click: clickNavigationMenuItem.bind($data, $data.links().AgentOrderSearch.name)",
+                       hasFocus: $data.selectedPageId() === $data.links().AgentOrderSearch.name">
+          </a>
+        </li>
+        <li data-bind="css: {selected: $data.selectedPageId() === $data.links().agentCustomerSearch.name}, attr : {'id' : $data.links().agentCustomerSearch.name}">
+          <a class="fa fa-user nav-icon" href="#" data-bind="
+                        attr : {'title' : $data.translate('customersText')},
+                        click: clickNavigationMenuItem.bind($data, $data.links().agentCustomerSearch.name)",
+                        hasFocus: $data.selectedPageId() === $data.links().agentCustomerSearch.name">
+          </a>
+        </li>
+        <li data-bind="css: {selected: $data.selectedPageId() === $data.links().AgentReturnSearch.name}, attr : {'id' : $data.links().AgentReturnSearch.name}">
+          <a class="fa fa-share-square nav-icon" href="#" data-bind="
+                       attr : {'title' : $data.translate('returnsText')},
+                       click: clickNavigationMenuItem.bind($data, $data.links().AgentReturnSearch.name)",
+                       hasFocus: $data.selectedPageId() === $data.links().AgentReturnSearch.name">
+          </a>
+        </li>
+        <li class="dropdown">
+          <div class="divider-vertical"></div>
+          <button class="dropdown-toggle btn btn-default" data-toggle="dropdown" type="button"
+            data-bind="
+              attr : {'title' : agentProfile.firstName() + ' ' + agentProfile.lastName()}">
+            <span class="fa fa-user dropdown-menu-icon"></span>
+            <span class="caret"></span>
+          </button>
+          <ul id="cc-userMenu" class="dropdown-menu dropdown-menu-right" role="menu">
+            <li id="help">
+              <a href="http://docs.oracle.com/cloud/latest/commercecs_gs/index.html" id="cc-user-help-text" data-bind="widgetLocaleText: 'helpText'"></a>
+            </li>
+            <li id="logout">
+              <a id="cc-user-logout-text" href="#" data-bind="
+                   widgetLocaleText: 'logoutText',
+                   click: handleLogout"></a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

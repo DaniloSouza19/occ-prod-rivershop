@@ -1,0 +1,509 @@
+<div id="organizationAddressWidget" class="container-fluid">
+  <div id="organizationAddressHeader">
+    <h1 id="organization-addresses-title" class="organization-addresses-title agent-headerText" data-bind="widgetLocaleText: 'agentAccountAddressesText'"> </h1>
+  </div>
+  <!-- ko if: organizationFilter()!== null || !$data.user().isB2BProfileType()-->
+  <!-- ko ifnot: isEditMode() -->
+ <div class="hidden-xs col-md-12 col-sm-12 agent-topMargin" >   
+  <!-- ko if: $data.user().active() && ($data.user().isProfileAddressManager() || $data.user().isAccountAddressManager() || $data.user().isDelegatedAdmin() || !$data.user().isB2BUser())-->
+  <button class="cc-button-primary createNewAddressLinkButton pull-right hidden-xs hidden-sm" id="organization-address-add1" data-bind="click:$data.handleCreateOrEditOrganizationAddress.bind($data, true)">
+    <span data-bind="widgetLocaleText: 'newText'"></span>
+  </button>
+  <!-- /ko -->
+  
+	<div class="collapse-heading col-md-8 col-sm-8 col-xs-8" >
+    <h4>
+      <a class="collapse-toggle details-label" data-toggle="collapse" data-target="#defaultAddresses" data-bind="widgetLocaleText:'defaultAddressesLabel'" href="#"></a>
+    </h4>
+    </div>
+    <br>
+	<div id="defaultAddresses" class="collapse in col-md-12 col-sm-12 col-xs-12">  
+		<!-- ko if:addresses().length > 0 -->
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: addresses'>
+  
+    <div id="display-organization-addresses-default" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.assetMappings['/templates/agent-manageAddresses.template'] , templateUrl: ''}">
+    </div>
+
+   	</div>
+   	<!-- /ko -->
+   	<!-- ko if: addresses().length == 0  -->
+   		<div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoDefaultAddressMessage' " ></div>
+   	<!-- /ko -->
+	</div>
+  
+  	<div class="collapse-heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  <a class="collapse-toggle collapsed details-label" data-toggle="collapse" data-target="#profileAddresses" data-bind="widgetLocaleText:'profileAddressesLabel'" href="#"></a></h4>
+    </div>
+    <br>
+	<div id="profileAddresses" class="collapse col-md-12 col-sm-12 col-xs-12">  
+	  <!-- ko if:totalProfileAddresses() > 0 -->
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: profileAddresses'>
+  
+    <div id="display-profile-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.assetMappings['/templates/agent-manageAddresses.template'] , templateUrl: ''}">
+    </div>
+   	</div>  	
+  <!-- /ko -->
+  <!-- ko if: profileAddresses().length ==0 -->
+       <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoProfileAddressMessage' " ></div>
+   <!-- /ko -->
+   	<!-- ko if: showLoadMorePAddress() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadProfileAddresses.bind($data), widgetLocaleText: 'loadMoreText'" class="text-underline" href="javascript:void(0)">
+   		</a>
+     	</div>
+     <!-- /ko -->
+	</div>
+  
+  <!-- ko if: $data.user().isB2BUser() -->
+    <div class="collapse-heading col-md-12 col-sm-12 col-xs-12">
+      <h4>  
+        <a class="collapse-toggle collapsed details-label" data-toggle="collapse" data-target="#accountAddresses" data-bind="widgetLocaleText:'accountAddressesLabel'" href="#"></a>
+      </h4>
+    </div>
+    <br>
+    <div id="accountAddresses" class="collapse col-md-12 col-sm-12 col-xs-12">  
+      <!-- ko if:secondaryAddresses().length > 0 -->
+        <div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: secondaryAddresses'>
+           <div id="display-organization-addresses-account" class="row col-md-12 col-sm-12 col-xs-12"
+               data-bind="template: {name: $parent.assetMappings['/templates/agent-manageAddresses.template'] , templateUrl: ''}">
+           </div>
+        </div>
+      <!-- /ko -->
+      <!-- ko if:secondaryAddresses().length == 0 -->
+         <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoAccountAddressMessage' " >
+         </div>
+      <!-- /ko -->
+      <!-- ko if: showLoadMoreAccountAddress() -->
+         <div class = "col-md-8 col-sm-8 col-xs-8">
+            <a data-bind="click: $data.loadOrganizationAddresses.bind($data), widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+            </a>
+         </div>
+      <!-- /ko -->
+    </div>
+ 
+    <div class="collapse-heading col-md-12 col-sm-12 col-xs-12">
+      <h4>  
+        <a class="collapse-toggle collapsed details-label" data-toggle="collapse" data-target="#inheritedAddresses" data-bind="widgetLocaleText:'inheritedAddressesLabel'" href="#"></a>
+      </h4>
+    </div>
+    <br>
+    <div id="inheritedAddresses" class="collapse col-md-12 col-sm-12 col-xs-12"> 
+       <!-- ko if: showInherited --> 
+         <div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: inheritedAddresses'>
+           <div id="display-organization-addresses-inheritedAddresses" class="row col-md-12 col-sm-12 col-xs-12"
+              data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/agent-manageAddresses.template') , templateUrl: ''}">
+           </div>
+         </div>
+       <!-- /ko -->
+       <!-- ko ifnot: showInherited -->
+          <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoInheritedAddressMessage' " ></div>
+       <!-- /ko -->
+       <!-- ko if: showLoadMore() -->
+         <div class = "col-md-8 col-sm-8 col-xs-8">
+            <a data-bind="click: $data.loadInheritedAddresses.bind($data), widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+            </a>
+         </div>
+       <!-- /ko -->
+    </div>
+  <!-- /ko -->
+</div>
+
+<div class="visible-xs" > 
+  <!-- ko if: $data.addresses().length == 0 && $data.secondaryAddresses().length == 0 &&  $data.inheritedAddresses().length == 0 -->
+  	<!-- ko if: $data.user().active() && ($data.user().isProfileAddressManager() || $data.user().isAccountAddressManager() || $data.user().isDelegatedAdmin() || !$data.user().isB2BUser())-->
+  	<div class= "col-sm-12 col-xs-12">
+  		<button class="cc-button-primary details-enabled-primary-button pull-right" id="organization-address-add" data-bind="click:$data.handleCreateOrEditOrganizationAddress.bind($data, true)">
+         <span data-bind="widgetLocaleText: 'newText'"></span>
+        </button>
+  	</div>
+  	<!-- /ko -->
+  
+  <!-- /ko -->
+  <!-- ko if: $data.addresses().length == 0 -->
+       <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoDefaultAddressMessage' " ></div>
+  <!-- /ko -->
+  <!-- ko if:addresses().length > 0 -->
+ 
+	<div class="heading col-md-12 col-sm-12 col-xs-12" >
+    <h4>
+      <span data-bind="widgetLocaleText:'defaultAddressesLabel'"></span>
+    </h4>
+    </div>
+    <br>
+	<div id="defaultAddresses_xs" class="col-md-12 col-sm-12 col-xs-12">  
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: addresses'>
+  
+    <div id="display-organization-addresses-defaultAddresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.assetMappings['/templates/agent-manageAddresses.template'] , templateUrl: ''}">
+    </div>
+
+   	</div>
+	</div>
+  <!-- /ko -->
+   <!-- ko if:totalProfileAddresses() > 0 -->
+   <div class="heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  <span data-bind="widgetLocaleText:'profileAddressesLabel'"></span></h4>
+    </div>
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: profileAddresses'>
+  
+    <div id="display-profile-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.assetMappings['/templates/agent-manageAddresses.template'] , templateUrl: ''}">
+    </div>
+   	</div>  	
+  <!-- /ko -->  
+  <!-- ko if: showLoadMorePAddress() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadProfileAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline">
+   		</a>
+     	</div>
+     <!-- /ko -->
+  <!-- ko if: $data.user().isB2BUser() -->
+  <!-- ko if:secondaryAddresses().length > 0 -->
+    <div class="heading col-md-12 col-sm-12 col-xs-12">
+        <h4>  
+          <span data-bind="widgetLocaleText:'accountAddressesLabel'"></span>
+        </h4>
+      </div>
+      <br>
+      <div id="accountAddresses_xs" class="col-md-12 col-sm-12 col-xs-12">  
+      <div  class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: secondaryAddresses'>
+         <div id="display-organization-addresses-accountAddresses" class="row col-md-12 col-sm-12 col-xs-12"
+            data-bind="template: {name: $parent.assetMappings['/templates/agent-manageAddresses.template'] , templateUrl: ''}">
+         </div>
+      </div>
+    </div>
+  <!-- /ko -->
+  <!-- ko if:secondaryAddresses().length == 0 -->
+    <div class="col-md-8 col-sm-8 col-xs-8" data-bind="widgetLocaleText:'NoAccountAddressMessage' " >
+    </div>
+   <!-- /ko -->
+  <!-- ko if: showLoadMoreAccountAddress() -->
+    <div class = "col-md-8 col-sm-8 col-xs-8">
+      <a data-bind="click: $data.loadOrganizationAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline">
+      </a>
+    </div>
+  <!-- /ko -->
+  <div class="heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  
+      <span data-bind="widgetLocaleText:'inheritedAddressesLabel'"></span>
+    </h4>
+  </div>
+  <br>
+  <!-- ko if:showInherited -->
+    <div id="inheritedAddresses col-md-12 col-sm-12 col-xs-12">  
+      <div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: inheritedAddresses'>
+         <div id="display-organization-addresses-inherited" class="row col-md-12 col-sm-12 col-xs-12"
+            data-bind="template: {name: $parent.assetMappings['/templates/agent-manageAddresses.template'] , templateUrl: ''}">
+      </div>
+    </div>
+    <!-- ko if: showLoadMore() -->
+      <div class = "col-md-8 col-sm-8 col-xs-8">
+         <a data-bind="click: $data.loadInheritedAddressess, widgetLocaleText: 'loadMoreText'" class="text-underline">
+         </a>
+      </div>
+    <!-- /ko -->
+    </div>
+  <!-- /ko -->
+  <!-- ko ifnot: showInherited -->
+     <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoInheritedAddressMessage' " ></div>
+  <!-- /ko -->
+  <!-- /ko -->
+</div>  
+   <div class="row">
+        <div id="CC-add-new-address-xs" class="visible-xs visible-sm">
+          <button id="cc-add-new-address-xs" class="cc-button-primary col-xs-12 col-sm-12" data-bind="attr: {title: $data.translate('addNewAddress')}, click: handleCreateOrEditOrganizationAddress.bind($data, true)">
+          <span data-bind="widgetLocaleText: 'addNewAddress'"></span>
+          </button>
+        </div>
+   </div>
+   
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- ko if: isEditMode() -->
+  <!-- ko with: $data -->
+  <div id="edit-organization-address " class="row agent-topMargin">
+  
+  <div class="container-fluid">
+<!-- ko if: isProfileAddress()-->
+	<div class="profileAccountLabel" data-bind="widgetLocaleText: 'profileAddressIndicatorText'"></div>
+<!-- /ko -->
+<!-- ko ifnot: (isProfileAddress() || isCreateNewAddress())   -->
+	<div class="profileAccountLabel" data-bind="widgetLocaleText: 'accountAddressIndicatorText'"></div>
+<!-- /ko -->
+<!-- ko if: (isCreateNewAddress() && !$data.user().isProfileAddressManager() && ($data.user().isAccountAddressManager() || $data.user().isDelegatedAdmin()))  -->
+	<div class="profileAccountLabel" data-bind="widgetLocaleText: 'accountAddressIndicatorText'"></div>
+<!-- /ko -->
+<form class="form-horizontal">
+  <fieldset id="address-form">
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-6">
+        <input id="orgAddressType" type="text" class="form-control input-md agent-textBox-addressStyle" data-bind="validatableValue: addressType, widgetLocaleText: {value : 'nickNamePlaceHolderText', attr : 'placeholder'}, 
+              attr: {title: $data.translate('nickNameText'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-3 col-xs-4 col-sm-4 agent-validationText-alignment">
+        <span class="text-danger" data-bind="validationMessage: addressType" role="alert"></span>
+      </div>
+    </div>
+    <!--  ko if: $data.user().isProfileAddressManager() || (!$data.user().isB2BUser())-->
+    <div class="form-group">            
+      <div class="col-md-3 col-xs-6 col-sm-6">
+      	<label class="control-label inline agent-textBox-setWidth" for="CC-addressFirstName" data-bind="widgetLocaleText:'firstNameText'"></label>      
+      	<span class="text-danger visible-xs agent-validationText-alignment" id="CC-address-firstName-error" data-bind="validationMessage: firstName" role="alert"></span>
+      <div class="control">
+        <input type="text" class="col-md-12 form-control" name="addressFirstName" id="CC-addressFirstname" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}, 
+            attr: {title: $data.translate('firstNameText'), readOnly:!$data.user().active()}">
+      </div>
+     </div>
+     <div class="col-md-3 col-xs-6 col-sm-6">
+       <label class="control-label inline" for="CC-addressLastName" data-bind="widgetLocaleText:'lastNameText'"></label>
+       <span class="text-danger visible-xs agent-validationText-alignment" id="CC-checkoutAddressBook-phone-slastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+       <div class="control">
+         <input type="text" class="col-md-12 form-control agent-textBox-setWidth" name="addressLastName" id="CC-addressLastName" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText',attr:'placeholder'}, 
+            attr: {title: $data.translate('lastNameText'), readOnly:!$data.user().active()}">
+       </div>
+     </div>
+     <div class="col-md-4 col-xs-4 col-sm-4 agent-validationText-alignment">
+       <span class="text-danger" id="CC-address-firstname-error" data-bind="validationMessage: firstName" ></span>
+       <span class="text-danger" id="CC-address-lastname-error" data-bind="validationMessage: lastName" ></span>
+     </div>
+    </div>
+		<!-- /ko -->
+    <!-- Select Basic -->
+    <div class="form-group">
+      <div class="col-md-6">
+        <span class="text-danger visible-xs" id="org-address-country-error_xs"
+              data-bind="validationMessage: country" role="alert"></span>
+        <div class="control">
+          <select aria-required="true" class="form-control col-md-12 agent-textBox-addressStyle"
+                  name="sCountry" id="org-address-country"
+                  data-bind="disable:!$data.user().active(), attr: {title: $data.translate('countryText')}, optionsValue: 'countryCode',
+                             options: countriesList(), optionsText: 'displayName', value: country, optionsCaption: $data.translate('countryText'),
+                             validatableTarget: country, validationElement: country">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 agent-validationText-alignment">
+        <span class="text-danger hidden-xs" id="org-address-country-error_md"
+              data-bind="validationMessage: country" role="alert"></span>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <!--ko if: $data.user().isB2BUser()-->
+    <div class="form-group">
+      <div class="col-md-6">
+        <input id="orgCompanyName" name="companyName" type="text" class="form-control input-md agent-textBox-addressStyle" data-bind="validatableValue: companyName, widgetLocaleText: {value : 'companyNameText', attr : 'placeholder'}, 
+            attr: {title: $data.translate('companyNameText'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-3 agent-validationText-alignment">
+        <span class="text-danger" data-bind="validationMessage: companyName" role="alert"></span>
+      </div>
+    </div>
+    <!-- /ko -->
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-6">
+        <input id="orgAddressAddress1" name="address1" type="text" class="form-control input-md agent-textBox-addressStyle" data-bind="validatableValue: address1, widgetLocaleText: {value : 'address1Text', attr : 'placeholder'}, 
+           attr: {title: $data.translate('address1Text'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-6 agent-validationText-alignment">
+        <span class="text-danger" data-bind="validationMessage: address1" role="alert"></span>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-6">
+        <input id="orgAddressAddress2" name="address2" type="text" class="form-control input-md agent-textBox-addressStyle" data-bind="value: address2, widgetLocaleText: {value : 'address2Text', attr : 'placeholder'}, 
+          attr: {title: $data.translate('address2Text'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-6">
+        <span class="text-danger" data-bind="validationMessage: address2" role="alert"></span>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-6">
+        <input id="orgAddressAddress3" name="address3" type="text" class="form-control input-md agent-textBox-addressStyle" data-bind="value: address3, widgetLocaleText: {value : 'address3Text', attr : 'placeholder'},
+          attr: {title: $data.translate('address3Text'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-6">
+        <span class="text-danger" data-bind="validationMessage: address3" role="alert"></span>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-6">
+        <input id="orgAddressCounty" name="county" type="text" class="form-control input-md agent-textBox-addressStyle" data-bind="value: county, widgetLocaleText: {value : 'countyText', attr : 'placeholder'},
+          attr: {title: $data.translate('countyText'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-6">
+        <span class="text-danger" data-bind="validationMessage: county" role="alert"></span>
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-3 col-xs-6 col-sm-6">
+        <input id="orgAddressCity" name="city" type="text" class="form-control input-md agent-textBox-addressStyle agent-textBox-setWidth" data-bind="validatableValue: city,widgetLocaleText: {value : 'cityText', attr : 'placeholder'}, 
+           attr: {title: $data.translate('cityText'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-3 col-xs-6 col-sm-6">
+      <span class="text-danger visible-xs agent-validationText-alignment" id="org-address-state-error_xs"
+              data-bind="validationMessage: state" role="alert"></span>
+        <div class="control">
+          <select aria-required="true" class="form-control col-md-12 agent-textBox-addressStyle agent-textBox-setWidth"
+                  name="state" id="org-address-state"
+                  data-bind="enable: (stateList().length && $data.user().active()), attr: {title: $data.translate('stateText')}, optionsValue: 'abbreviation',
+                             options: stateList(), optionsText: 'displayName', optionsCaption: $data.translate('stateText'),
+                             value: state,
+                             validatableTarget: state, validationElement: state">
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-6 col-sm-6 agent-validationText-alignment">
+        <span class="text-danger" data-bind="validationMessage: city" role="alert"></span>
+      </div>
+      <div class="col-md-6 col-xs-6 col-sm-6 agent-validationText-alignment">
+        <span class="text-danger hidden-xs" id="org-address-state-error_md"
+              data-bind="validationMessage: state" role="alert"></span>
+      </div>      
+    </div>
+
+
+    <!-- Text input-->
+    <div class="form-group">
+      <div class="col-md-3 col-xs-6 col-sm-6">
+        <input id="orgAddressPostalCode" name="postalCode" type="text" class="form-control input-md agent-textBox-addressStyle agent-textBox-setWidth" data-bind="validatableValue: postalCode, widgetLocaleText: {value : 'postalCodeText', attr : 'placeholder'}, 
+            attr: {title: $data.translate('postalCodeNameText'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-3 col-xs-6 col-sm-6">
+        <input id="orgAddressPhoneNumber" name="phone" type="text" class="form-control input-md agent-textBox-addressStyle agent-textBox-setWidth" data-bind="validatableValue: phoneNumber, widgetLocaleText: {value : 'phoneNumberText', attr : 'placeholder'}, 
+           attr: {title: $data.translate('phoneNumberNameText'), readOnly:!$data.user().active()}">
+      </div>
+      <div class="col-md-4 col-xs-4 col-sm-4 agent-validationText-alignment">
+        <p class="text-danger" data-bind="validationMessage: postalCode" role="alert"></p>
+        <p class="text-danger" data-bind="validationMessage: phoneNumber" role="alert"></p>
+      </div>
+    </div>
+
+    <!-- Multiple Checkboxes -->
+   
+    <div class="form-group">
+      <div class="col-md-6">
+      <!-- ko if:$data.user().active() &&  $data.user().isB2BUser() && !$data.isProfileAddress()-->
+        <div class="checkbox">
+          <input type="checkbox" name="defaultShippingAddress" id="orgDefaultShippingAddress" data-bind="checked: isDefaultShippingAddress, 
+              attr: {title: $data.translate('selectDefaultShippingAddressBtnTitle')}">
+          <label for="orgDefaultShippingAddress" data-bind="attr: {title: $data.translate('selectDefaultShippingAddressBtnTitle')}, widgetLocaleText:'selectDefaultShippingAddressBtnTitle'"></label>
+        </div>
+      <!-- /ko -->
+      <!-- ko if: $data.user().active()&& !$data.user().isB2BUser() 
+                 && $data.profileAddresses().length > 0 && !($data.user().contactShippingAddress && $data.user().contactShippingAddress.repositoryId === $data.editingAddressId())-->
+        <div class="checkbox">
+          <input type="checkbox" name="defaultShippingAddress" id="orgDefaultShippingAddress" data-bind="checked: isDefaultShippingAddress, 
+             attr: {title: $data.translate('selectDefaultShippingAddressBtnTitle')}">
+          <label for="orgDefaultShippingAddress" data-bind="attr: {title: $data.translate('selectDefaultShippingAddressBtnTitle')}, widgetLocaleText:'selectDefaultShippingAddressBtnTitle'"></label>
+        </div>
+      <!-- /ko -->
+      <!-- ko if:$data.user().active() && $data.user().isB2BUser() && !$data.isProfileAddress()-->
+        <div class="checkbox">
+          <input type="checkbox" name="defaultBillingAddress" id="orgDefaultBillingAddress" data-bind="checked: isDefaultBillingAddress, 
+              attr: {title: $data.translate('selectDefaultBillingAddressBtnTitle')}">
+          <label for="orgDefaultBillingAddress" data-bind="attr: {title: $data.translate('selectDefaultBillingAddressBtnTitle')}, widgetLocaleText:'selectDefaultBillingAddressBtnTitle'"></label>
+        </div>
+      <!-- /ko -->
+      </div>
+    </div>
+    <!-- ko if: $data.dynamicProperties() && $data.dynamicProperties().length > 0 -->
+      <div class="dynamicPropertiesRegion">
+        <!-- ko setContextVariable:{name:'context', value: $data.dynamicProperties()} -->
+           <div data-bind="element:'dynamic-property'"></div>
+        <!-- /ko -->
+      </div> 
+    <!-- /ko -->
+  </fieldset>
+  <div id="organization-address-save-cancel-control">
+  	<!-- ko ifnot: ($data.user().isProfileAddressManager() && ($data.user().isAccountAddressManager() || $data.user().isDelegatedAdmin())) -->
+    <!-- ko ifnot: $data.isCreateNewAddress() -->
+        <!-- ko if: $data.user().active() && $data.user().isB2BUser() -->
+    	  <button class="cc-button-primary details-enabled-primary-button col-sm-2 col-xs-12 pull-right marginLeft" id="organization-address-save-copy" data-bind="click: $data.handleUpdateOrganizationAddress.bind($data,$element.id)">
+      	  <span data-bind="widgetLocaleText: 'saveACopyText'"></span>
+    	  </button>
+    	 <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: $data.user().active()-->
+    <button class="cc-button-primary details-enabled-primary-button col-sm-2 col-xs-12 pull-right marginLeft" id="organization-address-save-create-new" data-bind="click: $data.handleUpdateOrganizationAddress.bind($data,$element.id)">
+      <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+    </button>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if:($data.user().isProfileAddressManager() && ($data.user().isAccountAddressManager() || $data.user().isDelegatedAdmin())) -->
+    <!-- ko if: $data.user().active() && ($data.isCreateNewAddress()) -->
+        <button type="button" class="cc-button-primary col-sm-2 col-xs-12 dropdown-toggle pull-right marginLeft" data-toggle="dropdown" data-bind="widgetLocaleText: 'nestedSaveText'"></button>
+        <ul class="dropdown-menu pull-right" role="menu">
+          <li class="cc-nested-button"><a href="#" id="profile-address-create" data-bind="widgetLocaleText: 'saveToMyProfileText', click: $data.handleUpdateOrganizationAddress.bind($data,$element.id)"></a></li>
+          <li class="cc-nested-button"><a href="#" id="account-address-create" data-bind="widgetLocaleText: {value: 'saveToMyAccountText', attr: 'innerText', params: {companyName: $data.user().currentOrganization().name}}, click: $data.handleUpdateOrganizationAddress.bind($data,$element.id)"></a></li>
+        </ul>
+    <!-- /ko -->
+    <!-- ko ifnot: ($data.isCreateNewAddress()) -->
+      <!-- ko if: $data.user().active() --> 
+      <button type="button" class="cc-button-primary details-enabled-primary-button col-sm-2 col-xs-12 pull-right dropdown-toggle marginLeft" data-toggle="dropdown" data-bind="widgetLocaleText: 'nestedSaveAsText'"></button>
+        <ul class="dropdown-menu pull-right" role="menu">
+          <li class="cc-nested-button"><a href="#" id="profile-address-create" data-bind="widgetLocaleText: 'saveToMyProfileText', click: $data.handleUpdateOrganizationAddress.bind($data,$element.id)"></a></li>
+          <li class="cc-nested-button"><a href="#" id="account-address-create" data-bind="widgetLocaleText: {value: 'saveToMyAccountText', attr: 'innerText', params: {companyName: $data.user().currentOrganization().name}}, click: $data.handleUpdateOrganizationAddress.bind($data,$element.id)"></a></li>
+        </ul>
+      <button class="cc-button-primary col-sm-2 col-xs-12 pull-right marginLeft" id="organization-address-update" data-bind="click: $data.handleUpdateOrganizationAddress.bind($data,$element.id)">
+      <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+    </button>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    
+    <button class="cc-button-secondary details-enabled-secondary-button col-sm-2 col-xs-12 pull-right" id="organization-address-cancel" data-bind="click: handleCancelUpdateOrganizationAddress">
+      <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+    </button>
+  </div>
+
+</form>
+</div>
+
+  
+  
+  </div>
+  <!-- /ko -->
+  <!-- /ko -->
+  
+    
+    <div class="modal fade" id="CC-accountAddress-delete-modal-1"
+     tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+   <div class="modal-dialog modal-dialog-width" id="CC-accountAddress-delete-modal-2">
+     <div class="modal-content" id="CC-accountAddress-delete-modal-3">
+       <div class="modal-header cc-accountAddress-modal-heading cc-accountAddress-confirm-icon" id="CC-accountAddress-delete-modal-header-1">
+         <span class="cc-accountAddress-modal-header-text" id="CC-accountAddress-delete-modal-header-text" data-bind="widgetLocaleText:'deleteDialogHeaderText'"></span>
+         <button type="button" class="close" data-dismiss="modal" id="CC-accountAddress-delete-modal-header-2" aria-hidden="true">&times;</button>
+       </div>
+       <div class="modal-body cc-accountAddress-body-modal" id="CC-accountAddress-delete-modal-modalBody-3">
+         <p data-bind="widgetLocaleText:'deleteAddressDilaogContent'" align="center" id="CC-accountAddress-delete-modal-bodyText-3"></p>
+       </div>
+       <div class="modal-footer cc-accountAddress-modal-footer" id="CC-accountAddress-delete-modal-footer-3">
+         <button class=" btn cc-button-secondary details-enabled-primary-button" id="CC-accountAddress-delete-modal-cancel-3" data-dismiss="modal">
+           <span id="CC-accountAddress-delete-modal-discard-3" data-bind="widgetLocaleText:'buttonCancel'"></span>
+         </button>
+         <button class="btn  cc-button-primary details-enabled-primary-button" id="CC-accountAddress-delete-modal-submit-3" 
+              data-bind="click: continueDeleteOperation.bind($data, $data.addressToBeDeleted, $data.deleteButtonId)">
+           <span id="CC-accountAddress-delete-modal-save-3" data-bind="widgetLocaleText:'buttonDelete'"></span>
+         </button>
+       </div> 
+     </div>
+   </div>
+ </div>
+ 
+</div>

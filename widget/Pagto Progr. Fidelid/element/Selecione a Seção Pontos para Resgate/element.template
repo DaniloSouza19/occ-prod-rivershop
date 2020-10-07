@@ -1,0 +1,34 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('select-redeem-points') -->
+<!-- ko if: ($data.paymentsContainer().isLoyaltyEnabled() && $data.user().loggedIn() &&
+                ((CCRestClient.profileType == CCConstants.PROFILE_TYPE_AGENT &&
+                 $data.user().selectedPriceListGroup().currency && $data.user().selectedPriceListGroup().currency.currencyType == CCConstants.LOYALTY_POINTS_PAYMENT_TYPE)
+                 || (CCRestClient.profileType != CCConstants.PROFILE_TYPE_AGENT &&
+                 $data.cart().currency && $data.cart().currency.currencyType == CCConstants.LOYALTY_POINTS_PAYMENT_TYPE))) -->
+  <div id="CC-selectRedeemPointsPanel">
+    <div id="CC-selectRedeemPoints-checkbox" class="row">
+      <div class="col-sm-12">
+        <div class="checkbox">
+          <label for="CC-selectRedeemPoints-pointsPayment">
+            <input type="checkbox" name="payByLoyaltyPoints" data-bind="checked: true, disable: true"
+                id="CC-selectRedeemPoints-pointsPayment" class="checkbox"/>
+              <!-- ko if: ($data.cart().isChargeTaxShippingInSecondaryCurrency()) -->
+                <span data-bind="widgetLocaleText:'payForItemsByPointsText'"></span>
+              <!-- /ko -->
+              <!-- ko ifnot: ($data.cart().isChargeTaxShippingInSecondaryCurrency()) -->
+                <span data-bind="widgetLocaleText:'payByPointsText'"></span>
+              <!-- /ko -->
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ko with: $data['elements']['select-redeem-points'] -->
+    <!-- ko ifnot: $data.userHasSufficientPoints() -->
+      <div class="col-sm-12" id="CC-selectRedeemPoints-insufficientPoints-error">
+        <span class="text-danger" data-bind="widgetLocaleText:'loyaltyInsufficientPointsError'" role="alert"></span>
+      </div>
+    <!-- /ko -->
+    <!-- /ko -->
+  </div>
+<!-- /ko -->
+<!-- /ko -->

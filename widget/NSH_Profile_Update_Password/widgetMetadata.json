@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Profile_Update_Password [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Profile_Update_Password",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Profile_Update_Password [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

@@ -1,0 +1,108 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+  .profile_menu {
+    @media (min-width: 768px){ 
+    max-width: 340px;
+  }
+  @media (max-width: 992px){
+
+  }
+
+
+    #secondaryNavigation {
+      @media (max-width: 992px){
+        .col-lg-12 .col-md-12{
+          padding-left: 0px !important;
+        }
+
+      }
+      h2 {
+        @media (max-width: 992px){
+          font-size       : 18px;
+          padding         : 5px 5px;
+
+        }
+        @media (max-width: 768px){
+          font-size       : 22px;
+          padding         : 5px 15px;
+
+        }
+        background-color: @color-two;
+        font-size       : 22px;
+        font-weight     : 900;
+        font-stretch    : normal;
+        font-style      : normal;
+        line-height     : 1.82;
+        letter-spacing  : normal;
+        color           : @color-zero;
+        padding         : 5px 15px;
+        text-transform  : uppercase;
+
+
+      }
+
+      .nav li {
+        border-top: 1px solid #8a8a8a;
+        &:first-child{
+          border-top: none;
+        }
+
+        a {
+          font-size     : 18px;
+          font-weight   : normal;
+          font-stretch  : normal;
+          font-style    : normal;
+          letter-spacing: normal;
+          line-height: 1.4;
+          @media (max-width: 992px){
+            font-size     : 14px;
+          }
+          
+        }
+      }
+
+      .nav li.active a {
+        border          : 0;
+        background-color: transparent;
+        font-weight     : bold;
+
+      }
+
+      .nav li.listBackgroundColor {
+        border          : 0 !important;
+        background-color: #195d8e !important;
+        color           : #ffffff !important;
+      }
+
+      .nav li:last-child {
+        border-bottom: 1px solid #195d8e;
+      }
+
+      .btn-navbar {
+        float: left;
+      }
+
+      .navbar-toggle {
+        background-color:  @color-two;
+      }
+
+      .icon-bar {
+        background-color: white;
+      }
+
+      button.navbar-toggle.btn-navbar {
+       
+        height: 51px;
+      }
+    }
+  }
+
+        /* mobile */
+        @media (max-width: 767px) {
+          .profile_menu.p-t-82.p-b-60{
+            padding-bottom: 15px;
+            padding-top: 0px;
+          }
+        }
+
+
+}

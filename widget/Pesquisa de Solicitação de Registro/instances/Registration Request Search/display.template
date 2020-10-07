@@ -1,0 +1,168 @@
+<div id="cc-registrationRequestSearch-grid" class="col-md-12">
+  <h3 class="agent-headerText col-md-4" id="cc-registrationRequestSearch-text"
+        data-bind="widgetLocaleText: 'registrationRequestsText'"></h3>
+  <br>
+  <hr class="line agent-line line-width"/>
+</div>
+<br />
+<div class="col-md-12 zero-pad" id="cc-registrationRequestSearch">
+  <form id="cc-registrationRequestSearch-form" class="container-fluid" autocomplete="off">
+    <div class="row" id="cc-registrationRequestSearch-firstName-lastName">
+      <div class="form-group col-md-3" id="cc-registrationRequestSearch-firstName-field">
+        <label for="cc-registrationRequestSearch-firstName-text"
+             class="control-label" data-bind="widgetLocaleText: 'firstNameText'"
+             id="cc-registrationRequestSearch-firstName-label"> </label>
+        <input type="text" class="form-control"
+               id="cc-registrationRequestSearch-firstName-text" data-bind="value: firstName"/>
+      </div>
+      <div class="form-group col-md-3 col-md-offset-3" id="cc-registrationRequestSearch-lastName-field">
+        <label for="cc-registrationRequestSearch-lastName-text" class="control-label"
+               data-bind="widgetLocaleText: 'lastNameText'" id="cc-registrationRequestSearch-lastName-label">
+        </label>
+        <input type="text" class="form-control "
+               id="cc-registrationRequestSearch-lastName-text" data-bind="value: lastName"/>
+      </div>
+    </div>
+    <div class="row" id="cc-registrationRequestSearch-email-companyName">
+      <div class="form-group col-md-3" id="cc-registrationRequestSearch-email-field">
+        <label for="cc-registrationRequestSearch-email-text" class="control-label"
+              data-bind="widgetLocaleText: 'emailText'"
+              id="cc-registrationRequestSearch-email-label"> </label>
+        <input type="email" class="form-control"
+               id="cc-registrationRequestSearch-email-text" data-bind="value: email"/>
+      </div>
+      <div class="form-group col-md-3 col-md-offset-3" id="cc-registrationRequestSearch-companyName-field">
+        <label for="cc-registrationRequestSearch-companyName-text"
+               class="control-label"
+               data-bind="widgetLocaleText: 'companyNameText'"
+               id="cc-registrationRequestSearch-companyName-label"> </label>
+        <input type="text" class="form-control"
+               id="cc-registrationRequestSearch-companyName-text" data-bind="value: companyName"/>
+      </div>
+    </div>
+    <div class="row" id="cc-registrationRequestSearch-requestId">
+      <div class="form-group col-md-3" id="cc-registrationRequestSearch-requestId-field">
+        <label for="cc-registrationRequestSearch-requestId-text" class="control-label"
+               data-bind="widgetLocaleText: 'idText'"
+               id="cc-registrationRequestSearch-requestId-label"> </label>
+        <input type="text" class="form-control"
+               id="cc-registrationRequestSearch-requestId-text" data-bind="value: requestNumber" />
+      </div>
+      <div class="form-group col-md-3 col-md-offset-3" id="cc-customerDetails-regType">
+          <label for="cc-customer-regType-text"
+             class="control-label"
+             data-bind="widgetLocaleText: 'registrationTypeText'"
+             id="cc-customer-regType-label"> </label>
+         <select id="cc-customer-regType-text"  class="form-control" data-bind="
+          options: $data.registrationOptions,
+          value: $data.registrationRequestSearchViewModel.isAccountSearch,
+          optionsText: 'label', optionsValue: 'value'">
+        </select>
+      </div>
+    </div>
+         
+    <div>
+      <div class="pull-right" id="cc-registrationRequestSearch-reset-search-buttons-field">
+        <button type="button" id="cc-registrationRequestSearch-reset-button" class="cc-button-secondary secondarybackground" data-bind="click: reset.bind($data)">
+          <span data-bind="widgetLocaleText:'buttonResetText'"></span>
+        </button>
+        <button type="submit" id="cc-registrationRequestSearch-search-button" class="cc-button-primary primarybackground" data-bind="click: performSearch.bind($data)">
+          <span data-bind="widgetLocaleText:'buttonSearchText'"></span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+  
+<!--ko if: registrationRequestSearchViewModel.isSearchPerformed  -->
+<div class="resultList">    
+  <!--  Filter menu   -->
+  <span class="cc-icon-select fa fa-sliders" role="presentation"></span>
+  <div class="col-sm-6 requestFilter">
+    <select id="cc-registration-request-filter"  class="form-control" style="width: auto; margin-bottom: 1rem;" data-bind="widgetLocaleText: {attr: 'aria-label', value: 'filterLabel'},
+          options: $data.filterOptions,
+          value: currentFilterOption,
+          optionsText: 'label', optionsValue: 'value',
+          event: {change: onFilterOptionChange.bind($data)}">
+    </select>
+  </div>
+      
+  <!-- Results table -->
+  <table class="table-header-styling table table-bordered table-striped"
+             id="cc-registrationRequestSearchResult-table" summary="registrationRequestSearchResult" data-bind="visible: registrationRequestSearchViewModel.resultsPresent">
+   <thead>
+      <tr>
+        <!-- ko foreach: columnList() -->
+          <th scope="col">
+            <span data-bind="widgetLocaleText : columnNameHeader"></span>
+            <!-- ko if : allowSort -->
+              <!-- ko if : ($parent.sortDirections()[columnSortKey] == "asc") -->
+                <span class="fa fa-sort-desc" data-bind="click : $parent.sort.bind($parent,columnSortKey,'desc'), event: {keyup: $parent.sort.bind($parent,columnSortKey,'desc')}" aria-hidden="true" tabindex="0"></span>
+              <!-- /ko -->
+              <!-- ko if : ($parent.sortDirections()[columnSortKey] == "desc") -->
+                <span class="fa fa-sort-asc" data-bind="click : $parent.sort.bind($parent,columnSortKey,'asc'), event: {keyup: $parent.sort.bind($parent,columnSortKey,'asc')}" aria-hidden="true" tabindex="0"></span>
+              <!-- /ko -->
+              <!-- ko if : ($parent.sortDirections()[columnSortKey] == "both") -->
+                <span class="fa fa-sort" data-bind="click : $parent.sort.bind($parent,columnSortKey,'asc'), event: {keyup: $parent.sort.bind($parent,columnSortKey,'asc')}" aria-hidden="true" tabindex="0"></span>
+              <!-- /ko -->
+            <!-- /ko -->
+          </th>
+        <!-- /ko -->
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: registrationRequestSearchViewModel.recordsInCurrentPage">
+      <tr>
+        <!-- ko foreach: $parent.columnList() -->
+          <!-- ko if: $index() == 0 -->
+            <td class="cc-text-overflow-table">
+              <a href="#" data-bind="attr: {id: 'cc-id-' + $parent[$data.columnSortKey], 'title': $parent[$data.columnSortKey] }, click: $parents[1].redirectToRequestDetailsPage.bind($parents[1], $parent[$data.columnSortKey]),
+                              text: $parent[$data.columnSortKey]">
+              </a>
+            </td>  
+          <!-- /ko -->
+          <!-- ko if: $index() > 0 -->
+            <td class="cc-text-overflow-table">
+              <!-- ko if: $index() == $parents[1].columnList().length-1 -->
+                <!-- ko if: $parent.statusIcon -->
+                  <div class="statusIcon">
+                    <span class="cc-icon-select" data-bind="css:$parent.statusIcon" role="img"></span>
+                  </div>
+                <!-- /ko -->
+              <!-- /ko -->
+              <span data-bind="text: $parent[$data.columnSortKey], attr: {id: 'cc-' + $data.columnNameHeader + $parentContext.$index(), 'title': $parent[$data.columnSortKey] }" ></span> 
+            </td>
+          <!-- /ko -->     
+        <!-- /ko -->
+      </tr>
+    </tbody>
+  </table>      
+       
+  <!-- ko with: registrationRequestSearchViewModel --> 
+    <!-- ko if: totalNumber() !== 0 -->      
+      <!-- Pagination control -->
+      <div id="cc-paginated-controls-bottom" class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <div class="bottom-margin"
+              data-bind="visible : (totalNumberOfPages() > 1),
+                       template: {name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''} ">
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- /ko-->
+  <!-- /ko-->             
+  <!-- End of Results table -->
+  
+  <!-- Start : Empty container & No matched results -->
+  <!-- ko ifnot:  registrationRequestSearchViewModel.resultsPresent-->
+    <div class="cc-generic-asset-listing-empty-container cc-margin-top">
+      <div>
+        <h4 data-bind="widgetLocaleText:'noMatchingRequestsText' "></h4>
+        <div data-bind="widgetLocaleText:'noRequestsMatchedText' "></div>
+      </div>
+    </div>
+  <!--/ko-->
+  <!-- End : Empty container & No matched results -->
+</div>   
+<!--/ko-->

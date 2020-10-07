@@ -1,0 +1,8 @@
+{
+  "tag": "returnRequestsChart",
+  "source": 100,
+  "type": "fragment",
+  "title": "My return Requests Chart",
+  "widgetType": "agentdashboard",
+  "version": 2
+}

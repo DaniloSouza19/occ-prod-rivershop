@@ -1,0 +1,9 @@
+{
+  "widgetType": "googleAnalyticsOrderTracking",
+  "version": 1,
+  "displayName": "Google Analytics Order Tracking",
+  "elementized": false,
+  "global": false,
+  "source": 101,
+  "javascript": "gaOrderTracking"
+}

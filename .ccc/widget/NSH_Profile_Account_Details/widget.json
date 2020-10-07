@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_profile_account_details",
+  "version": 1,
+  "displayName": "NSH_Profile_Account_Details",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_profile_account_details",
+  "source": 101,
+  "javascript": "nsh_profile_account_details"
+}

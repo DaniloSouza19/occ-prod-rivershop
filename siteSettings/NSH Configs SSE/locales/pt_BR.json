@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "title": "NSH Configs SSE",
+    "description": "Configs SSE.",
+    "urlExternalPricingHelpText": "URL SSE External Pricing",
+    "urlExternalPricingLabel": "URL SSE External Pricing",
+    "urlExternalPricingPrePricingHelpText": "URL SSE External Pricing Pre-pricing",
+    "urlExternalPricingPrePricingLabel": "URL SSE External Pricing Pre-pricing"
+  }
+}

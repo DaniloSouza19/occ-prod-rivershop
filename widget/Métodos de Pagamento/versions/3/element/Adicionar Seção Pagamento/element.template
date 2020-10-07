@@ -1,0 +1,17 @@
+<div id="splitPaymentsAddPaymentPanel">
+  <!-- Add Payment Button element -->
+  <!-- ko if: paymentsContainer().paymentDue() > 0 || (isPaymentEdit() && paymentsContainer().paymentDue() < 0) -->
+    <fieldset data-bind="disable: order().isPaymentsDisabled()">
+      <div id="CC-splitPayments-addPayment" class="checkout row col-sm-3">
+        <button class="cc-button-primary" data-bind="click: handleAddPayment ">
+          <!-- ko if: isPaymentEdit() -->
+            <span data-bind="widgetLocaleText:'updatePaymentText' "></span>
+          <!-- /ko -->
+          <!-- ko ifnot: isPaymentEdit() -->
+        	  <span data-bind="widgetLocaleText:'addPaymentText' "></span>
+        	<!-- /ko -->
+        </button>
+      </div>
+    </fieldset>
+  <!-- /ko -->
+</div>

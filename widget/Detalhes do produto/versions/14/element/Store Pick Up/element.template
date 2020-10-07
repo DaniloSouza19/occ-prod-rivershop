@@ -1,0 +1,235 @@
+<div data-bind="if: !product().isConfigurable() && !isOnlineOnly()">
+    <div class="panel-group">
+        <div class="panel store-pickup-details">
+            <div class="panel-body">
+                <div class="row">
+                    <!-- ko if: ( undefined === selectedStore() || null === selectedStore())  -->
+                        <div class="row-item">
+                            <span class="shipping-truck"/><span class="availability-check"/><span data-bind="widgetLocaleText: 'availableForHomeDelivery'"></span>
+                        </div>
+                        <div class="row-item">
+                            <span class="shopping-bag"/><span class="availability-check"/><span data-bind="widgetLocaleText: 'availabletoPickupInStoreText'"></span>
+                        </div>
+                        <label class="control-label hidden" for="CC-storeSearchText"><span data-bind="widgetLocaleText: 'storeSearchPlaceholderText'"></span>:</label>
+                        <div class="col-sm-12 col-xs-12 input-group hidden-xs">
+                            <input type="text" name="storeSearchQueryInForm" id="CC-storeSearchText" aria-required="true" class="right-margin form-control"
+                                            data-bind="value: storeSearchText, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'storeSearchPlaceholderText', attr:'placeholder'}, event: { keydown : handleKeyPress }" />
+                            <span class="input-group-btn cell-padding">
+                                <button type="button" id="CC-findStoresButton" class="cc-button-primary button-text-nowrap" data-toggle="modal" data-target="#storePickUpModal" data-bind="click: displayStoreSelector, disable: !storeSearchText.isValid()">
+                                    <span data-bind="widgetLocaleText:'findStoresButtonText'"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="row-item visible-xs">
+                            <input type="text" name="storeSearchQueryInForm" id="CC-storeSearchText-mobile" aria-required="true" class="right-margin form-control"
+                                            data-bind="value: storeSearchText, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'storeSearchPlaceholderText', attr:'placeholder'}" />
+                        </div>
+                        <div class="row-item visible-xs">
+                            <span>
+                                <button type="button" id="CC-findStoresButton-mobile" class="cc-button-primary button-text-nowrap full-width" data-toggle="modal" data-target="#storePickUpModal" data-bind="click: displayStoreSelector, disable: !storeSearchText.isValid()">
+                                    <span data-bind="widgetLocaleText:'findStoresButtonText'"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="notify col-sm-12 col-xs-12">
+                            <span id="CC-storeSearchText-itemError" class="text-danger" role="alert" aria-live="assertive" data-bind="validationMessage: storeSearchText"></span>
+                        </div>
+                    <!-- /ko -->
+                    <!-- ko if: $parent.selectedStore() -->
+                        <div class="row-item">
+                            <span class="shipping-truck"/><span class="availability-check"/><a href="#" data-bind="click: handleStoreRemoval, attr:{id: 'CC-StorePickup-shipInstead' + selectedStore().locationId, tabindex: 0}" >
+                                <span data-bind="widgetLocaleText:'shipInsteadText'"></span>
+                            </a>
+                        </div>
+                        <div class="row-item">
+                            <span class="shopping-bag"/><span class="availability-check"/><span data-bind="widgetLocaleText: 'availabletoPickupInStoreText'"></span>
+                        </div>
+                        <div class="row-item">
+                            <strong>
+                                <span data-bind="widgetLocaleText: 'pickupInStoreAtText'"></span><span data-bind="text:selectedStore().store.name"/><br/>
+                            </strong>
+                            <a href="#" aria-required="true" data-toggle="modal" data-target="#storePickUpModal" data-bind="click: displayStoreSelector, attr: {id: 'CC-StorePickup-link-' + selectedStore().locationId, tabindex: 0}">
+                                <span data-bind="widgetLocaleText: 'changeStoreText'"/>
+                            </a>
+                        </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="storePickUpModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span data-bind="widgetLocaleText: 'storePickerModalHeadingText'"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row item">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <span data-bind="widgetLocaleText: 'searchStoreLabelText'"></span>
+                    </div>
+                </div>
+                <div class="row hidden-xs">
+                    <label class="control-label hidden" for="CC-storeSelect"><span data-bind="widgetLocaleText: 'storeSearchPlaceholderText'"></span>:</label>
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <input type="text" class="col-md-12 form-control" name="storeSearchQueryInModal" id="CC-storeSelect" aria-required="true"
+                            data-bind="value: storeSearchText, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'storeSearchPlaceholderText', attr:'placeholder'}, event: { keydown : handleKeyPress }"/>
+                    </div>
+                    <span class="input-group-btn cell-padding">
+                        <button type="button" id="CC-findStoresModalButton" class="cc-button-primary button-text-nowrap" data-bind="click: displayStoreSelector, disable: !storeSearchText.isValid()">
+                            <span data-bind="widgetLocaleText:'findStoresButtonText'"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="row visible-xs">
+                    <label class="control-label hidden" for="CC-storeSelect-mobile"><span data-bind="widgetLocaleText: 'storeSearchPlaceholderText'"></span>:</label>
+                    <div class="row-item col-xs-12 col-sm-12 col-md-12">
+                        <input type="text" class="col-md-12 form-control" name="storeSearchQueryInModal" id="CC-storeSelect-mobile" aria-required="true"
+                            data-bind="value: storeSearchText, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'storeSearchPlaceholderText', attr:'placeholder'}"/>
+                    </div>
+                    <span class="row-item input-group-btn cell-padding">
+                        <button type="button" id="CC-findStoresModalButton-mobile" class="cc-button-primary button-text-nowrap" data-bind="click: displayStoreSelector, disable: !storeSearchText.isValid()">
+                            <span data-bind="widgetLocaleText:'findStoresButtonText'"></span>
+                        </button>
+                    </span>
+                </div>
+                <div class="row-item">
+                    <span id="CC-storeSelect-itemError" class="text-danger" role="alert" aria-live="assertive" data-bind="validationMessage: storeSearchText"></span>
+                </div>
+            </div>
+            <!-- ko if: stores().length === 0 -->
+                <div class="empty-stores">
+                    <!-- ko if: storeLookupStatus() === -1 -->
+                        <div align="center" class="row-item">
+                            <strong>
+                                <span data-bind="widgetLocaleText:{value: 'storeLookupFailed', params: {siteId : $data.site().siteInfo.id}, attr : 'innerText'}"></span>
+                            </strong>
+                        </div>
+                    <!-- /ko -->
+                    <!-- ko if: stores().length === 0 && storeLookupStatus() == -2 -->
+                        <div align="center" class="row-item">
+                            <strong>
+                                <span data-bind="widgetLocaleText:'noStoresFound'"></span>
+                            </strong>
+                        </div>
+                    <!-- /ko -->
+                </div>
+            <!-- /ko -->
+            <!-- ko if: stores().length > 0 -->
+                <div style="border-bottom: 1px solid #e5e5e5;"/>
+                <div class="stores">
+                    <!-- ko foreach: stores -->
+                    <div class="row store-item hidden-xs">
+                        <div class="col-xs-5 col-sm-5 col-md-5">
+                            <!-- ko if: $data.store.name -->
+                                <span data-bind="text: $data.store.name"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.address1 -->
+                                <span data-bind="text: $data.store.address1"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.address2 -->
+                                <span data-bind="text: $data.store.address2"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.address3 -->
+                                <span data-bind="text: $data.store.address3"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.city ||  $data.store.postalCode-->
+                                <span data-bind="text: $data.store.city"/><span class="cell-padding" data-bind="text: $data.store.postalCode"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.phoneNumber -->
+                                <span data-bind="text: $data.store.phoneNumber"/><br>
+                            <!-- /ko -->
+                        </div>
+                        <!-- ko if: $data.availabilityStatusMsg !== 'OUT_OF_STOCK'  && $data.availableQuantity > 0 -->
+                            <!-- ko if: $data.availabilityStatusMsg === 'IN_STOCK' -->
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                    <span data-bind="widgetLocaleText:'instockText'"></span>
+                                </div>
+                            <!-- /ko -->
+                            <!-- ko if: $data.availabilityStatusMsg === 'PREORDERABLE' -->
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                    <span data-bind="widgetLocaleText:'preorderableText'"></span>
+                                </div>
+                            <!-- /ko -->
+                            <!-- ko if: $data.availabilityStatusMsg === 'BACKORDERABLE' -->
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                    <span data-bind="widgetLocaleText:'backorderableText'"></span>
+                                </div>
+                            <!-- /ko -->
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <button type="button" class="cc-button-primary" data-bind="click: function() { $parent.handleStoreSelection($data, $parents[1])}">
+                                    <span data-bind="widgetLocaleText:'storeSelectionButtonText'"></span>
+                                </button>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'OUT_OF_STOCK' || $data.availableQuantity === 0 -->
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <span class="non-availability-check"/><span class="cell-padding" data-bind="widgetLocaleText:'outofstockText'"></span>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <div class="row store-item visible-xs">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <!-- ko if: $data.store.name -->
+                                <span data-bind="text: $data.store.name"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.address1 -->
+                                <span data-bind="text: $data.store.address1"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.address2 -->
+                                <span data-bind="text: $data.store.address2"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.address3 -->
+                                <span data-bind="text: $data.store.address3"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.city ||  $data.store.postalCode-->
+                                <span data-bind="text: $data.store.city"/><span class="cell-padding" data-bind="text: $data.store.postalCode"/><br>
+                            <!-- /ko -->
+                            <!-- ko if: $data.store.phoneNumber -->
+                                <span data-bind="text: $data.store.phoneNumber"/><br>
+                            <!-- /ko -->
+                        </div>
+                        <!-- ko if: $data.availabilityStatusMsg !== 'OUT_OF_STOCK'  && $data.availableQuantity > 0 -->
+                            <!-- ko if: $data.availabilityStatusMsg === 'IN_STOCK' -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                                    <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                    <span data-bind="widgetLocaleText:'instockText'"></span>
+                                </div>
+                            <!-- /ko -->
+                            <!-- ko if: $data.availabilityStatusMsg === 'PREORDERABLE' -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                                    <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                    <span data-bind="widgetLocaleText:'preorderableText'"></span>
+                                </div>
+                            <!-- /ko -->
+                            <!-- ko if: $data.availabilityStatusMsg === 'BACKORDERABLE' -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                                    <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                    <span data-bind="widgetLocaleText:'backorderableText'"></span>
+                                </div>
+                            <!-- /ko -->
+                            <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                                <button type="button" class="cc-button-primary" data-bind="click: function() { $parent.handleStoreSelection($data, $parents[1])}">
+                                    <span data-bind="widgetLocaleText:'storeSelectionButtonText'"></span>
+                                </button>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'OUT_OF_STOCK' || $data.availableQuantity === 0 -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                            <span class="non-availability-check"/><span class="cell-padding" data-bind="widgetLocaleText:'outofstockText'"></span>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+
+                </div>
+            <!-- /ko -->
+            <div class="modal-footer"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div data-bind="attr:{id: 'checkoutOrderDetails_'+id()}">
+  <h4 class="title agent-subheadings" data-bind="widgetLocaleText: 'orderDetailsText'"></h4>       
+  <!-- ko if: $data.user().isB2BUser() -->
+    <span id="cc-orderDetails-accountName" data-bind="widgetLocaleText: 'accountText'"></span>
+    <span data-bind="text:':'"></span>
+    <span id="cc-orderDetails-accountName-value" data-bind="text: accountName"></span>
+  <!--  /ko -->
+  <!-- ko if: $data.user() && $data.user().firstName -->
+    <br>
+    <span id="cc-orderDetails-customerName-label" data-bind="widgetLocaleText: 'customerNameText', visible: $data.user().firstName() || $data.user().lastName()"></span> 
+    <span data-bind="text:':',visible: $data.user().firstName() || $data.user().lastName()"></span>
+    <span id="cc-orderDetails-firstName-value" data-bind="text: $data.user().firstName, visible: $data.user().firstName"></span>
+    <span id="cc-orderDetails-lastName-value" data-bind="text: $data.user().lastName(), visible: $data.user().lastName()"></span>
+    <br> 
+  <!-- /ko -->
+  <span id="cc-orderDetails-customerEmail-label" data-bind="widgetLocaleText: 'customerEmailText'"></span>
+  <span data-bind="text:':'">:</span>
+  <span id="cc-orderDetails-customerEmail-value" data-bind="text: $data.user().emailAddress()"></span>
+  <!-- ko if: $data.cart().orderCreationDate() -->
+    <br>
+    <span id="cc-orderDetails-creationDate" data-bind="widgetLocaleText: 'orderInitiatedDateText'"></span>
+    <span data-bind="text:':'"></span>
+    <span id="cc-orderDetails-orderDate-value" data-bind="ccDateTime: {date: $data.cart().orderCreationDate(),
+                          format: 'datetime', dateFormat: 'medium', timeFormat: 'short'}"></span>
+  <!-- /ko -->
+  <br>
+  <span id="cc-orderDetails-siteName" data-bind="widgetLocaleText: 'merchantSiteText'"></span>   
+  <span data-bind="text:':'"></span>        
+  <span id="cc-orderDetails-siteName-value" data-bind="text: siteName"></span>
+  <br>
+  <span id="cc-orderDetails-orderPriceGroup" data-bind="widgetLocaleText: 'priceGroupText'"></span>
+  <span data-bind="text:':'"></span>
+  <span id="cc-orderDetails-orderPriceGroup-Name" data-bind="text: $data.user().selectedPriceListGroup().displayName"></span>
+  <span id="cc-orderDetails-orderPriceGroup-Code" data-bind="text: $data.user().selectedPriceListGroup().currency.currencyCode"></span>
+  <!-- ko if: originOfOrder() -->
+    <br />
+    <span id="cc-orderDetails-originOfOrder" data-bind="widgetLocaleText: 'originOfOrderText'"></span>
+    <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+    <span id="cc-orderDetails-originOfOrderValue" data-bind="widgetLocaleText: originOfOrder()">
+    </span>
+  <!-- /ko -->
+  <br>      
+  <br>
+</div>

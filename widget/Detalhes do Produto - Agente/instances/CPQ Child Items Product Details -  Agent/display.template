@@ -1,0 +1,59 @@
+<!--
+  /**
+   *
+   * Product Details Agent CPQ Child Items Template
+   *
+   */
+  -->
+<!-- ko if: loaded -->
+<div class="templateRegion" id="cc-product-details" data-oc-id="cc-product-details">
+  <!-- ko if: product -->
+  <!-- oc layout: panels -->
+  <div class="row">
+    <div class="oc-panel col-md-12" data-oc-id="panel-1">
+      <!-- oc section: agent-product-details-product-title -->
+        <h3 data-bind="element: 'agent-product-details-product-title'"></h1>
+      <!-- /oc -->
+    </div>
+    <div class="oc-panel col-md-6" data-oc-id="panel-2-0">
+      <!-- oc section: agent-product-details-product-image -->
+        <div data-bind="element: 'agent-product-details-product-image'" class="text-center"></div>
+      <!-- /oc -->
+    </div>
+    <div class="oc-panel col-md-6" data-oc-id="panel-2-1">
+      <!-- oc section: agent-product-details-product-external-price -->
+        <div data-bind="element: 'agent-product-details-product-external-price'"></div>
+      <!-- /oc -->
+      <!-- oc section: agent-product-details-product-quantity -->
+        <div data-bind="element: 'agent-product-details-product-quantity'"></div>
+      <!-- /oc -->
+      <!-- oc section: agent-product-details-product-stock-availability -->
+        <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='IN_STOCK')" data-oc-id="product-in-stock">
+          <div data-bind="element: 'agent-product-details-product-in-stock-message'"></div>
+        </div>
+        <div data-bind="if: (showStockStatus() && !stockStatus() )" data-oc-id="product-out-of-stock">
+          <div data-bind="element: 'agent-product-details-product-out-of-stock-message'"></div>
+        </div>
+        <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='PREORDERABLE')" data-oc-id="product-preorder">
+          <div data-bind="element: 'agent-product-details-product-preorder-message'"></div>
+        </div>
+        <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='BACKORDERABLE' )" data-oc-id="product-backorder">
+          <div data-bind="element: 'agent-product-details-product-backorder-message'"></div>
+        </div>
+      <!-- /oc -->
+      <!-- oc section: dynamic-property -->
+              <!--  ko if:showSkuProperties() -->
+                <!-- ko setContextVariable:{name:'context', value: $data.skuProperties} -->
+                  <div class="product-properties" data-bind="element: 'dynamic-property'"></div>
+                <!--/ko-->
+              <!--/ko-->
+            <!-- /oc -->
+      <!-- oc section: add-to-purchase-list -->
+        <div data-bind="element: 'add-to-purchase-list'"></div>
+      <!-- /oc -->
+    </div>
+  </div>
+  <!-- /oc -->
+  <!-- /ko -->
+</div>
+<!-- /ko -->

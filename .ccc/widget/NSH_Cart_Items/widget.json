@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_cart_items",
+  "version": 1,
+  "displayName": "NSH_Cart_Items",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_cart_items",
+  "source": 101,
+  "javascript": "nsh_cart_items"
+}

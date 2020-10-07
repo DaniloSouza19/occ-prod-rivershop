@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "isShopperInitiatedReturnEnable": true,
+    "isShopperInitiatedCancelEnable": true
+  },
+  "displayName": "Order Details B2B Widget"
+}

@@ -1,0 +1,8 @@
+{
+  "tag": "customer-details",
+  "source": 100,
+  "type": "fragment",
+  "title": "Customer Details",
+  "widgetType": "customerProfileDetails",
+  "version": 2
+}

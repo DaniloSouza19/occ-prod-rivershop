@@ -1,0 +1,111 @@
+<div class="cc-margin-top20">
+	<!-- Template to display user details -->
+	 <!-- ko if: $data.isAccountWithNoContracts() -->
+	 <div class="row">
+	 <span class="col-md-12" id="cc-customer-account-no-contracts-error-text"
+		  		data-bind="widgetLocaleText : 'accountHasNoContracts'"
+	 </span>
+	 </div>
+     <!-- /ko -->
+     <!-- ko with: user -->
+	<fieldset id="cc-customer-detail-edit-fields">
+		<!-- Below section will be displayed if edit button is clicked -->
+		<div id="cc-customerProfile-details-edit-region">
+			<div class="row" id="cc-customer-customerDetails-header">
+				<p data-bind="widgetLocaleText: 'customerDetailsHeader'"
+					class="no-outline col-xs-12 details-label"
+					id="cc-customer-customerDetails-headerText"></p>
+			</div>
+			<div class="row first-row">
+				<div id="cc-customer-details-edit-firstName"
+					class="form-group col-md-4">
+					<span class="text-danger visible-xs"
+						id="cc-customer-pfirstname-error"
+						data-bind="validationMessage: firstName"> </span>
+					<div class="control">
+						<label class="control-label details-label" for="cc-customer-pfirstname"
+							data-bind="widgetLocaleText:'firstNameText'"></label> <input
+							type="text" class="col-md-12 form-control details-input-field" name="sFirstName"
+							id="cc-customer-pfirstname"
+							data-bind="validatableValue: firstName,
+                                widgetLocaleText : {value:'firstNameText',
+                                              attr:'placeholder'},
+                                disable: $parent.isAccountWithNoContracts, css: {'sf-error' : !firstName.__valid__()}">
+					</div>
+				</div>
+				<div id="cc-customer-details-edit-lastName"
+					class="form-group col-md-4">
+					<span class="text-danger visible-xs"
+						id="cc-customer-plastName-error"
+						data-bind="validationMessage: lastName"></span>
+					<div class="control">
+						<label class="control-label details-label" for="cc-customer-plastname"
+							data-bind="widgetLocaleText:'lastNameText'"></label> <input
+							type="text" class="col-md-12 form-control details-input-field" name="sLastName"
+							id="cc-customer-plastname"
+							data-bind="validatableValue: lastName,
+                                widgetLocaleText : {value:'lastNameText', attr:'placeholder'},
+                                disable: $parent.isAccountWithNoContracts, css: {'sf-error' : !lastName.__valid__()}">
+					</div>
+				</div>
+				<div id="cc-customer-details-error-tablet"
+					class="col-md-4 hidden-xs">
+					<p class="text-danger"
+						id="cc-customer-details-sfirstname-error-tablet"
+						data-bind="validationMessage: firstName" role="alert"></p>
+					<p class="text-danger"
+						id="cc-customer-details-slastname-error-tablet"
+						data-bind="validationMessage: lastName" role="alert"></p>
+				</div>
+				<div class="form-group col-md-8">
+					<div class="control">
+						<label class="control-label details-label" for="cc-customer-pEmail"
+							data-bind="widgetLocaleText:'emailIdText'"></label> <input
+							type="text" class="col-md-12 form-control details-input-field" name="pEmail"
+							id="cc-customer-pEmail"
+							data-bind="validatableValue: emailAddress, disable: true">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--  ko if: $parent.accountAndSiteSelector.activeSites().length > 0  -->
+		<!-- ko if: $parent.accountAndSiteSelector.selectedSite() -->
+		<div class="row col-md-12">
+			<label id="cc-customerProfile-emailPreferences-text"
+				class="cc-customer-nickName details-label"
+				data-bind="widgetLocaleText: 'marketingMailsTitleText'"> </label>
+			<div class="checkbox"
+				id="cc-customerProfile-edit-marketingMail-checkbox" >
+				<label for="cc-customerProfile-edit-marketingMails"> <input
+					type="checkbox" name="marketing-mail"
+					id="cc-customerProfile-edit-marketingMails"
+					data-bind="checked: emailMarketingMails, value:emailMarketingMails, enable: $parent.accountAndSiteSelector.selectedSite()">
+					<span data-bind="text: $parent.marketingMailsTextForSite" class="details-label"
+					id="cc-customerProfile-edit-marketingMails-text"></span>
+				</label>
+			</div>
+		</div>
+		<!-- /ko -->
+		<!-- ko if: $parent.accountAndSiteSelector.activeSites().length > 1 -->
+		<div class="row col-md-12">
+		<div class="checkbox">
+		<label for="cc-customerProfile-edit-globalMarketingMails" id="cc-customerProfile-edit-globalMarketingMails-label">
+			<input type="checkbox" id="cc-customerProfile-edit-globalMarketingMails"
+			 data-bind="checked : $data.receiveEmailGlobally, click: $parent.switchGlobalEmailPrefOptionChange.bind($parent)" />		
+		<!-- ko ifnot: $data.receiveEmailGlobally -->
+		  <span data-bind="widgetLocaleText : 'globalMarketingMailsTitleTextOn'"
+				id="cc-cusrProfile-edit-globalMarketingMails-text" class="details-label"></span> 
+		<!-- /ko -->
+		<!-- ko if: $data.receiveEmailGlobally --> 
+		  <span data-bind="widgetLocaleText : 'globalMarketingMailsTitleTextOff'"
+				id="cc-cusrProfile-edit-globalMarketingMails-text" class="details-label"></span> 
+		<!-- /ko -->
+		</label>
+		</div>
+		</div>
+		<!--  /ko -->
+		<!-- /ko -->
+	</fieldset>
+	<!-- /ko -->
+</div>

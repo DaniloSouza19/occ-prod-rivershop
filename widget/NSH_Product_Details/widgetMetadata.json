@@ -1,0 +1,190 @@
+{
+  "imports": [
+    "product",
+    "imageRootUrl",
+    "loaded",
+    "productVariantOptions",
+    "productTypes"
+  ],
+  "translations": [
+    {
+      "name": "NSH_Product_Details [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Product_Details",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Product_Details [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Product_Details [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Product_Details [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Product_Details [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Product_Details [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Product_Details [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Product_Details [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Product_Details [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Product_Details [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Product_Details [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Product_Details [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Product_Details [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Product_Details [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Product_Details [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Product_Details [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Product_Details [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Product_Details [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Product_Details [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Product_Details [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Product_Details [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Product_Details [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Product_Details [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Product_Details [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Product_Details [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Product_Details [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Product_Details [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Product_Details [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Product_Details [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Product_Details [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Product_Details [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Product_Details [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Product_Details [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Product_Details [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Product_Details [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Product_Details [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Product_Details [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Product_Details [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Product_Details [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Product_Details [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Product_Details [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Product_Details [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {
+    "noOfStoresToDisplay": "10"
+  }
+}

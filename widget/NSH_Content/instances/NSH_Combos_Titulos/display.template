@@ -1,0 +1,71 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "60024": {
+    "id": "60024",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    },
+    "richText": {
+      "content": "${occ:localizedWebContent('m80601')}",
+      "sourceMedia": "m80601"
+    }
+  },
+  "60025": {
+    "font": {"styles": {
+      "color": "#707070",
+      "display": "block",
+      "font-size": "1.14rem",
+      "font-style": "normal",
+      "font-weight": "normal",
+      "text-decoration": "none"
+    }},
+    "id": "60025",
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+
+
+
+
+<div class="Combos">
+  
+<div class="templateRegion container" id="nsh_content" data-oc-id="nsh_content">
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-3" data-oc-id="panel-0-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '60024'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-9" data-oc-id="panel-0-1">
+
+      <!-- oc section: generic-text -->
+<h4 data-bind="element: 'generic-text',id: '60025'"></h4>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+</div>
+
+</div>

@@ -1,0 +1,185 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Product_Filters [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Product_Filters",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Product_Filters [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Product_Filters [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Product_Filters [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Product_Filters [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Product_Filters [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Product_Filters [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Product_Filters [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Product_Filters [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Product_Filters [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Product_Filters [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Product_Filters [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Product_Filters [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Product_Filters [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Product_Filters [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Product_Filters [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Product_Filters [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Product_Filters [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Product_Filters [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Product_Filters [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Product_Filters [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Product_Filters [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Product_Filters [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Product_Filters [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Product_Filters [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Product_Filters [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Product_Filters [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Product_Filters [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Product_Filters [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Product_Filters [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Product_Filters [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Product_Filters [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Product_Filters [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Product_Filters [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Product_Filters [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Product_Filters [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Product_Filters [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Product_Filters [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Product_Filters [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Product_Filters [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Product_Filters [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Product_Filters [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {
+    "maxDimensionCount": "10",
+    "maxRefinementCount": "10"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "tag": "product-instore-pickup",
+  "source": 100,
+  "type": "fragment",
+  "title": "Store Pick Up",
+  "widgetType": "productDetails",
+  "version": 14
+}

@@ -1,0 +1,17 @@
+<div id="splitPaymentsPaypalPanel">
+  <!-- ko if: selectedPaymentType() == "paypalCheckout" -->
+    <!-- ko if: $data.order().isPaypalVerified() -->
+      <div id="CC-splitPayments-paymentMethod" >
+        <span  data-bind="widgetLocaleText: 'paymentMethod'"></span>
+      </div>
+      <img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif"
+      align="left" style="margin-right: 7px;" data-bind="attr:{alt: 'PayPal'}" />
+      <span class="paypalText" data-bind="widgetLocaleText: 'paypalText'"></span>
+    <!-- /ko -->
+    <!-- ko ifnot: $data.order().isPaypalVerified() -->
+      <a data-bind="attr : { id: 'CC-splitPayments-checkoutWithPaypal'}, click: handleAddPayment " href="#">
+        <img class="img-responsive center-block" alt="checkoutWithPayPal" data-bind="attr: {src: paypalImageSrc}">
+      </a>
+    <!-- /ko -->
+  <!-- /ko -->
+</div>

@@ -1,0 +1,82 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Imagem_20004",
+      "styles": {},
+      "tag": "image@30035",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "altText": "Img3",
+        "titleText": "Img3",
+        "zoomEnabled": "0",
+        "isProductImage": "0",
+        "fileName": "banner-img-3.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_20003",
+      "styles": {},
+      "tag": "image@30034",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "altText": "Img2",
+        "titleText": "Img2",
+        "zoomEnabled": "0",
+        "isProductImage": "0",
+        "fileName": "banner-img-2.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_20002",
+      "styles": {},
+      "tag": "image@30033",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "altText": "Img1",
+        "titleText": "Img1",
+        "zoomEnabled": "0",
+        "isProductImage": "0",
+        "fileName": "banner-img-1.png"
+      }
+    }
+  ]
+}

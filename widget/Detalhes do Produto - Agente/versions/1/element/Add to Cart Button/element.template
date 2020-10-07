@@ -1,0 +1,30 @@
+<div  id="CC-prodDetails-addToCart" class="marginTop" data-bind="inTabFlow:(validateAddToCart())" >
+<!-- ko if: !isExchangeRequest() -->
+
+  <button id="cc-prodDetailsAddToCart" data-bind="disabled: {condition: (!validateAddToCart() || isAddToCartClicked()) || isReadOnly(), click: handleAddToCart}" class="cc-button-primary">
+    <!-- ko ifnot: $data.preSelectedCartItemDetails() && $data.preSelectedCartItemDetails().isUpdate -->
+      <!-- ko ifnot: stockState() === 'PREORDERABLE'-->
+        <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText: 'addToCartText'"></span>
+      <!-- /ko -->
+      <!-- ko if: stockState() === 'PREORDERABLE'-->
+        <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText: 'preOrderButtonText'"></span>
+      <!-- /ko -->
+    <!-- /ko -->
+     <!-- ko if: $data.preSelectedCartItemDetails() && $data.preSelectedCartItemDetails().isUpdate -->
+       <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText: 'buttonUpdate'"></span>
+     <!-- /ko -->
+  </button>
+<!-- /ko -->
+<!-- ko if: isExchangeRequest()-->
+
+  <button id="cc-prodDetailsAddToCart" data-bind="disable:((isChildItem() === true) || !validateAddToCart() || isAddToCartClicked), click: handleAddToCart" class="cc-button-primary">
+    <!-- ko ifnot: $data.preSelectedCartItemDetails() && $data.preSelectedCartItemDetails().isUpdate -->
+        <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText: 'buttonAddToOrderText'"></span>
+    <!-- /ko -->
+    <!-- ko if: $data.preSelectedCartItemDetails() && $data.preSelectedCartItemDetails().isUpdate -->
+       <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText: 'buttonUpdate'"></span>
+     <!-- /ko -->
+  </button>
+
+<!-- /ko -->
+</div>

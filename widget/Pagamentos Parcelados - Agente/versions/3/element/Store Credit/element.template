@@ -1,0 +1,74 @@
+<!-- ko ifnot: isSinglePayment() -->
+<div id="CC-singlepayment-applyStoreCredit-container">
+   <div class="row">
+      <div class="form-group col-sm-12">
+         <label class="col-sm-2" id="cc-store-credit-balance-text-label" for="cc-store-credit-balance-text" data-bind="widgetLocaleText: 'storeCreditBalanceText'"></label>
+         <span id="CC-singlepayment-totalStoreCredit"
+            data-bind="currency: { price: user().storeCreditContainer().totalStoreCredits(), currencyObj: $parents[0].site().selectedPriceListGroup().currency}"></span>
+      </div>
+   </div>
+   <div class="row">
+      <div class="form-group col-md-6" id="CC-singlepayment-applyStoreCredit-number">
+         <div class="control">
+            <input id="cc-store-credit-number-input-text" class="form-control col-md-1"
+               data-bind="validatableValue: $data.paymentViewModel().storeCreditNumber, widgetLocaleText : {value:'storeCreditNumberText', attr:'placeholder'},
+               css: {'sf-error' : ! ($data.paymentViewModel().storeCreditNumber && $data.paymentViewModel().storeCreditNumber.__valid__())}">
+         </div>
+      </div>
+   </div>
+   <br/>
+     <!-- ko if: ($data.ASACustomPaymentPropertiesMetadataMap && $data.ASACustomPaymentPropertiesMetadataMap["storeCredit"] && $data.ASACustomPaymentPropertiesMetadataMap["storeCredit"].length > 0) -->
+     <!-- ko setContextVariable:{name: 'context', value: $data.ASACustomPaymentPropertiesMetadataMap["storeCredit"]} -->
+        <div data-bind="element: 'dynamic-property'" ></div>
+     <!-- /ko -->
+     <!-- /ko -->
+</div>
+
+<!-- /ko -->
+<!-- ko if: isSinglePayment() -->
+<!-- Single Payment Store Credit Section -->
+<!-- ko if : $.inArray("storeCredit", $data.paymentsContainer().enabledTypes) > -1 -->
+<div id="CC-singlePayment-storeCredit-checkbox" class="row">
+   <div class="col-sm-12">
+      <div class="form-group col-sm-5 checkbox">
+         <label for="CC-singlePayment-displayStoreCredit">
+         <input type="checkbox" name="storeCreditDetails"
+            id="CC-singlePayment-displayStoreCredit" class="checkbox"
+            data-bind="checked: isDisplayStoreCreditDetails, disable: (order().isPaymentDisabled() || cart().items().length == 0 || $data.paymentsContainer().paymentDue() <= 0 || isDisplayInvoiceDetails() || isDisplayCashDetails() || (order().showSchedule() && !$data.paymentsContainer().isStoreCreditEnabledForScheduledOrder())) ">
+         <span data-bind="widgetLocaleText:'storeCreditPaymentMsg'"></span>
+         </label>
+      </div>
+   </div>
+</div>
+<!-- ko if: isDisplayStoreCreditDetails() -->
+<div id="CC-singlepayment-applyStoreCredit-container">
+   <div class="row">
+      <div class="form-group col-sm-12">
+         <label class="col-sm-2" id="cc-store-credit-balance-text-label" for="cc-store-credit-balance-text" data-bind="widgetLocaleText: 'storeCreditBalanceText'"></label>
+         <span id="CC-singlepayment-totalStoreCredit"
+            data-bind="currency: { price: user().storeCreditContainer().totalStoreCredits(), currencyObj: $parents[0].site().selectedPriceListGroup().currency}"></span>
+      </div>
+   </div>
+   <div class="row">
+      <div class="form-group col-md-6" id="CC-singlepayment-applyStoreCredit-number">
+         <div class="control">
+            <input id="cc-store-credit-number-input-text" class="form-control col-md-1"
+               data-bind="validatableValue: $data.storeCreditViewModel().storeCreditNumber, widgetLocaleText : {value:'storeCreditNumberText', attr:'placeholder'},
+               css: {'sf-error' : ! $data.storeCreditViewModel().storeCreditNumber.__valid__()}">
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="form-group col-sm-6">
+         <a href="#" id="CC-singleStoreCredit-applyCard"
+            class="cc-button-secondary col-xs-12"
+            data-bind="click: handleApplyStoreCredit, disable: user().storeCreditContainer() == undefined || user().storeCreditContainer().totalStoreCredits <= 0">
+         <span id="CC-singlepayment-applyStoreCreditButton"
+            data-bind="widgetLocaleText:'storeCreditApplyText'"></span>
+         </a>
+      </div>
+   </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->

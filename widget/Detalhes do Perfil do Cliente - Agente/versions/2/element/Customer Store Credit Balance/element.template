@@ -1,0 +1,14 @@
+<div class="cc-margin-top10">
+	<!-- ko if: user().storeCreditContainer() && user().storeCreditContainer().totalStoreCredits() -->
+	<div id="cc-storeCredit-details">
+		<!--  ko if: $data.currencyObject() -->
+		<span data-bind="widgetLocaleText: 'storeCreditBalanceText'"></span> <span class="details-label"
+			data-bind="widgetLocaleText: 'delimiterText'"></span> <span
+			id="cc-customer-storeCredit-balance-value"
+			data-bind="currency: {price: user().storeCreditContainer().totalStoreCredits(), 
+                currencyObj: $data.currencyObject()}"></span>
+
+		<!-- /ko -->
+	</div>
+	<!-- /ko -->
+</div>

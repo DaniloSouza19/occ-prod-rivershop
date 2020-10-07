@@ -1,0 +1,8 @@
+{
+  "tag": "customer-pending-orders",
+  "source": 100,
+  "type": "fragment",
+  "title": "Customer Pending Orders",
+  "widgetType": "customerProfileDetails",
+  "version": 2
+}

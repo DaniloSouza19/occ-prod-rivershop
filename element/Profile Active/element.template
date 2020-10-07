@@ -1,0 +1,14 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('customer-profile-status') -->
+<!-- ko with: user -->
+<div class="cc-margin-top20"
+	data-bind="visible: $data.isB2BUser(), attr: {id: $parent.WIDGET_ID + '-cc-activeAcount'}">
+	<div aria-labelledby="cc-inlineLabelId" data-bind="attr: {id: $parent.WIDGET_ID + '-cc-inlineSet-active'}">
+		<span class="checkbox"> <input type="checkbox"
+			value="true" data-bind="checked: $data.isB2BUser() && active(), disable : true, attr: {id: $parent.WIDGET_ID + '-cc-active'}">
+			<label class="cc-aligment-label"
+			data-bind="widgetLocaleText: 'activeHeaderText', attr: {for: $parent.WIDGET_ID + '-cc-active'}"></label>
+		</span>
+	</div>
+</div>
+<!-- /ko -->
+<!-- /ko -->

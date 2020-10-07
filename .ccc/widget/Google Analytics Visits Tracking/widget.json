@@ -1,0 +1,9 @@
+{
+  "widgetType": "googleAnalyticsVisitMetrics_v4_v4",
+  "version": 4,
+  "displayName": "Google Analytics Visits Tracking",
+  "elementized": false,
+  "global": true,
+  "source": 101,
+  "javascript": "gaTracking"
+}

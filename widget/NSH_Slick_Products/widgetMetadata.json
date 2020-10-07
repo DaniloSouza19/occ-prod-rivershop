@@ -1,0 +1,184 @@
+{
+  "imports": [
+    "product"
+  ],
+  "translations": [
+    {
+      "name": "NSH_Slick_Products [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Slick_Products",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Slick_Products [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Slick_Products [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Slick_Products [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Slick_Products [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Slick_Products [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Slick_Products [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Slick_Products [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Slick_Products [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Slick_Products [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Slick_Products [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Slick_Products [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Slick_Products [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Slick_Products [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Slick_Products [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Slick_Products [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Slick_Products [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Slick_Products [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Slick_Products [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Slick_Products [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Slick_Products [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Slick_Products [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Slick_Products [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Slick_Products [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Slick_Products",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Slick_Products [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Slick_Products [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Slick_Products [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Slick_Products [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Slick_Products [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Slick_Products [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Slick_Products [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Slick_Products [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Slick_Products [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Slick_Products [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Slick_Products [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Slick_Products [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Slick_Products [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Slick_Products [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Slick_Products [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Slick_Products [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Slick_Products [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

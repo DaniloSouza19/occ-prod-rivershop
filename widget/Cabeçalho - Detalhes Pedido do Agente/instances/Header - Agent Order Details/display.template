@@ -1,0 +1,101 @@
+<div>
+<!--  ko if:   $data.orderDetailsWrapper.isRenderComplete() -->
+  <div id="cc-orderDetails-Header-menu" class="row">
+    <div id="cc-stickyHeader"
+    data-bind="scrollAffix: {scrollDistance: '10',
+                                       affixPos: '40px',
+                                       affixMatchElm:'#region-AgentOrderDetailsHeaderRegion',
+                                       adjust: '#cc-orderDetails',
+                                       adjustPos: '125px'}">
+  <div id="cc-orderDetails-Header" class="col-xs-12">
+  <!--  ko if: $data.orderDetailsWrapper.orderDetails() -->
+    <!--  ko with: $data.orderDetailsWrapper.orderDetails -->
+
+  <h3 id="cc-orderDetails-orderState-header" class="col-xs-12 cc-order-header-font-size"
+          data-bind="css: {'col-md-6': !(!$parent.orderDetailsWrapper.isEditOrder() && !$parent.orderDetailsWrapper.isCancelOrder()) || $parent.orderDetailsWrapper.isPendingPaymentOrder(),
+                           'col-md-9': !$parent.orderDetailsWrapper.isEditOrder() && !$parent.orderDetailsWrapper.isCancelOrder()}">
+     <!-- ko if : !$parent.isScheduledOrder() -->
+    <span id="cc-orderDetails-orderId-label" data-bind="widgetLocaleText: 'orderIdText'"></span> 
+    <span id="cc-orderDetails-orderIdWithStatus" data-bind="text: $data.id+ ' - '"></span>
+    <span id="cc-orderDetails-orderState" data-bind="text: $parent.status"></span>
+	<!-- ko if: $parent.orderDetailsWrapper.isQueuedOrder() -->
+		<span id="cc-orderDetails-queuedOrderAdditionalStatus" style="font-size: 50%" data-bind="widgetLocaleText: 'additionalQueuedOrderStatus'"></span>
+	<!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if : $parent.isScheduledOrder() -->
+      <span id="cc-orderDetails-scheduledOrderId-label"
+        data-bind="widgetLocaleText: 'scheduledOrder'"></span> <span
+        id="cc-orderDetails-scheduledOrderIdWithStatus" data-bind="text: $parent.scheduledOrderId() + ' - '"></span>
+        <span id="cc-orderDetails-scheduledOrderState"
+        data-bind="text:  $parent.scheduledOrderStatus() "></span>
+      <!-- /ko -->
+      </h3>
+    <!-- /ko -->
+    <!-- /ko -->
+<div id="cc-orderDetails-actions"
+  data-bind="css: {'col-md-4': !(!$data.orderDetailsWrapper.isEditOrder() && !$data.orderDetailsWrapper.isCancelOrder()) || $data.orderDetailsWrapper.isPendingPaymentOrder()}">
+  <button id="cc-orderDetails-cancelOrder-btn"
+    class="cc-margin-top-edit-cancel-order col-xs-5 cc-button-secondary secondarybackground" style="
+    margin-top: 5px;"
+    data-bind="click: function(){ $data.loadCancelReasons();},
+                       visible: ($data.orderDetailsWrapper.isCancelOrder() || $data.orderDetailsWrapper.isPendingPaymentOrder()) && 
+                       (($data.orderDetailsWrapper.orderDetails().profile.isAnonymous) || ($data.orderDetailsWrapper.orderDetails().profileId == $data.user().id()) || !($data.user().id()) )">
+    <span id="cc-orderDetails-cancelOrderButton-label"
+      data-bind="widgetLocaleText: 'buttonCancelOrderText'"></span>
+  </button>
+  <button id="cc-orderDetails-editOrder-btn"
+    class="cc-margin-top-edit-cancel-order col-xs-5 cc-button-secondary secondarybackground"
+    style="margin-top: 5px;margin-left: 5px;"
+    data-placement="bottom"
+    data-bind="click: function(){ $data.checkAmendInProgressForEdit();},
+                visible: $data.orderDetailsWrapper.isEditOrder">
+    <span id="cc-orderDetails-editOrderButton-label"
+      data-bind="widgetLocaleText: 'buttonEditOrderText'"></span>
+  </button>
+   <button id="cc-confirmationEditOrder-btn" class="hidden" data-bind="
+    click: $data.handleApprovalWithEditOrder.bind($data)">
+ </button>
+  <button id="cc-orderDetails-payPayment-btn"
+    style="margin-top: 5px; margin-left: 5px; width:auto"
+    class="cc-button-secondary secondarybackground agent-order-line cc-ws-normal col-xs-5"
+    data-bind="click: $data.loadCheckoutPageForPendingPayment.bind($data),
+                       visible: $data.orderDetailsWrapper.isPendingPaymentOrder()">
+    <span id="cc-orderDetails-payPaymentButton-label"
+      data-bind="widgetLocaleText: 'buttonPayOrderText'"></span>&nbsp;
+             <!-- ko if: $data.orderDetailsWrapper.isMultiCurrencyOrder()-->
+             <span data-bind="text:$data.orderDetailsWrapper.convertToPaymentDueInMixCurrencyFormat($data.orderDetailsWrapper.orderDetails())"></span>
+               <!-- /ko -->
+             <!-- ko ifnot: $data.orderDetailsWrapper.isMultiCurrencyOrder()-->
+               <span data-bind="currency: {price: $data.orderDetailsWrapper.paymentDue(),
+                 currencyObj: $data.orderDetailsWrapper.orderDetails().priceListGroup ? $data.orderDetailsWrapper.orderDetails().priceListGroup.currency
+                                               : $data.user().selectedPriceListGroup().currency}"></span>
+              <!-- /ko -->
+  </button>
+</div>
+ <!-- oc layout: panels -->
+ <div id="cc-back-button-returnToOrder" class="oc-panel pull-right cc-orderDetails-header-align-backButton" data-bind="css: {'col-md-1': !(!$data.orderDetailsWrapper.isEditOrder() && !$data.orderDetailsWrapper.isCancelOrder()) || $data.orderDetailsWrapper.isPendingPaymentOrder(),
+                           'col-md-3': !$data.orderDetailsWrapper.isEditOrder() && !$data.orderDetailsWrapper.isCancelOrder()}" 
+                           data-oc-id="panel-5">  
+        <!-- oc section: back-button -->
+          <div data-bind="element: 'back-button', attr: { id: 'back-button-'+id()}"></div>
+        <!-- /oc -->
+  </div>
+<!-- /oc -->
+</div>
+  <div id="cc-horizontalLine-orderHeaderInfo" class="col-xs-12">
+    <hr class="line agent-line" />
+  </div>
+ </div>
+</div>
+<!--  /ko  -->
+
+<div data-bind="template: { name: $data.templateAbsoluteUrl('/templates/cancel-reasons.template') , templateUrl: ''}">
+    </div>
+
+<div data-bind="template: { name: $data.templateAbsoluteUrl('/templates/edit-popover.template') , templateUrl: ''}">
+    </div>
+
+<div data-bind="template: { name: $data.templateAbsoluteUrl('/templates/approver-popover.template') , templateUrl: ''}">
+    </div>
+
+</div>

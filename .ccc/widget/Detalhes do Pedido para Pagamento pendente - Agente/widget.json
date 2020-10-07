@@ -1,0 +1,6 @@
+{
+  "widgetType": "agentOrderDetailsPendingPayment",
+  "version": 1,
+  "displayName": "Detalhes do Pedido para Pagamento pendente - Agente",
+  "elementized": true
+}

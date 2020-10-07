@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Profile_WishList_Header [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Profile_WishList_Header [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

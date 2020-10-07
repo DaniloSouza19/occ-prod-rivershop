@@ -1,0 +1,34 @@
+<div class="nsh_shopper_context_selector">
+    <!-- ko if: (isReady) -->
+    <div class="container-fluid">
+        <!-- ko if: $data.shopperContextViewModel().dynamicProperties().length > 0 -->
+        <div class="row" data-bind="foreach:
+  $data.shopperContextViewModel().dynamicProperties">
+            <!-- ko if: (type === 'shortText' || type==='richText' || type==='number') -->
+            <div class="col-md-12">
+                <label data-bind="text: label"></label>
+                <input type="text" data- bind="value:$parent.shopperContextViewModel().shopperContext[id],
+  attr:{'id':id}" />
+            </div>
+            <!-- /ko -->
+            <!-- ko if: (type === 'checkbox') -->
+            <div class="col-md-12">
+                <label data-bind="text: label"></label>
+                <input type="checkbox" data- bind="checked:$parent.shopperContextViewModel().shopperContext[id],
+  attr:{'id':id}" />
+            </div>
+            <!-- /ko -->
+            <!-- ko if: (type == 'date') -->
+            <div class="col-md-12">
+                <label data-bind="text: label"></label>
+                <input type="date" data- bind="checked:$parent.shopperContextViewModel().shopperContext[id],
+  attr:{'id':id}" />
+            </div>
+            <!-- /ko -->
+        </div>
+        <button data-bind="click: handleLoadContext"> <span data-bind="text:'Load
+  Context'"></span></button>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+</div>

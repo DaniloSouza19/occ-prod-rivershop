@@ -1,0 +1,8 @@
+{
+  "tag": "product-backorder-message",
+  "source": 100,
+  "type": "dynamicFragment",
+  "title": "Mensagem de Backorder",
+  "widgetType": "productDetails",
+  "version": 14
+}

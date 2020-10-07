@@ -1,0 +1,6 @@
+{
+  "widgetType": "scheduledOrderList",
+  "version": 5,
+  "displayName": "Lista de Pedidos Programados",
+  "elementized": true
+}

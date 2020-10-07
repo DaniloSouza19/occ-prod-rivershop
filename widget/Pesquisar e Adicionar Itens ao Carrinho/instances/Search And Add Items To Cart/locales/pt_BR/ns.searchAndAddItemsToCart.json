@@ -1,0 +1,13 @@
+{
+  "resources": {
+    "addToCartFailedError": "Falha ao adicionar ao carrinho!",
+    "priceNotAvailableForAddToCart": "Não foi possível adicionar o produto/SKU __productName__ ao seu carrinho, as informações de preço não estão disponíveis.",
+    "addFromCatalogText": "Adicionar através do Catálogo",
+    "invalidProductForAddToCart": "A Sku não está disponível no produto.",
+    "itemOutOfStockMessage": "O item selecionado está esgotado.",
+    "outOfStockMessage": "Item __skuID__ está esgotado",
+    "orderItemsText": "Itens do Pedido",
+    "errorHeader": "Erro",
+    "productDetailsErrorText": "Detalhes do produto não podem ser recuperados."
+  }
+}

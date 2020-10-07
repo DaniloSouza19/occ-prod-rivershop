@@ -1,0 +1,8 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('additional-custom-factors') && $data.shopperContextViewModel.dynamicProperties().length > 0-->
+  <!-- ko with: $data.elements['additional-custom-factors'] -->
+    <div id="additionalCustomFactorsLink">
+      <a href="#" data-bind="attr: {id: 'cc-additional-custom-factors' },
+                            widgetLocaleText:'additionalCustomFactorsText', click: openPopUp.bind($parent, $popupId)"></a>
+    </div>
+  <!-- /ko -->
+<!-- /ko -->

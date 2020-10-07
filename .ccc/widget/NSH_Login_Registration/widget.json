@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_login_registration",
+  "version": 1,
+  "displayName": "NSH_Login_Registration",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_login_registration",
+  "source": 101,
+  "javascript": "nsh_login_registration"
+}

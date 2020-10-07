@@ -1,0 +1,5 @@
+<!-- ko if: initialized() -->
+<div id="cc-dashboardBanner-title-div"  tabindex="0"  data-bind="widgetLocaleText:{attr:'aria-label', value:'dashboardTitle'}">
+  <h1 class="cc-dashboardBanner-title cc-dashboard-ellipse" data-bind="widgetLocaleText: 'dashboardTitle'"></h1>
+</div>
+<!-- /ko -->

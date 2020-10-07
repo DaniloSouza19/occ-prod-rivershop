@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-preorder",
+  "source": 100,
+  "type": "container",
+  "title": "Preorderable",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

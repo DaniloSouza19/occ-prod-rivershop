@@ -1,0 +1,217 @@
+<!-- ko if: (listingViewModel().display) -->
+<div id="CC-scheduledOrderList">
+  <div id="CC-scheduledOrderList-account-title" >
+    <div class="CC-scheduledOrderList-account-title"data-bind="widgetLocaleText:'scheduledOrderListText'">
+    </div>
+    <div id="CC-scheduledOrderList-backToAccount-xs" class="visible-xs col-xs-12">
+      <a data-bind="click: user().validatePrivilagePageRequest.bind(user()),
+				ccNavigation: 'prevent',
+				ccLink: 'profile',
+				widgetLocaleText:'backToMyAccount'"
+         href="#"
+         class="center-block col-xs-12"></a>
+    </div>
+  </div>
+  <hr>
+  <!-- ko if: (listingViewModel().viewportMode()==1 || listingViewModel().viewportMode()==4 )-->
+  <div id="CC-scheduleOrderList-table-md-lg-sm" class="row">
+    <section id="CC-scheduledOrderList-ordersListing-info" class="col-md-12">
+      <table id="CC-scheduledOrderList-table" class="table" data-bind="widgetLocaleText:{value:'myScheduledOrders',attr:'summary'}">
+        <thead>
+          <tr>
+		<th data-bind="widgetLocaleText : 'scheduledOrderId'" class="col-md-1" scope="col"></th>
+		<th class="col-md-2" scope="col">
+			<span data-bind="widgetLocaleText : 'scheduledOrderName'"></span>
+			<!-- ko if : ($data.sortDirections().name == "asc") -->
+			<span class="fa fa-sort-desc" data-bind="click : $data.clickToSort.bind($data,'desc','name')" aria-hidden="true"></span>
+			<!-- /ko -->
+			<!-- ko if : ($data.sortDirections().name == "desc") -->
+			<span class="fa fa-sort-asc" data-bind="click : $data.clickToSort.bind($data,'asc','name')" aria-hidden="true"></span>
+			<!-- /ko -->
+			<!-- ko if : ($data.sortDirections().name == "both") -->
+			<span class="fa fa-sort" data-bind="click : $data.clickToSort.bind($data,'asc','name')" aria-hidden="true"></span>
+			<!-- /ko -->
+		</th>
+		<th class="col-md-2" scope="col">
+			<span data-bind="widgetLocaleText : 'createdDate'"></span>
+			<!-- ko if : ($data.sortDirections().createDate == "asc") -->
+			<span class="fa fa-sort-desc" data-bind="click : $data.clickToSort.bind($data,'desc','createDate')" aria-hidden="true"></span>
+			<!-- /ko -->
+			<!-- ko if : ($data.sortDirections().createDate == "desc") -->
+			<span class="fa fa-sort-asc" data-bind="click : $data.clickToSort.bind($data,'asc','createDate')" aria-hidden="true"></span>
+			<!-- /ko -->
+			<!-- ko if : ($data.sortDirections().createDate == "both") -->
+			<span class="fa fa-sort" data-bind="click : $data.clickToSort.bind($data,'asc','createDate')" aria-hidden="true"></span>
+			<!-- /ko -->
+		</th>
+            <th data-bind="widgetLocaleText : 'frequency'" class="col-md-2" scope="col"></th>
+            <th data-bind="widgetLocaleText : 'nextShipDate'" class="col-md-2" scope="col"></th>
+            <th data-bind="widgetLocaleText : 'scheduledOrderStatus'" class="col-md-2" scope="col"></th>
+            <th data-bind="widgetLocaleText : 'lastScheduledRun'" class="col-md-2" scope="col"></th>
+            <th class="col-md-1" scope="col"></th>
+          </tr>
+        </thead>
+        <!-- ko if : ($data.scheduledOrderListGrid().length > 0) -->
+        <tbody data-bind="foreach: scheduledOrderListGrid">
+          <tr data-bind="foreach: $data">
+            <td class="col-md-1" scope="row">
+            <a data-bind="attr: {id: 'CC-scheduledOrderList-' + $data.id, href:'#'},
+                            click: $parents[1].clickOrderDetails.bind($parents[1]),
+                            text : $data.id"
+                            class="text-underline">
+            </a>
+            </td>
+            <td data-bind="attr:{title:$data.name},
+				   text : $data.name"
+		class="col-md-2"
+		scope="row"></td>
+            <td data-bind="ccDate: {date: $data.createDate, returnedDate: 'default'}"
+				class="col-md-2"></td>
+            <td data-bind="text : $data.frequency"
+		class="col-md-1.5"></td>
+            <td data-bind="ccDate: {date: $data.nextScheduledRun, returnedDate: 'default'}"
+				class="col-md-2"></td>
+			<td class="col-md-1.5">
+                        <!-- ko if: $data.templateOrder && $data.templateOrder.state == "TEMPLATE" -->
+                        <!-- ko ifnot: $data.executionCheckFlag-->
+                        <span class="fa fa-exclamation-triangle text-warning"></span>
+                        <!-- /ko -->
+                        <span data-bind="widgetLocaleText : $data.state"></span>
+                        <!-- /ko -->
+                        <!-- ko ifnot: $data.templateOrder && $data.templateOrder.state == "TEMPLATE" -->
+                        <!-- ko ifnot: $data.executionCheckFlag-->
+                        <span class="fa fa-exclamation-triangle text-warning"></span>
+                        <!-- /ko -->
+                        <!-- ko if : $data.templateOrder -->
+                        <span data-bind="widgetLocaleText : $data.templateOrder.state"></span>
+                        <!-- /ko -->
+                        <!-- /ko -->
+                        </td>
+			<td data-bind="ccDate: {date: $data.lastScheduledRun, returnedDate: 'default'}"
+				class="col-md-2"></td>
+			<td class="col-md-4" scope="row">
+              <!-- ko if:($parents[1].cart().items().length > 0) -->
+			<a href="#" class="pull-left linkText" data-bind="widgetLocaleText:'copyToCart', click: $parents[1].setSelectedOrderId.bind($parents[1])"
+                    data-toggle="modal"
+                    data-id=$parents[1].templateOrderId
+                    data-target="#cc-copyOrder-ModalContainer"
+                    type="button">
+			</a>
+			<!-- /ko -->
+		<!-- ko if:($parents[1].cart().items().length == 0) -->
+		<a id="CC-copyOrder" href="#" class="pull-right" href="#" data-bind="click:  $parents[1].mergeToCart.bind($parents[1]), attr: {id: 'cc-copy-to-cart-'+$data.orderId}" >
+                <span data-bind="widgetLocaleText: 'copyToCart'"></span>
+              </a>
+		<!-- /ko -->
+            </td>
+          </tr>
+        </tbody>
+        <!--/ko -->
+        <!-- ko if : ($data.scheduledOrderListGrid().length <= 0) -->
+        <tbody>
+         <tr>
+           <td colspan="7" data-bind ="widgetLocaleText:'NoItemDisplayMessage' "></td>
+         </tr>
+        </tbody>
+        <!-- /ko -->
+      </table>
+    </section>
+  </div>
+  <!--/ko-->
+
+  <!-- Place Order Modal-->
+            <div data-bind="modal: 0,
+                            modalTabbingContraint"
+                  class="modal width-fixed fade cc-modalForm"
+                  id="cc-copyOrder-ModalContainer">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <text data-bind="widgetLocaleText:'placeOrderModalMessage'"
+                        class="modal-title text-center"></text>
+                  </div>
+                  <div class="modal-footer">
+                    <div><button data-bind="click: $data.mergeToCart.bind($data),
+                                       widgetLocaleText:'buttonOk'"
+                                       data-dismiss="modal"
+                            type="button"
+                            class="btn btn-primary btn-sm"></button>
+                    <button data-bind="widgetLocaleText:'buttonCancel'"
+                            data-dismiss="modal"
+                            type="button"
+                            class="btn btn-primary btn-sm"></button></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+   <!-- ko if: (listingViewModel().viewportMode()==2 || listingViewModel().viewportMode()==3 )-->
+  <div id="CC-scheduleOrderList-table-xs" class="row">
+    <section id="CC-scheduledOrderList-ordersListing-phone" class="col-md-12">
+      <table id="CC-scheduledOrderList-table-mobile" data-bind="widgetLocaleText:{value:'myAccount',attr:'summary'}" class="table">
+        <!-- ko if : ($data.scheduledOrderListGrid().length > 0) -->
+        <tbody data-bind="foreach: scheduledOrderListGrid">
+          <tr data-bind="foreach: $data">
+            <td>
+			  <div data-bind="text : $data.name"></div>
+              <div data-bind="text : $data.frequency"></div>
+            </td>
+            <td>
+              <div>
+              <a data-bind="attr: {id: 'CC-scheduledOrderList-' + $data.id, href:'#'},
+                            click: $parents[1].clickOrderDetails.bind($parents[1]),
+                            text : $data.id"
+                            class="text-underline">
+              </a>
+              </div>
+              <div data-bind="ccDate: {date: $data.createDate, returnedDate: 'default'}"></div>
+            </td>
+            <td>
+              <div data-bind="ccDate: {date: $data.nextScheduledRun, returnedDate: 'default'}"></div>
+              <div data-bind="text : $data.state"></div>
+            </td>
+            <td>
+              <div>
+              <!-- ko if:($parents[1].cart().items().length > 0) -->
+			<a href="#" class="linkText" data-bind="widgetLocaleText:'copyToCart', click: $parents[1].setSelectedOrderId.bind($parents[1])"
+                    data-toggle="modal"
+                    data-id=$parents[1].templateOrderId
+                    data-target="#cc-copyOrder-ModalContainer"
+                    type="button">
+			</a>
+              <!-- /ko -->
+		  <!-- ko if:($parents[1].cart().items().length == 0) -->
+		    <a id="CC-copyOrder" href="#" class="linkText" href="#" data-bind="widgetLocaleText:'copyToCart', click:  $parents[1].mergeToCart.bind($parents[1]), attr: {id: 'cc-copy-to-cart-'+$data.orderId}" >
+                </a>
+		  <!-- /ko -->
+		  </div>
+		  <div data-bind="ccDate: {date: $data.lastScheduledRun, returnedDate: 'default'}"></div>
+            </td>
+          </tr>
+        </tbody>
+        <!-- /ko -->
+        <!-- ko if : ($data.scheduledOrderListGrid().length <= 0) -->
+        <tbody>
+         <tr>
+           <td colspan="3" data-bind ="widgetLocaleText:'NoItemDisplayMessage' "></td>
+         </tr>
+        </tbody>
+        <!-- /ko -->
+      </table>
+    </section>
+  </div>
+  <!--/ko-->
+
+  <!-- ko with: listingViewModel -->
+  <div id="cc-paginated-controls-bottom" class="row col-md-12 visible-md visible-lg">
+    <div data-bind="visible : (totalNumberOfPages() > 1)">
+      <div>
+        <div data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''}"
+		 class="row pull-right"></div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->

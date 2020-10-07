@@ -1,0 +1,6 @@
+{
+  "configuration": {
+    "includeBillingDetails": true
+  },
+  "displayName": "Checkout Address Book"
+}

@@ -1,0 +1,27 @@
+{
+  "resources": {
+    "shippingOptionsText": "Opções de entrega",
+    "orderTotalText": "Total do pedido: ",
+    "applicableTaxesText": "Os impostos aplicáveis serão calculados na finalização da compra.",
+    "noShippingMethodsText": "Nenhum método de remessa disponível",
+    "totalText": "Total: ",
+    "salesTaxText": "Imposto sobre vendas: ",
+    "discountText": "Desconto(s)*: ",
+    "removeLinkText": "remover",
+    "changeText": "alterar",
+    "placeOrderText": "Finalizar pedido",
+    "orderSummaryText": "Resumo do pedido",
+    "includingTaxText": "(com imposto)",
+    "paymentOptionsText": "Opções de pagamento",
+    "totalExcludingTaxText": "Total (sem imposto): ",
+    "subtotalText": "Subtotal: ",
+    "rePricingText": "Nova precificação",
+    "checkoutErrorMsg": "Verifique se você preencheu todos os campos obrigatórios e corrigiu todas as entradas inválidas.",
+    "noShippingText": "Sem entrega",
+    "shippingText": "Entrega: __displayName__ ",
+    "noShippingSelectedText": "Nenhum método de remessa selecionado.",
+    "shippingAddressRequired": "Informe um endereço de entrega ",
+    "checkoutText": "Finalizar compra",
+    "excludingTaxAndShipping": "(excluindo imposto e remessa)"
+  }
+}

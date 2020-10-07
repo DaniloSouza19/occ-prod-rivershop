@@ -1,0 +1,27 @@
+<!-- ko if: $data.order().shippingAddress() && $data.order().shippingAddress().isValid()-->
+  <div class="col-xs-12 col-md-6 paddingBottom">
+    <div class="row" id="review-order-shippingAddress">
+      <div class="col-xs-7 col-sm-4 col-md-3 titleText breakWord addressLabelMaxWidth addressLabelMinWidth" 
+          data-bind="widgetLocaleText: 'shipToText'" id="shipToText"></div>
+      <div class="col-xs-5 col-sm-8 col-md-9 breakWord noLeftPadding">
+        <!-- ko with: $data.order().shippingAddress() -->
+          <span data-bind="widgetLocaleText : {value: 'fullName', attr: 'innerText', 
+              params: {firstName: firstName(), lastName: lastName()}}"></span><br />
+          <span data-bind="text: address1()"></span>,<br />
+          <!-- ko if: address2 -->
+            <span data-bind="text: address2()"></span>,<br />
+          <!-- /ko -->
+          <!-- ko if: state() --> 
+            <span data-bind="widgetLocaleText : {value: 'cityStatePostalCode', attr: 'innerText',
+                params: {city: city(), state: state(), postalCode: postalCode()}}"></span><br />
+          <!-- /ko --> 
+          <!-- ko ifnot: state() --> 
+            <span data-bind="widgetLocaleText : {value: 'cityPostalCode', attr: 'innerText', 
+                params: {city: city(), postalCode: postalCode()}}"></span><br />
+          <!-- /ko --> 
+          <span data-bind="text: country()"></span><br /> 
+        <!-- /ko -->
+      </div>
+    </div>
+  </div>
+<!-- /ko -->

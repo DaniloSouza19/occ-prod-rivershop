@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-invoice",
+  "source": 100,
+  "type": "fragment",
+  "title": "Invoice",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

@@ -1,0 +1,71 @@
+<!-- ko if: initialized() -->
+  <div id="CC-promotionSummary-discounts" class="discountContainer" data-bind="foreach: orderDiscountDescList()">
+    <div class="row" data-bind="attr: { id: 'CC-checkoutOrderSummary-discountEntry-' + $index() }">
+      <div class="col-xs-8">
+      <!-- ko if : $data.promotionLevel === "order" -->
+        <span data-bind="attr: { id: 'CC-checkoutOrderSummary-discountDescription-' + $index() }, widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: $data.promotionDesc}}"></span>
+      <!-- /ko -->
+      <!-- ko if : $data.promotionLevel === "item" -->
+        <span data-bind="attr: { id: 'CC-checkoutOrderSummary-discountDescription-' + $index() }, text : $data.promotionDesc"></span>
+      <!-- /ko -->
+      <!-- ko if : $data.promotionLevel === "shipping" -->
+        <span data-bind="attr: { id: 'CC-checkoutOrderSummary-discountDescription-' + $index() }, text : $data.promotionDesc"></span>
+      <!-- /ko -->
+      </div>
+      <div class="col-xs-4">
+      <!-- ko if : $parent.cart().isChargeTaxShippingInSecondaryCurrency() && $parent.cart().secondaryCurrency() -->
+              <!-- ko if: $data.secondaryCurrencyTotalAdjustment && $data.promotionLevel === "shipping" -->
+                <span class="pull-right" data-bind="currency: {price: -secondaryCurrencyTotalAdjustment,
+                    currencyObj: $parent.cart().secondaryCurrency()}"></span>
+                <!-- /ko -->
+                <!-- ko ifnot: $data.secondaryCurrencyTotalAdjustment && $data.promotionLevel === "shipping"-->
+                <span class="pull-right" data-bind="currency: {price: -totalAdjustment, currencyObj:$parent.currency()}"></span>
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot : $parent.cart().isChargeTaxShippingInSecondaryCurrency() && $parent.cart().secondaryCurrency() -->
+              <span class="pull-right" data-bind="currency: {price: -totalAdjustment, currencyObj:$parent.currency()}"></span>
+            <!-- /ko -->
+      </div>
+    </div>
+  </div>
+    <div id="CC-promotionSummary-coupons" class="clearfix" data-bind="foreach: cart().claimedCouponMultiPromotions()">
+      <div class="row" data-bind="foreach: $data.promotions(), attr: { id: 'CC-checkoutOrderSummary-couponEntry-' + $index() }">
+         <div class="col-xs-8">
+          <span data-bind="text: $parent.code()"></span>
+         </div>
+         <!-- ko if : $parents[1].allowCouponDeletion()-->
+           <div class="col-xs-4">
+             <span class="pull-right"><a href="#" class="text-underline pull-right" data-bind="widgetLocaleText: {attr: 'innerText', value: 'removeLinkText'}, click: $parents[1].removeCoupon.bind($parents[1], $parent)"></a></span>
+           </div>
+         <!-- /ko -->
+        <div class="col xs-12 discountDescText" data-bind="attr: { id: 'CC-checkoutOrderSummary-coupon-' + $parent.code()+ '-promotionEntry-' + $index() }">
+          <div class="col-xs-8">
+          <!-- ko if : $data.promotionLevel() === "order" -->
+            <span data-bind="widgetLocaleText : {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: promotionDesc()}}"></span>
+          <!-- /ko -->
+          <!-- ko if : $data.promotionLevel() === "item" -->
+            <span data-bind="text: promotionDesc()"></span>
+          <!-- /ko -->
+          <!-- ko if : $data.promotionLevel() === "shipping" -->
+            <span class="col-xs-9" data-bind="text: promotionDesc()"></span>
+          <!-- /ko -->
+          </div>
+          <div class="col-xs-4">
+            <!-- ko if : $parents[1].cart().isChargeTaxShippingInSecondaryCurrency() && $parents[1].cart().secondaryCurrency() -->
+              <!-- ko if: $data.promotionLevel() === "shipping"-->
+                <span class="pull-right" data-bind="currency: {price: $parents[1].getShippingDiscountInSecondaryCurrency(-totalAdjustment()),
+                    currencyObj: $parents[1].cart().secondaryCurrency()}"></span>
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: $data.promotionLevel() === "shipping"-->
+              <span class="pull-right" data-bind="currency: {price: -totalAdjustment(), currencyObj:$parents[1].currency()}"></span>
+            <!-- /ko -->
+          <!-- /ko -->
+          <!-- ko ifnot : $parents[1].cart().isChargeTaxShippingInSecondaryCurrency() && $parents[1].cart().secondaryCurrency() -->
+            <span class="pull-right" data-bind="currency: {price: -totalAdjustment(), currencyObj:$parents[1].currency()}"></span>
+          <!-- /ko -->
+          </div>        
+        </div>
+      </div>
+    </div>
+<!-- /ko -->

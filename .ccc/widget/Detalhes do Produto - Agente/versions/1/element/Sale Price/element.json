@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-sale-price",
+  "source": 100,
+  "type": "subFragment",
+  "title": "Sale Price",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

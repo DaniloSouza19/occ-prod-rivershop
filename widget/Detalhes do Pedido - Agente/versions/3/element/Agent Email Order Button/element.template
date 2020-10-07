@@ -1,0 +1,10 @@
+<!-- ko if : $parent.orderDetailsWrapper.isResendPlacedOrderNotificationAllowed() -->
+<div id="cc-orderDetails-email">
+  <button id="cc-orderDetails-sendEmailNotification-btn" 
+  class="cc-orderDetails-emailOrder-btn pull-left  cc-button-secondary secondarybackground"
+    data-bind="click: $parent.sendPlacedOrderEmailNotification.bind($parent) ">
+    <i class="fa fa-plane"></i>
+    <span data-bind="widgetLocaleText: 'buttonEmailOrderDetailsText'"></span>
+  </button>
+</div>
+ <!-- /ko -->

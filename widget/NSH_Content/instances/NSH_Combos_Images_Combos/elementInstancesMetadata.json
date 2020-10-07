@@ -1,0 +1,134 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "10985",
+      "styles": {},
+      "tag": "image@120004",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/mix-sh-darling/category/REGIAO_GO_OUTROS_10985",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "Combo",
+        "fileName": "10985.png"
+      }
+    },
+    {
+      "customTitle": "10986",
+      "styles": {},
+      "tag": "image@120005",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/mix-sh-palmolive/category/REGIAO_GO_OUTROS_10986",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "Combo",
+        "fileName": "10986.png"
+      }
+    },
+    {
+      "customTitle": "10980",
+      "styles": {},
+      "tag": "image@120006",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/mix-c-d-sorriso/category/REGIAO_GO_OUTROS_10980",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "Combo",
+        "fileName": "10980.png"
+      }
+    },
+    {
+      "customTitle": "10984",
+      "styles": {},
+      "tag": "image@120001",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": false,
+        "link": "/mix-co-darling/category/REGIAO_GO_OUTROS_10984",
+        "zoomEnabled": false,
+        "titleText": "Combo",
+        "fileName": "10984.png"
+      }
+    },
+    {
+      "customTitle": "10983",
+      "styles": {},
+      "tag": "image@120007",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": 0
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "link": "/mix-enxaguante-colgate/category/REGIAO_GO_OUTROS_10983",
+        "isProductImage": false,
+        "zoomEnabled": false,
+        "titleText": "Combo",
+        "fileName": "10983.png"
+      }
+    }
+  ]
+}

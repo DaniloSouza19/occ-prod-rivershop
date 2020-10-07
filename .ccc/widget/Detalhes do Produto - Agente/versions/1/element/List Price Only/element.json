@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-list-price-only",
+  "source": 100,
+  "type": "container",
+  "title": "List Price Only",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

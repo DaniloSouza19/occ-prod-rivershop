@@ -1,0 +1,190 @@
+<div>
+     <!--  ko if:   $data.orderDetailsWrapper.isRenderComplete() -->
+    <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel" data-oc-id="panel-0-0">
+
+      <!-- oc section: agent-order-refresh -->
+            <div data-bind="element: 'agent-order-refresh'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-8" data-oc-id="panel-1-0">
+
+      <!-- oc section: agent-order-summary -->
+            <div data-bind="element: 'agent-order-summary'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-4" data-oc-id="panel-1-1">
+
+      <!-- oc section: agent-order-price-details -->
+            <div data-bind="element: 'agent-order-price-details'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-2-0">
+
+      <!-- oc section: agent-email-order-details --><div data-bind="element: 'agent-email-order-details'"></div>
+      <!-- /oc -->
+
+      <!-- oc section: copy-order --><span data-bind="element: 'copy-order'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-2-1">
+
+    </div>
+
+
+  </div>
+  <hr class="line agent-line col-xs-12" />
+
+  <div class="row">
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-3-0">
+
+    </div>
+
+
+    <div class="oc-panel col-md-4" style="padding: 0 0;"  data-oc-id="panel-3-1">
+
+      <!-- oc section: return-order --><span data-bind="element: 'return-order'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-2" style="padding: 0 0;" data-oc-id="panel-3-2">
+
+      <!-- oc section: add-to-purchase-list --><div data-bind="element: 'add-to-purchase-list'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-4-0">
+
+      <!-- oc section: shopping-cart-details --><div data-bind="element: 'shopping-cart-details'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-5-0">
+
+      <!-- oc section: agent-promotion-summary --><div data-bind="element: 'agent-promotion-summary'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-6-0">
+
+      <!-- oc section: agent-order-payment-details --><div data-bind="element: 'agent-order-payment-details'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel row" data-oc-id="panel-7-0">
+      <!-- oc section: dynamic-property -->
+      <!-- ko if: $data.orderDetailsWrapper.orderDetails() && $data.orderDetailsWrapper.orderDetails().id &&
+       $data.orderDetailsWrapper.orderDetails().dynamicProperties &&  $data.orderDetailsWrapper.orderDetails().dynamicProperties.length > 0-->
+      <!--  ko setContextVariable:{name:'context', value: $data.orderDetailsWrapper.dynamicProperties} -->
+      <div class="col-md-12" data-bind="element: 'dynamic-property'"></div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- /oc -->
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-8-0">
+
+      <!-- oc section: scheduled-order-instruction --><div data-bind="element: 'scheduled-order-instruction'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-9-0">
+
+      <!-- oc section: scheduled-order-executionList --><div data-bind="element: 'scheduled-order-executionList'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-10-0">
+
+      <!-- oc section: scheduled-order-actions --><div data-bind="element: 'scheduled-order-actions'"></div>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-11-0">
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+   <!--  ko if:  orderDetailsWrapper.orderDetails() && orderDetailsWrapper.orderDetails().id -->
+    <div data-bind="template: { name: $data.templateAbsoluteUrl('/templates/tracking-reference-details.template') , templateUrl: '', data: orderDetailsWrapper.orderDetails().shippingGroups}">
+    </div>
+    <div id="cc-return-address-details-content"
+       data-bind="template: { name: $data.templateAbsoluteUrl('/templates/view-address-details.template'), templateUrl: '' }">
+    </div>
+    <!--  /ko  -->
+    <!-- /ko -->
+</div>

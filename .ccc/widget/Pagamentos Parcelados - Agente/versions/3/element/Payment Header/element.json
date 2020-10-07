@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-header",
+  "source": 100,
+  "type": "fragment",
+  "title": "Payment Header",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

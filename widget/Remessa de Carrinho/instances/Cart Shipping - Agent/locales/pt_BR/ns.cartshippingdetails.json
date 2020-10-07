@@ -1,0 +1,27 @@
+{
+  "resources": {
+    "countryRequired": "O país é obrigatório. ",
+    "cityRequired": "A cidade é obrigatória. ",
+    "fetchingShippingMethodsText": "Buscando métodos de entrega do endereço",
+    "stateRequired": "O estado é obrigatório. ",
+    "noShippingMethodsText": "Não há métodos de entrega disponíveis para o seu endereço de destino.",
+    "shippingMethodNoLongerAvailable": "O método de remessa selecionado anteriormente não está mais disponível. Verifique o método de entrega antes de fazer o seu pedido.",
+    "noShippingMethodsForAddressText": "Falha ao recuperar os métodos de entrega do endereço de entrega informado",
+    "stateRegionText": "Estado/Região",
+    "addressLine1Required": "A linha de endereço 1 é obrigatória. ",
+    "zipCodeText": "CEP/Código postal",
+    "calculateShippingText": "Calcular entrega e imposto (opcional)",
+    "invalidShippingAddress": "Endereço de entrega inválido especificado.",
+    "zipCodeRequired": "O CEP/Código postal é obrigatório. ",
+    "selectShippingMethodText": "Selecionar método de remessa",
+    "stateText": "Estado",
+    "pricingError": "Não é possível calcular os custos da entrega e dos impostos. Verifique seu endereço de entrega.",
+    "zipCodeInvalid": "Entrada inválida. Informe um CEP/Código postal válido.",
+    "noShippingSelectedText": "Nenhum método de remessa selecionado.",
+    "shippingAddressRequired": "",
+    "cartShippingErrorMsg": "Verifique se você preencheu todos os campos de entrega e corrigiu todas as entradas inválidas.",
+    "countryText": "País",
+    "invalidShippingMethod": "Método de remessa inválido especificado.",
+    "invalidPreviousAddress": "Não fazemos mais entregas no seu endereço de entrega usado anteriormente."
+  }
+}

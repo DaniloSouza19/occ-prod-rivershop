@@ -1,0 +1,8 @@
+{
+  "tag": "customer-profile-reset-password",
+  "source": 100,
+  "type": "fragment",
+  "title": "Customer Profile Reset Password",
+  "widgetType": "customerProfileDetails",
+  "version": 2
+}

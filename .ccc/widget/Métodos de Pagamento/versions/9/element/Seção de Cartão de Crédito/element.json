@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-creditcard",
+  "source": 100,
+  "type": "fragment",
+  "title": "Seção de Cartão de Crédito",
+  "widgetType": "splitPayments",
+  "version": 9
+}

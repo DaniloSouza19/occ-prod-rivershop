@@ -1,0 +1,8 @@
+{
+  "tag": "scheduled-order-instruction",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Scheduled Order Instruction",
+  "widgetType": "agentAccountOrderDetails",
+  "version": 3
+}

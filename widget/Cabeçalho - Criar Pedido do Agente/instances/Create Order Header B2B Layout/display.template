@@ -1,0 +1,16 @@
+<div class="col-xs-12 createOrderHeader">
+  <!-- oc layout: panels -->
+    <div class="row" id="cc-header-text">
+      <div id="cc-orderEdit-Header" class="oc-panel col-md-6" data-oc-id="panel-4">
+        <!-- oc section: header-text -->
+          <div data-bind="element: 'header-text', attr: { id: 'header-text-'+id()}"></div>
+        <!-- /oc -->
+      </div>
+      <div id="cc-back-button" class="oc-panel col-md-6" data-oc-id="panel-5">
+        <!-- oc section: back-button -->
+          <div data-bind="element: 'back-button', attr: { id: 'back-button-'+id()}"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+  <!-- /oc -->
+</div>

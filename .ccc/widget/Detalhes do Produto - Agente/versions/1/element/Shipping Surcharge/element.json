@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-shipping-surcharge",
+  "source": 100,
+  "type": "fragment",
+  "title": "Shipping Surcharge",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

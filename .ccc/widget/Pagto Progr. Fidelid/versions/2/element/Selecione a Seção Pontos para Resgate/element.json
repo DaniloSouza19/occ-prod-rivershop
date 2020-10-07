@@ -1,0 +1,8 @@
+{
+  "tag": "select-redeem-points",
+  "source": 100,
+  "type": "fragment",
+  "title": "Selecione a Seção Pontos para Resgate",
+  "widgetType": "loyaltyPayment",
+  "version": 2
+}

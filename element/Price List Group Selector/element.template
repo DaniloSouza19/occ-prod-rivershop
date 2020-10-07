@@ -1,0 +1,61 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('plg-selector') && !$data.user().isB2BUser()-->
+  <div class="row" id="cc-plg-selector-container">
+    <div class="col-sm-2" style="margin-top:5px;">
+      <label for="cc-plg-selector" class="control-label" data-bind="widgetLocaleText:'plgText', attr: {id: id()+'_cc-plg-selector-label'}"> </label>
+    </div>
+    <div class="col-sm-6" style="display: flex;">
+        <select id="cc-plg-selector"  class="form-control" style="width: auto; margin-bottom: 1rem;" data-bind="
+          options: $data['elements']['plg-selector'].priceListGroups,
+          value: $data['elements']['plg-selector'].selectedPriceListGroup,
+          disable: ($data.cart() && $data.cart().currentOrderState() == 'QUOTED' || $data.cart().hasExternalPriceItem() || $data['elements']['plg-selector'].priceListGroups().length == 1),
+          optionsText: function(item) { 
+            return item.currency.currencyCode + ' - ' + item.displayName;
+          }, 
+          optionsValue: 'id'">
+        </select>
+        <!-- ko if: $data.cart().hasExternalPriceItem() || $data.cart().currentOrderState() == 'QUOTED' -->
+          <button id="cc-plg-info-popover"class="btn"
+              data-bind="infoPopover: {
+                           trigger: 'hover',
+                           container: '#cc-plg-selector-container',
+                           placement: 'right',
+                           name: 'plg-info-popover',
+                           zIndex: 550,
+                           minHeight: '70px',
+                           minWidth: '230px',
+                           model: $data.translate('priceListGroupCannotBeChangedText')},
+                         attr: {'aria-label' : $data.translate('priceListGroupCannotBeChangedText')}">
+              <span class="fa fa-info-circle"></span>
+          </button>
+        <!-- /ko -->
+      </div>
+  </div>
+  <div class="modal fade" id="cc-plg-change-dialog" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog cc-modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header cc-modal-header">
+          <h4 id="cc-plg-change-dialog-header" data-bind="widgetLocaleText: 'changePriceListGroupHeader'" ></h4>
+        </div>
+        <div class="modal-body cc-modal-body">
+          <span id="cc-plg-change-dialog-body" data-bind="widgetLocaleText: 'changePriceListGroupWarningText'"></span>
+        </div>
+        <div class="modal-footer CC-header-modal-footer">
+          <button data-bind="widgetLocaleText: 'buttonNoText', click: $data['elements']['plg-selector'].revertPriceListGroup.bind($data['elements']['plg-selector'])" type="button" class="cc-button-secondary">No</button>
+          <button data-bind="widgetLocaleText: 'buttonYesText', click: $data['elements']['plg-selector'].changePriceListGroup.bind($data['elements']['plg-selector'])" type="button" class="cc-button-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /ko -->
+<script type="text/html" id="plg-info-popover">
+    <div>
+      <div class="col-md-12 pull-right datepickerHeaderIcons">
+        <a id="cc-plg-info-popover-close" href="#" class="pull-right cc-popover-x" data-bind='click: close, makeAccess: {readerResource: "ns.common:resources.closeText"}'>
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
+      <div class="margin-onepercent">
+        <span data-bind="text: $data.model"></span>
+      </div>
+    </div>
+  </script>

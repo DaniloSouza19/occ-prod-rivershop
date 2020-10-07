@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-giftcard",
+  "source": 100,
+  "type": "fragment",
+  "title": "Gift card",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

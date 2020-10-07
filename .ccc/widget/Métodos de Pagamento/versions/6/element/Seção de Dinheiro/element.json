@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-cash",
+  "source": 100,
+  "type": "fragment",
+  "title": "Seção de Dinheiro",
+  "widgetType": "splitPayments",
+  "version": 6
+}

@@ -1,0 +1,13 @@
+<!-- ko if: !($data.cart().orderShippingGroups() && $data.cart().orderShippingGroups().length > 1) || $data.cart().isSplitShipping() -->
+<div id="CC-cart-shipping-details" data-oc-id="CC-cart-shipping-details">
+  <!-- oc layout: panels -->
+    <div class="row">
+      <div class="oc-panel col-md-10" data-oc-id="cs-panel-3">
+        <!-- oc section: cart-shipping-options -->
+          <div data-bind="element: 'cart-shipping-options'"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+  <!-- /oc -->
+</div>
+<!-- /ko -->

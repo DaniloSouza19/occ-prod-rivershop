@@ -1,0 +1,306 @@
+<!-- ko with: returnSearchViewModel --> 
+ <div id="cc-returnSearch">
+    <!-- return search grid -->
+    <div id="cc-returnSearch-grid" class="col-md-12">
+    <h3 class="agent-headerText" id="cc-returnSearch-text"
+        data-bind="widgetLocaleText: 'returnSearchText'"></h3>
+    <hr class="line agent-line" />
+    </div>
+  <br />
+  <!-- return search form for entering search criteria -->
+    <div class="col-md-12 zero-pad" id="cc-returnSearch-details">
+      <form id="cc-returnSearch-form" class="container-fluid" autocomplete="off">
+        <div class="row" id="cc-returnDetails-returnRequestId-orderId">
+          <div class="form-group col-md-3" id="cc-returnDetails-returnRequestId-field">
+            <label for="cc-returnDetails-returnRequestId-text"
+              class="control-label" data-bind="widgetLocaleText: 'returnRequestIdText'"
+              id="cc-returnDetails-returnRequestId-label"> </label>
+            <input type="text" class="form-control"
+              id="cc-returnDetails-returnRequestId-text"
+              data-bind="value: $parent.requestId, valueUpdate: 'afterkeydown'" />
+          </div>
+                    <div class="form-group col-md-3 col-md-offset-3" id="cc-returnDetails-rma-field">
+            <label for="cc-returnDetails-rma-text" class="control-label"
+              data-bind="widgetLocaleText: 'rmaNumberText'" id="cc-return-orderId-rma">
+            </label>
+            <input type="text" class="form-control "
+               id="cc-returnDetails-rma-text"
+               data-bind="value: $parent.rma, valueUpdate: 'afterkeydown'" />
+          </div>
+        </div>
+        <div class="row" id="cc-returnDetails-email-returnsite">
+          <div class="form-group col-md-3" id="cc-returnDetails-orderId-field">
+            <label for="cc-returnDetails-orderId-text" class="control-label"
+              data-bind="widgetLocaleText: 'returnOrderIdText'" id="cc-return-orderId-label">
+            </label>
+            <input type="text" class="form-control "
+               id="cc-returnDetails-orderId-text"
+               data-bind="value: $parent.orderId, valueUpdate: 'afterkeydown'" />
+          </div>
+          <div class="form-group col-md-3 col-md-offset-3" id="cc-search-criteria-email-field">
+            <label for="cc-return-email-text" class="control-label"
+              data-bind="widgetLocaleText: 'returnEmailText'"
+              id="cc-returnDetails-email-label"> </label>
+            <input type="email" class="form-control "
+               id="cc-return-email-text"
+               data-bind="value: $parent.email, valueUpdate: 'afterkeydown'" />
+          </div>              
+        </div>
+        <div class="row" id="cc-search-criteria-createdWithin-timeUnints-status"> 
+          <div class="form-group col-md-3"  id="cc-search-criteria-returnsite-field">
+            <label for="cc-search-criteria-returnsite" class="control-label" 
+              data-bind="widgetLocaleText: 'returnSiteText'"></label>
+            <select class="form-control" id="cc-search-criteria-returnsite"
+              data-bind="options: $parent.sites, 
+                  value: $parent.selectedSite, valueUpdate: 'afterkeydown',                  
+                  optionsValue: function(item) { return item.id; },
+                  optionsText: $parent.formatSiteText,
+                  optionsCaption: $parent.resources().selectSiteText" >
+            </select>
+          </div>         
+          <div class="form-group col-md-3 col-md-offset-3"  id="cc-search-criteria-returnstatus-field">
+            <label for="cc-search-criteria-returnstatus" class="control-label" 
+              data-bind="widgetLocaleText: 'returnStatusText'"></label>
+            <select class="form-control" id="cc-search-criteria-returnstatus"
+              data-bind="value: $parent.selectedReturnState, valueUpdate: 'afterkeydown',
+                  options: $parent.returnStatesMap, 
+                  optionsValue: function(item) { return item.displayKey; },
+                      optionsText: function(item) { return item.displayName; },
+                      optionsCaption: $parent.resources().selectStatusText" >
+            </select>
+          </div>
+          </div>
+        <div class="row" id="cc-account-search">
+          <div class="form-group col-md-3">
+            <label for="cc-search-criteria-createdWithin" class="control-label"
+              data-bind="widgetLocaleText: 'returnCreatedWithinText'"></label>
+            <div class="form-group" id="cc-search-criteria-createdWithin-timeUnints">
+              <div class="col-md-6" style="padding-left: 0px;" id="cc-search-criteria-createdWithin-field">
+                <input type="text" class="form-control" 
+                   id="cc-search-criteria-createdWithin"
+                   name="createdWithinText" 
+                   data-bind="value: $parent.timeValueForLastReturns, valueUpdate: 'afterkeydown'"/>
+              </div>
+              <div class="col-md-6" id="cc-search-criteria-timeUnits-field">
+                <label for="cc-search-criteria-timeUnits" class="label-hidden" 
+                  data-bind="widgetLocaleText: 'timeUnitText'"></label>
+                <select class="form-control" id="cc-search-criteria-timeUnits"
+                  data-bind="options: $parent.timeUnits, value: $parent.timeUnitForLastReturns, valueUpdate: 'afterkeydown'">
+                </select>
+              </div>
+            </div>
+            <div class="hidden-xs margin-top-30">
+            <span class="text-danger"
+              id="cc-search-criteria-timeValue-error"
+              data-bind="validationMessage: $parent.timeValueForLastReturns">
+            </span>
+          </div>
+          </div>
+          <div class="form-group col-md-3 col-md-offset-3" id="cc-search-criteria-account-field">
+            <!-- ko with: $parent -->
+              <div data-bind="element: 'account-search', attr: { id: 'account-search-'+$data.id()}"></div>
+            <!-- /ko -->
+          </div>
+
+
+        </div>
+        
+          <div class="oj-flex-bar" id="cc-search-buttons">
+            <div class="oj-flex-bar-end pull-right">
+              <button type="button" class="cc-oj-button-margin-right-7 cc-button-secondary secondarybackground"
+                data-bind="widgetLocaleText: 'buttonResetText',  click: $parent.resetFields.bind($parent)"
+                id="cc-return-reset-button"></button>
+              <button type="submit" class="oj-button-primary cc-button-primary primarybackground"
+                data-bind="widgetLocaleText: 'buttonSearchText', enable: $parent.isSearchEnabled(), 
+                click: $parent.returnSearch.bind($parent)"
+                id="cc-return-search-button"></button>
+          </div>
+        </div>
+    </form>
+  </div>
+  <!-- Return search result panel -->
+  <div id="cc-returnSearchResult-panel" 
+       class="col-md-12 table-responsive panel-body table-layout-fixed-break-word"
+       data-bind=" visible: isSearchPerformed()">
+    <div id="cc-returnSearchResult">
+      <!-- return search result display section -->
+      <h3 data-bind="widgetLocaleText: 'returnResultText'"></h3>
+      <hr class="line agent-line" />
+    </div>
+    <!-- ko if: totalNumber() !== 0 -->
+      <!-- Pagination control - Top -->
+      <div id="cc-paginated-controls-top" class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <div class="bottom-margin"
+                 data-bind="visible : (totalNumberOfPages() > 1),
+                            template: {name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''} ">
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table table-bordered table-striped"
+             id="cc-returnSearchResult-table"
+             summary="Return-request-search-Result">
+        <thead>
+          <tr>
+            <th data-bind="widgetLocaleText: 'requestIdText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'rmaNumberText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'requestDateText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'statusText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'refundText'" scope="col" class="text-right"></th>
+            <th data-bind="widgetLocaleText: 'noOfOrderText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'firstNameText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'lastNameText'" scope="col"></th>
+			<th data-bind="widgetLocaleText: 'accountText'" scope="col"></th>
+            <th class="text-center" data-bind="widgetLocaleText: 'detailsText'" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: recordsInCurrentPage">
+          <tr>
+            <td scope="row" class="cc-text-overflow-table" data-bind="attr: {id: 'cc-returnId-' + returnRequestId}">
+              <!--  ko if: operation === ""  && $parents[1].isSiteExists($data)-->
+			  
+              <a href="#" data-bind="attr: {
+                   id: 'cc-return-refund-link-'+$index()},'title': returnRequestId, text: returnRequestId,
+                   click: $parents[1].showReturnRequest.bind($parents[1], returnRequestId, orderId, siteId)">
+              </a>
+              <!-- /ko -->
+              <!--  ko if: operation === ""  && !$parents[1].isSiteExists($data)-->				  
+                <a href="javascript:void(0)"  
+                       data-bind="css: {'disabled-link': true}, attr:{id: 'cc-return-refund-link-'+$index(), 'title': returnRequestId}"
+                        class="cc-ws-normal">
+                  <span data-bind="text: returnRequestId"></span>                                   
+                </a>
+              <!-- /ko -->
+              <!-- ko ifnot: operation === "" -->
+                <span data-bind="text: returnRequestId"></span>
+              <!-- /ko -->
+            </td>
+            <td>
+              <span data-bind="text: returnRequestId != authorizationNumber ? authorizationNumber : '-'"></span>
+            </td>
+            <td class="cc-text-overflow-table"
+                data-bind="ccDateTime: {date: createdDate, format: 'date',
+                    dateFormat: 'short'}, attr: {id: 'cc-returnDate-'+ returnRequestId, 'title': createdDate}">
+            </td>
+            </td>
+            <td class="cc-text-overflow-table" data-bind="text: state,
+                attr: {id: 'cc-returnState-'+ returnRequestId, 'title': state}">
+            </td>
+            <!-- ko if: $data.hasOwnProperty("priceListGroup") -->
+            <td class="cc-text-overflow-table text-right" data-bind="currency: {price: totalRefund, 
+                              								currencyObj: priceListGroup.currency}
+                              								attr: {id: 'cc-returnAmount-'+ returnRequestId}">
+            </td>
+            <!-- /ko -->
+            <td class="cc-text-overflow-table">
+              <a href="#" data-bind="attr: {id: 'cc-return-' + returnRequestId + '-OrderId-'+orderId, 'title': orderId}, 
+                            text: orderId, click: $parents[1].loadOrderDetails.bind($parents[1], $data, orderId)">
+              </a>
+            </td>
+            <!--  ko if: firstName -->
+	          <td class="cc-text-overflow-table" data-bind="text: firstName,
+	              attr: {id: 'cc-first-name-'+ returnRequestId,
+	                 'title': firstName}">
+	          </td>
+	          <td class="cc-text-overflow-table" data-bind="text: lastName,
+	              attr: {id: 'cc-last-name-'+ returnRequestId,
+	                 'title': lastName}">
+	          </td>
+	        <!--  /ko  -->
+	        <!--  ko ifnot: firstName -->
+	          <td class="cc-text-overflow-table" data-bind="text: '',
+	              attr: {id: 'cc-first-name-'+ returnRequestId}">
+	          </td>
+	          <td class="cc-text-overflow-table" data-bind="text: '',
+	              attr: {id: 'cc-last-name-'+ returnRequestId}">
+	          </td>
+	        <!--  /ko  -->
+			 <!--  ko if: account -->
+	          <td class="cc-text-overflow-table" data-bind="text: account,
+	              attr: {id: 'cc-account-'+ returnRequestId,
+	                 'title': account}">
+	          </td>
+	        <!--  /ko  -->
+	        <!--  ko ifnot: account -->
+	          <td class="cc-text-overflow-table" data-bind="text: '',
+	              attr: {id: 'cc-account-'+ returnRequestId}">
+	          </td>
+	        <!--  /ko  -->
+	        <td class="text-center">
+	        <!--  ko if: operation === "process" -->
+	          <a href="#" data-bind="
+                 click: $parents[1].processReturn.bind($parents[1], returnRequestId, orderId, siteId),
+                 attr: {id: 'cc-return-receive-link-' + returnRequestId + '-OrderId-' + orderId}">
+            <span data-bind="widgetLocaleText: 'operationProcessText'"></span>
+           </a>
+	        <!--  /ko -->
+            <!--  ko if: operation === "processExchangeRequest" -->
+	          <a href="#" data-bind="
+                 click: $parents[1].processExchange.bind($parents[1], returnRequestId, orderId, siteId),
+                 attr: {id: 'cc-exchange-receive-link-' + returnRequestId + '-OrderId-' + orderId}">
+                <span data-bind="widgetLocaleText: 'operationProcessText'"></span>
+              </a>
+	        <!--  /ko -->
+	        <!--  ko if: operation === "refund" -->
+              <a href="#" data-bind="
+                 click: $parents[1].refundReturn.bind($parents[1], returnRequestId, orderId, siteId),
+                 attr: {id: 'cc-exchange-refund-link-' + returnRequestId + '-OrderId-' + orderId}">
+                <span data-bind="widgetLocaleText: 'operationRefundText'"></span>
+             </a>
+	        <!--  /ko -->
+	        <!--  ko if: operation === "submitExchangeOrder"  -->
+              <a href="#" data-bind="
+                 click: $parents[1].processExchangedOrder.bind($parents[1], returnRequestId, orderId, replacementOrder, siteId),
+                 attr: {id: 'cc-exchange-submit-link-' + returnRequestId + '-OrderId-' + orderId}">
+                <span data-bind="widgetLocaleText: 'processExchangeOrderText'"></span>
+              </a>
+	        <!--  /ko -->
+	        <!--  ko if: operation == $parents[1].CCConstants.RETURN_MARK_AS_COMPLETE  -->
+	        <!--  ko if: $data.manualRefundAmount >= 0 -->
+	          <a href="#" data-toggle="modal" data-target="#cc-return-mark-for-complete" data-bind="
+	             click: $parents[1].initReturnMarkForComplete.bind($parents[1],returnRequestId, manualRefundAmount, orderId),
+                 attr: {id: 'cc-mark_for_complete-link-' + returnRequestId + '-OrderId-' + orderId}">
+              <span data-bind="widgetLocaleText: 'markComplete'"></span>
+              </a>
+            <!--  /ko -->
+	        <!--  /ko -->
+           </td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="cc-return-mark-for-complete" class="modal width-fixed fade cc-modalForm" tabindex="-1"
+        data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/return-mark-complete.template'), templateUrl: '' }">
+      </div>
+      <!-- Pagination control - Bottom -->
+      <div id="cc-paginated-controls-bottom" class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <div class="bottom-margin"
+                 data-bind="visible : (totalNumberOfPages() > 1),
+                            template: {name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''} ">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: (isSearchPerformed() === true && totalNumber() == 0)-->
+        <div>
+          <span data-bind="widgetLocaleText: 'returnNotFoundText',
+                         attr: {'aria-label': $parent.resources().returnNotFoundText}" 
+                role="status" aria-live="polite" id="cc-returnNotFound-text">
+          </span>
+        </div>
+      <!-- /ko -->
+      <!-- Text to display if no return search performed -->
+      <!-- ko if: (isSearchPerformed() === false)-->
+        <div>
+          <span data-bind="widgetLocaleText: 'noSearchPerformedText'"
+                id="cc-noSearchPerformed-text"></span>
+        </div>
+      <!-- /ko -->
+    </div>
+
+</div>
+<!-- /ko -->

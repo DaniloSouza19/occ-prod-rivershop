@@ -1,0 +1,8 @@
+{
+  "tag": "product-preorder-message",
+  "source": 100,
+  "type": "dynamicFragment",
+  "title": "Mens. Pedido Antecipado",
+  "widgetType": "productDetails",
+  "version": 14
+}

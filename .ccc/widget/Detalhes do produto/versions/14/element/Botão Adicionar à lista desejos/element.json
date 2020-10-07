@@ -1,0 +1,8 @@
+{
+  "tag": "product-add-to-space",
+  "source": 100,
+  "type": "fragment",
+  "title": "Botão Adicionar à lista desejos",
+  "widgetType": "productDetails",
+  "version": 14
+}

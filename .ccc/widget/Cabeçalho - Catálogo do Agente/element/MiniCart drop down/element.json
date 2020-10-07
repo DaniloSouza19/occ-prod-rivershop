@@ -1,0 +1,8 @@
+{
+  "tag": "dropdown-minicart",
+  "source": 100,
+  "type": "fragment",
+  "title": "MiniCart drop down",
+  "widgetType": "agentCatalogHeader",
+  "version": 1
+}

@@ -1,0 +1,8 @@
+{
+  "configuration": {
+    "includeBillingInformation": true,
+    "includeShippingInformation": true,
+    "includeUseAsBillingAddress": true
+  },
+  "displayName": "Address book for B2B"
+}

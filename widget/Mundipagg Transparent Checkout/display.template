@@ -1,0 +1,187 @@
+<span data-mundicheckout-app-id=""></span>
+<div id="checkoutPaymentDetails">
+  <h2 id="CC-checkoutPaymentDetails-header" class="a11y" data-bind="widgetLocaleText: 'paymentDetails'"></h2>
+  <legend id="CC-checkoutPaymentDetails-legend" data-bind="widgetLocaleText: 'paymentDetails'"></legend>
+  <fieldset id="paymentDetails">
+    
+    <div class="mundi-tab">
+      <button id="credit-card-tab-link" class="tablinks" data-bind="widgetLocaleText: 'creditCardPaymentLabel', click:changeTab('credit-card-tab')">Cartão de Crédito</button>
+      <button id="boleto-tab-link" class="tablinks" data-bind="widgetLocaleText: 'boletoPaymentLabel', click:changeTab('boleto-tab')">Boleto</button>
+      <button id="voucher-tab-link" class="tablinks" data-bind="widgetLocaleText: 'voucherPaymentLabel', click:changeTab('voucher-tab')">Voucher</button>
+    </div>
+
+    <div id="credit-card-tab" class="mundi-tabcontent">
+      <div class="row">
+        <form data-mundicheckout-form="" id="mundi-card-form">
+          <div class="form-group col-ms-12 col-xs-12">
+            <div class="row">
+              <div id="accepted-brands-credit">
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-ms-7 col-xs-7">
+            <div class="alert alert-danger alert-dismissible fade in" id="card-alert" style="display:none">
+			        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <label id="card-error-msg"></label>
+			      </div>
+			
+            <div class="row">
+              <div class="col-md-10 col-xs-10">
+                <div class="form-group">
+                  <label data-bind="widgetLocaleText:'cardNumberLabel'">
+                    Número do cartão
+                  </label>
+                  <span id="mpagg-invalid-brand" style="display:none; color:red;"> - Bandeira não aceita!</span>
+                  <input class="form-control mpagg-card-number" data-mask="#### #### #### #### #### ####" type="text" id="mpagg-card-number" name="mpagg-card-number" required="" pattern="[0-9\ ]{10,19}" data-mundicheckout-input="number"/>
+                </div>
+              </div>
+              <div class="col-md-2 col-xs-2 text-left">
+                <br/>
+                <span data-mundicheckout-input="brand"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label data-bind="widgetLocaleText:'holderNameLabel'">Nome impresso no cartão</label>
+              <input class="form-control mpagg-holder-name" type="text" name="holder-name" required="" pattern="[A-Za-z ]{3,64}" title="Deve conter apenas letras"  data-mundicheckout-input="holder_name"/>
+            </div>
+            <div class="form-group">
+              <label data-bind="widgetLocaleText:'customerDocumentLabel'">Cpf</label>
+              <input type="text" class="form-control mpagg-cpf mpagg-cpf-card" required="" data-mask="###.###.###-##" name="mpagg-cpf-card" id="mpagg-cpf-card"/>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-xs-6">
+                <label data-bind="widgetLocaleText:'expMonthLabel'">Mês de expiração</label>
+                <select class="form-control mpagg-exp-month" type="text" name="card-exp-month" required="" data-mundicheckout-input="exp_month" data-bind="
+                          optionsCaption: '',  
+                          options: months, 
+                          optionsValue: 'value',
+                          optionsText: 'text'">
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-xs-6">
+                <label data-bind="widgetLocaleText:'expYearLabel'">Ano de expiração</label>
+                <select class="form-control mpagg-exp-year" type="text" name="card-exp-year" id="card-exp-year" required="" data-mundicheckout-input="exp_year" data-bind="
+                          optionsCaption: '',  
+                          options: acceptedYears, 
+                          optionsValue: 'value',
+                          optionsText: 'text'">
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Cvv</label>
+              <input class="form-control mpagg-cvv" data-mask="####" type="text" name="mpagg-cvv" required="" pattern="[0-9]{3,4}" title="Deve conter de 3 a 4 números" data-mundicheckout-input="cvv"/>
+            </div>
+            <div class="form-group">
+              <label data-bind="widgetLocaleText:'installmentLabel'">Parcelas</label>
+              <select class="form-control" placeholder="Installments" type="text" id="mundipagg-installment" required="" name="mundipagg-installment" data-bind="
+                      options: installments, 
+                      optionsValue: 'value',
+                      optionsText: 'text',
+                      optionsCaption: 'Selecione',
+                      selectedOptions: installmentsChanged,
+                      event: {change: setInstallmentChanged}
+                      ">
+              </select>
+            </div>
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="mpagg-create-card-order" value="Finalizar Pedido" data-bind="widgetLocaleText:'submitOrderLabel'"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div> <!-- fechamento da tab cartão -->
+    <div id="boleto-tab" class="mundi-tabcontent">
+        <div class="alert alert-danger alert-dismissible fade in" id="boleto-alert" style="display:none">
+		      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		      <strong data-bind="widgetLocaleText:'invalidDocumentText'">Cpf inválido!</strong> 
+          <label data-bind="widgetLocaleText:'reviewYourDocumentText'">
+            Verifique se seu cpf foi preenchido corretamente e tente novamente.
+          </label>
+		    </div>
+        <div style="display:none">
+          <input type="checkbox" value="true" name="invoicePaymentDetails" id="CC-invoicePayment-displayInvoicePayment"/>
+        </div>
+        <div class="control">
+          <h4 data-bind="widgetLocaleText:'finishBoletoOrderText'">Seu boleto será gerado após finalizar o pedido</h4>
+          <div class="form-group">
+            <label data-bind="widgetLocaleText:'customerDocumentLabel'">Cpf do comprador</label>
+            <input type="text" class="form-control mpagg-cpf-boleto" required="" patter="[0-9\-]{13}" data-mask="###.###.###-##" name="mpagg-cpf-boleto" id="mpagg-cpf-boleto"/>
+          </div>
+          <div class="form-group">
+              <button class="btn btn-primary" data-bind="widgetLocaleText:'submitOrderLabel', click: createBoletoOrder">Finalizar pedido</button>
+            </div>
+        </div>
+    </div> <!-- fechamento da tab boleto -->
+    <div id="voucher-tab" class="mundi-tabcontent">
+      <div class="row">
+        <form data-mundicheckout-form="" id="mundi-voucher-form">
+          <div class="form-group col-ms-12 col-xs-12">
+            <div class="row">
+              <div id="accepted-brands-voucher">
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-ms-7 col-xs-7">
+            <div class="alert alert-danger alert-dismissible fade in" id="voucher-alert" style="display:none">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <label id="card-error-msg"></label>
+            </div>
+
+            <div class="row">
+              <div class="col-md-10 col-xs-10">
+                <div class="form-group">
+                  <label data-bind="widgetLocaleText:'cardNumberLabel'">
+                    Número do cartão
+                  </label>
+                  <span id="mpagg-invalid-brand-voucher" style="display:none; color:red;"> - Bandeira não aceita!</span>
+                  <input class="form-control mpagg-card-number mpagg-card-number-voucher" data-mask="#### #### #### #### #### ####" type="text" id="mpagg-card-number-voucher" name="mpagg-card-number-voucher" required="" pattern="[0-9\ ]{10,19}" data-mundicheckout-input="number"/>
+                </div>
+                <div class="form-group">
+                  <label data-bind="widgetLocaleText:'holderNameLabel'">Nome impresso no cartão</label>
+                  <input class="form-control mpagg-holder-name" type="text" name="holder-name" required="" pattern="[A-Za-z ]{3,64}" title="Deve conter apenas letras"  data-mundicheckout-input="holder_name"/>
+                </div>
+                <div class="form-group">
+                  <label data-bind="widgetLocaleText:'customerDocumentLabel'">Cpf do comprador</label>
+                  <input type="text" class="form-control mpagg-cpf mpagg-cpf-voucher" required="" patter="[0-9\-]{13}" data-mask="###.###.###-##" name="mpagg-cpf-voucher" id="mpagg-cpf-voucher"/>
+                </div>
+              </div>
+              <div class="col-md-2 col-xs-2 text-left">
+                <br/>
+                <span  data-mundicheckout-input="brand"></span>
+              </div>
+            </div>            
+            <div class="row">
+              <div class="form-group col-md-6 col-xs-6">
+                <label data-bind="widgetLocaleText:'expMonthLabel'">Mês de expiração</label>
+                <select class="form-control mpagg-exp-month" type="text" name="card-exp-month-voucher" required="" data-mundicheckout-input="exp_month" data-bind="
+                          optionsCaption: '',  
+                          options: months, 
+                          optionsValue: 'value',
+                          optionsText: 'text'">
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-xs-6">
+                <label data-bind="widgetLocaleText:'expYearLabel'">Ano de expiração</label>
+                <select class="form-control mpagg-exp-year" type="text" name="card-exp-year-voucher" id="card-exp-year-voucher" required="" data-mundicheckout-input="exp_year" data-bind="
+                          optionsCaption: '',  
+                          options: acceptedYears, 
+                          optionsValue: 'value',
+                          optionsText: 'text'">
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Cvv</label>
+              <input class="form-control mpagg-cvv-voucher" data-mask="####" type="text" name="mpagg-cvv-voucher" required="" pattern="[0-9]{3,4}" title="Deve conter de 3 a 4 números" data-mundicheckout-input="cvv"/>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="mpagg-create-card-order-voucher" value="Finalizar Pedido" data-bind="widgetLocaleText:'submitOrderLabel'"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div> <!-- fechamento da tab voucher -->
+  </fieldset>
+</div>

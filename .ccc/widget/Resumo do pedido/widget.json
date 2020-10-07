@@ -1,0 +1,6 @@
+{
+  "widgetType": "orderSummary",
+  "version": 8,
+  "displayName": "Resumo do pedido",
+  "elementized": false
+}

@@ -1,0 +1,30 @@
+{
+  "resources": {
+    "countryRequired": "O país é obrigatório. ",
+    "phoneNumberText": "Número de telefone",
+    "firstNameText": "Nome",
+    "zipCodeText": "CEP/Código postal",
+    "addressLine2Text": "Linha de endereço 2",
+    "zipCodeInvalid": "Entrada inválida. Informe um CEP/Código postal válido.",
+    "countryText": "País",
+    "cityRequired": "A cidade é obrigatória. ",
+    "addressLine1Text": "Linha de endereço 1",
+    "phoneNumberInvalid": "Entrada inválida. Informe um número de telefone válido.",
+    "stateRequired": "O estado é obrigatório. ",
+    "checkoutCustomerDetailsText": "Finalizar compra",
+    "lastNameText": "Sobrenome",
+    "lastNameRequired": "O sobrenome é obrigatório. ",
+    "billingAddressText": "Endereço de faturamento",
+    "shippingAddressText": "Endereço de entrega",
+    "firstNameRequired": "O nome é obrigatório. ",
+    "useBillingAddressText": " Use este endereço como meu endereço de faturamento",
+    "addressLine1Required": "A linha de endereço 1 é obrigatória. ",
+    "phoneNumberRequired": "O número de telefone é obrigatório. ",
+    "stateRegionText": "Estado/região",
+    "invalidBillingAddressText": "O endereço de entrega não pode ser usado como o endereço de faturamento. Informe um endereço de faturamento.",
+    "zipCodeRequired": "CEP/Código Postal é obrigatório. ",
+    "stateText": "Estado",
+    "checkoutErrorMsg": "Verifique se você preencheu todos os campos obrigatórios e corrigiu todas as entradas inválidas.",
+    "cityText": "Cidade"
+  }
+}

@@ -1,0 +1,21 @@
+<div id="cc-create-order-header-text">
+  <h3 style="margin-top: 0;">
+
+    <!-- ko if: $data.user().clonedOrderId() != "" && $data.order().cloneOrderData() && $data.order().cloneOrderData().cloneOrder.stateString === "BEING_AMENDED"-->
+      <span id="cc-orderEdit-orderId-label" data-bind="widgetLocaleText: 'orderIdText'"></span>
+      
+      <span id="cc-orderEdit-originalOrderId" data-bind="text : $data.order().cloneOrderData().originalOrderId + ' - ' "></span>
+      <span id="cc-orderEdit-orderState" data-bind="text : $data.order().cloneOrderData().cloneOrder.stateDetailsAsUser "></span>
+    <!-- /ko -->
+    <!-- ko ifnot: ($data.user().clonedOrderId() != "" && $data.order().cloneOrderData() && $data.order().cloneOrderData().cloneOrder.stateString === "BEING_AMENDED") -->
+    <!-- ko if: $data.cart().currentOrderState() == 'PENDING_PAYMENT' || $data.cart().currentOrderState() == 'PENDING_PAYMENT_TEMPLATE'-->
+    <span id="cc-orderEdit-orderId-label" data-bind="widgetLocaleText: 'orderIdText'"></span>
+    <span id="cc-orderEdit-orderIdWithStatus" data-bind="text: $data.cart().currentOrderId() + ' - '"></span>
+    <span id="cc-orderEdit-orderState" data-bind="widgetLocaleText: $data.orderState()"></span>
+    <!-- /ko -->
+    <!-- ko ifnot: $data.cart().currentOrderState() == 'PENDING_PAYMENT' || $data.cart().currentOrderState() == 'PENDING_PAYMENT_TEMPLATE'-->
+      <span id="cc-orderEdit-orderId-label" data-bind="widgetLocaleText: $data.order().showSchedule() ? 'scheduleOrderText' : 'createOrderText'">Create Order</span>
+    <!-- /ko -->
+    <!-- /ko -->
+  </h3> 
+</div>

@@ -1,0 +1,11 @@
+{
+  "resources": {
+    "approverComments": "Comentários...",
+    "validationModalErrorMessage": "Verifique se preencheu todos os campos obrigatórios e corrigiu todas as entradas inválidas.",
+    "unLinkedAddonValidationError": "Não é possível aprovar __productId__ e __skuId__ deste pedido.",
+    "buttonApprove": "Aprovar",
+    "messageLengthExceeded": "O tamanho da mensagem excedeu 254 caracteres",
+    "approvalCommentsText": "Comentários de Aprovação",
+    "buttonReject": "Rejeitar"
+  }
+}

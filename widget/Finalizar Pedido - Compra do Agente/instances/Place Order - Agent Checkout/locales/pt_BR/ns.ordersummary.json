@@ -1,0 +1,16 @@
+{
+  "resources": {
+    "placeOrderText": "Finalizar Pedido",
+    "approvalRequiredText": "Aprovação Obrigatória",
+    "yesText": "Sim",
+    "orderProcessedText": "O pedido está sendo processado.",
+    "cancelText": "Cancelar",
+    "completeOrderText": "Concluir Pedido",
+    "noText": "Não",
+    "shipToSingleAddressText": "Entregar para um Único Endereço",
+    "completeOrderConfirmationPopUp": "O pedido deve passar pelo processo de aprovação. O pedido existente será cancelado e esse novo pedido será colocado junto com qualquer pedido incompleto existente, se houver um. Deseja continuar?",
+    "okText": "OK",
+    "scheduleOrderText": "Programar Pedido",
+    "cancelButtonText": "Cancelar"
+  }
+}

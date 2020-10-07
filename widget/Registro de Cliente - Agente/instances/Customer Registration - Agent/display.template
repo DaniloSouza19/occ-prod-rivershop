@@ -1,0 +1,165 @@
+<div id="customer-registration-container" class="col-md-12">
+  <div class="col-md-offset-9 col-md-3">
+    <button class="customer-registration-margin-top customer-registration-secondary-button button-float-right" id="cc-customerRegistration-button"
+            data-toggle="modal" data-target="#cc-customerRegistrationModal"
+            data-bind="click: clearCustomerDetail">
+      <i class="fa fa-plus"></i>
+      <span data-bind="widgetLocaleText: 'linkCreateNewCustomerText'"></span>
+    </button>
+  </div>
+
+  <!-- ko with:user -->
+    <div class="modal width-fixed fade cc-modalForm" id="cc-customerRegistrationModal"
+         tabindex="-1" data-bind="modalTabbingContraint">
+      <div class="modal-dialog cc-modal-dialog" id="cc-customerRegistrationModal-dialog">
+        <div class="modal-content">
+          <div id="cc-modal-header" class="modal-header">
+            <a href="#" class="close" data-dismiss="modal" data-bind="widgetLocaleText: {value:'closeText', attr:'aria-label'}">&times;</a>
+            <h3 class="modal-title pull-left"
+              data-bind= "widgetLocaleText:'linkCreateNewCustomerText'"></h3>
+          </div>
+
+          <!-- ko if: $parent.showModal() -->
+          <div class="modal-body cc-modal-body">
+            <div id="cc-customerRegistration" class="cc-dynamic-properties-popup">
+              <div id="CC-messages-registration" data-bind="visible: $parent.showErrorMessage">
+                <div role="alert" class="text-danger cc-error-message"
+                     data-bind="text: $parent.modalErrorMessageText, attr: {'aria-label': $parent.modalErrorMessageText}">
+                </div>
+                <br/>
+              </div>
+              <fieldset id="cc-customerRegistration-fieldset" class="col-xs-12">
+                <legend id="cc-customerRegistration-legend" class="cc-hide-legend"
+                        data-bind="widgetLocaleText: 'customersText'"></legend>
+                <div class="form-group row">
+                  <div class="controls col-md-12">
+                    <label class="control-label" for="cc-customerRegistration-firstname"
+                           data-bind="widgetLocaleText:'firstNameText'"
+                           id="cc-customerRegistration-firstname-label"></label>
+                    <input type="text" class="form-control customer-registration-input-field"
+                           id="cc-customerRegistration-firstname" aria-required="true"
+                           data-bind="validatableValue: firstName,
+                                      widgetLocaleText : {
+                                        value:'firstNameInputText',
+                                        attr:'placeholder'},
+                                      valueUpdate: 'afterkeydown',
+                                      event: { keypress: $parent.addOnEnter.bind($parent) }"/>
+                    <span role="alert" class="text-danger" id="cc-customerRegistration-firstname-error"
+                          data-bind="validationMessage: firstName">
+                    </span>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="controls col-md-12">
+                    <label class="control-label" for="cc-customerRegistration-lastname"
+                           data-bind="widgetLocaleText:'lastNameText'"
+                           id="cc-customerRegistration-lastname-label"></label>
+                    <input type="text" class="form-control customer-registration-input-field" id="cc-customerRegistration-lastname" aria-required="true"
+                           data-bind="
+                             validatableValue: lastName,
+                             widgetLocaleText : {value:'lastNameInputText', attr:'placeholder'},
+                             valueUpdate: 'afterkeydown',
+                             event: { keypress: $parent.addOnEnter.bind($parent) }"/>
+                    <span role="alert" class="text-danger" id="cc-customerRegistration-lastname-error"
+                          data-bind="validationMessage: lastName"></span>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="controls col-md-12">
+                    <label class="control-label" for="cc-customerRegistration-emailAddress"
+                           data-bind="widgetLocaleText:'emailIdText'"
+                           id="cc-customerRegistration-emailAddress-label">
+                    </label>
+                    <input type="email" class="form-control customer-registration-input-field"
+                           id="cc-customerRegistration-emailAddress" aria-required="true"
+                           data-bind="validatableValue: emailAddress,
+                                      widgetLocaleText : {
+                                        value:'emailAddressInputText',
+                                        attr:'placeholder'},
+                                      valueUpdate: 'afterkeydown',
+                                      event: {
+                                        keypress: $parent.addOnEnter.bind($parent),
+                                        blur: emailAddressLostFocus ,
+                                        focus: emailAddressFocused }"/>
+                    <span role="alert" class="text-danger"
+                          id="cc-customerRegistration-emailAddress-error"
+                          data-bind="validationMessage: emailAddress">
+                    </span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="controls col-md-12">
+                    <!-- ko with: $parent -->
+                      <!-- oc section: site-selector -->
+                        <div data-bind="element: 'site-selector', attr: {id: 'site-selector-' + $data.id()}"></div>
+                      <!-- /oc -->
+                    <!-- /ko -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="controls col-md-12">
+                    <div class="checkbox">
+                      <label for="cc-emailUpdates" id="cc-emailUpdates-label">
+                        <input type="checkbox" id="cc-emailUpdates"
+                               data-bind="
+                                 checked: emailMarketingMails,
+                                 valueUpdate: 'afterkeydown',
+                                 event: { keypress: $parent.addOnEnter.bind($parent) }"/>
+                        <span data-bind="widgetLocaleText: 'marketingMailsText'"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ko if: $parent.accountAndSiteSelector.activeSites().length > 1 -->
+                <div class="row col-md-12">
+                  <div class="checkbox">
+                    <label for="cc-customerProfile-edit-globalMarketingMails" id="cc-customerProfile-edit-globalMarketingMails-label">
+                        <input type="checkbox" id="cc-customerProfile-edit-globalMarketingMails"
+                               data-bind="checked : receiveEmailGlobally" />
+                          <span id="cc-cusrProfile-edit-globalMarketingMails-text" class="details-label"
+                                data-bind="widgetLocaleText : 'globalMarketingMailsTitleTextOn'" ></span>
+                    </label>
+                  </div>
+                </div>
+                <!--  /ko -->
+
+                <div class="row col-md-12">
+                  <div class="col-md-12 cc-agent-dynamicProperties-container">
+                    <!-- ko with: $parent -->
+                      <!-- oc section : customer-dynamic-property -->
+                        <!-- ko setContextVariable:{name:'context', value: $data.user().dynamicProperties()} -->
+                          <div data-bind="element:'dynamic-property'"></div>
+                        <!-- /ko -->
+                      <!-- /oc -->
+                    <!-- /ko -->
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+          </div>
+          <!-- /ko -->
+
+          <div class="modal-footer">
+            <button class="customer-registration-secondary-button" id="cc-customerRegistrationCancel" data-dismiss="modal"
+                    data-bind="
+                      widgetLocaleText: 'buttonCancel',
+                      click: $parent.clearCustomerDetail.bind($parent)">
+            </button>
+            <button class="customer-registration-primary-button"
+                    id="cc-createNewCustomerSubmit"
+                    data-bind="
+                      widgetLocaleText: 'buttonCreateAccount',
+                      click: $parent.createCustomer.bind($parent)">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- /ko -->
+</div>

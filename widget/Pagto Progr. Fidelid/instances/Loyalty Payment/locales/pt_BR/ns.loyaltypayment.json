@@ -1,0 +1,9 @@
+{
+  "resources": {
+    "loyaltyInsufficientPointsError": "O saldo dos seus pontos não cobre o valor total do seu pedido.",
+    "loyaltyLoginOrEnrolmentError": "Você poderá pagar seu pedido com pontos se tiver feito adesão ao programa de fidelidade e estiver conectado.",
+    "payForItemsByPointsText": "Usar Pontos para Pagar Itens",
+    "payByPointsText": "Pagamento com Pontos",
+    "loyaltyPaymentValidationError": "Verifique se preencheu todos os campos obrigatórios e corrigiu todas as entradas inválidas."
+  }
+}

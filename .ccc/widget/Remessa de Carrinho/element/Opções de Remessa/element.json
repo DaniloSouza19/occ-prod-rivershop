@@ -1,0 +1,8 @@
+{
+  "tag": "cart-shipping-options",
+  "source": 100,
+  "type": "fragment",
+  "title": "Opções de Remessa",
+  "widgetType": "cartShippingDetails",
+  "version": 14
+}

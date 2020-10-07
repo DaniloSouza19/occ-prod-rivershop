@@ -1,0 +1,21 @@
+{
+  "stackType": "progressTracker",
+  "regions": [
+    {
+      "repositoryId": "progressTrackerStageOne",
+      "name": "Um"
+    },
+    {
+      "repositoryId": "progressTrackerStageTwo",
+      "name": "Dois"
+    },
+    {
+      "repositoryId": "progressTrackerStageThree",
+      "name": "Três"
+    }
+  ],
+  "version": 1,
+  "displayName": "Rastreador de Andamento",
+  "maxVariants": 10,
+  "canEditSubRegion": true
+}

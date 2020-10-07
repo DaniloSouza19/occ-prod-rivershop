@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "promoCodeAriaLabelText": "Inserir Código da Promoção",
+    "couponDetailsError": "Foi encontrado um problema nos detalhes do seu cupom.",
+    "promoCodeRequired": "O código do cupom não pode estar vazio",
+    "buttonApplyCodeText": "Aplicar Código",
+    "buttonApplyingCodeText": "Aplicando Código",
+    "promotionLabelText": "Adicione um código de promoção ou de fidelidade",
+    "promotionSummaryText": "Resumo de Promoções",
+    "promoCode": "Inserir Código da Promoção",
+    "quoteWarningText": "Somente promoções de remessa são permitidas",
+    "removeLinkText": "remover",
+    "duplicateCoupon": "Código já aplicado."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "resources": {
+    "orderDateText": "Data do Pedido:",
+    "cancel": "Cancelar",
+    "backToMyAccountLink": "<< Voltar para Minha Conta",
+    "returnItems": "Itens para Devolução",
+    "completePayment": "Concluir Pagamento",
+    "submit": "Enviar",
+    "selectText": "Insira a quantidade e o motivo da devolução dos itens.",
+    "orderDetailsText": "Detalhes do Pedido",
+    "myOrders": "Meus Pedidos",
+    "fullName": "__firstName__ __lastName__",
+    "returnReasonText": "Motivo da Devolução",
+    "customerName": "Nome do Cliente",
+    "orderNumberText": "Número do Pedido:",
+    "orderStatusText": "Status do Pedido:",
+    "selectedQuantityLabel": "__productName__ Quantidade Selecionada",
+    "nonReturnable": "Não Retornável",
+    "customerEmail": "E-mail do Cliente",
+    "returnRequest": "Criar Solicitação de Devolução para Pedido Número __orderId__",
+    "priceText": "Preço",
+    "selectReasonText": "Selecionar Motivo"
+  }
+}

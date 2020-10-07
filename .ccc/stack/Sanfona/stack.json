@@ -1,0 +1,21 @@
+{
+  "stackType": "accordionTabs",
+  "regions": [
+    {
+      "repositoryId": "accordionTabsSectionOne",
+      "name": "Um"
+    },
+    {
+      "repositoryId": "accordionTabsSectionTwo",
+      "name": "Dois"
+    },
+    {
+      "repositoryId": "accordionTabsSectionThree",
+      "name": "Três"
+    }
+  ],
+  "version": 1,
+  "displayName": "Sanfona",
+  "maxVariants": 10,
+  "canEditSubRegion": true
+}

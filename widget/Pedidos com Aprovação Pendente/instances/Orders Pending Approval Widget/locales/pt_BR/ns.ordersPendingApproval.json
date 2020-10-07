@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "headerOrderTotal": "Total do Pedido",
+    "ordersPendingApprovalText": "Pedidos com Aprovação Pendente",
+    "NoItemDisplayMessage": "Não há itens para exibição.",
+    "searchOrderId": "Pesquisar ID do Pedido",
+    "tableFooter": "__start__-__end__ de __total__ itens",
+    "headerOrderID": "ID do Pedido",
+    "headerSubmittedBy": "Enviado Por",
+    "show": "Mostrar",
+    "myAccount": "Minha Conta",
+    "itemsPerPageText": "itens por página",
+    "headerOrderDate": "Data do Pedido"
+  }
+}

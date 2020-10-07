@@ -1,0 +1,8 @@
+{
+  "tag": "gift-card-fields",
+  "source": 100,
+  "type": "fragment",
+  "title": "Número Cartão-presente",
+  "widgetType": "giftCard",
+  "version": 4
+}

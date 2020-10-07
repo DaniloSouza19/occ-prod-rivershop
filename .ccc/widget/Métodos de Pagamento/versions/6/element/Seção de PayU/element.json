@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-payu",
+  "source": 100,
+  "type": "fragment",
+  "title": "Seção de PayU",
+  "widgetType": "splitPayments",
+  "version": 6
+}

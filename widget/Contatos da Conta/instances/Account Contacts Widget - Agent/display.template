@@ -1,0 +1,438 @@
+<!-- ko if: $data.contactDetailsMode -->
+<div id="CC-contacts-main" class="container-fluid">
+  <form class="form-horizontal">
+    <!-- Form Name -->
+    <div class="row">
+      <div class="col-md-12 col-xs-8 col-sm-6">
+        <h1 id="CC-contacts-legend" class="agent-cc-contacts-title" data-bind="widgetLocaleText: 'contactsText'"></h1>
+      </div>
+      <div class="col-xs-4 col-sm-6 visible-xs visible-sm">
+        <a id="cc-back-to-contacts-xs" name="cc-back-to-contacts-xs" href="#" class="pull-right cc-back-to-contacts cc-back-to-contacts-xs" data-bind="widgetLocaleText: 'backToManageContactsXS', click: $data.cancelContactData.bind($data)"></a>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <legend></legend>
+      </div>
+    </div>
+    <!-- Back To Manage Contacts Link-->
+    <div class="row" id="CC-back-to-contacts">
+      <div class="col-md-12 hidden-xs hidden-sm">
+        <a id="cc-back-to-contacts" name="cc-back-to-contacts" href="#" class="pull-right cc-back-to-contacts" data-bind="widgetLocaleText: 'backToManageContacts', click: $data.cancelContactData.bind($data)"></a>  
+      </div>
+    </div>
+    <!-- First Name Text input-->
+    <div class="row" id="CC-contact-first-name">
+      <div class="col-md-4">
+        <input data-bind="attr: {title: $data.translate('firstName')}, validatableValue: firstName, widgetLocaleText: {value : 'firstNameText', attr : 'placeholder'}" id="cc-contact-first-name" name="cc-contact-first-name" type="text" class="form-control input-sm pull-left">
+      </div>
+      <div class="col-md-4 hidden-xs hidden-sm">
+        <span data-bind="validationMessage: firstName" class="text-danger" id="CC-contact-first-name-error" role="alert"></span>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 visible-xs visible-sm">
+        <span data-bind="validationMessage: firstName" class="text-danger" id="CC-contact-first-name-error-sm" role="alert"></span>  
+      </div>
+    </div>
+    <br>
+    <!-- Last Name Text input-->
+    <div class="row" id="CC-contact-last-name">
+      <div class="col-md-4">
+        <input data-bind="attr: {title: $data.translate('lastName')}, validatableValue: lastName, widgetLocaleText: {value : 'lastNameText', attr : 'placeholder'}" id="cc-contact-last-name" name="cc-contact-last-name" type="text" class="form-control input-sm pull-left">
+      </div>
+      <div class="col-md-4 hidden-xs hidden-sm">
+        <span data-bind="validationMessage: lastName" class="text-danger" id="CC-contact-last-name-error" role="alert"></span>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 visible-xs visible-sm">
+        <span data-bind="validationMessage: lastName" class="text-danger" id="CC-contact-last-name-error-sm" role="alert"></span>  
+      </div>
+    </div>
+    <br>
+    <!-- Email Address Text input-->
+    <div class="row" id="CC-contact-email">
+      <div class="col-md-4">
+        <input data-bind="attr: {title: $data.translate('emailAddress')}, disable: ($data.contactId), validatableValue: emailAddress, widgetLocaleText: {value : 'emailAddressText', attr : 'placeholder'}" id="cc-contact-email" name="cc-contact-email" type="text" class="form-control input-sm pull-left">
+      </div>
+      <div class="col-md-4 hidden-xs hidden-sm">
+        <span data-bind="validationMessage: emailAddress" class="text-danger" id="CC-contact-email-address-error" role="alert"></span>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 visible-xs visible-sm">
+        <span data-bind="validationMessage: emailAddress" class="text-danger" id="CC-contact-email-address-error-sm" role="alert"></span>  
+      </div>
+    </div>
+    <br>
+    <!-- Permissions Check boxes -->
+    <div class="row">
+      <div class="col-md-4">
+        <label id="CC-contact-permissions-label" class="control-label" for="cc-contact-permissions" data-bind="widgetLocaleText:'permissionsLabel'"></label><br>
+      </div>
+      <div class="col-md-4">
+        <span data-bind="validationMessage: roles" class="text-danger" id="CC-contact-roles-error" role="alert"></span>  
+      </div>
+    </div>
+    <div class="row">
+      <div id="CC-contact-permissions" class="col-md-4">
+        <!-- ko foreach: contactRoles -->
+          <div class="checkbox">
+            <input type="checkbox" class="role-checkbox" data-bind="
+              attr: {
+                title: $data.displayText,
+                id: 'cc-contact-permissions-' + $data.function,
+                name: 'cc-contact-permissions-' + $data.function
+              },
+              validatableValue: $parent.roles,
+              checked: $data.isRoleSelected,
+              disable: ($data.function == 'buyer') || ($data.function== 'admin' && $parent.isCurrentUser() && $parent.user().isDelegatedAdmin())">
+            <label data-bind="attr: {for: 'cc-contact-permissions-' + $data.function}, text: $data.displayText"></label>
+          </div>
+        <!-- /ko -->
+      </div>
+    </div>
+    <!-- Status check box -->
+    <div class="row">
+      <div class="col-md-12">
+        <label id="CC-contact-status-label" class="control-label" for="cc-contact-status" data-bind="widgetLocaleText:'statusLabel'"></label><br>
+      </div>
+    </div>
+    <div class="row">
+      <div id="CC-contact-status" class="col-md-12">
+        <div class="toggleswitch">
+          <input type="checkbox" name="contacttoggleswitch" class="toggleswitch-checkbox" id="contacttoggleswitch" data-bind="checked: $data.status, disable: $data.disableActive">
+          <label class="toggleswitch-label" for="contacttoggleswitch">
+          <span class="toggleswitch-inner" data-bind="attr: {title: $data.statusTranslation()}, css: { toggleswitchdisabled : $data.disableActive() === true}"></span>
+          <span tabindex="0" class="toggleswitch-switch" data-bind="attr: {title: $data.statusTranslation()}, event: {keypress: $data.toggleSwitch.bind($data)}, css: { switchdisabled : $data.disableActive() === true}"></span>
+          </label>
+        </div>
+      </div>
+      </div>
+     <!-- ko if: $data.contactId --> 
+     <!-- Multiple Accounts Indicator -->
+       <div class="row">
+         <div class="col-md-4">
+           <label id="CC-contact-multiple-accounts-label" class="control-label" data-bind="widgetLocaleText:'contactInOtherAccounts'"></label><br>
+         </div>
+       </div>
+      <div class="row">
+        <div class="col-md-4">
+          <span data-bind="visible: inMultipleAccounts(), widgetLocaleText:'yesText'"></span>
+          <span data-bind="visible: !inMultipleAccounts(), widgetLocaleText:'noText'"></span>  
+        </div>
+      </div>
+    <!-- /ko -->
+    <div id="customerDynamicProps" class="row">
+      <div class="col-md-12" data-oc-id="panel-6">
+        <!-- ko if: $data.dynamicProperties() && $data.dynamicProperties().length > 0 -->
+        <!-- oc section : dynamic-property -->
+          <!-- ko setContextVariable:{name:'context', value: $data.dynamicProperties} -->
+            <div data-bind="element:'dynamic-property'"></div>
+          <!-- /ko -->
+        <!-- /oc -->
+        <!-- /ko -->
+       </div>
+      </div>
+      <br>
+      <br>
+      <div class="row hidden-xs hidden-sm">
+        <!-- ko if: $data.contactId -->
+          <div id="CC-remove-button" >
+            <button id="cc-remove-button" class="cc-button-secondary pull-left col-md-2" data-bind="click: $data.removeContactData.bind($data), disable: $data.contactId() === $data.user().id()">
+            <span data-bind="widgetLocaleText: 'buttonRemove'"></span>
+            </button>
+          </div>
+        <!-- /ko -->
+        <div id="CC-save-button">
+          <button id="cc-save-button" class="cc-button-primary pull-right col-md-2" data-bind="attr: {title: $data.translate('buttonSave')}, click: $data.saveContactData.bind($data,true)">
+          <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+          </button>
+        </div>
+        <div id="CC-cancel-button">
+          <button id="cc-cancel-button" class="cc-button-secondary pull-right col-md-2" data-bind="attr: {title: $data.translate('buttonCancel')}, click: $data.cancelContactData.bind($data)">
+          <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div id="CC-cancel-button-xs" class="visible-xs visible-sm">
+          <button id="cc-cancel-button-xs" class="cc-button-secondary col-xs-12 col-sm-12" data-bind="attr: {title: $data.translate('buttonCancel')}, click: $data.cancelContactData.bind($data)">
+          <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div id="CC-save-button-xs" class="visible-xs visible-sm">
+          <button id="cc-save-button-xs" class="cc-button-primary col-xs-12 col-sm-12" data-bind="attr: {title: $data.translate('buttonSave')}, click: $data.saveContactData.bind($data,true)">
+          <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+          </button>
+        </div>
+     </div>
+     <div class="row">
+        <div id="CC-remove-button-xs" class="visible-xs visible-sm">
+          <button id="cc-remove-button-xs" class="cc-button-secondary col-xs-12 col-sm-12" data-bind="click: $data.removeContactData.bind($data)">
+          <span data-bind="widgetLocaleText: 'buttonRemove'"></span>
+          </button>
+        </div>
+     </div>   
+        
+    <!-- Cancel Modal -->
+   <div class="modal fade" id="cc-cancel-contacts-ModalContainer" tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+  <div class="modal-dialog" id="cc-cancel-contacts-ModalContainer-modal-dialog">
+    <div class="modal-content" id="cc-cancel-contacts-ModalContent">
+      <div class="modal-header cc-cancelcontacts-modal-heading cc-cancelcontacts-confirm-icon" id="CC-cancelcontacts-modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="CC-cancelcontacts-modal-headerClose" aria-hidden="true">&times;</button>
+        <h4 data-bind="widgetLocaleText:'updateCacelModalTitle'" id="CC-cancelcontacts-modal-headerText"></h4>
+      </div>
+      <div class="modal-body cc-cancelcontacts-body-modal">
+        <p data-bind="widgetLocaleText:'updateCancelModalMessage'" align="center" id="CC-cancelcontacts-modal-bodyText"></p>
+      </div>
+      <div class="modal-footer cc-cancelcontacts-modal-footer">
+        <button class="btn cc-button-secondary" id="CC-cancelcontacts-modal-cancel" data-bind="click: handleModalCancelUpdateDiscard">
+          <span id="CC-cancelcontacts-modal-discard" data-bind="widgetLocaleText:'updateCancelModalClose'"></span>
+        </button>
+        <button class="btn cc-button-primary" id="CC-customerProfile-modal-submit"  data-bind="click: handleModalUpdate">
+          <span id="CC-cancelcontacts-modal-save" data-bind="widgetLocaleText:'updateCancelModalSave'"></span>
+        </button>
+    </div> 
+    </div>
+  </div>
+</div>
+  <!-- Remove Contact Modal -->
+<div class="modal fade" id="cc-remove-contact-ModalContainer" tabindex="-1">
+<div class="modal-dialog modal-sm" id="cc-remove-contact-ModalContainer-modal-dialog">
+<div class="modal-content" id="cc-remove-contact-ModalContent">
+    <div class="modal-body cc-remove-contact-body-modal" id="CC-remove-contact-modal-body">
+         <h4 data-bind="widgetLocaleText:'removeModalTitle'" id="CC-remove-contact-modal-headerText"></h4>
+         <label data-bind="widgetLocaleText:'removeContactMessage'" align="center" id="CC-remove-contact-modal-bodyText"></label>
+        <br><br><br>
+        <button class="btn btn-block cc-button-primary" id="CC-remove-contact-modal-yes" data-bind="click: $data.confirmRemoveContact.bind($data,true)">
+          <span id="CC-remove-contact-modal-yes" data-bind="widgetLocaleText:'yesText'"></span>
+        </button><br><br>
+        <button class="btn-block cc-button-secondary" id="CC-remove-contact-modal-cancel" data-bind="click: cancelRemoveContact">
+          <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+        </button>
+    </div> 
+</div>
+</div>
+</div>
+      
+  </form>
+</div>
+<!-- /ko -->
+
+<!-- ko if: $data.user().isDelegatedAdmin() && $data.user().active() -->
+<!-- ko ifnot: $data.contactDetailsMode -->
+<div id="CC-delegatedAdminContactsList">
+  <div id="CC-delegatedAdminContactsList-account-title" class="row">
+    <div class="col-md-12">
+      <h1 id="CC-delegatedAdminContactsList-header-title" class="agent-cc-contacts-title" data-bind="widgetLocaleText:'manageContacts'"></h1>
+    </div>
+  </div>
+  <div class="row">
+   <div id="CC-delegatedAdminContactsList-stepper" class="col-sm-4  col-lg-5 text-right pull-right hidden-xs agent-CC-delegatedAdminContactsList-stepper">
+    <span data-bind="widgetLocaleText:'showCountText'"></span><span>&nbsp;</span>
+    <select data-bind="value:fetchSize, event: { change: $data.roleFilterChanged }" aria-label="Fetch Filter"  id="CC-fetchFilter" class="form-control CC-delegatedAdminContactsList-fetchSizeFilter">
+        <option>15</option>
+        <option>30</option>
+        <option>45</option>
+        <option>60</option>
+       </select>
+    <span>&nbsp;</span><span data-bind="widgetLocaleText:'itemsPerPageText'"></span>
+    </div>
+  </div>
+  <div class="row" id="CC-delegatedAdminContactsList-create-search-Contacts">
+   <div class="col-lg-3 col-sm-3 col-xs-4">
+   <button type="button" class="btn btn-default details-enabled-secondary-button" id="CC-delegatedAdminContactsList-addContactBtn" 
+            data-bind="click: clickContactDetails,widgetLocaleText:'addContact',attr: {title: $data.translate('addContact')}" >
+    </button>
+   </div>
+  <div class="col-lg-4 col-sm-4 col-lg-offset-1 text-right hidden-xs">
+      <label for="CC-delegatedAdminContactsList-roleFilter" data-bind="widgetLocaleText: 'showText'"></label>
+      <select class="form-control" id="CC-delegatedAdminContactsList-roleFilter" data-bind="
+        options: organizationRolesFilterList,
+        optionsText: 'displayText',
+        optionsValue: 'function',
+        value: roleFilterText,
+        event: { change: $data.roleFilterChanged }">
+      </select>
+   </div>
+      <div class="col-xs-8 col-sm-5 col-lg-4 pull-right CC-contact-search-group">
+      <input type="text" class="form-control" id="CC-contact-search-text" aria-label="Contact Search" data-bind="value:contactSearchValue, valueUpdate: 'afterkeydown',event:{keypress: searchContactKeyPress.bind($data)},widgetLocaleText:{value:'searchContacts',attr:'placeholder'}">      
+      <span class="input-group-btn">
+      <button class="btn btn-default" id="CC-searchButton" aria-label="Search Contacts" data-bind="click:searchContactDetails" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+    </div>
+  </div>
+  <div class="row hidden-sm hidden-md hidden-lg" id="CC-delegatedAdminContactsList-create-search-Contacts-xs">
+   <div class="col-xs-6">
+      <label for="CC-delegatedAdminContactsList-roleFilter-xs" data-bind="widgetLocaleText: 'showText'"></label>
+      <select class="form-control" id="CC-delegatedAdminContactsList-roleFilter" data-bind="
+        options: organizationRolesFilterList,
+        optionsText: 'displayText',
+        optionsValue: 'function',
+        value: roleFilterText,
+        event: { change: $data.roleFilterChanged }">
+      </select>
+   </div>
+       <div id="CC-delegatedAdminContactsList-stepper-xs" class="col-xs-6 text-right">
+    <span data-bind="widgetLocaleText:'showCountText'"></span><span>&nbsp;</span>
+    <select data-bind="value:fetchSize, event: { change: $data.roleFilterChanged }" id="CC-fetchFilter-xs" aria-label="Fetch Filter" class="form-control CC-delegatedAdminContactsList-fetchSizeFilter">
+        <option>15</option>
+        <option>30</option>
+        <option>45</option>
+        <option>60</option>
+       </select>
+    <span>&nbsp;</span><span data-bind="widgetLocaleText:'itemsPerPageText'"></span>
+    </div>
+  </div>
+  <div id="CC-delegatedAdminContactsList-table-md-lg-sm" class="row hidden-xs">
+    <section id="CC-delegatedAdminContactsList-contactListing-info" class="col-md-12">
+      <table id="CC-delegated-admin-contact-listing" class="table" data-bind="widgetLocaleText:{value:'manageContacts',attr:'summary'}">
+        <thead>
+          <tr>
+            <th class="col-md-2" scope="col">
+                <span data-bind="widgetLocaleText : 'firstName'"></span>
+                <!-- ko if : ($data.sortDirections().firstName == "asc") -->
+                <span class="fa fa-sort-desc" data-bind="click : $data.clickContactSort.bind($data,'desc','firstName')" aria-hidden="true"></span>
+                <!-- /ko -->
+                <!-- ko if : ($data.sortDirections().firstName == "desc") -->
+                <span class="fa fa-sort-asc" data-bind="click : $data.clickContactSort.bind($data,'asc','firstName')" aria-hidden="true"></span>
+                <!-- /ko -->
+                <!-- ko if : ($data.sortDirections().firstName == "both") -->
+                <span class="fa fa-sort" data-bind="click : $data.clickContactSort.bind($data,'asc','firstName')" aria-hidden="true"></span>
+                <!-- /ko -->
+            </th>
+            <th class="col-md-2" scope="col">
+                <span data-bind="widgetLocaleText : 'lastName'"></span>
+                <!-- ko if : ($data.sortDirections().lastName == "asc") -->
+                <span class="fa fa-sort-desc" data-bind="click : $data.clickContactSort.bind($data,'desc','lastName')" aria-hidden="true"></span>
+                <!-- /ko -->
+                <!-- ko if : ($data.sortDirections().lastName == "desc") -->
+                <span class="fa fa-sort-asc" data-bind="click : $data.clickContactSort.bind($data,'asc','lastName')" aria-hidden="true"></span>
+                <!-- /ko -->
+                <!-- ko if : ($data.sortDirections().lastName == "both") -->
+                <span class="fa fa-sort" data-bind="click : $data.clickContactSort.bind($data,'asc','lastName')" aria-hidden="true"></span>
+                <!-- /ko -->
+            </th>
+            <th class="col-md-1 text-center" scope="col"><span data-bind="widgetLocaleText : 'active'"></span></th>
+            <th class="col-md-4" scope="col"><span data-bind="widgetLocaleText : 'roles'"></span></th>
+            <th class="col-md-3" scope="col">
+                <span data-bind="widgetLocaleText : 'emailAddress'"></span>
+                <!-- ko if : ($data.sortDirections().email == "asc") -->
+                <span class="fa fa-sort-desc" data-bind="click : $data.clickContactSort.bind($data,'desc','email')" aria-hidden="true"></span>
+                <!-- /ko -->
+                <!-- ko if : ($data.sortDirections().email == "desc") -->
+                <span class="fa fa-sort-asc" data-bind="click : $data.clickContactSort.bind($data,'asc','email')" aria-hidden="true"></span>
+                <!-- /ko -->
+                <!-- ko if : ($data.sortDirections().email == "both") -->
+                <span class="fa fa-sort" data-bind="click : $data.clickContactSort.bind($data,'asc','email')" aria-hidden="true"></span>
+                <!-- /ko -->
+            </th>
+          </tr>
+        </thead>
+        <!-- ko if : ($data.delegatedAdminContactsListGrid().length > 0) -->
+        <tbody data-bind="foreach: $data.delegatedAdminContactsListGrid">
+          <tr>
+            <td class="col-md-2" scope="row">
+              <!-- ko if :  $data[0].parentOrganization && ($data[0].id == $data[0].parentOrganization.punchoutUserId) -->
+                <span data-bind="attr:{title:$data[0].firstName},text : $data[0].firstName"></span>
+              <!-- /ko -->
+              <!-- ko ifnot :  $data[0].parentOrganization && ($data[0].id == $data[0].parentOrganization.punchoutUserId) -->
+                <a data-bind="attr: {id: 'CC-delegatedAdminContactsList-firstName-'+ $data[0].id}, 
+                  click: $parent.clickContactDetails.bind($parent, $data, $index())"
+                  class="text-underline details-link" 
+                  href="#">
+                  <span data-bind="attr:{title:$data[0].firstName},text : $data[0].firstName"></span>
+                </a>
+              <!-- /ko -->
+            </td>
+            <td class="col-md-2" scope="row">
+              <!-- ko if :  $data[0].parentOrganization && ($data[0].id == $data[0].parentOrganization.punchoutUserId)-->
+                <span data-bind="attr:{title:$data[0].lastName},text : $data[0].lastName"></span>
+              <!-- /ko -->
+              <!-- ko ifnot :  $data[0].parentOrganization && ($data[0].id == $data[0].parentOrganization.punchoutUserId) -->
+              <a data-bind="attr: {id: 'CC-delegatedAdminContactsList-lastName-'+ $data[0].id}, 
+                click: $parent.clickContactDetails.bind($parent, $data, $index())"
+                class="text-underline details-link" 
+                href="#">
+                <span data-bind="attr:{title:$data[0].lastName},text : $data[0].lastName"></span>
+              </a>
+              <!-- /ko -->
+            </td>
+            <td data-bind="attr:{title:$data[0].active}"
+              class="col-md-1 text-center" 
+                scope="row">
+                <!-- ko if: ($data[0].active) -->
+                <span class="glyphicon glyphicon-ok"></span>
+                <!--/ko-->
+                </td>
+            <td data-bind="attr:{title:$data[0].roleString},text : $data[0].roleString" 
+              class="col-md-4"></td>
+            <td data-bind="attr:{title:$data[0].email},text : $data[0].email" 
+              class="col-md-3"></td>
+          </tr>
+        </tbody>
+        <!--/ko-->
+        <!-- ko if : ($data.delegatedAdminContactsListGrid().length <= 0) -->
+        <tbody>
+         <tr>
+           <td data-bind ="widgetLocaleText:'NoItemDisplayMessage' "></td>
+           <td></td><td></td><td></td><td></td>
+         </tr>
+        </tbody>
+        <!-- /ko -->
+      </table>
+    </section>
+  </div>
+  <div id="CC-delegatedAdminContactsList-table-xs" class="row visible-xs">
+    <section id="CC-delegatedAdminContactsList-mobile" class="col-md-12">
+      <table data-bind="widgetLocaleText:{value:'manageContacts',attr:'summary'}" class="table" id="CC-delegatedAdminContactsList-mobileView">
+        <tbody data-bind="foreach: $data.delegatedAdminContactsListGrid">
+          <tr>
+            <td>
+              <div>
+                <a data-bind="attr: {id: 'CC-delegatedAdminContactsList-xs-Name-' + $data[0].id},
+                  click: $parent.clickContactDetails.bind($parent, $data, $index())" 
+                  class="cc-back-to-contacts" 
+                  href="#">
+                <span data-bind="attr:{title:$data[0].firstName},text : $data[0].firstName"></span>
+                <span data-bind="attr:{title:$data[0].firstName},text : $data[0].lastName"></span>
+                </a>
+              </div>
+              <div data-bind="text : $data[0].roleString"></div>
+            </td>
+            <td class="text-right">
+                <!--ko if: $data[0].active-->
+                <div data-bind="widgetLocaleText : 'active'"></div>
+                <!--/ko-->
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+   </div>
+  <!-- ko with: listingViewModel -->
+  <div id="cc-paginated-controls-bottom" class="row col-md-12 visible-xs visible-sm visible-md visible-lg">
+    <div data-bind="visible : (totalNumberOfPages() > 1)">
+      <div>
+        <div data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''}" 
+          class="row pull-right"></div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- If user is not delegated admin then show a message  -->
+<!-- ko if: !$data.user().isDelegatedAdmin() || !$data.user().active()-->
+<div class="notDelAdminMessage alert alert-info">
+    <h4 data-bind="widgetLocaleText: 'notDelegatedAdminMessage'"></h4>
+</div>
+<!--  /ko -->

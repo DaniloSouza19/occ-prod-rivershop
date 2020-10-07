@@ -1,0 +1,8 @@
+{
+  "tag": "quote-notes-history",
+  "source": 100,
+  "type": "fragment",
+  "title": "Request Quote Notes History",
+  "widgetType": "requestQuote",
+  "version": 2
+}

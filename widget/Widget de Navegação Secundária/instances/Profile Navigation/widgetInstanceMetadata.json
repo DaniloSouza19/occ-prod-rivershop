@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "displayAndURL": "[{'0':'accountDetailsText','1':'/profile','2':''},{'0':'addressBookText','1':'/addressbook','2':''},{'0':'updatePasswordText','1':'/updatepassword','2':''},{'0':'orderHistoryText','1':'/orderHistory','2':''},{'0':'wishListText','1':'/wishlistsettings'}]",
+    "displayOptions": "vertical"
+  },
+  "displayName": "Profile Navigation"
+}

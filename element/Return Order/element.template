@@ -1,0 +1,16 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('return-order') -->
+ <!-- ko if: $data.checkIfReturnEnabled() -->
+  <button id="cc-create-return" class="pull-right cc-button-secondary secondarybackground return-button cc-agent-return-margin"
+    data-bind="click: function(){$data.elements['return-order'].initiateReturn($data)}">
+      <span data-bind="widgetLocaleText: 'returnItemsText'"></span>
+  </button>
+<!-- /ko -->
+
+<!-- ko if: $data.checkIfExchangeEnabled() -->
+  <button id="cc-create-return" class="pull-right cc-button-secondary secondarybackground exchange-button"
+    data-bind="click:function(){$data.elements['return-order'].initiateExchange($data)}">
+      <span data-bind="widgetLocaleText: 'exchangeItemsText'"></span>
+  </button>
+<!-- /ko -->
+
+<!-- /ko -->

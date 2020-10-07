@@ -1,0 +1,219 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+/* -------------------------------------------------- */
+/*  Split Payments
+/* -------------------------------------------------- */
+#splitPayments {
+
+  .text-danger {
+    color: #a94442 !important;
+  }
+
+  @media (max-width: 768px) {
+    #CC-splitPayments-links {float: left !important;}
+    #CC-splitPayments-legend span {display:block}
+  }
+
+  fieldset {
+    margin-bottom: 36px;
+  }
+  
+  legend {
+    border-bottom: 0px;
+    font-size: 18px;
+    font-weight: bold;
+  } 
+
+  #CC-splitPayments-header {
+    font-weight: bold;
+  margin-bottom: 10px
+  }
+   
+  #CC-splitPayments-cardCVV-whatsthis {
+    color: @LinkColor;
+    &:hover {
+      color: @LinkHoverColor;
+    }
+
+    &.visible-phone { 
+      text-align: right; 
+    }
+  }
+  
+  /* small text needs to be darker for a11y */
+  small { 
+    color:  #005580;
+
+    &.cvvPopover { 
+      cursor: help;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .popover {
+    width: 100%;
+  }
+  
+  .paymentimages {
+    padding-top: 4px; 
+    cursor:pointer; 
+    outline: none;
+
+    img {
+      opacity: 0.4;
+      margin-top: 4px;
+      margin-bottom: 4px; 
+    }
+
+    img:hover {
+      opacity: 1; 
+      -webkit-box-shadow: 0 0 6px #bbb;
+         -moz-box-shadow: 0 0 6px #bbb;
+              box-shadow: 0 0 6px #bbb;
+    }
+
+    &.selectedCard { 
+      img {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .checkout{ 
+    a { min-height: 20px;}
+  }
+  .collapse-heading .collapse-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'FontAwesome';  /* essential for enabling 'FontAwesome */
+    content: "\f0d7";    /* adjust as needed, taken from bootstrap.css */
+    float: left;        /* adjust as needed */
+    color: black;         /* adjust as needed */
+  }
+
+  .collapse-heading .collapse-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\f0da";    /* adjust as needed, taken from bootstrap.css */
+  }
+
+  .collapse-heading.disabled, .collapse-heading.disabled .collapse-toggle.collapsed:after {
+    color: #a5a5a5;
+  }
+
+  .collapse-heading .collapse-toggle {
+    padding-left: 5px;
+  }
+
+  .collapse-heading {
+    margin-bottom: 10px;
+  }
+
+  #CC-splitPayments-payULatam,
+  #splitPaymentsCreditCardPanel,
+  #CC-singlepayment-giftcard,
+  #CC-singlepayment-inStore,
+  #CC-splitPayments-paypal,
+  #CC-singlepayment-cash-checkbox {
+    margin-left : 15px;
+  }
+
+  .float-right {
+    float: right;
+    font-size: 1rem;
+  }
+
+  .select-address {
+    margin-top: 4%;
+    text-align: center;
+  }
+
+  .billing-address-view {
+    padding: 10px;
+    border-right: 1px solid grey;
+    font-size: 13px;
+    margin-bottom: 0px;
+  }
+
+  @media (max-width: 768px) {
+    .select-address {
+      margin-top: 0px;
+    }
+    .billing-address-view {
+      border: none;
+      margin-bottom: 0px;
+    }
+  }
+
+  .modal-body {
+    background-color: #e2e2e2;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .billingAddressText {
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 150%;
+  }
+
+  #cc-paymentMethods-show-address-book {
+    margin-bottom: 25px;
+    margin-left: 8px;
+  }
+
+  #billingAddress {
+    margin-top : 15px;
+  }
+
+  .close {
+  padding: 10px !important;
+  }
+  
+  .closeButton {
+    padding: 10px !important;
+  position: relative;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 2;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff;
+  font-family: inherit;
+  text-transform: none;
+  overflow: visible;
+  margin: 0;
+  font: inherit;
+  box-sizing: border-box;
+  outline: -webkit-focus-ring-color auto 5px;
+  align-items: flex-start;
+  text-align: center;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  display: inline-block;
+  -webkit-writing-mode: horizontal-tb !important;
+  background: #ffffff none top center no-repeat;
+  background-attachment: fixed;
+  text-decoration: none;
+  background-color: #fff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  }
+
+  .noAddressLabel {
+    margin-left: 10px;
+  }
+
+  div input.invalid, div textarea.invalid, div select.invalid {
+    color: #373737 !important;
+    background-color: #f2dede !important;
+    border-color: #ee5f5b !important !important;
+  }
+}
+}

@@ -1,0 +1,15 @@
+<div class="cc-reset-password-margin cc-margin-top10">
+<form method="post" id="shopperRedirectForm" action='#'>
+	<input name="cc-shopper-behalf-token" id="cc-shopper-behalf-token"
+		value="" type="hidden"> <input
+		name="cc-shopper-agent-redirect-url"
+		id="cc-shopper-agent-redirect-url" value="" type="hidden">
+</form>
+
+	<button id="cc-shopperRedirect-Button" class="details-enabled-secondary-button"
+		data-bind="click: $data.redirectToStore.bind($data)">
+		<span class="fa fa-shopping-cart"></span> <span
+			data-bind="widgetLocaleText: 'createOrderOnStoreText'"
+			id="cc-customerDisplay-cancel-button-text"> </span>
+	</button>
+</div>

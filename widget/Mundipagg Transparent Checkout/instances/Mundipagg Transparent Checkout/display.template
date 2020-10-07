@@ -1,0 +1,303 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<!--ko if : $widgetViewModel.formaPagamento() == "credit_card" || 
+  $widgetViewModel.formaPagamento() == "boleto" ||
+  $widgetViewModel.formaPagamento() == "voucher" -->
+<span data-mundicheckout-app-id=""></span>
+<div id="checkoutPaymentDetails">
+  <h2 id="CC-checkoutPaymentDetails-header" class="a11y" data-bind="widgetLocaleText: 'paymentDetails'">Detalhes do
+    Pagamento</h2>
+  <legend id="CC-checkoutPaymentDetails-legend" data-bind="widgetLocaleText: 'paymentDetails'">Detalhes do Pagamento
+  </legend>
+  <fieldset id="paymentDetails">
+
+    <div class="mundi-tab">
+      <!--ko if : $widgetViewModel.formaPagamento() == "credit_card"-->
+      <button id="credit-card-tab-link" class="tablinks" data-bind="widgetLocaleText: 'creditCardPaymentLabel'">Cartão
+        de Crédito</button>
+      <!--/ko-->
+      <!--ko if : $widgetViewModel.formaPagamento() == "boleto"-->
+      <button id="boleto-tab-link" class="tablinks" data-bind="widgetLocaleText: 'boletoPaymentLabel'">Boleto</button>
+      <!--/ko-->
+      <!--ko if : $widgetViewModel.formaPagamento() == "voucher"-->
+      <button id="voucher-tab-link" class="tablinks"
+        data-bind="widgetLocaleText: 'voucherPaymentLabel'">Voucher</button>
+      <!--/ko-->
+    </div>
+    <!--ko if : $widgetViewModel.formaPagamento() == "credit_card"-->
+    <div id="credit-card-tab" class="mundi-tabcontent active" style="display: block;">
+      <div class="row">
+        <form data-bind="onRender: $widgetViewModel.rendered()" data-mundicheckout-form="" id="mundi-card-form">
+          <div class="form-group col-ms-12 col-xs-12">
+            <div class="row">
+              <div id="accepted-brands-credit" data-bind="foreach: $widgetViewModel.acceptedCardBrands()">
+                <!--ko if: $data != "undefined"-->
+                <div class="col-sm-2 col-xs-2 col-lg-1 brands" ><img
+                    data-bind="attr: {src: '/file/general/' + $data.toLowerCase() + '.png'}" style="width: 120%;"></div>
+                <!--/ko-->
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-ms-7 col-xs-12 col-md-7 col-lg-7">
+            
+            <div class="alert alert-danger alert-dismissible fade in" id="card-alert" style="display:none">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+              <label id="card-error-msg"></label>
+            </div>
+
+            <div class="row">
+              <div class="col-md-10 col-sm-10 col-lg-10 col-xs-12">
+                <div class="form-group">
+                  <label data-bind="widgetLocaleText:'cardNumberLabel'">Número do Cartão</label>
+                  <span id="mpagg-invalid-brand" style="display:none; color:red;"> - Bandeira não aceita!</span>
+                  <input class="form-control mpagg-card-number" data-mask="#### #### #### #### #### ####" type="text"
+                    id="mpagg-card-number" name="mpagg-card-number" required="" pattern="[0-9\ ]{10,19}"
+                    data-mundicheckout-input="number">
+                </div>
+              </div>
+              <div class="col-md-2 col-xs-2 text-left">
+                <br>
+                <span data-mundicheckout-input="brand"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label data-bind="widgetLocaleText:'holderNameLabel'">Nome impresso no cartão</label>
+              <input class="form-control mpagg-holder-name" type="text" name="holder-name" required=""
+                pattern="[A-Za-z ]{3,64}" title="Deve conter apenas letras" data-mundicheckout-input="holder_name">
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6 col-xs-6">
+                <label data-bind="widgetLocaleText:'expMonthLabel'">Mês de expiração</label>
+                <select class="form-control mpagg-exp-month" type="text" name="card-exp-month" required=""
+                  data-mundicheckout-input="exp_month" data-bind="
+                          optionsCaption: '',  
+                          options: months, 
+                          optionsValue: 'value',
+                          optionsText: 'text'">
+                  <option value=""></option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-xs-6">
+                <label data-bind="widgetLocaleText:'expYearLabel'">Ano de expiração</label>
+                <select class="form-control mpagg-exp-year" type="text" name="card-exp-year" id="card-exp-year"
+                  required="" data-mundicheckout-input="exp_year" data-bind="
+                          optionsCaption: '',  
+                          options: acceptedYears, 
+                          optionsValue: 'value',
+                          optionsText: 'text'">
+                  <option value=""></option>
+                  <option value="2020">2020</option>
+                  <option value="2021">2021</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
+                  <option value="2031">2031</option>
+                  <option value="2032">2032</option>
+                  <option value="2033">2033</option>
+                  <option value="2034">2034</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-md-6 col-xs-12 col-sm-6 col-lg-6">
+              <label>CVV</label>
+              <input class="form-control mpagg-cvv" data-mask="####" type="text" name="mpagg-cvv" required=""
+                pattern="[0-9]{3,4}" title="Deve conter de 3 a 4 números" data-mundicheckout-input="cvv">
+            </div>
+            <div class="form-group col-xs-12 col-md-10 parcela" data-bind="visible: installments.length > 1">
+              <label data-bind="widgetLocaleText:'installmentLabel'">Parcelas</label>
+              <select class="form-control" placeholder="Installments" type="text" id="mundipagg-installment" required=""
+                name="mundipagg-installment" data-bind="
+                      options: installments, 
+                      optionsValue: 'value',
+                      optionsText: 'text',
+                      optionsCaption: 'Selecione',
+                      selectedOptions: installmentsChanged,
+                      event: {change: setInstallmentChanged}
+                      ">
+                <option value="">Selecione</option>
+                <option value="1">1x de R$ 77.25 sem juros</option>
+                <option value="2">2x de R$ 38.63 sem juros</option>
+                <option value="3">3x de R$ 25.75 sem juros</option>
+                <option value="4">4x de R$ 19.31 sem juros</option>
+                <option value="5">5x de R$ 15.45 sem juros</option>
+                <option value="6">6x de R$ 12.88 sem juros</option>
+                <option value="7">7x de R$ 11.04 sem juros</option>
+                <option value="8">8x de R$ 9.66 sem juros</option>
+                <option value="9">9x de R$ 8.58 sem juros</option>
+                <option value="10">10x de R$ 7.72 sem juros</option>
+                <option value="11">11x de R$ 7.02 sem juros</option>
+                <option value="12">12x de R$ 6.44 sem juros</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6 col-xs-12 col-sm-12 col-lg-6">
+              <label>CPF</label>
+              <input type="text" class="form-control mpagg-cpf mpagg-cpf-card" data-mask="###.###.###-##"
+                name="mpagg-cpf-card" id="mpagg-cpf-card">
+            </div>
+
+            <div style="display: none;" class="form-group">
+              <input type="submit" class="btn btn-primary" id="mpagg-create-card-order" value="Finalizar Pedido"
+                data-bind="widgetLocaleText:'submitOrderLabel'" />
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <!--/ko-->
+    <!-- fechamento da tab cartão -->
+    <!--ko if : $widgetViewModel.formaPagamento() == "boleto"-->
+
+    <div id="boleto-tab" data-bind="onRender: $widgetViewModel.rendered()" class="mundi-tabcontent">
+      <div class="alert alert-danger alert-dismissible fade in" id="boleto-alert" style="display:none">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong data-bind="widgetLocaleText:'invalidDocumentText'">Cpf inválido!</strong>
+        <label data-bind="widgetLocaleText:'reviewYourDocumentText'">Verifique se os dados do pagamento estão corretos e
+          tente novamente.</label>
+      </div>
+      <div style="display:none">
+        <input type="checkbox" value="true" name="invoicePaymentDetails" id="CC-invoicePayment-displayInvoicePayment">
+      </div>
+      <div class="control">
+        <h4 class="title" data-bind="widgetLocaleText:'finishBoletoOrderText'">Seu boleto será gerado após finalizar o
+          pedido</h4>
+        <div class="form-group">
+          <label>CPF</label>
+          <input type="text" class="form-control mpagg-cpf-boleto" required="" patter="[0-9\-]{13}"
+            data-mask="###.###.###-##" name="mpagg-cpf-boleto" id="mpagg-cpf-boleto">
+        </div>
+      </div>
+    </div>
+    <!--/ko-->
+    <!-- fechamento da tab boleto -->
+    <!--ko if : $widgetViewModel.formaPagamento() == "voucher"-->
+    <div id="voucher-tab" class="mundi-tabcontent">
+      <div class="row">
+        <form data-bind="onRender: $widgetViewModel.rendered()" data-mundicheckout-form="" id="mundi-voucher-form">
+          <div class="form-group col-ms-12 col-xs-12">
+            <div class="row">
+              <div id="accepted-brands-voucher">
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-ms-7 col-xs-7">
+            <div class="alert alert-danger alert-dismissible fade in" id="voucher-alert" style="display:none">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+              <label id="card-error-msg"></label>
+            </div>
+
+            <div class="row">
+              <div class="col-md-10 col-xs-10">
+                <div class="form-group">
+                  <label data-bind="widgetLocaleText:'cardNumberLabel'">Número do Cartão</label>
+                  <span id="mpagg-invalid-brand-voucher" style="display:none; color:red;"> - Bandeira não aceita!</span>
+                  <input class="form-control mpagg-card-number mpagg-card-number-voucher"
+                    data-mask="#### #### #### #### #### ####" type="text" id="mpagg-card-number-voucher"
+                    name="mpagg-card-number-voucher" required="" pattern="[0-9\ ]{10,19}"
+                    data-mundicheckout-input="number">
+                </div>
+                <div class="form-group">
+                  <label data-bind="widgetLocaleText:'holderNameLabel'">Nome impresso no cartão</label>
+                  <input class="form-control mpagg-holder-name" type="text" name="holder-name" required=""
+                    pattern="[A-Za-z ]{3,64}" title="Deve conter apenas letras" data-mundicheckout-input="holder_name">
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6 col-xs-6">
+                    <label data-bind="widgetLocaleText:'expMonthLabel'">Mês de expiração</label>
+                    <select class="form-control mpagg-exp-month" type="text" name="card-exp-month-voucher" required=""
+                      data-mundicheckout-input="exp_month" data-bind="
+                              optionsCaption: '',  
+                              options: months, 
+                              optionsValue: 'value',
+                              optionsText: 'text'">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6 col-xs-6">
+                    <label data-bind="widgetLocaleText:'expYearLabel'">Ano de expiração</label>
+                    <select class="form-control mpagg-exp-year" type="text" name="card-exp-year-voucher"
+                      id="card-exp-year-voucher" required="" data-mundicheckout-input="exp_year" data-bind="
+                              optionsCaption: '',  
+                              options: acceptedYears, 
+                              optionsValue: 'value',
+                              optionsText: 'text'">
+                      <option value=""></option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
+                      <option value="2028">2028</option>
+                      <option value="2029">2029</option>
+                      <option value="2030">2030</option>
+                      <option value="2031">2031</option>
+                      <option value="2032">2032</option>
+                      <option value="2033">2033</option>
+                      <option value="2034">2034</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-2 col-xs-2 text-left">
+                <br>
+                <span data-mundicheckout-input="brand"></span>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>CVV</label>
+              <input class="form-control mpagg-cvv-voucher" data-mask="####" type="text" name="mpagg-cvv-voucher"
+                required="" pattern="[0-9]{3,4}" title="Deve conter de 3 a 4 números" data-mundicheckout-input="cvv">
+            </div>
+            <div class="form-group col-md-10">
+              <label>CPF</label>
+              <input type="text" class="form-control mpagg-cpf mpagg-cpf-voucher" required="" patter="[0-9\-]{13}"
+                data-mask="###.###.###-##" name="mpagg-cpf-voucher" id="mpagg-cpf-voucher">
+            </div>
+            <div style="display: none;" class="form-group">
+              <input type="submit" class="btn btn-primary" id="mpagg-create-card-order-voucher" value="Finalizar Pedido"
+                data-bind="widgetLocaleText:'submitOrderLabel'" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--/ko-->
+    <!-- fechamento da tab voucher -->
+  </fieldset>
+</div>
+<!-- /ko -->

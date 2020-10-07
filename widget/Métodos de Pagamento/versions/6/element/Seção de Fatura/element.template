@@ -1,0 +1,49 @@
+<!-- ko ifnot: isSinglePayment() -->
+	<div id="splitPaymentsInvoicePanel">
+	  <fieldset data-bind="disable: order().isPaymentDisabled()">
+	    <div class="row">
+	      <div class="form-group col-sm-6">
+	        <div class="control">
+	          <input type="text" class="col-sm-12 form-control"
+	            name="poNumber" id="CC-splitPayments-poNumber"
+	            data-bind="validatableValue: $data.paymentViewModel().PONumber, widgetLocaleText : {value:'poNumberText', attr:'placeholder'}" />
+	        </div>
+	      </div>
+	    </div>
+	  </fieldset>
+	</div>
+<!-- /ko -->
+
+<!-- ko if: isSinglePayment() -->
+	<!-- Single Payment Invoice Section -->
+	<!-- ko if : $.inArray("invoice", $data.paymentsContainer().enabledTypes) > -1 -->
+		<div id="CC-singlePayment-invoice-checkbox" class="row">
+		  <div class="col-sm-12">
+		    <div class="form-group col-sm-5 checkbox">
+		      <label for="CC-singlePayment-displayInvoicePayment">
+			      <input type="checkbox" name="invoicePaymentDetails"
+			      id="CC-singlePayment-displayInvoicePayment" class="checkbox"
+			      data-bind="checked: isDisplayInvoiceDetails, disable:  validateInvoiceToBeDisabled() || order().isPaymentDisabled() ">
+			      <span data-bind="widgetLocaleText:'invoicePaymentMsg'"></span>
+		      </label>
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- ko if: isDisplayInvoiceDetails() -->
+			<div id="singlePaymentInvoicePanel">
+			  <fieldset data-bind="disable: order().isPaymentDisabled">
+			    <div class="row">
+			      <div class="form-group col-sm-6">
+			        <div class="control">
+			          <input type="text" class="col-sm-12 form-control"
+			            name="poNumber" id="CC-singlePayment-poNumber"
+			            data-bind="validatableValue: $data.invoiceViewModel().PONumber, widgetLocaleText : {value:'poNumberText', attr:'placeholder'}" />
+			        </div>
+			      </div>
+			    </div>
+			  </fieldset>
+		  </div>
+		<!-- /ko -->
+	<!-- /ko -->
+<!-- /ko -->

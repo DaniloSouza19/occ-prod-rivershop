@@ -1,0 +1,64 @@
+{
+  "configuration": {
+    "_autoPlay": false,
+    "_image_0": "",
+    "_image_2": "",
+    "_image_10": "",
+    "_image_1": "",
+    "_image_8": "",
+    "_newTabImage_0": false,
+    "_newTabImage_1": false,
+    "_image_7": "",
+    "_newTabImage_2": false,
+    "_newTabImage_3": false,
+    "_image_9": "",
+    "_mediaImageDesktop_2": {
+      "src": "",
+      "mediaName": ""
+    },
+    "_image_4": "",
+    "_newTabImage_4": false,
+    "_mediaImageDesktop_1": {
+      "src": "/file/v1624464755890282348/general/desconto hellmanns home desktop.png",
+      "mediaName": "/general/desconto hellmanns home desktop.png"
+    },
+    "_image_3": "",
+    "_newTabImage_5": false,
+    "_image_6": "",
+    "_newTabImage_6": false,
+    "_mediaImageDesktop_3": {
+      "src": "",
+      "mediaName": ""
+    },
+    "_image_5": "",
+    "_newTabImage_7": false,
+    "_newTabImage_8": false,
+    "_newTabImage_9": false,
+    "_enableImage_10": false,
+    "_enableImage_7": false,
+    "_enableImage_6": false,
+    "_enableImage_9": false,
+    "_enableImage_8": false,
+    "_enableImage_3": true,
+    "_enableImage_2": true,
+    "_enableImage_5": false,
+    "_widgetGlobalConfigs": "",
+    "_enableImage_4": false,
+    "_enableImage_1": true,
+    "_enableImage_0": false,
+    "_mediaImageMobile_3": {
+      "src": "",
+      "mediaName": ""
+    },
+    "_newTabImage_10": false,
+    "_mediaImageMobile_1": {
+      "src": "/file/v166009345079223125/general/desconto hellmanns home mobile.png",
+      "mediaName": "/general/desconto hellmanns home mobile.png"
+    },
+    "_mediaImageMobile_2": {
+      "src": "",
+      "mediaName": ""
+    }
+  },
+  "displayName": "NSH_Slick_Images_Outros"
+}

@@ -1,0 +1,8 @@
+{
+  "tag": "product-sale-price",
+  "source": 100,
+  "type": "subFragment",
+  "title": "Preço de venda",
+  "widgetType": "productDetails",
+  "version": 14
+}

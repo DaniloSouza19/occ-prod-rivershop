@@ -1,0 +1,8 @@
+{
+  "tag": "account-approval-setting",
+  "source": 100,
+  "type": "fragment",
+  "title": "Account Approval Setting",
+  "widgetType": "agentAccountDetails",
+  "version": 2
+}

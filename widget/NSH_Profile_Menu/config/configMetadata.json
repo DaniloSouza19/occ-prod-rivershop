@@ -1,0 +1,25 @@
+{
+  "widgetDescriptorName": "nsh_profile_menu",
+  "properties": [
+    {
+      "placeHolders": "placeHoldersText",
+      "noOfColumns": 3,
+      "addMoreRowsResourceId": "addMoreRowsText",
+      "maxLengths": "100,100,100",
+      "name": "displayAndURL",
+      "id": "displayAndURL",
+      "helpTextResourceId": "displayAndURLHelpText",
+      "labelResourceId": "displayAndURLLabel",
+      "type": "multiKeyValuePairsType",
+      "required": false
+    },
+    {
+      "name": "metaPageType",
+      "id": "metaPageType",
+      "helpTextResourceId": "metaPageTypeText",
+      "labelResourceId": "metaPageTypeLabel",
+      "type": "stringType",
+      "required": false
+    }
+  ]
+}

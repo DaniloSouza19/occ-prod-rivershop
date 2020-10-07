@@ -1,0 +1,38 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Rich_Text_10022",
+      "styles": {},
+      "tag": "rich-text@60024",
+      "text": null,
+      "richTextConfig": {
+        "content": "<p class=\"text1\">NOSSOS</p>\n\n<p class=\"text2\">COMBOS EXCLUSIVOS</p>\n"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    },
+    {
+      "customTitle": null,
+      "styles": {
+        "font-size": "1.14rem",
+        "font-style": "normal",
+        "color": "#707070",
+        "font-weight": "normal",
+        "display": "block",
+        "text-decoration": "none"
+      },
+      "tag": "generic-text@60025",
+      "text": "Preparamos diversos combos especiais com os produtos que você precisa, com valores mais atrativos e de encontro às maiores demandas.",
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    }
+  ]
+}

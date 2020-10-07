@@ -1,0 +1,8 @@
+{
+  "tag": "product-backorder",
+  "source": 100,
+  "type": "container",
+  "title": "Em pedidos pend.",
+  "widgetType": "productDetails",
+  "version": 14
+}

@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_breadcrumb",
+  "version": 1,
+  "displayName": "NSH_Breadcrumb",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_breadcrumb",
+  "source": 101,
+  "javascript": "nsh_breadcrumb"
+}

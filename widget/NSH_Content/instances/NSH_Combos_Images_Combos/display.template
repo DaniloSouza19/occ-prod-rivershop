@@ -1,0 +1,203 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "120001": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "120001",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/mix-co-darling/category/REGIAO_GO_OUTROS_10984",
+      "src": "/file/v681625236880130560/collections/10984.png",
+      "titleText": "${occ:widgetCustomText('1300001')}",
+      "titleTextId": "1300001",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "120004": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "120004",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/mix-sh-darling/category/REGIAO_GO_OUTROS_10985",
+      "src": "/file/v6156570173688210144/collections/10985.png",
+      "titleText": "${occ:widgetCustomText('1300004')}",
+      "titleTextId": "1300004",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "120005": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "120005",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/mix-sh-palmolive/category/REGIAO_GO_OUTROS_10986",
+      "src": "/file/v7595484242334325256/collections/10986.png",
+      "titleText": "${occ:widgetCustomText('1300005')}",
+      "titleTextId": "1300005",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "120006": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "120006",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/mix-c-d-sorriso/category/REGIAO_GO_OUTROS_10980",
+      "src": "/file/v4823720520302452952/collections/10980.png",
+      "titleText": "${occ:widgetCustomText('1300006')}",
+      "titleTextId": "1300006",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "120007": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "120007",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/mix-enxaguante-colgate/category/REGIAO_GO_OUTROS_10983",
+      "src": "/file/v1747653614074359701/collections/10983.png",
+      "titleText": "${occ:widgetCustomText('1300007')}",
+      "titleTextId": "1300007",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+
+
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+
+
+<div class="nsh_content container">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <div class="img-block" data-bind=" attr:{id: id}, onRender: $widgetViewModel.addSlick()">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '120001'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '120004'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '120005'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '120006'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-4-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '120007'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+</div>
+
+</div>

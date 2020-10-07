@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-backorder",
+  "source": 100,
+  "type": "container",
+  "title": "Backorderable",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

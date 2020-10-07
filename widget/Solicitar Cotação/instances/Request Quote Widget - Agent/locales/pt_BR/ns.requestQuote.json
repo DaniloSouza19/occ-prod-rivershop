@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "requestQuoteHeader": "Solicitar uma Cotação",
+    "requestQuoteSuccess": "Cotação solicitada com êxito",
+    "notesHistoryHeader": "Histórico de Observações",
+    "buttonRequestQuote": "Solicitar Cotação",
+    "requestQuoteError": "Erro do sistema ao solicitar, rejeitar ou aceitar a cotação",
+    "enterQuoteRequestText": "Inserir solicitação de cotação"
+  }
+}

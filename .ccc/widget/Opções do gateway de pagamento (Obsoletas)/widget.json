@@ -1,0 +1,6 @@
+{
+  "widgetType": "paymentGatewayOptions",
+  "version": 7,
+  "displayName": "Opções do gateway de pagamento (Obsoletas)",
+  "elementized": true
+}

@@ -1,0 +1,8 @@
+{
+  "tag": "product-stock-availability",
+  "source": 100,
+  "type": "fragment",
+  "title": "Status do estoque",
+  "widgetType": "productDetails",
+  "version": 14
+}

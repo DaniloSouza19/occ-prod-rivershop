@@ -1,0 +1,10 @@
+{
+  "widgetType": "mundipagg-checkout-transparent-widget",
+  "version": 1,
+  "displayName": "Mundipagg Transparent Checkout",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "locale",
+  "source": 101,
+  "javascript": "checkout-transparent-mundi"
+}

@@ -1,0 +1,25 @@
+{
+  "resources": {
+    "serviceAccountId": "ID da Conta de Serviço",
+    "goToFirstPage": "Ir para a primeira página",
+    "goToNextPage": "Ir para a próxima página",
+    "product": "Produto",
+    "quantity": "Quantidade",
+    "dateModified": "Data da Modificação",
+    "detailsLink": "Link Detalhes do serviço",
+    "goToLastPage": "Ir para a última página",
+    "services": "Serviços",
+    "assetKey": "Chave do Ativo",
+    "dateAdded": "Data de Adição",
+    "assetTableSummary": "Lista dos serviços. Clique no link de detalhes para ver todos os detalhes de um serviço específico.",
+    "goToPreviousPage": "Ir para a página anterior",
+    "price": "Preço",
+    "goToPage": "Ir para a página",
+    "backToMyAccount": "<< Voltar para Minha Conta",
+    "details": "Detalhes",
+    "myAccount": "Minha Conta",
+    "serviceId": "ID do Serviço",
+    "noItemsToDisplay": "Não há itens para exibição.",
+    "status": "Status"
+  }
+}

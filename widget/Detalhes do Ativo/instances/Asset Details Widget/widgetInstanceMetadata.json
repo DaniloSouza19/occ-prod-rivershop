@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "isAddTransactionDateToConfiguratorResponseEnabled": true,
+    "isMergeAssetToConfiguratorResponseEnabled": true
+  },
+  "displayName": "Asset Details Widget"
+}

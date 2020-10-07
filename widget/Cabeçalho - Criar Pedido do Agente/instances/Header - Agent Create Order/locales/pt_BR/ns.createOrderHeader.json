@@ -1,0 +1,19 @@
+{
+  "resources": {
+    "plgText": "Grupo de Preços",
+    "additionalCustomFactorsText": "Fatores Personalizados Adicionais",
+    "orderIdText": "Número do Pedido",
+    "siteText": "Site",
+    "changePriceListGroupHeader": "Alterar Grupo de Listas de Preços",
+    "createOrderText": "Criar Pedido",
+    "changePriceListGroupWarningText": "Qualquer item cujo preço seja ajustado será atualizado de acordo com a moeda selecionada. Gostaria de continuar?",
+    "buttonYesText": "Sim",
+    "scheduleOrderText": "Programar Pedido",
+    "requestQuoteText": "Solicitar Cotação",
+    "changePriceListGroupInformationText": "Qualquer item cujo preço seja ajustado será atualizado de acordo com a moeda selecionada. ",
+    "priceListGroupCannotBeChangedText": "O Grupo de Lista de Preços não pode ser editado, pois o carrinho contém itens precificados externamente",
+    "accountText": "Conta",
+    "pendingPaymentsText": "Pagamento Pendente",
+    "buttonNoText": "Não"
+  }
+}

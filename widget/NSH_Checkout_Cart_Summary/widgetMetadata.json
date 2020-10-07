@@ -1,0 +1,185 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Checkout_Cart_Summary [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Checkout_Cart_Summary [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {
+    "giftItemImageURL": "/img/GWP_GiftWithPurchase.jpg",
+    "noOfItemsToDisplay": "5"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "resources": {
+    "siteText": "Site",
+    "accountText": "Conta",
+    "applyButtonText": "Aplicar",
+    "delimiterText": ":",
+    "selectAdditionalCustomFactorsText": "Fornecer Fatores Personalizados Adicionais para determinar o Catálogo e a Lista de Preços"
+  }
+}

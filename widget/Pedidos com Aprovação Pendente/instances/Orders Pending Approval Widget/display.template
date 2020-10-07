@@ -1,0 +1,129 @@
+<!-- ko if: ($data.user().isApprover() && approvalViewModel().display()) -->
+<div id="CC-ordersPendingApproval">
+	 <div id="CC-pendingApprovalList-account-title" class="row">
+    <div id="CC-ordersPendingApproval-title" class="col-xs-6 col-sm-7 CC-ordersPendingApproval-title" data-bind="widgetLocaleText:'ordersPendingApprovalText'">
+    </div>
+   <div id="CC-pendingApprovalList-stepper" class="col-sm-4 text-right hidden-xs visible-md visible-lg pull-right">
+    <span data-bind="widgetLocaleText:'show' "></span>
+    <select data-bind="value:fetchSize" aria-label="Fetch Filter"  id="CC-fetchFilter" class="form-control CC-pendingApprovalList-fetchSizeFilter">
+	    <option>15</option>
+	    <option>30</option>
+	    <option>45</option>
+	    <option>60</option>
+	   </select>
+    <span data-bind="widgetLocaleText:'itemsPerPageText' "></span>
+    </div>
+    <legend id="CC-ordersPendingApproval-legend"></legend>
+    </div>
+  <div class="CC-search-group pull-right col-md-4 col-xs-8 col-sm-3">
+  <input type="text" class="form-control" id="search" aria-label="Order Search" data-bind="value:searchText, widgetLocaleText:{value:'searchOrderId',attr:'placeholder'}">
+   <span class="input-group-btn">
+  <button class="btn btn-default" id="CC-searchButton" aria-label="Search Contacts" data-bind="click:onClickFunc" type="button"><span class="glyphicon glyphicon-search"></span></button>
+  </span>
+  </div> 
+
+  <section id="orders-info" class="col-md-12">
+  <div id="CC-orderHistory-table-md-lg-sm" class="row hidden-xs">
+    
+      <table class="table" data-bind="widgetLocaleText:{value:'myAccount',attr:'summary'}">
+        <thead>
+          <tr>
+          	<th class="col-md-3" scope="col" data-bind="widgetLocaleText: 'headerOrderID'"></th>
+            <th class="col-md-3" scope="col" >
+            <span data-bind="widgetLocaleText : 'headerOrderDate'"></span>
+          		<!-- ko if : ($data.sortDirections().creationDate == "asc") -->
+          		<span class="fa fa-sort-desc" data-bind="click : $data.clickToSort.bind($data,'desc','creationDate')" aria-hidden="true"></span>
+          		<!-- /ko -->
+          		<!-- ko if : ($data.sortDirections().creationDate == "desc") -->
+          		<span class="fa fa-sort-asc" data-bind="click : $data.clickToSort.bind($data,'asc','creationDate')" aria-hidden="true"></span>
+          		<!-- /ko -->
+          		<!-- ko if : ($data.sortDirections().creationDate == "both") -->
+          		<span class="fa fa-sort" data-bind="click : $data.clickToSort.bind($data,'asc','creationDate')" aria-hidden="true"></span> 
+          		<!-- /ko -->
+          	</th>
+            <th class="col-md-3" scope="col" data-bind="widgetLocaleText: 'headerSubmittedBy'"></th>
+            <th class="col-md-3 orderTotal" scope="col" data-bind="widgetLocaleText : 'headerOrderTotal'"></th>
+          </tr>
+        </thead>
+        <!-- ko if : (approvalGrid().length > 0 ) -->
+        <tbody data-bind="foreach: approvalGrid">
+          <tr data-bind="foreach: $data">
+            <td class="col-md-3">
+            <a href="#" data-bind="click: $parents[1].clickOrderDetails.bind($parents[1])">            	
+            	<span data-bind="text : $data.orderId" scope="row"></span>           	
+            </a>
+            </td>
+            <td class="col-md-3" data-bind="ccDate: {date: $data.creationDate, returnedDate: 'medium'}"></td>
+            <td class="col-md-3">
+            <span data-bind="text:$data.profile.firstName"></span>&nbsp;
+            <span data-bind="text:$data.profile.lastName"></span>
+            </td>
+            <td class="col-md-3 orderTotal">
+            <!-- ko if: $data.secondaryOrderDataAvailable && $data.secondaryCurrency() --!>
+              <span data-bind="currency: {price: $data.primaryCurrencyTotal, currencyObj: $data.priceListGroup.currency}"></span><br>
+              <span data-bind="currency: {price: $data.secondaryCurrencyTotal, currencyObj: $data.secondaryCurrency(), prependSymbol: '+'}"></span>
+            <!-- /ko -->
+            <!-- ko ifnot: $data.secondaryOrderDataAvailable && $data.secondaryCurrency() --!> 
+              <span data-bind="currency: {price: $data.total, currencyObj: $data.priceListGroup.currency}"></span>
+            <!-- /ko -->
+            </td>
+          </tr>
+        </tbody>
+        <!-- /ko -->
+        <!-- ko if : (approvalGrid().length == 0 ) -->
+        <tbody>
+         <tr>
+           <td data-bind ="widgetLocaleText:'NoItemDisplayMessage' " ></td>
+           <td></td><td></td><td></td>
+         </tr>
+        </tbody>
+        <!-- /ko -->
+      </table>
+      <div class="pull-right">
+     <span data-bind="widgetLocaleText: {value: 'tableFooter', attr: 'innerText', params: {start: startIndex(), end: endIndex(), total: approvalViewModel().data().length }}"></span>
+     </div>
+  </div>
+ </section>
+ 
+ <div id="CC-ordersPendingApproval-table-xs" class="row visible-xs">
+    <section id="orders-info-phone" class="col-md-12">
+      <table class="table" data-bind="widgetLocaleText:{value:'ordersPendingApprovalText',attr:'summary'}">
+        <thead></thead>
+        <tbody data-bind="foreach: approvalGrid">
+          <tr data-bind="foreach: $data">
+            <td>
+              <a href="#" data-bind="click: $parents[1].clickOrderDetails.bind($parents[1])">
+            		<span data-bind="text : $data.orderId" scope="row"></span>
+            </a>
+              <div data-bind="ccDate: {date: $data.creationDate, returnedDate: 'medium'}"></div>
+            </td>
+            <td>
+              <span data-bind="text:$data.profile.firstName"></span>&nbsp;
+              <span data-bind="text:$data.profile.lastName"></span>
+            </td>
+            <td>
+            <!-- ko if: $data.secondaryOrderDataAvailable && $data.secondaryCurrency() --!>
+              <span data-bind="currency: {price: $data.primaryCurrencyTotal, currencyObj: $data.priceListGroup.currency}"></span><br>
+              <span data-bind="currency: {price: $data.secondaryCurrencyTotal, currencyObj: $data.secondaryCurrency(), prependSymbol: '+'}"></span>
+            <!-- /ko -->
+            <!-- ko ifnot: $data.secondaryOrderDataAvailable && $data.secondaryCurrency() --!> 
+              <span data-bind="currency: {price: $data.total, currencyObj: $data.priceListGroup.currency}"></span>
+            <!-- /ko -->
+            </td>              
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  
+ <!-- ko with: approvalViewModel -->
+  <div id="cc-paginated-controls-bottom" class="row col-md-12 visible-md visible-lg">
+    <div data-bind="visible : (totalNumberOfPages() > 1)">
+      <div>
+        <div class="row pull-right" data-bind="template: { name: $parent.templateAbsoluteUrl('/templates/paginationControls.template'), templateUrl: ''}"></div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>  
+<!-- /ko -->

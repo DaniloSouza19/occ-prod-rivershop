@@ -1,0 +1,37 @@
+<!--
+ /**
+  *
+  * Request Quote Widget Template
+  *
+  */
+-->
+<!-- ko if: $data.site().extensionSiteSettings && $data.site().extensionSiteSettings.CPQQuotingSettings && $data.site().extensionSiteSettings.CPQQuotingSettings.enabled -->
+<div class="templateRegion" id="cc-request-quote" data-oc-id="cc-request-quote">
+  <!-- oc layout: panels -->
+  
+  <div class="row">
+    <div class="oc-panel col-md-12" data-oc-id="panel-1">
+      <!-- oc section: requester-notes-text-area -->
+        <!-- ko if: $data.cart().currentOrderState() != 'QUOTED' -->
+          <legend data-bind="widgetLocaleText:'requestQuoteHeader'"></legend>
+          <div data-bind="element: 'requester-notes-text-area'"></div>
+        <!-- /ko -->
+        <!-- ko if: $data.cart().currentOrderState() == 'QUOTED' -->
+          <legend data-bind="widgetLocaleText:'notesHistoryHeader'"></legend>
+          <div data-bind="element: 'quote-notes-history'"></div>
+        <!-- /ko -->
+      <!-- /oc -->
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="oc-panel col-md-12" data-oc-id="panel-2">
+      <!-- oc section: request-quote-button -->
+        <div data-bind="element: 'request-quote-button'"></div>
+      <!-- /oc -->
+    </div>
+  </div>
+  
+  <!-- /oc -->
+</div>
+<!-- /ko -->

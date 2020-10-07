@@ -1,0 +1,8 @@
+{
+  "tag": "request-quote-button",
+  "source": 100,
+  "type": "fragment",
+  "title": "Botão Solicitar Cotação",
+  "widgetType": "requestQuote",
+  "version": 2
+}

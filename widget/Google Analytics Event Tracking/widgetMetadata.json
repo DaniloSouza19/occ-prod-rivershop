@@ -1,0 +1,15 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "Google Analytics Event Tracking",
+      "language": "en"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {
+    "gaTrackingID": "UA-154598912-1"
+  }
+}

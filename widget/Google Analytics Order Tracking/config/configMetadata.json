@@ -1,0 +1,12 @@
+{
+  "widgetDescriptorName": "Google Analytics Order Tracking",
+  "properties": [
+    {
+      "name": "Google Analytics Tracking ID",
+      "id": "gaTrackingID",
+      "type": "stringType",
+      "helpTextResourceId": "gaTrackingIDHelpText",
+      "labelResourceId": "gaTrackingIDTextLabel"
+    }
+  ]
+}

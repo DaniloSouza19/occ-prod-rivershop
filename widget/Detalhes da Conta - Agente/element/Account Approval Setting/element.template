@@ -1,0 +1,52 @@
+<!-- ko if: initialized() -->
+<div class="cc-account-approval-setting">
+  <h4 class="title-account-approval-setting">
+    <span data-bind="widgetLocaleText:'approvalSettingsText'"></span>
+  </h4>
+  <div class="row">
+    <div class="form-group col-md-3" id="">
+      <label data-bind="widgetLocaleText: 'requireApprovalText'" > </label>
+      <div id="cc-requireApproval-checkbox-settings" class="checkbox">
+        <label class="account-details-label" for="cc-requireApproval-checkbox">
+          <input id="cc-requireApproval-checkbox" type="checkbox" data-bind="
+                 checked: approvalRequired,
+                 enable: enableApprovalProperties"/>
+          <span data-bind="widgetLocaleText: 'requireApprovalLabel'"></span>
+          <!-- ko if: approvalErrorMessage() -->
+            <button id="approvalSettings-info-popover" class="btn"
+              data-bind="infoPopover: {
+                           trigger: 'hover',
+                           container: '#cc-requireApproval-checkbox-settings',
+                           placement: 'right',
+                           name: 'info-popover',
+                           zIndex: 550,
+                           minHeight: '70px',
+                           minWidth: '230px',
+                           model: approvalErrorMessage()},
+                         attr: {'aria-label' : approvalErrorMessage()}">
+              <span class="fa fa-info-circle"></span>
+            </button>
+          <!-- /ko -->
+        </label>
+      </div>
+    </div>
+
+    <!-- ko if: approvalRequired()-->
+    <div class="form-group col-md-6 col-md-offset-3" id="">
+      <label class="account-details-label" for="purchaseOrderLimitField" data-bind="widgetLocaleText: 'orderSetPriceLimitText'"></label>
+      <!--ko if: $data.user().priceListGroup.currency.symbol -->
+        <label class="account-details-label" id="cc-purchaseLimit-currencyCode" data-bind="text: '('+$data.user().priceListGroup.currency.symbol()+')'"></label>
+      <!-- /ko -->
+      <div class="cc-account-purchase-order">
+        <input id="purchaseOrderLimitField" class="form-control account-details-input-field" data-bind="
+                  value: orderPriceLimit,
+                  validatableValue: orderPriceLimit,
+                  enable: enableApprovalProperties() && !isWebhookEnabled(),
+                  css: { 'disabled-input' : (!enableApprovalProperties() || isWebhookEnabled()) } ">
+        <span id="CC-purchase-limit-error" data-bind="validationMessage: orderPriceLimit" class="text-danger" role="alert"></span>
+      </div> 
+    </div>
+    <!-- /ko -->
+  </div>
+</div>
+<!-- /ko -->

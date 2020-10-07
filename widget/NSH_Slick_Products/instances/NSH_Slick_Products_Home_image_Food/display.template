@@ -1,0 +1,38 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<!-- ko if: $widgetViewModel.isReady() -->
+<!-- ko if: ($widgetViewModel.arrProducts() && $widgetViewModel.arrProducts().length > 0) -->
+<div class="slick_product "data-bind="attr: {id: 'id_for_'+id()}, onRender: function(){ addClassInParent( 'id_for_'+id(), 1, 'col-sm-12 col-lg-12 col-md-12 col-sm-12 col-lg-12'), addClassInParent( 'id_for_'+id(), 2, 'container modificado') }">
+    <div class="slick_products_home">
+        <section class="card card-modify">
+            <div class="containerMOD">
+
+
+                <!--ko if: $widgetViewModel._slickTitle() && $widgetViewModel._slickTitle() != '' -->
+                <div class="section-title mb-40 instagram-title">
+
+                </div>
+                <!--/ko-->
+
+
+
+
+
+
+                <!--ko ifnot: $widgetViewModel._slickTitle() != '' -->
+                <div class="section-title mb-40 instagram-title">
+
+                </div>
+
+                <!--/ko-->
+
+                <div data-bind="element: 'nsh_product'"></div>
+
+
+
+            </div>
+        </section>
+    </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->

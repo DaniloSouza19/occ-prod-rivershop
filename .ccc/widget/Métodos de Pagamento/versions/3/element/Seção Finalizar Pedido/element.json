@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-placeorder",
+  "source": 100,
+  "type": "fragment",
+  "title": "Seção Finalizar Pedido",
+  "widgetType": "splitPayments",
+  "version": 3
+}

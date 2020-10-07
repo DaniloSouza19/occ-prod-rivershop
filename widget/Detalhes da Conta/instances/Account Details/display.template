@@ -1,0 +1,171 @@
+<!-- ko if: (user().loggedIn() || user().isUserSessionExpired()) -->
+<div id="CC-customerProfile" data-bind="onRender: addEventHandlersForAnchorClick" class="col-xs-12">
+   <div class="col-xs-12">
+   <!-- ko with: user -->
+    <fieldset id="CC-customerProfile-userdetail-edit-fields">  
+     <div id="CC-customerProfile-userEditDetails-title" class="CC-customerProfile-userEditDetails-title" data-bind="widgetLocaleText:'userDetailsText'">
+     </div>
+     <hr>
+     <div id="CC-customerProfile-details-edit">
+      <!--  Edit begin -->
+      <div id="CC-customerProfile-details-edit-region">
+      
+        <div class="row" id="CC-customerProfile-details-edit-header">
+          <p data-bind="widgetLocaleText: 'userDetailsHeader'" class="no-outline col-xs-12" aria-required="true" id="CC-customerProfile-details-edit-headerText"></p>
+        </div>
+        <br/>
+        <div class="row first-row">
+          <div class="col-md-8">
+            <label id="CC-customerProfile-edit-details-firstnameLabel" class="control-label inline" for="CC-customerProfile-edit-details-firstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-8">
+            <span class="text-danger visible-xs" id="CC-customerProfile-edit-details-firstname-phone-error" data-bind="validationMessage: firstName" role="alert"></span>
+            <div class="control">
+              <input aria-required="true" type="text" class="col-md-12 form-control" name="sFirstName" id="CC-customerProfile-edit-details-firstname" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}, event: {focus: $parent.inputFieldFocused.bind($parent)}">
+            </div>
+           </div>
+          <div class="col-md-4 hidden-xs">
+            <p class="text-danger" id="CC-customerProfile-edit-details-firstname-error" data-bind="validationMessage: firstName" role="alert"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <label id="CC-customerProfile-edit-details-lastnameLabel" class="control-label inline" for="CC-customerProfile-edit-details-lastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-8">
+            <span class="text-danger visible-xs" id="CC-customerProfile-edit-details-lastname-phone-error" data-bind="validationMessage: firstName" role="alert"></span>
+            <div class="control">
+              <input aria-required="true" type="text" class="col-md-12 form-control" name="sLastName" id="CC-customerProfile-edit-details-lastname" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}, event: {focus: $parent.inputFieldFocused.bind($parent)}">
+            </div>
+          </div>
+          <div class="col-md-4 hidden-xs">
+            <p class="text-danger" id="CC-customerProfile-edit-details-lastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+          </div>
+        </div> 
+               
+        <div data-bind="visible: supportedLocales.length > 1">
+          <div class="row">
+            <div class="col-md-8">
+              <span data-bind="widgetLocaleText: 'localeText'"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-8">
+              <div class="control">
+                <select class="col-md-12 form-control" name="profileLocale" id="CC-customerProfile-locales" aria-required="true"
+                  data-bind="options: supportedLocales, 
+                             optionsText: function(item) {
+                               return $parent.getFormattedProfileLocaleDisplayName(item)},
+                             optionsValue: function(item) {
+                               return item.name },
+                             value: $parent.user().locale,
+                             validatableTarget: locale, validationElement: locale, event: {focus: $parent.inputFieldFocused.bind($parent)}, widgetLocaleText : {value:'preferredLanguageText', attr:'aria-label'}">
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ko if: isB2BUser() -->
+        <div class="row">
+          <div class="col-md-8">
+            <label id="CC-customerProfile-edit-details-emailAddressLabel" class="control-label inline" for="CC-customerProfile-edit-details-emailAddress" data-bind="widgetLocaleText:'emailAddressText'"></label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-8">
+            <span class="text-danger visible-xs" id="CC-customerProfile-edit-details-emailAddress-phone-error" data-bind="validationMessage: emailAddress" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="sEmailAddress" id="CC-customerProfile-edit-details-emailAddress" data-bind="validatableValue: emailAddress, widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}" disabled>
+            </div>
+          </div>
+          <div class="col-md-4 hidden-xs">
+             <p class="text-danger" id="CC-customerProfile-edit-details-emailAddress-error" data-bind="validationMessage: emailAddress" role="alert"></p>
+          </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: !isB2BUser() -->
+        <div class="row">
+          <div class="col-md-8">
+            <label id="CC-customerProfile-edit-details-emailAddressLabel" class="control-label inline" for="CC-customerProfile-edit-details-emailAddress" data-bind="widgetLocaleText:'emailAddressText'"></label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-8">
+            <span class="text-danger visible-xs" id="CC-customerProfile-edit-details-emailAddress-phone-error" data-bind="validationMessage: emailAddress" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="sEmailAddress" id="CC-customerProfile-edit-details-emailAddress" data-bind="validatableValue: emailAddress, widgetLocaleText : {value:'emailAddressText', attr:'placeholder'}"disabled>
+            </div>
+          </div>
+          <div class="col-md-4 hidden-xs">
+             <p class="text-danger" id="CC-customerProfile-edit-details-emailAddress-error" data-bind="validationMessage: emailAddress" role="alert"></p>
+          </div>
+        </div>
+        <!-- /ko -->  
+        <div class="row">
+          <div id="CC-customerProfile-marketingMail" class="form-group col-xs-12">
+            <p data-bind="widgetLocaleText: 'emailPreferences'" id="CC-customerProfile-marketingMail-Header"></p>
+          </div>
+        </div>
+        <div class="row col-md-12">
+          <div class="form group">
+            <div class="checkbox" id="CC-customerProfile-edit-marketingMail-checkbox">
+              <label for="CC-customerProfile-edit-marketingMails">
+                <input type="checkbox" name="marketing-mail" data-bind="checked: emailMarketingMails, event: {focus: $parent.inputFieldFocused.bind($parent)}" id="CC-customerProfile-edit-marketingMails">
+                <span data-bind="widgetLocaleText: 'marketingMailsText'" id="CC-customerProfile-edit-marketingMail-text"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-12" data-bind="visible:$parent.site().requireGDPRP13nConsent">
+          <div class="form group">
+            <div class="checkbox" id="CC-customerProfile-edit-personalizationConsent-checkbox">
+              <label for="CC-customerProfile-edit-personalizationConsent">
+                <input type="checkbox" name="personalization-Consent" data-bind="checked: GDPRProfileP13nConsentGranted" id="CC-customerProfile-edit-personalizationConsent">
+                <span data-bind="widgetLocaleText: 'personalizationConsentText'" id="CC-customerProfile-edit-personalizationConsent-text"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  Edit ends -->
+    </div>
+   </fieldset>
+   <!-- /ko -->
+   </div>
+  <div id="CC-customerProfile-save-cancel-control" class="row cc-customer-profile-save-cancel">
+    <button class="cc-button-primary col-sm-2 col-xs-12 pull-right cc-customer-profile-button" id="CC-customerProfile-save" data-bind="click: handleUpdateProfileForShopperDetails, event: { mousedown: handleMouseDown, mouseup: handleMouseUp}">
+      <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+    </button>
+    <button class="cc-button-secondary col-sm-2 col-xs-12 pull-right cc-customer-profile-button" id="CC-customerProfile-cancel" data-bind="click: handleCancelUpdateForShopperDetails, event: { mousedown: handleMouseDown, mouseup: handleMouseUp}">
+      <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+    </button>
+  </div>
+  <!-- CC-customerProfileModalPane -->
+<div class="modal fade" id="CC-customerProfile-modal-1"
+     tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+  <div class="modal-dialog" id="CC-customerProfile-modal-dialog-1">
+    <div class="modal-content" id="CC-customerProfileModalContent-1">
+      <div class="modal-header cc-profile-modal-heading cc-profile-confirm-icon" id="CC-customerProfile-modal-header-1">
+        <button type="button" class="close" data-dismiss="modal" id="CC-customerProfile-modal-headerClose-1" aria-hidden="true">&times;</button>
+        <h4 data-bind="widgetLocaleText:'updateCacelModalTitle'" id="CC-customerProfile-modal-headerText-1"></h4>
+      </div>
+      <div class="modal-body cc-profile-body-modal" id="CC-customerProfile-modal-modalBody-1">
+        <p data-bind="widgetLocaleText:'updateCancelModalMessage'" align="center" id="CC-customerProfile-modal-bodyText-1"></p>
+      </div>
+      <div class="modal-footer cc-profile-modal-footer" id="CC-customerProfile-modal-footer-1">
+        <button class="btn cc-button-secondary" id="CC-customerProfile-modal-cancel-1" data-bind="click: handleModalCancelUpdateDiscard">
+          <span id="CC-customerProfile-modal-discard-1" data-bind="widgetLocaleText:'updateCancelModalClose'"></span>
+        </button>
+        <button class="btn cc-button-primary" id="CC-customerProfile-modal-submit-1"  data-bind="click: handleModalUpdateProfile">
+          <span id="CC-customerProfile-modal-save-1" data-bind="widgetLocaleText:'updateCancelModalSave'"></span>
+        </button>
+    </div> 
+    </div>
+  </div>
+</div>
+</div>
+<!-- /ko -->

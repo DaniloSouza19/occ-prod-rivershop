@@ -1,0 +1,31 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<!-- ko if: $widgetViewModel.isReady() -->
+<!-- ko if: ($widgetViewModel.arrImagesDesktop() && $widgetViewModel.arrImagesDesktop().length > 0) || ($widgetViewModel.arrImagesMobile() && $widgetViewModel.arrImagesMobile().length > 0) -->
+<div class="slick_video">
+    <div class="container">
+        <div class="row">
+            <div class="item " data-bind="attr:{id: id}, 
+        foreach:{ data: $widgetViewModel.isMobile() ? $widgetViewModel.arrImagesMobile() : $widgetViewModel.arrImagesDesktop(), as: 'image'}, 
+        onRender: $widgetViewModel.addSlick()">
+                <!--ko if : $widgetViewModel['_enableImage_' + $index() ]-->
+                <div class="slide">
+
+                    <div class="video col-lg-7 col-md-6" data-bind="html: $widgetViewModel['_embedVideo_' + $index() ]">
+                    </div>
+
+                    <div class="text-block col-lg-5 col-md-4">
+                        <h3 class="title" data-bind="text: $widgetViewModel['_titleVideo_' + $index()]">
+
+                        </h3>
+                        <span class="text" data-bind="text: $widgetViewModel['_mediaText_' + $index()]">
+                        </span>
+                    </div>
+                </div>
+                <!--/ko-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ko-->
+<!--/ko-->

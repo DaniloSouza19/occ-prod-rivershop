@@ -1,0 +1,48 @@
+<!-- ko if:initialized() -->
+<div class="cc-margin-top10">
+	<!-- ko if: $data.loyaltyFlag() -->
+	<span id="cc-loyalty-scheme-header" class="cc-loyalty-scheme-header"
+		data-bind="widgetLocaleText: 'loyaltySchemeDetailsText'"></span> </br>
+	<div id="cc-loyalty-details"
+		data-bind="widgetLocaleText: 'retrievingLoyaltyDetails'"></div>
+	<!-- /ko -->
+	<!-- ko if: !$data.loyaltyFlag() && $data.isEnrollProperty() && totalLoyaltyPrograms() == 0 -->
+	<label id="cc-loyalty-scheme-header" class="details-label"
+		data-bind="widgetLocaleText: 'loyaltySchemeDetailsText'"></label> </br>
+	<span id="cc-loyalty-details" class="details-label"
+		data-bind="widgetLocaleText: 'noLoyaltyProgramme'"></span>
+	<!-- /ko -->
+	<!-- ko if: (($data.isEnrollProperty() === null) || $data.isEnrollProperty()) && totalLoyaltyPrograms() > 0  -->
+	<div id="cc-loyalty-details">
+
+		<!-- Template to display user details -->
+		<label id="cc-loyalty-scheme-header" class="details-label"
+			data-bind="widgetLocaleText: 'loyaltySchemeDetailsText'"></label>
+		<div class="cc-loyalty-scheme-details padding-top-5">
+			<div
+				data-bind="css: { 'table-bordered scrollbar-display padding-left-10 padding-top-5': 
+                                    (totalLoyaltyPrograms > 1)}">
+				<!-- ko foreach: user().loyaltyViewModel().loyaltyPrograms -->
+				<span class="cc-customer-nickName"
+					data-bind="attr:{id: 'cc-loyalty-program-name-label-'+$index()}, widgetLocaleText: 'programNameLabel'"></span>
+				<span
+					data-bind="attr:{id: 'cc-loyalty-program-name-'+$index()}, text: programName"></span>
+				</br> <span class="cc-customer-nickName"
+					data-bind="attr:{id: 'cc-loyalty-membership-id-label-'+$index()}, widgetLocaleText: 'membershipIdLabel'"></span>
+				<span
+					data-bind="attr:{id: 'cc-loyalty-membership-id-'+$index()}, text: membershipId"></span>
+				</br>
+				<div>
+					<span class="cc-customer-nickName"
+						data-bind="attr:{id: 'cc-loyalty-balance-label-'+$index()}, widgetLocaleText: 'loyaltyBalanceText'"></span>
+					<span
+						data-bind="attr:{id: 'cc-loyalty-balance-'+$index()}, text: $parent.getPointTypeText(loyaltyPointDetails)"></span>
+				</div>
+				</br>
+				<!-- /ko -->
+			</div>
+		</div>
+	</div>
+	<!-- /ko -->
+</div>
+<!-- /ko -->

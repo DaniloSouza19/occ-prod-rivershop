@@ -1,0 +1,8 @@
+{
+  "tag": "agent-order-price-details",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Order Price Details",
+  "widgetType": "agentAccountOrderDetails",
+  "version": 3
+}

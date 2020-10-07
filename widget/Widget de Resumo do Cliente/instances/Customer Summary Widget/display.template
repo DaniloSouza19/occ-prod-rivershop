@@ -1,0 +1,23 @@
+<div data-bind="attr:{id: 'CC-customerSummary'}" class="customer-summary-class">
+  <!--  oc layout: panels -->
+    <div class="row">
+      <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+        <!-- oc section: customer-basic-information -->
+          <div data-bind="element: 'customer-basic-information', attr: { id: 'CC-customerSummary-info-' + 'customer-basic-information-' + $data.id()}"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="oc-panel col-md-3 selector-class" data-oc-id="panel-1-1">
+        <!-- oc section: account-selector -->
+          <div data-bind="element: 'account-selector', attr: {id: 'CC-customerSummary-info-' + 'account-selector-' + $data.id()}"></div>
+        <!-- /oc -->
+      </div>
+      <div class="oc-panel col-md-3 selector-class" data-oc-id="panel-1-0">
+        <!-- oc section: site-selector -->
+          <div data-bind="element: 'site-selector', attr: {id: 'CC-customerSummary-info-' + 'site-selector-' + $data.id()}"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+  <!-- /oc -->   
+</div> 

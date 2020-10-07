@@ -1,0 +1,86 @@
+<!-- ko if : loaded -->
+<div id="cc-customerDisplay">
+	<div id="cc-customerDisplay-header">
+		<div id="cc-customerDisplay-header-customerInfo" class="col-md-12">
+			<h1 class="agent-headerText"
+				id="cc-customerDisplay-myProfileText"
+				data-bind="widgetLocaleText: 'myProfileText'"></h1>
+		</div>
+	</div>
+
+	<!--  oc layout: panels -->
+
+	<!-- container to display customer profile and shipping address information -->
+	<div id="cc-customerDisplay-controls" class="row">
+         
+        <div class="col-md-6" data-oc-id="panel-3">
+		<!-- oc section : customer-details -->
+		<div data-bind="element: 'customer-details'"></div>
+		<!-- /oc -->
+        
+	    <!-- oc section : customer-profile-reset-password -->
+		<div data-bind="element: 'customer-profile-reset-password'"></div>
+		<!-- /oc -->
+
+		<!-- oc section : customer-pending-orders -->
+		<div data-bind="element: 'customer-pending-orders'"></div>
+		<!-- /oc -->
+
+		<!-- oc section : launch-store-as-customer -->
+		<div data-bind="element: 'launch-store-as-customer'"></div>
+		<!-- /oc -->
+		
+		</div>
+
+        <div class="col-md-6" data-oc-id="panel-4">
+		<!-- oc section : customer-store-credit-balance -->
+		<div data-bind="element: 'customer-store-credit-balance'"></div>
+		<!-- /oc -->
+
+		<!-- oc section : customer-loyalty-programs -->
+		<div data-bind="element : 'customer-loyalty-programs'"></div>
+		<!-- /oc -->
+
+		<!-- oc section : customer-store-roles -->
+		<div data-bind="visible: user().isB2BUser()">
+		<div data-bind="element : 'customer-store-roles'"></div>
+		</div>
+		<!-- /oc -->
+
+		<!-- oc section : customer-profile-status -->
+		<div data-bind="element : 'customer-profile-status'"></div>
+		<!-- /oc -->
+		</div>
+	</div>
+	
+    <div id="customerNotes" class="row">
+	  <div class="col-md-12" data-oc-id="panel-5">
+	    <!-- oc section : agent-notes -->
+	      <hr class="line agent-line" />
+		  <div data-bind="element : 'agent-notes'"></div>
+		<!-- /oc -->
+	  </div>
+	</div>
+	
+	 <div id="customerDynamicProps" class="row">
+	  <div class="col-md-12" data-oc-id="panel-6">
+	    <!-- oc section : customer-dynamic-property -->
+          <!-- ko setContextVariable:{name:'context', value: $data.user().dynamicProperties()} -->
+            <div data-bind="element:'dynamic-property'"></div>
+          <!-- /ko -->
+        <!-- /oc -->
+       </div>
+      </div>
+	
+	<div id="customerSaveCancel" class="row">
+	  <div class="col-md-12" data-oc-id="panel-7">
+	    <!-- oc section : customer-profile-save-cancel -->
+	      <hr class="line agent-line" />
+		  <div data-bind="element : 'customer-profile-save-cancel'"></div>
+		<!-- /oc -->
+	  </div>
+	</div>
+	<!-- /oc -->
+
+</div>
+<!-- /ko -->

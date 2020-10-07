@@ -1,0 +1,389 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<div class="header_home" data-bind="onRender: $widgetViewModel.rendered()">
+    <!-- ko ifnot: $widgetViewModel.isMobile() -->
+    <div class="header_fixes news desktop">
+        <div class="header-top pt-15 pb-15 d-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-3  col-sm-3 text-center text-md-left mb-sm-15 col-lg-2">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/file/general/Logo-horizontal2.png" alt="River Shop"
+                                    class="logoTopo img-fluid"></a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 col-md-5 col-sm-6 col-xs-12 mb-sm-20">
+
+                        <form class="search__content autocomplete_search"
+                            data-bind="submit: function(data, event) { $data.handleSearch.bind($data, $data, event)() }, event: { keydown : $data.handleKeyPress }">
+                            <div class="search-bar">
+                                <input autocomplete="off" class="search__item text-gray text__little search-query"
+                                    data-value="" name="s" ngmodel="" type="text" placeholder="Faça sua pesquisa..."
+                                    data-bind="value: searchText, valueUpdate: 'afterkeydown', onRender: $widgetViewModel.initializeSearch($parent), event: { focus: searchSelected}" />
+                                <button class="search__button" type="submit"
+                                    data-bind="event: { keydown : hideSearchDropdown}">
+                                    <img src="/file/general/magnifier.png" alt="Faça sua pesquisa...">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-12 col-lg-3 col-md-3 col-sm-2">
+                        <div class="single-icon carrinho">
+                            <a data-bind=" ccLink : {route : '/cart'}" id="cart-icon" class="">
+                                <span class="contadorCarrinho red">
+                                    <img src="/file/general/carrinho2.png" class="iconeCarrinho">
+                                    <span class="icon-cart-counter hidden-sm hidden-xs "
+                                        data-bind="text: cartLinkText"></span>
+                                </span>
+
+
+                                <span class="priceTotal"
+                                    data-bind="currency: {price: cart().subTotal(), currencyObj: $data.site().selectedPriceListGroup().currency}"></span>
+
+                            </a>
+                            <a class="addCard hidden-md hidden-sm hidden-xs linke"
+                                data-bind=" ccLink : {route : '/cart'}">FINALIZAR
+                                COMPRA</span></a>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-1 col-sm-1  no_pad_left no_pad_right  accountMenuName">
+                        <div class="row">
+                            <div id="changeAccount" class="col-lg-12 col-sm-12">
+
+
+
+                                <div class="col-lg-11 no_pad_left  no_pad_right">
+                                    <div class="iconAccont">
+                                        
+                                        <span class="card-limit"
+                                        data-bind="html:  '<span class=hidden-md>Limite de Crédito: R$</span>    '+     limitCredit()"></span>
+                                        <img src="/file/general/user.png" alt="Account" class="icon">
+                                    </div>  
+                                    <div class="header-top-text hidden-md hidden-sm hidden-xs">Seja
+                                        bem-vindo(a),<br>
+                                        <div class="_nameAccount"
+                                            data-bind="text: $widgetViewModel.user().loggedIn() ? ' '+$widgetViewModel.user().firstName()+' '+$widgetViewModel.user().lastName()+' '   : '  '">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 no_pad_right hidden-md hidden-sm hidden-xs"><img
+                                        src="/file/general/arrow-down-sign-to-navigate.png" alt="Account" class="icon">
+                                </div>
+
+                            </div>
+                            <div id="accountList" class="language-currency-list" style="display: none;">
+                                <ul>
+                                    <li><a data-bind="ccLink : {route : '/profile'}">Minha Conta</a></li>
+                                    <li><a data-bind="ccLink : {route : '/orderHistory'}">Pedidos Anteriores</a></li>
+                                    <li><a
+                                            data-bind="click: $widgetViewModel.handleLogout.bind($widgetViewModel)">Sair</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="subheader">
+            <div class="container no_pad_left no_pad_right">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3">
+                        <div class="departamento">
+                            <div class="category-toggle-wrap menuBotao"  style="border-radius: 4px;"><button
+                                    class="category-toggle departamento_vertical" id="btvertical"><img src="/file/general/menu.png"
+                                        class="iconeMenu">
+                                        
+                                    <b>DEPARTAMENTOS</b></button></div>
+                        
+                                <ul id="vertical" class="list nav nav__small clearfix  vertical "
+                                    data-bind="foreach: categories_vertical">
+
+                                    <li class=" js-arrow__small sidenav__item ">
+                                        <!--ko if: longDescription && longDescription.search("/") != -1-->
+                                        <img class="col-lg-2" height="15px"
+                                            data-bind="attr:{src: longDescription.replace(/<[^>]+>/g, '')}">
+
+                                        <a class="nav__nav title text-tall text-medium  hasSubMenu linke"
+                                            data-bind="ccLink : $data, attr: {title: displayName, alt:displayName}">
+                                            <span class="linke" data-bind="text: $data.displayName"> </span>
+
+                                        </a>
+                                        <!--/ko-->
+
+                                        <!--ko ifnot: longDescription && longDescription.search("/") != -1-->
+                                        <a class="nav__nav title text-tall text-medium  hasSubMenu linke m-l-15"
+                                            data-bind="ccLink : $data, attr: {title: displayName, alt:displayName}">
+                                            <span class="linke" data-bind="text: $data.displayName"> </span>
+
+                                        </a>
+                                        <!--/ko-->
+
+                                        <!-- ko if: $data.childCategories -->
+
+
+                                        <span class="caret " data-bind="attr:{href:'#'+id,'data-target':'#'+id}">
+
+                                            <i class="fas fa-chevron-right"></i>
+                                        </span>
+
+
+
+
+                                        <div aria-expanded="false" class="colhide" data-bind="attr:{id:id}">
+
+                                            <ul class="list nav__list child filho" data-bind="foreach: childCategories">
+
+                                                <li class=" js-arrow__small  sidenav__item ">
+
+                                                    <a data-bind="ccLink : $data, attr: {title: displayName, alt:displayName}"
+                                                        class="nav__link nav__combo--item text text-bold text-gray text-medium hasSubMenu linke">
+                                                        <span class="linke" data-bind="text: $data.displayName"></span> </a>
+                                                    <!-- ko if: $data.childCategories -->
+                                                    <span class="caret "
+                                                        data-bind="attr:{href:'#'+id,'data-target':'#'+id}">
+
+
+                                                    </span>
+
+
+
+                                                    <!-- ko if: $data.childCategories -->
+                                                    <ul class="list nav__list  child  netos "
+                                                        data-bind="foreach: childCategories">
+                                                        <li class="clearfix sidenav__item">
+
+                                                            <a data-bind="ccLink : $data, attr: {title: displayName, alt:displayName}"
+                                                                class="nav__link nav__combo--item text text-bold text-gray text-medium hasSubMenu linke">
+                                                                <span class="linke"
+                                                                    data-bind="text: $data.displayName"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- /ko -->
+                                                    <!-- /ko -->
+
+                                                    <div aria-expanded="false" class="colhide" data-bind="attr:{id:id}">
+
+                                                    </div>
+
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /ko -->
+                                    </li>
+                                </ul> 
+                     
+
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-9  no_pad_right">
+
+                        <ul class="list nav nav__small clearfix horizontal" data-bind="foreach: categories_horizontal">
+
+                            <li class=" js-arrow__small sidenav__item ">
+                                <a class="nav__nav title text-tall text-medium  hasSubMenu linke"
+                                    data-bind="ccLink : $data, attr: {title: displayName, alt:displayName}">
+                                    <span class="linke" data-bind="text: $data.displayName"> </span>
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: $widgetViewModel.isMobile() -->
+    <div class="header_fixes news mobile">
+        <div class="header-top  d-block">
+            <div class="container no_pad_left  no_pad_right">
+                <div class="row">
+                    <div class="col-12  col-md-2 col-sm-2 col-xs-2   accountMenuName pt-15">
+                        <div class="row">
+                            <a data-bind=" ccLink : {route : '/profile'}" id="cart-icon" title="Minha Conta" >
+
+
+                                <div class="col-lg-11 no_pad_left  no_pad_right">
+                                    <div class="iconAccont">
+                                         
+                                           
+            
+                                            <img src="/file/general/user.png" alt="Account" class="icon">
+                                    
+                                    </div>
+                                    <span class="header-top-text hidden-md hidden-sm hidden-xs">Seja
+                                        bem-vindo(a),<br><span class="_nameAccount"> EMPREENDIMENTOS SOUZA
+                                            EIRELI</span></span>
+                                </div>
+                                <div class="col-lg-1 no_pad_right hidden-md hidden-sm hidden-xs"><img
+                                        src="/file/general/arrow-down-sign-to-navigate.png" alt="Account" class="icon">
+                                </div>
+
+                            </a>
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-12 col-md-8  col-sm-8   col-xs-8 text-center text-md-left pt-15 ">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/file/general/Logo-horizontal2.png" alt="River Shop"
+                                    class="logoTopo img-fluid"></a>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 submenu_mobile  pt-15 fr">
+                        <div class=" fr">
+                            <a id="navTrigger" class="navTrigger float-btn">
+                                <img src="/file/general/menu_mobile.png" width="28" height="25" alt=""></a>
+                        </div>
+                    </div> 
+
+
+                </div>
+                <div class="row submenu_mobile">
+                    <div class=" col-sm-11 col-xs-10  mb-sm-20 header__mobile">
+
+                        <form class="search__content autocomplete_search  search-bar"
+                            data-bind="submit: function(data, event) { $data.handleSearch.bind($data, $data, event)() }, event: { keydown : $data.handleKeyPress }">
+                            <input autocomplete="off"
+                                class="search__item text-gray text__little  search-query"
+                                data-value="" name="s" type="text" placeholder="Faça sua pesquisa..."
+                                data-bind="value: searchText, valueUpdate: 'afterkeydown', onRender: $widgetViewModel.initializeSearch($parent), event: { focus: searchSelected}" />
+                            <button class="search__button" type="submit"
+                                data-bind="event: { keydown : hideSearchDropdown}"> <img
+                                    src="/file/general/magnifier.png" alt="Faça sua pesquisa..."></button>
+                        </form>
+
+                    </div>
+
+                    <div class="col-12 col-lg-3 col-md-2 col-sm-1 col-xs-2 no_pad_left">
+                        <div class="single-icon carrinho">
+                            <a data-bind=" ccLink : {route : '/cart'}" id="cart-icon" class="">
+                                <span class="contadorCarrinho red">
+                                    <img src="/file/general/carrinho2.png" class="iconeCarrinho">
+                                    <span class="icon-cart-counter " data-bind="text: cartLinkText"></span>
+                                </span>
+
+
+
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="sidenav" id="mySidenav">
+
+                <li class="sidenav__item sidenav__borderB">
+
+                    <div class="" id="submenu1">
+
+                        <ul class="list nav nav__small clearfix" data-bind="foreach: categories_vertical">
+                            <!-- <img class="teste" width="10px" height="10px"
+                                data-bind="attr:{src: longDescription.replace(/<[^>]+>/g, '')}"> -->
+                            <li class="nav__item js-arrow__small sidenav__item ">
+                                <a class="nav__nav title text-tall text-medium  hasSubMenu linke"
+                                    data-bind="ccLink : $data" data-toggle="collapse">
+                                    <span class="linke" data-bind="text: $data.displayName"> </span>
+
+                                </a>
+                                <!-- ko if: $data.childCategories -->
+
+
+                                <span class="caret " data-bind="attr:{href:'#'+id,'data-target':'#'+id}"
+                                    data-toggle="collapse">
+                                    <i class="fas fa-chevron-down"></i>
+
+
+                                </span>
+                                <div aria-expanded="false" class="collapse" data-bind="attr:{id:id}">
+
+                                    <ul class="list nav__list" data-bind="foreach: childCategories">
+
+                                        <li class="nav__item js-arrow__small  sidenav__item ">
+
+                                            <a data-bind="ccLink : $data"
+                                                class="nav__link nav__combo--item text text-bold text-gray text-medium hasSubMenu linke">
+                                                <span class="linke" data-bind="text: $data.displayName"></span> </a>
+                                            <!-- ko if: $data.childCategories -->
+                                            <div class="liha"></div>
+                                            <span class="arrow-animation custon subMenu">
+                                                <a class="openMenu" data-bind="attr:{href:'#'+id,'data-target':'#'+id}"
+                                                    data-toggle="collapse"></a>
+                                            </span>
+                                            <!-- /ko -->
+
+                                            <!-- ko if: $data.childCategories -->
+
+
+                                            <div aria-expanded="false" class="collapse" data-bind="attr:{id:id}">
+                                                <ul class="list nav__list" data-bind="foreach: childCategories">
+                                                    <li class="clearfix sidenav__item">
+
+                                                        <a data-bind="ccLink : $data"
+                                                            class="nav__link nav__combo--item text text-bold text-gray text-medium hasSubMenu linke">
+                                                            <span class="linke"
+                                                                data-bind="text: $data.displayName"></span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <!-- /ko -->
+                                            </div>
+
+
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /ko -->
+
+                            </li>
+
+                        </ul>
+
+                        <!-----------  fim Menu Mobile----------->
+
+
+                </li>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+    <!-- /ko -->
+
+
+
+</div>
+</div>

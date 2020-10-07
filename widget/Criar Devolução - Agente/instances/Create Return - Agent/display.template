@@ -1,0 +1,787 @@
+<div id="CC-CreateReturn">
+<!-- ko if: $data.returnViewModel() -->
+<div id="cc-initiate-return-request">
+  <div class="row">
+    <div id="cc-return-request-header" class="col-md-12">
+      <h3 class="col-sm-8 agent-headerText" data-bind="text: $data.returnRequestTitle">
+     </h3>
+      <div class="margin-right-30" data-bind="element: 'back-button', attr: { id: 'back-button-'+id()}"></div>
+    </div>
+  </div>
+  <hr class="line agent-line cc-return-hr"/>
+</div>
+
+<div class="col-md-12 cc-return-btn">
+  <!-- ko if: $data.returnViewModel().customerDetails -->
+  <!-- ko with: $data.returnViewModel().customerDetails -->
+  <h4 class="title agent-subheadings add-padding-top-10"
+      data-bind="widgetLocaleText: 'orderDetailsText'">
+  </h4>
+  <!-- ko if: $data.hasOwnProperty("organization") -->
+    <span id="cc-orderDetails-accountName"
+      data-bind="widgetLocaleText: 'accountNameText'"></span>
+    <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+    <span id="cc-orderDetails-accountName-value"
+      data-bind="text: organization.name"></span>
+    <br/>
+  <!-- /ko -->
+  <!-- ko if: firstName -->
+  <span id="cc-returns-orderDetails-customerName-label"
+      data-bind="widgetLocaleText: 'customerNameText',
+                 visible: firstName || profile.lastName">
+  </span>
+  <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+  <span id="cc-returns-orderDetails-firstName-value"
+      data-bind="text: firstName,
+                 visible: firstName">
+  </span>
+  <span id="cc-returns-orderDetails-lastName-value"
+      data-bind="text: lastName,
+                 visible: lastName">
+  </span>
+  <br />
+  <!-- /ko -->
+
+<span id="cc-returns-orderDetails-customerEmail-label"
+      data-bind="widgetLocaleText: 'customerEmailText'">
+  </span>
+  <span data-bind="widgetLocaleText:'delimiterText'"></span>
+  <span  id="cc-returns-orderDetails-customerEmail-value"
+      data-bind="text: email">
+  </span>
+  <br/>
+  <!-- /ko -->
+  <!-- /ko -->
+  <!-- ko if: $data.returnViewModel().orderInfo() && $data.returnViewModel().orderInfo().submittedDate -->
+  <span id="cc-returns-orderDetails-orderSubmittedDate"
+      data-bind="widgetLocaleText: 'orderSubmittedDateText'">
+  </span>
+  <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+  <span id="cc-returns-orderDetails-orderDate-value"
+      data-bind="ccDateTime: {date: $data.returnViewModel().orderInfo().submittedDate,
+                          format: 'datetime', dateFormat: 'medium', timeFormat: 'short'}">
+  </span>
+  <br/>
+  <!-- /ko -->
+  <span id="cc-returns-orderDetails-orderSiteId-label"
+      data-bind="widgetLocaleText: 'merchantSiteText'">
+  </span>
+  <span data-bind="widgetLocaleText:'delimiterText'"></span>
+  <span  id="cc-returns-orderDetails-orderSite-value"
+      data-bind="text: $data.orderSite">
+  </span>
+  <br/>
+  <!-- ko if: $data.returnViewModel().trackingNumber || $data.returnViewModel().returnLabel -->
+  <h5 class="title" data-bind="widgetLocaleText: 'returnDetailsText'"></h5>
+ <!-- ko if: $data.returnViewModel().trackingNumber -->
+  <span id="cc-payment-tracking-number-label" data-bind="widgetLocaleText: 'trackingNumbers'"></span>
+  <span data-bind="widgetLocaleText:'delimiterText'"></span>
+  <span id="cc-payment-tracking-number-value" data-bind="text: $data.returnViewModel().trackingNumber()"></span>
+  <br/>
+  <!-- /ko -->
+  <!-- ko if:  $data.returnViewModel().returnLabel -->
+  <span id="cc-payment-return-label" data-bind="widgetLocaleText: 'returnLabel'"></span>
+  <span data-bind="widgetLocaleText:'delimiterText'"></span>
+  <span id="cc-payment-return-value" data-bind="text: $data.returnViewModel().returnLabel()"></span>
+  <br/>
+  <!-- /ko -->
+  <!-- /ko -->
+   <!-- ko if: $data.hasQuoteInfo -->
+     <span id="cc-returns-orderDetails-quote"
+       data-bind="widgetLocaleText: 'quoteText'">
+     </span>
+   <!-- /ko -->
+</div>
+
+<div id="cc-return-order-separator" class="col-xs-12">
+  <hr class="line order-head col-xs-12"/><br />
+</div>
+<div class="col-xs-12">
+  <h4 class="title agent-subheadings"
+      data-bind="widgetLocaleText: { value:'returnItems', attr: 'innerText'}">
+  </h4>
+</div>
+<br/>
+<div class="col-xs-12 padding-bottom-5">
+  <span data-bind="widgetLocaleText: 'selectReturnItemsText'"></span>
+</div>
+<br/>
+ <!-- ko with: $data.returnViewModel() -->
+<div class="table-layout-fixed-break-word col-md-12" id="cc-return-orders">
+  <table summary="returns-Header-Table"
+      class="table-header-styling table table-bordered table-striped tableHeader cc-return-item-table-headers">
+    <thead>
+      <tr>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'productText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'priceText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'quantityText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'amountText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnRefundText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnReasonText'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'returnFrom'"></th>
+        <th scope="col" class="vert-align" data-bind="widgetLocaleText: 'shippingMethod'"></th>
+      </tr>
+    </thead>
+  </table>
+  <table summary="returns-Data-Table"
+      class="table table-bordered table-striped tableHeader cc-return-item-table-data">
+    <tbody>
+    <!--  ko foreach: returnItemsArrayGroupedWithCommerceItemId -->
+    <!--  ko foreach: $data -->
+    <!-- ko if: $index() == 0 -->
+      <tr data-bind="css: {'info': $data.isValid()}" >
+        <td scope="row" data-bind="attr: {rowspan: $parent.length}" class="cc-orderdetails-multiship-bottom-border-remove scrollableTableCell ">
+
+            <div class="col-md-12">
+              <!-- ko if: $data.promotionAdjustments().length > 0-->
+              <span data-bind="widgetLocaleText: {value:'ItemDisplayNamePromotionAdjusted',  attr:'innerText',
+                           params: {adjustedPromotionReferences: $data.adjustedPromotionReferences(),
+                           itemDisplayName : $data.displayName}}">
+              </span>
+              <!-- /ko -->
+
+              <!-- ko ifnot: $data.promotionAdjustments().length > 0-->
+                <span data-bind="text: $data.displayName"></span>
+              <!-- /ko -->
+
+              <div data-bind="template: { name: $parents[2].templateAbsoluteUrl('/templates/sku-options-external-data-view.template'), templateUrl: '' }">
+              </div>
+
+              <!-- ko with: $data.skuDetailsViewModel -->
+              <div data-bind="attr: {
+                  id: 'cc-returnItem-subSkuItemDetails-' +
+                    ($data.configuratorId ? $data.configuratorId : $parent.catRefId) + '-' + $index()
+                },
+                template: { name: $parents[3].templateAbsoluteUrl('/templates/subSku-items-view.template'), templateUrl: '' }" class="childItemsTreeDisplay">
+              </div>
+              <!-- /ko-->
+
+              <!-- ko if: Object.keys($data.replacementDynamicProperties).length > 0 -->
+              <!-- ko foreach: $parents[1].lineAttributes() -->
+              <!-- ko if: $parent[id()]() != null -->
+               <div >
+                    <small>
+                    <!-- ko if: $parent.hasOwnProperty($data.id()) && ($parent[$data.id()]() !=  null) -->
+                    <span data-bind = "text: $data.label"></span> : <span data-bind = "text: $parent[$data.id()]()"></span><br/>
+                    <!-- /ko -->
+                    </small>
+               </div>
+             <!-- /ko -->
+             <!-- /ko -->
+              <!-- /ko -->
+
+              <!-- ko if: $data.nonreturnable -->
+                <br/>
+                <span data-bind="widgetLocaleText: 'nonreturnableText'"></span>
+                <br/>
+                <!-- ko if: nonReturnableReason -->
+                  <span data-bind="widgetLocaleText: 'reasonText'"></span>
+                  <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+                  <span data-bind="text: nonReturnableReason"></span>
+                <!-- /ko -->
+              <!-- /ko -->
+            </div>
+
+        </td>
+        <td data-bind="attr: {rowspan: $parent.length}" class="cc-orderdetails-multiship-bottom-border-remove">
+          <div>
+            <!-- ko foreach: $data.detailedItemPriceInfo -->
+              <div class="padding-right-0">
+                <span data-bind="text:quantity"/>
+                <span data-bind="widgetLocaleText: 'volumePriceSeparatorText'"/>
+                <span data-bind="currency: {price: detailedUnitPrice,
+                             currencyObj: $parents[2].priceListGroup().currency}">
+                </span><br/>
+              </div>
+            <!-- /ko -->
+          </div>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <div class="col-md-9 no-padding">
+          <!-- ko if: $data.quantityAvailableForReturn > 0  && !$data.nonreturnable-->
+          <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId + '-'+  $index()}">
+            <input
+                class="form-control"
+                data-bind="value: $data.selectedQuantity,
+                           valueUpdate: 'afterkeydown',
+                           attr: {id: 'cc-return-quantity-' + $data.catRefId +'-'+  $index(),
+                                  'aria-label' :
+                                      $data.selectedQuantity.error?
+                                        $data.selectedQuantity.error: $parents[2].translate('ariaQuantityText')}"/>
+          </label>
+            <span class="text-danger" role="alert"
+                data-bind="validationMessage: $data.selectedQuantity"></span>
+            <!-- /ko -->
+            <!-- ko if: $data.quantityAvailableForReturn === 0 || $data.nonreturnable -->
+            <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId +'-'+  $index()}">
+              <input
+                  class="form-control"
+                  data-bind="value: $data.selectedQuantity,
+                             enable: false,
+                             attr: {id: 'cc-return-quantity-' + $data.catRefId +'-'+  $index(),
+                                    'aria-label': $data.quantityAvailableForReturnText +'-'+
+                                  $data.quantityAvailableForReturn}" />
+             </label>
+          <!-- /ko -->
+          </div>
+            <button  class="popover-dismiss return-pop" data-toggle="popover"
+                data-bind="infoPopover: {trigger: 'hover',container: '#cc-return-orders',
+                                                placement: 'top',
+                                                name: 'return-quantity-popover', zIndex: 550,
+                                                minHeight: '110px', minWidth: '190px',
+                                                focusOn: '#cc-return-popover-close'},
+                           attr: {id: 'cc-return-popover-' + $data.catRefId +'-'+  $index(),
+                                 'aria-label': $data.quantityAvailableForReturnText + '-'+
+                                  $data.quantityAvailableForReturn}">
+              <span class="fa fa-info-circle"></span>
+            </button>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <div>
+            <!-- ko if: $parents[1].shippingGroupInfo().length === 1 -->
+            <!-- ko foreach: $data.detailedItemPriceInfo -->
+              <span  class="padding-left-0 col-md-12"
+                     data-bind="currency: {price: amount,
+                                        currencyObj: $parents[2].priceListGroup().currency}">
+              </span><br/>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: $parents[1].shippingGroupInfo().length === 1 -->
+              <span  class="padding-left-0 col-md-12"
+                 data-bind="currency: {price: $data.price,
+                            currencyObj: $parents[1].priceListGroup().currency}">
+              </span>
+            <!-- /ko -->
+          </div>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+        <!-- ko if: unAdjustedRefundAmount -->
+        <div class="cc-refund-newValue">
+          <span data-bind="text :$parents[2].convertToRefundFormat(
+                    $data.unAdjustedRefundAmount())">
+          </span>
+        </div>
+        <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+        <!-- ko if: $data.quantityAvailableForReturn > 0 && !$data.nonreturnable-->
+        <label data-bind="attr: {for: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+          <select class="form-control padding-left-3" id="cc-order-return-reasons"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+          </select>
+          </label>
+        <!-- /ko -->
+        <!-- ko if: $data.quantityAvailableForReturn === 0  || $data.nonreturnable -->
+        <label data-bind="attr: {for: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+        <select class="form-control padding-left-3"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       enable: false,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+        </select>
+        </label>
+        <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove cc-text-overflow-table">
+            <a href="#" data-toggle="modal" data-bind="click: $parents[2].showAddressDetails.bind($parents[2], $data.shippingGroup.shippingAddress),
+                attr: { id: 'cc-orderdetails-multiship-' +  $data.catRefId +'-'+  $index() }">
+            <span data-bind="text: $parents[2].getTextForAddress($data.shippingGroup.shippingAddress)"></span></a>
+          </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <span data-bind="text: $data.shippingGroup.shippingMethod.shippingMethodDescription"></span>
+        </td>
+      </tr>
+    <!-- /ko -->
+    <!-- ko if: $index() != 0 -->
+      <tr data-bind="css: {'info': $data.isValid()}" >
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <div class="col-md-9 no-padding">
+          <!-- ko if: $data.quantityAvailableForReturn > 0  && !$data.nonreturnable-->
+           <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId + '-'+  $index()}">
+            <input
+                class="form-control"
+                data-bind="value: $data.selectedQuantity,
+                           valueUpdate: 'afterkeydown',
+                           attr: {id: 'cc-return-quantity-' + $data.catRefId +'-'+  $index(),
+                                  'aria-label' :
+                                      $data.selectedQuantity.error?
+                                        $data.selectedQuantity.error: $parents[2].translate('ariaQuantityText')} "/>
+           </label>
+            <span class="text-danger" role="alert"
+                data-bind="validationMessage: $data.selectedQuantity"></span>
+            <!-- /ko -->
+            <!-- ko if: $data.quantityAvailableForReturn === 0 || $data.nonreturnable -->
+              <label data-bind="attr: {for: 'cc-return-quantity-' + $data.catRefId +'-'+  $index()}">
+              <input
+                  class="form-control"
+                  data-bind="value: $data.selectedQuantity,
+                             enable: false,
+                             attr: {id: 'cc-return-quantity-' + $data.catRefId +'-'+  $index(),
+                                    'aria-label': $data.quantityAvailableForReturnText +'-'+
+                                  $data.quantityAvailableForReturn" />
+               </label>
+          <!-- /ko -->
+          </div>
+            <button  class="popover-dismiss return-pop" data-toggle="popover"
+                data-bind="infoPopover: {trigger: 'hover',container: '#cc-return-orders',
+                                                placement: 'top',
+                                                name: 'return-quantity-popover', zIndex: 550,
+                                                minHeight: '110px', minWidth: '190px',
+                                                focusOn: '#cc-return-popover-close'},
+                           attr: {id: 'cc-return-popover-' + $data.catRefId +'-'+  $index(),
+                                 'aria-label': $data.quantityAvailableForReturnText + '-'+
+                                  $data.quantityAvailableForReturn}">
+              <span class="fa fa-info-circle"></span>
+            </button>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <div>
+            <!-- ko if: $parents[1].shippingGroupInfo().length === 1 -->
+            <!-- ko foreach: $data.detailedItemPriceInfo -->
+              <span  class="padding-left-0 col-md-12"
+                     data-bind="currency: {price: amount,
+                                        currencyObj: $parents[2].priceListGroup().currency}">
+              </span><br/>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: $parents[1].shippingGroupInfo().length === 1 -->
+              <span  class="padding-left-0 col-md-12"
+                 data-bind="currency: {price: $data.price,
+                            currencyObj: $parents[1].priceListGroup().currency}">
+              </span>
+            <!-- /ko -->
+          </div>
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+        <!-- ko if: unAdjustedRefundAmount -->
+        <div class="cc-refund-newValue">
+          <span data-bind="text :$parents[2].convertToRefundFormat(
+                    $data.unAdjustedRefundAmount())">
+          </span>
+        </div>
+        <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+        <!-- ko if: $data.quantityAvailableForReturn > 0 && !$data.nonreturnable-->
+        <label data-bind="attr: {for: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+          <select class="form-control padding-left-3"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+          </select>
+          </label>
+        <!-- /ko -->
+        <!-- ko if: $data.quantityAvailableForReturn === 0  || $data.nonreturnable -->
+        <label data-bind="attr: {for: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+        <select class="form-control padding-left-3"
+            data-bind="options: $parents[1].returnReasons,
+                       optionsText: function(item) {
+                         return item.displayName
+                       },
+                       value: $data.selectedReason,
+                       optionsCaption:$parents[2].resources().selectReasonText,
+                       enable: false,
+                       attr: {id: 'cc-exchange-reasons-' + $data.catRefId +'-'+  $index()}">
+        </select>
+        </label>
+        <!-- /ko -->
+        </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove cc-text-overflow-table">
+            <a href="#" data-toggle="modal" data-bind="click: $parents[2].showAddressDetails.bind($parents[2], $data.shippingGroup.shippingAddress),
+                attr: { id: 'cc-orderdetails-multiship-' +  $data.catRefId +'-'+  $index()}">
+            <span data-bind="text: $parents[2].getTextForAddress($data.shippingGroup.shippingAddress)"></span></a>
+          </td>
+        <td class="cc-orderdetails-multiship-bottom-border-remove">
+          <span data-bind="text: $data.shippingGroup.shippingMethod.shippingMethodDescription"></span>
+        </td>
+      </tr>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+</div>
+<!-- ko if: $data.orderPriceInfo() -->
+<div class="col-md-12 padding-top-right-12 extend-width">
+  <!-- ko if: promotionAdjustments() && promotionAdjustments().promotionAdjustmentsCount > 0 -->
+  <div id="cc-returnsCreate-promotionAdjustments" class="col-xs-12 col-md-6 pull-left">
+    <div id="cc-return-refund-promotion-adjustemnts-content"
+            data-bind="template: { name: $parents[0].templateAbsoluteUrl('/templates/return-promotion-adjustments.template'), templateUrl: '' }">
+    </div>
+  </div>
+  <!-- /ko -->
+  <div id="cc-createRreturns-refundSummary"
+    class="form-inline pull-right add-border">
+    <!-- Order Summary header -->
+    <!-- ko with: $data.orderPriceInfo() -->
+      <table  class="col-md-12 cc-padding-8-table" role='presentation'>
+        <tbody>
+          <tr>
+            <td class="col-md-4">
+              <h5 class="cc-summary-header"
+                 data-bind="widgetLocaleText: 'summaryHeader'">
+              </h5>
+            </td>
+            <!-- ko ifnot: $parent.refundCalculationSummary -->
+            <td class="col-md-8">
+              <h5 class="cc-summary-header pull-right"
+                 data-bind="widgetLocaleText: 'orderText'">
+              </h5>
+            </td>
+            <!-- /ko -->
+            <!-- ko if: $parent.refundCalculationSummary -->
+            <td class="col-md-4  cc-refund-newValue">
+              <h5 class="cc-summary-header pull-right"
+                data-bind="widgetLocaleText: 'returnRefundText'">
+              </h5>
+            </td>
+            <td class="col-md-4">
+              <h5 class="cc-summary-header pull-right"
+                  data-bind="widgetLocaleText: 'orderText'">
+              </h5>
+            </td>
+            <!-- /ko -->
+        </tr>
+        <tr>
+          <td class="col-md-4" data-bind="widgetLocaleText: 'subTotalText'"></td>
+          <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4 cc-refund-newValue">
+            <span class="pull-right">
+             <span id="cc-refund-subTotal-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().unAdjustedRefundSubtotal)"></span>
+            </span>
+          </td>
+          <!-- /ko -->
+          <td class="col-md-4">
+            <span  id="cc-orderDetails-subTotal-value" class="pull-right"
+                   data-bind="currency: {price: subTotal,
+                                      currencyObj: $parent.priceListGroup().currency}">
+            </span>
+          </td>
+        </tr>
+        <!-- ko if: $data.orderDiscountAmount && $data.orderDiscountAmount > 0 -->
+        <tr>
+          <td class="col-md-4">
+            <span data-bind="widgetLocaleText: 'discountText'">
+            </span>
+            <!-- ko if: $parent.refundCalculationSummary() && $parent.promotionAdjustments() && $parent.promotionAdjustments().totalOrderDiscountAdjustment>0 -->
+            <!-- /ko -->
+          </td>
+          <!-- ko if: $parent.refundCalculationSummary() && $parent.promotionAdjustments() -->
+          <td class="col-md-4 cc-refund-newValue">
+            <span  id="cc-orderDetails-orderDiscountAdjustments-value" class="pull-right"
+                   data-bind="currency: {price: $parent.promotionAdjustments().totalOrderDiscountAdjustment,
+                                      currencyObj: $parent.priceListGroup().currency}">
+            </span>
+          </td>
+          <!-- /ko  -->
+          <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4">
+            <span class="pull-right">
+             <span id="cc-orderDetails-orderDiscount-value"
+                data-bind="text :$parents[1].convertToRefundFormat($data.orderDiscountAmount)">
+             </span>
+            </span>
+          </td>
+          <!-- /ko -->
+          <!-- ko ifnot: $parent.refundCalculationSummary() -->
+          <td class="col-md-4">
+            <span class="pull-right">
+             <span id="cc-orderDetails-orderDiscount-value"
+                data-bind="currency: {price: -orderDiscountAmount,
+                            currencyObj: $parent.priceListGroup().currency}">
+             </span>
+            </span>
+          </td>
+          <!-- /ko -->
+        </tr>
+        <!-- /ko -->
+        <tr>
+          <td class="col-md-4" data-bind="widgetLocaleText: 'shippingText'"></td>
+          <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4 cc-refund-newValue">
+            <span class="pull-right">
+            <!-- ko if: $parent.payShippingInSecondaryCurrency() -->
+              <span id="cc-refund-Shipping-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().secondaryCurrencySuggestedShippingRefund,null, true)"></span>
+              <!-- /ko -->
+              <!-- ko ifnot: $parent.payShippingInSecondaryCurrency -->
+              <span id="cc-refund-Shipping-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().suggestedShippingRefund)"></span>
+              <!-- /ko -->
+          </td>
+          <!-- /ko -->
+          <td class="col-md-4">
+          <!-- ko if: $parent.payShippingInSecondaryCurrency -->
+           <span id="cc-orderDetails-Shipping-value" class="pull-right"
+                 data-bind="currency: {price: secondaryCurrencyShippingAmount,
+                                       currencyObj: $parent.secondaryCurrency()}">
+            </span>
+            <!-- /ko -->
+            <!-- ko ifnot: $parent.payShippingInSecondaryCurrency -->
+            <span id="cc-orderDetails-Shipping-value" class="pull-right"
+                 data-bind="currency: {price: shipping,
+                                       currencyObj: $parent.priceListGroup().currency}">
+            </span>
+            <!-- /ko -->
+          </td>
+        </tr>
+        <!-- ko if: shippingSurchargeValue && shippingSurchargeValue > 0 -->
+        <tr>
+          <td class="col-md-4" data-bind="widgetLocaleText: 'shippingSurchargeText'"></td>
+          <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4 cc-refund-newValue">
+            <span class="pull-right">
+            <!-- ko if: $parent.payShippingInSecondaryCurrency -->
+              <span id="cc-refund-Shipping-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().secondaryCurrencySuggestedShippingSurchargeRefund,null, true)"></span>
+              <!-- /ko -->
+              <!-- ko ifnot: $parent.payShippingInSecondaryCurrency -->
+              <span id="cc-refund-ShippingSurcharge-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().suggestedShippingSurchargeRefund)"></span>
+              <!-- /ko -->
+            </span>
+          </td>
+          <!-- /ko -->
+          <td class="col-md-4">
+          <!-- ko if: $parent.payShippingInSecondaryCurrency -->
+           <span id="cc-orderDetails-ShippingSurcharge-value" class="pull-right"
+             data-bind="textCheck : { text: secondaryCurrencyShippingSurchargeValue,
+                                   type: 'price',
+                                   prePend: $parent.secondaryCurrency().symbol,
+                                   nullReplace: '0.00',
+                                   prependNull: true}">
+            </span>
+            <!-- /ko -->
+             <!-- ko ifnot: $parent.payShippingInSecondaryCurrency -->
+           <span id="cc-orderDetails-ShippingSurcharge-value" class="pull-right"
+             data-bind="currency: {price: shippingSurchargeValue,
+                                       currencyObj: $parent.priceListGroup().currency}">
+            </span>
+            <!-- /ko -->
+          </td>
+        </tr>
+        <!-- /ko -->
+        <!-- ko if: !isTaxIncluded -->
+        <tr>
+          <td class="col-md-4" data-bind="widgetLocaleText: 'taxText'"></td>
+          <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4 cc-refund-newValue">
+            <span class="pull-right">
+            <!-- ko if: $parent.payTaxInSecondaryCurrency -->
+              <span id="cc-refund-Shipping-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().secondaryCurrencySuggestedTaxRefund,null, true)"></span>
+              <!-- /ko -->
+              <!-- ko ifnot: $parent.payTaxInSecondaryCurrency -->
+              <span id="cc-refund-tax-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().suggestedTaxRefund)"></span>
+              <!-- /ko -->
+            </span>
+          </td>
+          <!-- /ko -->
+          <td class="col-md-4">
+            <!-- ko if: $parent.payTaxInSecondaryCurrency -->
+            <span id="cc-orderDetails-tax-value" class="pull-right"
+                  data-bind="currency: {price: secondaryCurrencyTaxAmount,
+                                       currencyObj: $parent.secondaryCurrency()}">
+            </span>
+            <!-- /ko -->
+            <!-- ko ifnot: $parent.payTaxInSecondaryCurrency -->
+            <span id="cc-orderDetails-tax-value" class="pull-right"
+                  data-bind="currency: {price: tax,
+                                       currencyObj: $parent.priceListGroup().currency}">
+           </span>
+           <!-- /ko -->
+          </td>
+        </tr>
+        <!-- /ko -->
+        <tr class="cc-totalvalues">
+          <td class="title col-md-4 totalText padding-top-15">
+            <span data-bind="widgetLocaleText: 'totalText'"></span>
+            <!-- ko if: isTaxIncluded -->
+              <span class="orderTotalSuperscript"
+                    data-bind="widgetLocaleText: 'superScriptIndicator'"></span>
+            <!-- /ko -->
+          </td>
+          <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4 cc-refund-newValue"><hr class="cc-return-hr"/>
+            <!-- ko if: $parent.payShippingInSecondaryCurrency || $parent.payTaxInSecondaryCurrency-->
+            <span class="pull-right">
+               <span id="cc-refund-total-value"
+                data-bind="currency: {price:  $parent.refundCalculationSummary().suggestedOrderRefund,
+                               currencyObj: $parent.priceListGroup().currency}"></span>
+            </span>
+            <!-- /ko -->
+            <!-- ko ifnot: $parent.payTaxInSecondaryCurrency && $parent.payShippingInSecondaryCurrency-->
+            <span class="pull-right">
+               <span id="cc-refund-total-value"
+                data-bind="currency: {price:  $parent.refundCalculationSummary().suggestedTotalRefund,
+                               currencyObj: $parent.priceListGroup().currency}"></span>
+            </span>
+            <!-- /ko -->
+          </td>
+          <!-- /ko -->
+          <td class="col-md-4"><hr class="cc-return-hr"/>
+            <!-- ko if: $parent.payShippingInSecondaryCurrency || $parent.payTaxInSecondaryCurrency-->
+            <span class="pull-right">
+               <span id="cc-refund-total-value"
+                data-bind="currency: {price: primaryCurrencyTotal,
+                    currencyObj: $parent.priceListGroup().currency}"></span>
+            </span>
+            <!-- /ko -->
+            <!-- ko ifnot: $parent.payTaxInSecondaryCurrency && $parent.payShippingInSecondaryCurrency-->
+            <span id="cc-orderDetails-total-value" class="pull-right"
+                  data-bind="currency: {price: total,
+                    currencyObj: $parent.priceListGroup().currency}">
+            </span>
+            <!-- /ko -->
+          </td>
+        </tr>
+        <!-- ko if: $parent.payShippingInSecondaryCurrency || $parent.payTaxInSecondaryCurrency-->
+             <tr>
+              <td class="title col-md-4">
+               <span data-bind="text: '+Shipping and Tax'"></span>
+               </td>
+            <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4 cc-refund-newValue">
+            <span class="pull-right">
+               <span id="cc-refund-total-value"
+                data-bind="currency: {price:  $parents[1].calculateSecondaryCurrencyTotal($parent.refundCalculationSummary().secondaryCurrencySuggestedShippingRefund,
+                $parent.refundCalculationSummary().secondaryCurrencySuggestedShippingSurchargeRefund,
+                $parent.refundCalculationSummary().secondaryCurrencySuggestedTaxRefund),
+                               currencyObj: $parent.secondaryCurrency()}"></span>
+            </span>
+            </td>
+            <!-- /ko -->
+               <td class="col-md-4">
+               <span class="pull-right">
+                <span id="cc-orderDetails-total-value" class="pull-right"
+                  data-bind="currency: {price: secondaryCurrencyTotal,
+                    currencyObj: $parent.secondaryCurrency()}">
+                </span>
+               </span>
+               </td>
+             </tr>
+        <!-- /ko -->
+        <!-- ko if: isTaxIncluded -->
+        <tr class="padding-top-taxIncluded">
+          <td class="col-md-4 includedTaxText">
+            <span id="cc-return-request-includeTax-sup" class="orderTotalSuperscript"
+                  data-bind="widgetLocaleText: 'superScriptIndicator'"></span>
+            <span id="cc-return-request-includeTax-text"
+                  data-bind="widgetLocaleText: 'includesTaxText'"></span>
+          </td>
+          <!-- ko if: $parent.refundCalculationSummary() -->
+          <td class="col-md-4 cc-refund-newValue">
+           <!-- ko if: $parent.payTaxInSecondaryCurrency -->
+            <span class="pull-right">
+              <span id="cc-refund-tax-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().secondaryCurrencySuggestedTaxRefund,true,true)"></span>
+            </span>
+           <!-- /ko -->
+           <!-- ko ifnot: $parent.payTaxInSecondaryCurrency -->
+            <span class="pull-right">
+              <span id="cc-refund-tax-value"
+                data-bind="text :$parents[1].convertToRefundFormat(
+                    $parent.refundCalculationSummary().suggestedTaxRefund)"></span>
+            </span>
+           <!-- /ko -->
+          </td>
+          <!-- /ko -->
+          <td class="col-md-4">
+          <!-- ko if: $parent.payTaxInSecondaryCurrency -->
+            <span id="cc-orderDetails-tax-value" class="pull-right"
+                  data-bind="currency: {price: tax,
+                                        currencyObj: $parent.secondaryCurrency()}">
+           </span>
+           <!-- /ko -->
+           <!-- ko ifnot: $parent.payTaxInSecondaryCurrency -->
+            <span id="cc-orderDetails-tax-value" class="pull-right"
+                  data-bind="currency: {price: tax,
+                                        currencyObj: $parent.priceListGroup().currency}">
+           </span>
+           <!-- /ko -->
+          </td>
+        </tr>
+        <!-- /ko -->
+      </tbody>
+    </table>
+    <!-- /ko -->
+  </div>
+</div>
+
+  <!-- /ko -->
+  <!-- /ko -->
+<!-- ko if: $data.returnViewModel().returnItemsArray() -->
+  <div class="col-md-12 flex-bar">
+    <div class="flex-bar-end">
+      <button  class="cc-button-secondary secondarybackground  cc-return-buttons-padding-top"
+              data-bind="attr: {id: 'CC-return-request-cancel-button'}, click: backToOrderSummary.bind($data)">
+        <span data-bind="widgetLocaleText: 'cancel'"></span>
+      </button>
+      <button class="cc-button-secondary secondarybackground cc-return-buttons-padding-top"
+             data-bind="click:calculateRefund.bind($data),  attr: {id: 'CC-return-request-calculate-button'}">
+        <span data-bind="widgetLocaleText: 'calculate'"></span>
+      </button>
+      <button class="cc-button-primary primarybackground cc-return-buttons-padding-top"
+                      data-bind="click:handleSubmitReturnRequest.bind($data),attr: {id: 'CC-return-request-submit-button'}">
+        <span data-bind="widgetLocaleText: 'submit'"></span>
+      </button>
+    </div>
+  </div>
+<!-- /ko -->
+  <script type="text/html" id="return-quantity-popover">
+  <div>
+  <div class="col-md-12 pull-right datepickerHeaderIcons">
+    <a id="cc-return-popover-close" href="#" class="pull-right cc-popover-x" data-bind='click: close, makeAccess: {readerResource: "ns.returns:resources.close"}'><i class="fa fa-times"></i></a>
+  </div>
+  <div class="margin-onepercent">
+    <label class="quantity-popover-width" data-bind="text: $data.model.quantityShippedText"></label>
+    <span class="pull-right"
+        data-bind="text: $data.model.quantityShipped"></span>
+  </div>
+  <div class="margin-onepercent">
+    <label class="quantity-popover-width" data-bind="text: $data.model.quantityPreviouslyReturnedText"></label>
+    <span class="pull-right"
+        data-bind="text: $data.model.quantityReturned"></span>
+  </div>
+  <div class="margin-onepercent">
+    <label class="quantity-popover-width" data-bind="text: $data.model.quantityAvailableForReturnText"></label>
+    <span class="pull-right"
+        data-bind="text: $data.model.quantityAvailableForReturn"></span>
+  </div>
+</div>
+  </script>
+
+<!-- Address book dynamic properties modal -->
+   <div id="cc-return-address-details-content"
+     data-bind="template: { name: $data.templateAbsoluteUrl('/templates/view-address-details.template'), templateUrl: '' }">
+   </div>
+
+<!-- /ko -->
+</div>

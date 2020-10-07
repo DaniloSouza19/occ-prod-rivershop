@@ -1,0 +1,10 @@
+<!-- ko if: $data.order().shippingAddress() -->
+  <!-- ko if: $data.order().shippingAddress().isValid() || $data.order().selectedShippingOption() -->
+    <div class="row padding">
+      <div class="col-xs-12">
+        <h4 data-bind="widgetLocaleText: 'shippingAddressAndMethodText'"></h4>
+        <hr />
+      </div>
+    </div>
+  <!-- /ko -->
+<!-- /ko -->

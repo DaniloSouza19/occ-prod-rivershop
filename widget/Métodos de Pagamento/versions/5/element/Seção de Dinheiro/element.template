@@ -1,0 +1,20 @@
+<!-- ko if: isSinglePayment() -->
+	<!-- Single Payment Cash Section -->
+	<!-- ko if : $data.isCashPaymentEnabled() && !(paymentsContainer().isPaypalVerified()) -->
+    <div class="collapse-heading">
+      <h4>  <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#CC-singlepayment-cash-checkbox" data-bind="widgetLocaleText:'payByCashText'"></span></h4>
+    </div>
+    <div id="CC-singlepayment-cash-checkbox" class="row collapse">
+      <div class="col-sm-12">
+	      <div class="checkbox">
+	        <label for="CC-singlepayment-cashPayment">
+	          <input type="checkbox" name="payByCash" data-bind="checked: isDisplayCashDetails,
+              disable: validateCashToBeDisabled() || order().isPaymentDisabled()"
+              id="CC-singlepayment-cashPayment" class="checkbox" />
+              <span data-bind="widgetLocaleText:'payByCashText'"></span>
+			</label>
+	      </div>
+	    </div>
+	  </div>
+	<!-- /ko -->
+<!-- /ko -->

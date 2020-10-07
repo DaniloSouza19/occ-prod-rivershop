@@ -1,0 +1,8 @@
+<div id="cc-customerDisplay-user-orderLink" class="cc-margin-top20">
+	<!-- ko if: !$data.isAccountWithNoContracts() && !($data.user().isB2BProfileType() && !$data.user().parentOrganization)  -->
+	<a href="#" id="cc-customerDetails-multi-orders" class="details-link"
+		data-bind="click: $data.showOrdersPage.bind($data)"> <span
+		data-bind="text: $data.newOrIncompleteOrderLinkText "></span>
+	</a>
+	<!-- /ko -->
+</div>

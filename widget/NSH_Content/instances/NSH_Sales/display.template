@@ -1,0 +1,79 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "10016": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "10016",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v3620777572321412822/general/Banner home 1.png",
+      "titleText": "Mix",
+      "titleTextId": "100007",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "10017": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "10017",
+    "image": {
+      "isProductImage": false,
+      "src": "/file/v4711349943700908924/general/Sale-GIF.gif",
+      "titleText": "GIF",
+      "titleTextId": "100008",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+
+
+
+
+<div class="content_sales">
+  
+<div class="templateRegion container" id="nsh_content" data-oc-id="nsh_content">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '10016'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+    <div class="oc-panel col-md-6" data-oc-id="panel-0-1">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '10017'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+
+</div>

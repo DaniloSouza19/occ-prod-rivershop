@@ -1,0 +1,8 @@
+{
+  "configuration": {
+    "displayNameOfRelatedProducts": true,
+    "numberOfRelatedProducts": "10",
+    "displayPriceOfRelatedProducts": true
+  },
+  "displayName": "Related Products Widget"
+}

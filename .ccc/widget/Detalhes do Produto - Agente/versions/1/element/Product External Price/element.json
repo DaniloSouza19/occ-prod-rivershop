@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-external-price",
+  "source": 100,
+  "type": "fragment",
+  "title": "Product External Price",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

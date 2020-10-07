@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_category_content",
+  "version": 1,
+  "displayName": "NSH_Category_Content",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_category_content",
+  "source": 101,
+  "javascript": "nsh_category_content"
+}

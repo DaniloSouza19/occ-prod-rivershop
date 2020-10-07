@@ -1,0 +1,185 @@
+{
+  "imports": [
+    "order",
+    "payment"
+  ],
+  "translations": [
+    {
+      "name": "NSH_Checkout_Payment_Details [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Checkout_Payment_Details [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

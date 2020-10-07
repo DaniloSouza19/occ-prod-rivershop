@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Combo [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Combo",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Combo [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Combo [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Combo [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Combo [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Combo [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Combo [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Combo [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Combo [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Combo [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Combo [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Combo [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Combo [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Combo [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Combo [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Combo [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Combo [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Combo [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Combo [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Combo [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Combo [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Combo [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Combo [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Combo [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Combo [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Combo [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Combo [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Combo [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Combo [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Combo [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Combo [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Combo [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Combo [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Combo [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Combo [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Combo [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Combo [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Combo [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Combo [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Combo [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Combo [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Combo [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-invoice",
+  "source": 100,
+  "type": "fragment",
+  "title": "Seção de Fatura",
+  "widgetType": "splitPayments",
+  "version": 5
+}

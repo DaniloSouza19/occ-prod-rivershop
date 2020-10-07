@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-add-item-to-purchase-list",
+  "source": 100,
+  "type": "fragment",
+  "title": "Add Item To Purchase List Button",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

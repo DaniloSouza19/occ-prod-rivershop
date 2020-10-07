@@ -1,0 +1,87 @@
+<div class="verticalTabs">
+
+  <!-- Desktop / tablet etc. viewport -->
+  <div id="tabNormalViewport" class="hidden-xs">
+    <div class="col-sm-3 col-xs-12">
+
+      <h3 data-bind="text:displayName"></h3>
+
+      <ul class="nav nav-tabs" data-bind="attr: { id: 'veriticalTabsNav-'+id()+'-tabs'}">
+
+        <!-- ko foreach: regions -->
+          <li role="presentation" data-bind="css: {active: $index() === 0 }, attr: { id: 'verticalTabs-'+$parent.id()+'-tab-'+$index() }">
+            <a data-toggle="tab" data-bind="attr: { 'href': '#verticalTabs-' + $parent.id() + '-content-' + $index()}">
+              <span data-bind="text: displayName"></span>
+            </a>
+          </li>
+        <!-- /ko -->
+      </ul>
+    </div>
+
+    <div class="col-sm-9 col-xs-12">
+      <!-- Tabbed Content -->
+      <div class="tab-content">
+        <!-- ko foreach: regions -->
+          <div role="tabpanel" class="tab-pane" data-bind="attr: { id: 'verticalTabs-'+$parent.id()+'-content-'+$index() },
+                                                                 css: {active: $index() === 0}">
+
+            <div data-bind="template: {name: 'region-template'}" class="row verticalTabs-tabbed-content"></div>
+
+          </div>
+        <!-- /ko -->
+      </div>
+    </div>
+  </div>
+  <!-- End Desktop / tablet etc. viewport -->
+
+  <!-- Mobile viewport -->
+  <div id="tabsMobileNav" class="visible-xs col-xs-12">
+    <div id="nav-content-heading" class="col-xs-12 nav-content-heading">
+      <h4 style="float:left" data-bind="text:displayName"></h4>
+    </div>
+    <ul class="nav nav-tabs col-xs-12" data-bind="attr: { id: 'verticalTabsModileNav-'+id()+'-tabs'}">
+
+      <!-- ko foreach: regions -->
+        <li role="presentation" data-bind="attr: { id: 'verticalModbileTabs-'+$parent.id()+'-tab-'+$index() }">
+          <a data-bind="click :
+            function(target, event) {
+              $('#verticalTabsModileNav-'+$parent.id()+'-tabs').addClass('hidden');
+              $('#content > div').addClass('hidden');
+              $('#nav-content-heading').addClass('hidden');
+              $(target).removeClass('hidden');
+            }.bind($data, '#verticalMobileTabs-' + $parent.id() + '-content-' + $index())
+          ">
+            <i class="fa fa-chevron-right pull-right"></i>
+            <span data-bind="text: displayName"></span>
+          </a>
+        </li>
+      <!-- /ko -->
+    </ul>
+
+    <div id="content">
+      <!-- ko foreach: regions -->
+        <div role="tabpanel" class="tab-pane hidden" data-bind="attr: { id: 'verticalMobileTabs-'+$parent.id()+'-content-'+$index() },
+                                                               css: {active: $index() === 0}">
+
+          <div class="row">
+            <div class="col-xs-12 content-heading">
+              <h4 style="float:left" data-bind="text:displayName"></h4>
+              <a style="float:right" data-bind="click :
+               function() {
+                 $('#verticalTabsModileNav-'+$parent.id()+'-tabs').removeClass('hidden');
+                 $('#content > div').addClass('hidden');
+                 $('#nav-content-heading').removeClass('hidden');
+               }
+              ">back</a>
+            </div>
+          </div>
+
+          <div data-bind="template: {name: 'region-template'}" class="row verticalMobileTabs-tabbed-content"></div>
+
+        </div>
+      <!-- /ko -->
+    </div>
+  </div>
+  <!-- End Mobile viewport -->
+
+</div>

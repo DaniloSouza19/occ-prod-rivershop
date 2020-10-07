@@ -1,0 +1,33 @@
+{
+  "resources": {
+    "101": "(101) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "102": "(102) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "104": "(104) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "110": "(110) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "150": "(150) Tivemos um problema técnico ao contatar o banco emissor do cartão de crédito. Tente novamente mais tarde ou use um cartão alternativo.",
+    "151": "(151) Tivemos um problema técnico. Tente novamente daqui a pouco.",
+    "152": "(152) Tivemos um problema técnico. Tente novamente daqui a pouco.",
+    "200": "(200) O endereço de faturamento fornecido não corresponde ao endereço no arquivo com o cartão de crédito. Verifique o endereço e tente novamente.",
+    "201": "(201) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "202": "(202) Verifique a data de vencimento do cartão e tente novamente.",
+    "203": "(203) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "204": "(204) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "205": "(205) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "207": "(207) Tivemos um problema técnico ao contatar o banco emissor do cartão de crédito. Tente novamente mais tarde ou use um cartão alternativo.",
+    "208": "(208) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "209": "(209) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "210": "(210) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "211": "(211) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "221": "(221) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "230": "(230) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "231": "(231) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "232": "(232) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "233": "(233) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "234": "(234) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "476": "(476) Cartão não autenticado para uso. Use um cartão alternativo.",
+    "520": "(520) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "1000": "(1000) Seu cartão de crédito foi recusado. Use um cartão alternativo.",
+    "processingText": "Processando, por favor aguarde. Não clique no botão para atualizar ou voltar pois sua transação poderá ser interrompida ou finalizada.",
+    "paymentErrorText": "Tivemos um problema técnico. Tente novamente daqui a pouco."
+  }
+}

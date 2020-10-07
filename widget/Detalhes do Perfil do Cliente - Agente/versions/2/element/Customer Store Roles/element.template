@@ -1,0 +1,45 @@
+<!-- ko with: user -->
+<div id="cc-storefrontRole" class="cc-margin-top10"
+	data-bind="visible: $data.isB2BUser()">
+	<div id="cc-storefrontLabel">
+		<label id="cc-inlineLabelId" class="oj-label-inline cc-lable-color details-label"
+			data-bind="widgetLocaleText:'roleText'"></label>
+	</div>
+	<div id="cc-inlineSet-roles" class="input-group"
+		aria-labelledby="cc-inlineLabelId">
+		<span class="checkbox"> <input
+			id="cc-accountAddressManager-role" type="checkbox"
+			data-bind="disable: !isDelegatedAdmin(), checked: rolesForCurrentOrganization(), event : {change: $parent.rolesHaveChanged.bind($parent)}"
+			value="accountAddressManager"> <label
+			for="cc-accountAddressManager-role" class="cc-aligment-label"
+			data-bind="widgetLocaleText:'accountAddressManagerText'"></label>
+
+		</span> <span class="checkbox"> <input id="cc-admin-role"
+			data-bind="disable: true, checked: rolesForCurrentOrganization()" type="checkbox"
+			value="admin"> <label for="cc-admin-role"
+			class="cc-aligment-label" data-bind="widgetLocaleText:'adminText'"></label>
+
+		</span> <span class="checkbox"> <input id="cc-approver-role"
+			data-bind="disable: !isDelegatedAdmin(), checked: rolesForCurrentOrganization(), event : {change: $parent.rolesHaveChanged.bind($parent)}"
+			type="checkbox" value="approver"> <label
+			for="cc-approver-role" class="cc-aligment-label"
+			data-bind="widgetLocaleText:'approverText'"></label>
+
+		</span> <span class="checkbox"> <input id="cc-buyer-role"
+			data-bind="disable: true, checked: rolesForCurrentOrganization()" type="checkbox"
+			value="buyer"> <label for="cc-buyer-role"
+			class="cc-aligment-label" data-bind="widgetLocaleText:'buyerText'"></label>
+
+		</span> <span class="checkbox"> <input
+			id="cc-profileAddressManager-role" type="checkbox"
+			data-bind="disable: !isDelegatedAdmin(), checked: rolesForCurrentOrganization(), event : {change: $parent.rolesHaveChanged.bind($parent)}"
+			value="profileAddressManager"> <label
+			for="cc-profileAddressManager-role" class="cc-aligment-label"
+			data-bind="widgetLocaleText:'profileAddressManagerText'"></label>
+		</span>
+	</div>
+	<span id="cc-user-noRole"
+		data-bind="widgetLocaleText: 'noRolesAvailableText', visible: rolesForCurrentOrganization().length === 0">
+	</span>
+</div>
+<!-- /ko -->

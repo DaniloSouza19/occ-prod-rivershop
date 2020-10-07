@@ -1,0 +1,16 @@
+{
+  "configuration": {
+    "showListViewOption": true,
+    "shouldUseStyleBased": false,
+    "viewModelCacheLimit": "3",
+    "showResultsPerPageOption": true,
+    "isScrollEnabled": false,
+    "isViewModelCacheEnabled": false,
+    "fields": "",
+    "gridWidth": "4",
+    "productsPerPage": "12",
+    "listType": "search",
+    "blockSize": "60"
+  },
+  "displayName": "Search Results Widget - Agent"
+}

@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "displayAndURL": "[{'0':'accountDetailsText','1':'/profile','2':'buyer'},{'0':'accountContactsText','1':'/accountcontacts','2':'admin'},{'0':'accountAddressBookText','1':'/accountaddressbook','2':'buyer'},{'0':'updatePasswordText','1':'/updatepassword-accountshoppers','2':'buyer'},{'0':'orderHistoryText','1':'/orderHistory','2':'buyer'},{'0':'scheduledOrdersText','1':'/scheduledorders','2':'buyer'},{'0':'purchaseListsText','1':'/purchaselists','2':'buyer'},{'0':'orderApprovalSettingsText','1':'/orderapprovalsettings','2':'admin'},{'0':'ordersPendingApprovalText','1':'/orderspendingapproval','2':'approver'},{'0':'registrationRequestsText','1':'/contactregistrationrequests','2':'admin'}]",
+    "displayOptions": "vertical"
+  },
+  "displayName": "B2B Profile Navigation - Account Shoppers"
+}

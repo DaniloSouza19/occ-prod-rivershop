@@ -1,0 +1,19 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Rich_Text_10078",
+      "styles": {},
+      "tag": "rich-text@80036",
+      "text": null,
+      "richTextConfig": {
+        "content": "<p class=\"tituloCategoria\">MAIS PEDIDOS: MERCEARIA</p>\n"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    }
+  ]
+}

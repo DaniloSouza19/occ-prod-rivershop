@@ -1,0 +1,11 @@
+{
+  "widgetDescriptorName": "nsh_login_registration",
+  "properties": [
+    {
+      "id": "_mediaImage",
+      "helpTextResourceId": "HelpMediaImage",
+      "labelResourceId": "LabelMediaImage",
+      "type": "mediaType"
+    }
+  ]
+}

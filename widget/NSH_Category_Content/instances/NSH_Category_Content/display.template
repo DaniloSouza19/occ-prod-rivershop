@@ -1,0 +1,35 @@
+<div class="category_content">
+
+
+  <div id="category_content" class="templateRegion container"
+    data-bind="visible: category().categoryImages != '' || category().longDescription ">
+
+
+    <div class="row">
+
+      <div class="oc-panel col-md-12">
+
+        <div id="imgCategory" class="p-t-15">
+
+          <!-- ko if: $data.category().categoryImages  != '' -->
+          <img
+            data-bind="attr:{src:$data.category().categoryImages[0].url, alt:$data.category().description , title:$data.category().description}">
+          <!-- /ko -->
+
+        </div>
+
+        <!-- ko if : $data.category().description   -->
+        <div id="longDescription" class="p-t-15 p-c-b-15">
+          <div class="longDescription" data-bind="html: $data.category().description"></div>
+
+        </div>
+        <!-- /ko -->
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

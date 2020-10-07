@@ -1,0 +1,8 @@
+{
+  "tag": "splitpayment-header",
+  "source": 100,
+  "type": "fragment",
+  "title": "Seção de Cabeçalho",
+  "widgetType": "splitPayments",
+  "version": 9
+}

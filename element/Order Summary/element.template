@@ -1,0 +1,79 @@
+<!-- ko if: initialized() && $data.subTotal() -->
+<div class="ordersummary clearfix">
+  <h3 class="no-outline" data-bind="widgetLocaleText:'orderSummaryText'"></h3>
+  <!-- Cart Total -->
+   <div id="CC-orderSummary">
+     <div class="row">
+       <div class="col-xs-7">
+         <div data-bind="widgetLocaleText:'subtotalText'"></div>
+       </div>
+       <div class="col-xs-5">
+         <span id="CC-checkoutOrderSummary-subTotal" class="ordersumprice pull-right"
+            data-bind="currency: {price: subTotal(), currencyObj: currency()}" class="no-outline"></span>
+       </div>
+     </div>
+     <!-- ko if: $data.orderDiscount() != 0 -->
+       <div id="CC-checkoutOrderSummary-discount" class='clearfix'>
+         <span id="CC-checkoutOrderSummary-discountText" data-bind="widgetLocaleText:'discountText'"></span>
+         <span id="CC-checkoutOrderSummary-discountAmt" class="ordersumprice pull-right" data-bind="currency: {price: -orderDiscount(), currencyObj: currency()}"></span>
+       </div>
+     <!-- /ko -->
+     <!-- ko if: selectedShippingCost() && selectedShippingCost() > 0-->
+     <div class="row">
+       <div class="col-xs-7">
+         <span id="CC-checkoutOrderSummary-shippingName" data-bind="text: selectedShippingName"></span>
+       </div>
+       
+         <div class="col-xs-5">
+           <span id="CC-checkoutOrderSummary-shippingPrice" class="ordersumprice pull-right"
+            data-bind="currency: {price: selectedShippingCost(), currencyObj: currency()}"></span>
+         </div>
+     </div>
+     <!-- /ko -->
+     <!-- ko if: shippingDiscount() && shippingDiscount() > 0-->
+      <div class="row">
+       <div class="col-xs-8">
+         <span id="CC-checkoutOrderSummary-shippingDiscount-Text" data-bind="widgetLocaleText: 'shippingDiscountText'"></span>
+       </div>
+       <div class="col-xs-4">
+         <span id="CC-checkoutOrderSummary-shippingDiscount" class="ordersumprice pull-right" data-bind="currency: {price: -shippingDiscount(), currencyObj: currency()}"></span>
+       </div>
+     </div>
+     <!-- /ko -->
+     <!-- ko if: $data.shippingSurcharge () && $data.shippingSurcharge > 0-->
+       <div id="CC-checkoutOrderSummary-shippingSurcharge" class="shippingSurcharge clearfix" role="alert" aria-atomic="true" aria-live="polite">
+         <span data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+         <span class="ordersumprice pull-right"
+            data-bind="currency: {price: shippingSurcharge(), currencyObj: currency()}"></span>
+       </div>
+     <!-- /ko -->
+       <div id="CC-checkoutOrderSummary-salesTax" class="clearfix" role="alert" aria-atomic="true" aria-live="polite">
+       <span data-bind="widgetLocaleText:'salesTaxText'"></span>
+       <span class="ordersumprice pull-right" data-bind="currency: {price: salesTax(), currencyObj: currency()}"></span>
+     </div>
+     <!-- ko if: isTaxIncluded() -->
+       <div id="CC-checkoutOrderSummary-orderTotal" class="ordertotal clearfix" role="alert" aria-atomic="true" aria-live="polite">
+         <div class="ordertotalextax">
+           <span data-bind="widgetLocaleText:'totalExcludingTaxText'"></span>
+           <span class="ordersumpriceextax pull-right" data-bind="currency: {price: cart().totalWithoutTax(), currencyObj: currency()}"></span>
+         </div>
+         <div class="row">
+           <div class="col-md-7 col-sm-12 col-xs-7">
+             <div data-bind="widgetLocaleText:'orderTotalText'"></div>
+             <div class="includingtaxtext" data-bind="widgetLocaleText:'includingTaxText'"></div>
+           </div>
+           <div class="col-md-5 col-sm-12 col-xs-5">
+             <div class="ordersumprice pull-right" data-bind="currency: {price: totalCost(), currencyObj:currency()}"></div>
+           </div>
+         </div>
+       </div>
+     <!-- /ko -->
+     <!-- ko ifnot: isTaxIncluded() -->
+     <div id="CC-checkoutOrderSummary-orderTotal" class="ordertotal clearfix" role="alert" aria-atomic="true" aria-live="polite">
+       <span data-bind="widgetLocaleText:'orderTotalText'"></span>  
+       <span class="ordersumprice pull-right" data-bind="currency: {price: totalCost(), currencyObj: currency()}"></span>
+     </div>
+     <!-- /ko -->
+   </div>
+</div>    
+<!-- /ko -->

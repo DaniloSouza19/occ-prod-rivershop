@@ -1,0 +1,13 @@
+<div data-bind="attr: { id: $data.WIDGET_ID+'-cc-customerDisplay-save-cancel-button-container'}">
+	<div class="pull-right" data-bind="attr: {id: $data.WIDGET_ID+'-cc-customerDisplay-save-cancel-button-group'}">
+		<button class="cc-oj-button-margin-right-7 details-enabled-secondary-button save-cancel-dimensions"
+			data-bind="click: cancelUpdates, attr : {id : $data.WIDGET_ID+'-cc-customerDisplay-cancel'}">
+			<span data-bind="widgetLocaleText: 'buttonCancelText', attr : { id: $data.WIDGET_ID+'-cc-customerDisplay-cancel-button-text'}"> </span>
+		</button>
+		<button class="details-enabled-primary-button save-cancel-dimensions" 
+		data-bind="click: updateCustomer, disable: $data.isAccountWithNoContracts(), attr:{ id: $data.WIDGET_ID+'-cc-customerDisplay-save'}, css : {'details-disabled-primary-button' : $data.isAccountWithNoContracts()} ">
+			<span data-bind="widgetLocaleText: 'buttonSaveText', attr: {id: $data.WIDGET_ID+'-cc-customerDisplay-save-button-text'}"
+			> </span>
+		</button>
+	</div>
+</div>

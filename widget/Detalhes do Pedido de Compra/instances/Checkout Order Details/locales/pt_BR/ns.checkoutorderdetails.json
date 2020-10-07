@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "merchantSiteText": "Site do Comerciante",
+    "originOfOrderText": "Origem do Pedido",
+    "priceGroupText": "Grupo de Preços",
+    "orderDetailsText": "Detalhes do Pedido",
+    "customerEmailText": "E-mail do Cliente",
+    "accountText": "Conta",
+    "purchaseOrderText": "Ordem de Compra",
+    "customerNameText": "Nome do Cliente",
+    "delimiterText": ":",
+    "orderInitiatedDateText": "Data de Iniciação do Pedido",
+    "punchoutText": "Punchout"
+  }
+}

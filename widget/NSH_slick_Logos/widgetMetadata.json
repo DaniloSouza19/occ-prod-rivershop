@@ -1,0 +1,15 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_slick_Logos",
+      "language": "pt_BR"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "defaultLayout": "nsh_slick_logos_v1_lyt1",
+  "config": {}
+}

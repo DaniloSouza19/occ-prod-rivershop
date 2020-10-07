@@ -1,0 +1,185 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Profile_Menu [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Profile_Menu",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Profile_Menu [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Profile_Menu [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Profile_Menu [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Profile_Menu [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Profile_Menu [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Profile_Menu [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Profile_Menu [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Profile_Menu [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Profile_Menu [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Profile_Menu [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Profile_Menu [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Profile_Menu [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Profile_Menu [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Profile_Menu [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Profile_Menu [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Profile_Menu [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Profile_Menu [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Profile_Menu [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Profile_Menu [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Profile_Menu [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Profile_Menu [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Profile_Menu [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Profile_Menu [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Profile_Menu [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Profile_Menu [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Profile_Menu [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Profile_Menu [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Profile_Menu [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Profile_Menu [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Profile_Menu [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Profile_Menu [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Profile_Menu [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Profile_Menu [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Profile_Menu [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Profile_Menu [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Profile_Menu [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Profile_Menu [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Profile_Menu [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Profile_Menu [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Profile_Menu [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Profile_Menu [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {
+    "displayAndURL": "[{'0':'accountDetailsText','1':'/profile','2':''},{'0':'addressBookText','1':'/addressbook','2':''},{'0':'updatePasswordText','1':'/updatepassword','2':''},{'0':'orderHistoryText','1':'/orderHistory','2':''},{'0':'wishListText','1':'/wishlistsettings'}]",
+    "displayOptions": "vertical"
+  }
+}

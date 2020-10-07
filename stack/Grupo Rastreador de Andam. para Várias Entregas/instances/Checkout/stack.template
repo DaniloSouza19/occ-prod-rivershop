@@ -1,0 +1,70 @@
+<!-- Progress-Tracker Stack template based on Bootstrap tabs -->
+<div class="progressTracker">
+    <h2  class="stacked-checkout-title" data-bind="text:displayName, css: {hide: ($masterViewModel.data.global.user.login)?false:true}"></h2>
+
+    <!-- Step Content -->
+    <div class="tab-content">
+        <!-- ko foreach: regions -->
+
+            <div class="progressTracker-stage-title row" role="presentation" data-bind="css: {hide: ($masterViewModel.data.global.user.login)?($index() === 1):$index() === 0,
+                done: ($masterViewModel.data.global.user.login)?($index() === 0):false}, attr: { id: 'progressTracker-'+$parent.id()+'-pill-'+$index() }">
+      
+                <span  data-bind="text: displayName" class="progressTracker-title-text col-md-6 col-xs-6"> </span>
+                <a href="#"  class="progressTracker-change col-md-6 col-xs-6 text-right"
+                    data-bind="css: {hide: ($masterViewModel.data.global.user.login)?($index()===0?false:true):true},
+                        click: function (data, event) {
+                            if ($(event.target).parent().hasClass('done') || ($index()===0 && $masterViewModel.data.global.user.login) ) {
+                                $(event.target).tab('show');
+                                $(event.target).parent().removeClass('done');
+                                $('#progressTracker-'+$parent.id()+'-stage-'+$index()+' :input').first().focus();
+                                $( 'a.progressTracker-change' ).each(function( index, element ) {
+                                    if ( index >= $index() ) {
+                                        $( element ).addClass('hide');
+                                        $( '#progressTracker-'+$parent.id()+'-pill-'+index).removeClass('hide');
+                                        $( '#progressTracker-'+$parent.id()+'-pill-'+index).removeClass('done');
+                                    }
+                                });
+                                $( '#progressTracker-'+$parent.id()+'-pill-'+$index() ).addClass('hide');
+                                if($index() == 0) {
+                                    $('.stacked-checkout-title').addClass('hide');
+                                    $('div.progressTrackerStack-button-next button').show();
+                                    if($('input[name=account]:checked').val() == 'login') {
+                                        $('div.progressTrackerStack-button-next button').hide();
+                                    }
+                                }
+                            }
+                        }.bind($data),
+                      attr: { 'data-target': '#progressTracker-' + $parent.id() + '-stage-' + $index(), 'id' :'progressTracker-change-tag' + ($index())}">
+                    <span data-bind=" click: function (data, event) { $(event.target).parent().trigger('click') }">Change</span>
+                </a>
+            </div>
+            <div role="tabpanel" style=" padding-top: 30px;" class="stage tab-pane"
+                data-bind=" attr: { id: 'progressTracker-'+$parent.id()+'-stage-'+$index() }, css: {active: ($masterViewModel.data.global.user.login)?$index() === 1:$index() === 0}">
+                <div data-bind="template: {name: 'region-template'}" class="row redBox progressTracker-stage-content"></div>
+                <div class="row progressTracker-button-row">
+                    <!-- ko if: $parent.regions().length > ($index()+1) -->
+                        <!-- Next Button -->
+                        <div class="progressTrackerStack-button-next col-md-6 col-xs-6 pull-right" >
+                            <button class="btn cc-button-secondary"
+                                data-bind ="click: function (data, event) {
+                                    if (this.nextTab()) {
+                                        $(event.target).tab('show');
+                                        $('#progressTracker-'+$parent.id()+'-pill-'+$index()).addClass('done');
+                                        $('#progressTracker-'+$parent.id()+'-stage-'+($index()+1)+' :input').first().focus();
+                                        $('#progressTracker-change-tag' + $index()).removeClass('hide');
+                                        $( '#progressTracker-'+$parent.id()+'-pill-'+$index() ).removeClass('hide');
+                                        $( '#progressTracker-'+$parent.id()+'-pill-'+($index()+1) ).addClass('hide');
+                                        if($index() == 0) {
+                                            $('.stacked-checkout-title').removeClass('hide');
+                                        }
+                                    }
+                                }.bind($data), attr: { 'data-target': '#progressTracker-' + $parent.id() + '-stage-' + ($index()+1) } ">
+                                Continue to <!--ko text:$parent.regions()[($index()+1)].displayName--> <!--/ko-->
+                            </button>
+                        </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+        <!-- /ko -->
+    </div>
+</div>

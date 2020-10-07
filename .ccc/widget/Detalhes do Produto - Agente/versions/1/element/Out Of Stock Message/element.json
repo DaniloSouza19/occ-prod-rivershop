@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-out-of-stock-message",
+  "source": 100,
+  "type": "dynamicFragment",
+  "title": "Out Of Stock Message",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

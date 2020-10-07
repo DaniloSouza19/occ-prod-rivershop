@@ -1,0 +1,26 @@
+{
+  "resources": {
+    "buttonLogout": "Log-out",
+    "registrationMessageText": "A criação de uma conta significa que é possível comprar mais rápido, manter atualizado o andamento do pedido atual e verificar o status dos pedidos anteriores.",
+    "passwordText": "Senha",
+    "buttonLogin": "Log-on",
+    "emailAddressText": "Endereço de e-mail",
+    "lastNameText": "Sobrenome",
+    "welcomeMessage": "Bem-vindo(a) novamente!",
+    "checkoutOption": "Escolha sua opção de finalização de compra.",
+    "checkoutAsGuestText": "Finalizar Compra como Convidado",
+    "loginToAccountText": "Fazer log-on na sua conta",
+    "confirmPasswordText": "Confirmar senha",
+    "marketingMailsText": "Quero receber atualizações por e-mail.",
+    "userSessionExpiredErrorMsg": "A sessão de finalização de compra expirou devido à inatividade. Reinicie.",
+    "firstNameText": "Nome",
+    "emailRegistrationCheckText": "Verifique sua caixa de entrada para obter detalhes sobre a ativação da conta.",
+    "personalizationConsentText": "Mostrar conteúdo relevante e promoções do site durante a navegação.",
+    "checkoutRegistrationText": "Finalizar compra",
+    "buttonCancel": "Cancelar",
+    "rememberMeText": "Quero criar uma conta.",
+    "emailRegistrationLink": "Depois que o registro for concluído com sucesso, você receberá detalhes sobre a ativação da conta no e-mail de registro.",
+    "checkoutErrorMsg": "Verifique se você preencheu todos os campos obrigatórios e corrigiu todas as entradas inválidas.",
+    "buttonCreateAccount": "Criar Conta"
+  }
+}

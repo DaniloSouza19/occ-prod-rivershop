@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "displayAndURL": "[{'0':'customerSearchText','1':'/agentCustomerSearch','2':''},{'0':'selfRegistrationText','1':'/agentSelfRegistrationPage','2':''}]",
+    "displayOptions": "horizontal"
+  },
+  "displayName": "CustomerSearch - secondary navigation"
+}

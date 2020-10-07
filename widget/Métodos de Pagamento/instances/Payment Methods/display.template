@@ -1,0 +1,369 @@
+<div id="splitPayments" data-oc-id="splitPayments">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 id="CC-splitPayments-header" class="a11y" data-bind="widgetLocaleText: 'paymentMethods'"></h2>
+    </div>
+  </div>
+  <legend id="CC-splitPayments-legend"><span data-bind="widgetLocaleText: 'paymentMethods'"></span>
+    <span class="float-right" id="CC-splitPayments-links">
+    <!-- ko ifnot: ($data.paymentsContainer().completedPayments().length>0 || $data.paymentsContainer().historicalCompletedPayments().length>0) -->
+      <a href="#" data-bind="widgetLocaleText:'singlePaymentText', click:$data.switchToSinglePayment, visible: (!isSinglePayment()) "></a>
+      <a href="#" data-bind="widgetLocaleText:'multiplePaymentText', click:$data.switchToMultiPayment, visible: (isSinglePayment()) ">s</a>
+    <!-- /ko -->
+  </span>
+  </legend>
+  
+  <!-- oc layout: panels -->
+    <!-- ko if: isSinglePayment() -->
+      <div class="oc-panel panel-1" data-oc-id="panel-1">
+      
+        <!-- Completed Gift Cards Details Section -->
+        <!-- ko if: ($data.paymentsContainer().completedPayments().length>0) -->
+          <!-- ko foreach: $data.paymentsContainer().completedPayments() -->
+            <!-- ko if: $data.paymentMethodType == "physicalGiftCard" -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="control-label" id="CC-splitPayments-completedPayment-label2">
+                    <!-- ko if: ($parent.cart().showSecondaryShippingData() || $parent.cart().showSecondaryTaxData()) -->
+                      <span data-bind="currency: {price: $data.amount(), currencyObj: $parent.cart().secondaryCurrency()} "></span>
+                    <!-- /ko -->
+                    <!-- ko ifnot: ($parent.cart().showSecondaryShippingData() || $parent.cart().showSecondaryTaxData()) -->
+                      <span data-bind="currency: {price: $data.amount(), currencyObj: $parent.cart().currency} "></span>
+                    <!-- /ko -->
+                    <span data-bind="text: $parent.getMaskedNumberText($data, true)"></span>
+                  </label>
+                </div>
+              </div>
+            <!-- /ko -->
+          <!-- /ko -->
+        <!-- /ko -->
+      
+        <!-- Added Gift Cards Details Section -->
+        <!-- ko if: ($data.paymentsContainer().pendingPayments().length>0) -->
+          <!-- ko foreach: $data.paymentsContainer().pendingPayments() -->
+            <!-- ko if: $data.paymentMethodType == "physicalGiftCard" -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <label class="control-label" id="CC-splitPayments-pendingPayment-label2">
+                      <!-- ko if: ($parent.cart().showSecondaryShippingData() || $parent.cart().showSecondaryTaxData()) -->
+                        <span data-bind="currency: {price: $data.amount(), currencyObj: $parent.cart().secondaryCurrency()} "></span>
+                      <!-- /ko -->
+                      <!-- ko ifnot: ($parent.cart().showSecondaryShippingData() || $parent.cart().showSecondaryTaxData()) -->
+                        <span data-bind="currency: {price: $data.amount(), currencyObj: $parent.cart().currency} "></span>
+                      <!-- /ko -->
+                    <span data-bind="text: $parent.getMaskedNumberText($data)"></span>
+                  </label>
+                  <a href="#" data-bind="click:$parent.removePendingPayment.bind($parent, $index(), $parent.paymentsContainer().pendingPayments())"><u>Remove</u></a>
+                </div>
+              </div>
+            <!-- /ko -->
+          <!-- /ko -->
+        <!-- /ko -->
+        
+        <!-- Paypal Verified Section -->
+        <!-- ko if: paymentsContainer().isPaypalVerified() -->
+          <img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif"
+            align="left" style="margin-right: 7px;" data-bind="attr:{alt: 'PayPal'}" />
+          <span class="paypalText" data-bind="widgetLocaleText: 'paypalText'"></span>
+        <!-- /ko -->
+        
+          <!-- Single Payment Credit Card Section -->
+	        <!-- oc section: credit-card -->
+          <!-- ko ifnot : (paymentsContainer().isPaypalVerified()) -->
+          <div class="collapse-heading">
+            <strong>  <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#splitPaymentsCreditCardPanel"><button data-bind="widgetLocaleText:'payWithCreditCardText'"></button></span></strong>
+          </div>
+            <div data-bind="element: 'splitpayment-creditcard'" ></div>
+          <!-- /ko -->
+          <!-- /oc -->
+	        
+	        <!-- oc section: gift-card -->
+          	<div data-bind="element: 'splitpayment-giftcard'" ></div>
+          <!-- /oc -->
+	        
+          <!-- oc section: cash -->
+        		<div data-bind="element: 'splitpayment-cash'" ></div>
+        	<!-- /oc -->
+		        
+          <!-- oc section: invoice -->
+            <div data-bind="element: 'splitpayment-invoice'"></div>
+          <!-- /oc -->
+
+          <!-- oc section: payu -->
+            <div data-bind="element: 'splitpayment-payu'"></div>
+          <!-- /oc -->
+
+          <!-- oc section: paypal -->
+            <div data-bind="element: 'splitpayment-paypal'"></div>
+          <!-- /oc -->
+
+          <!-- oc section: inStorePayment -->
+            <div data-bind="element: 'splitpayment-inStorePayment'"></div>
+          <!-- /oc -->
+
+      </div>
+    <!-- /ko -->
+    
+    <!-- ko ifnot: isSinglePayment() -->
+      <div class="oc-panel panel-2" data-oc-id="panel-2">
+        <!-- oc section: header -->
+          <div data-bind="element: 'splitpayment-header'" ></div>
+        <!-- /oc -->
+        <!-- ko if: selectedPaymentType() == "card" -->
+          <!-- oc section: credit-card -->
+            <div data-bind="element: 'splitpayment-creditcard'" ></div>
+          <!-- /oc -->
+        <!-- /ko -->
+        <!-- ko if: selectedPaymentType() == "physicalGiftCard" -->
+          <!-- oc section: gift-card -->
+            <div data-bind="element: 'splitpayment-giftcard'" ></div>
+          <!-- /oc -->
+        <!-- /ko -->
+        <!-- ko if: selectedPaymentType() == "cash" -->
+          <!-- oc section: cash -->
+            <div data-bind="element: 'splitpayment-cash'" ></div>
+          <!-- /oc -->
+        <!-- /ko -->
+        <!-- ko if: selectedPaymentType() == "invoice" -->
+          <!-- oc section: invoice -->
+            <div data-bind="element: 'splitpayment-invoice'" ></div>
+          <!-- /oc -->
+        <!-- /ko -->
+        <!-- oc section: add-payment -->
+          <div data-bind="element: 'splitpayment-addpayment'"></div>
+        <!-- /oc -->
+      </div>
+    <!-- /ko -->
+
+    
+  <!-- /oc -->
+    <div class="modal fade" id="CC-paymentMethods-billingAddressBook-picker" data-bind="modal: 0, modalTabbingContraint">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 data-bind="widgetLocaleText: 'addressBookText'"></h4>
+        </div>
+        <div class="modal-body">
+          <div class="address">
+            <div class="defaultAddress">
+              <div>
+                <span><label id="address-type-label" data-bind="widgetLocaleText: 'defaultAddressesLabel'"></label></span>
+              </div>
+              <div id="defaultAddressesForBilling-paymentMethods">
+                <!-- ko ifnot: organizationAddressBook().length === 0 -->
+                <!-- ko foreach: organizationAddressBook -->
+                <!-- ko if: repositoryId === $parent.selectedBillingAddressId() -->
+                <div class="panel panel-default">
+                  <div class="panel-body row">
+                    <address id="addressbook-content" class="billing-address-view col col-sm-10">
+                      <span class="address-field" data-bind="text: $parent.defaultBillingAddressType()"></span></br> <b> <span class="address-field"
+                        data-bind="text: companyName"></span>,
+                      </b> <span class="address-field" data-bind="text: address1"></span>,
+                      <!-- ko if: address2 -->
+                      <span class="address-field" data-bind="text: address2"></span>,
+                      <!-- /ko -->
+                      <span class="address-field" data-bind="text: city"></span>,
+                      <span class="address-field" data-bind="text: state"></span>,
+                      <span class="address-field" data-bind="text: postalCode"></span>,
+                      <span class="address-field" data-bind="text: country"></span>,
+                      <!-- ko if: phoneNumber -->
+                      <span class="address-field" data-bind="text: phoneNumber"></span>
+                      <!-- /ko -->
+                    </address>
+                    <div class="col-sm-2 select-address">
+                      <button class="btn btn-primary btn-small"
+                        data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-paymentMethods-select-billing-address-account' + $index()}">
+                        <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko ifnot: hasDefaultBillingAddress() -->
+                <div class="container-fluid">
+                  <span data-bind="widgetLocaleText: 'noDefaultBillingAddressesText'"></span>
+                </div>
+                <!-- /ko -->
+              </div>
+            </div>
+
+            <div class="profileBillingAddress collapse-heading">
+              <div>
+              <strong>
+                <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#profileAddressesForBilling-paymentMethods"> <button
+                  id="address-type-label" data-bind="widgetLocaleText: 'profileAddressLabel'"></button>
+                </span>
+              </strong>
+              </div>
+              <div id="profileAddressesForBilling-paymentMethods" class="collapse">
+                <!-- ko ifnot: profileAddressBook().length === 0 -->
+                <!-- ko foreach: profileAddressBook -->
+                <div class="panel panel-default">
+                  <div class="panel-body row">
+                    <address id="profile-shipping-addressbook-content" class="shipping-address-view container-fluid row-padding">
+                      <span class="address-field" data-bind="text: type"></span></br> <b> <span class="address-field" data-bind="text: companyName"></span></b>
+                      <span class="address-field" data-bind="text: address1"></span>,
+                      <!-- ko if: address2 -->
+                      <span class="address-field" data-bind="text: address2"></span>,
+                      <!-- /ko -->
+
+                      <span class="address-field" data-bind="text: city"></span>,
+                      <span class="address-field" data-bind="text: state"></span>,
+                      <span class="address-field" data-bind="text: postalCode"></span>,
+                      <span class="address-field" data-bind="text: country"></span>,
+                      <!-- ko if: phoneNumber -->
+                      <span class="address-field" data-bind="text: phoneNumber"></span>
+                      <!-- /ko -->
+                    </address>
+                    <div class="col-sm-2 select-address">
+                      <button class="btn btn-primary btn-small"
+                        data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                 attr: {id: 'cc-paymentMethods-select-billing-address-profile' + $index()}">
+                        <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: loadMoreProfileAddresses() -->
+                <div class="row zeroMargin">
+                  <a data-bind="click: $data.loadProfileAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href=""> </a>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: profileAddressBook().length === 0 -->
+                <span class="noAddressLabel" data-bind="widgetLocaleText: 'noProfileAddressesText'"></span>
+                <!-- /ko -->
+              </div>
+            </div>
+
+            <div class="accountAddress collapse-heading">
+              <div>
+              <strong>
+                <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#accountAddressesForBilling-paymentMethods"> <button
+                  id="address-type-label" data-bind="widgetLocaleText: 'accountAddressLabel'"></button></span>
+              </strong>
+              </div>
+              <div id="accountAddressesForBilling-paymentMethods" class="collapse">
+                <!-- ko ifnot: accountAddressBook().length === 0 -->
+                <!-- ko foreach: accountAddressBook -->
+                <div class="panel panel-default">
+                  <div class="panel-body row">
+                    <address id="account-addressbook-content" class="billing-address-view container-fluid col col-sm-10">
+                      <span class="address-field" data-bind="text: type"></span></br> <b> <span class="address-field" data-bind="text: companyName"></span>
+                      </b> <span class="address-field" data-bind="text: address1"></span>,
+                      <!-- ko if: address2 -->
+                      <span class="address-field" data-bind="text: address2"></span>,
+                      <!-- /ko -->
+                      <span class="address-field" data-bind="text: city"></span>,
+                      <span class="address-field" data-bind="text: state"></span>,
+                      <span class="address-field" data-bind="text: postalCode"></span>,
+                      <span class="address-field" data-bind="text: country"></span>,
+                      <!-- ko if: phoneNumber -->
+                      <span class="address-field" data-bind="text: phoneNumber"></span>
+                      <!-- /ko -->
+                    </address>
+                    <div class="col-sm-2 select-address">
+                      <button class="btn btn-primary btn-small"
+                        data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-paymentMethods-select-billing-address-account' + $index()}">
+                        <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: loadMoreAccountAddresses() -->
+                <div class="row zeroMargin">
+                  <a data-bind="click: $data.loadAccountAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href=""> </a>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: accountAddressBook().length === 0 -->
+                <span class="noAddressLabel" data-bind="widgetLocaleText: 'noAccountAddressesText'"></span>
+                <!-- /ko -->
+              </div>
+            </div>
+
+            <div class="inheritedAddress collapse-heading">
+              <div>
+              <strong>
+                <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#inheritedAddressesForBilling-paymentMethods"> <button
+                  id="address-type-label" data-bind="widgetLocaleText: 'inheritedAddressLabel'"></button></span>
+              </strong>
+              </div>
+              <div id="inheritedAddressesForBilling-paymentMethods" class="collapse">
+                <!-- ko ifnot: inheritedAddressBook().length === 0 -->
+                <!-- ko foreach: inheritedAddressBook -->
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <address id="inherited-addressbook-content" class="billing-address-view col col-sm-10">
+                      <span class="address-field" data-bind="text: type"></span></br> <b> <span class="address-field" data-bind="text: companyName"></span>
+                      </b> <span class="address-field" data-bind="text: address1"></span>,
+                      <!-- ko if: address2 -->
+                      <span class="address-field" data-bind="text: address2"></span>,
+                      <!-- /ko -->
+                      <span class="address-field" data-bind="text: city"></span>,
+                      <span class="address-field" data-bind="text: state"></span>,
+                      <span class="address-field" data-bind="text: postalCode"></span>,
+                      <span class="address-field" data-bind="text: country"></span>,
+                      <!-- ko if: phoneNumber -->
+                      <span class="address-field" data-bind="text: phoneNumber"></span>
+                      <!-- /ko -->
+                    </address>
+                    <div class="col-sm-2 select-address">
+                      <button class="btn btn-primary btn-small"
+                        data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                   attr: {id: 'cc-paymentMethods-select-billing-address-inherit' + $index()}">
+                        <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: showLoadMore() -->
+                <div class="col-md-12 col-sm-12">
+                  <a data-bind="click: $data.loadInheritedAddressess, widgetLocaleText: 'loadMoreText'" class="text-underline"> </a>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: inheritedAddressBook().length === 0 -->
+                <span class="noAddressLabel" data-bind="widgetLocaleText: 'noInheritedAddressesText'"></span>
+                <!-- /ko -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer b2b-ab-modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="CC-paymentMethods-address-modal" tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+    <div class="modal-dialog" id="CC-paymentMethods-modal-dialog">
+      <div class="modal-content" id="CC-paymentMethodsModalContent">
+        <div class="modal-header cc-profile-modal-heading cc-profile-confirm-icon" id="CC-paymentMethods-modal-header">
+          <button type="button" class="close" data-dismiss="modal" id="CC-paymentMethods-modal-headerClose" aria-hidden="true">&times;</button>
+          <h4 data-bind="widgetLocaleText:'updateCacelModalTitle'" id="CC-paymentMethods-modal-headerText"></h4>
+        </div>
+        <div class="modal-body cc-profile-body-modal" id="CC-customerProfile-modal-modalBody">
+          <p data-bind="widgetLocaleText:'updateCancelModalMessage'" align="center" id="CC-paymentMethods-modal-bodyText"></p>
+        </div>
+        <div class="modal-footer cc-profile-modal-footer" id="CC-paymentMethods-modal-footer">
+          <button class="btn cc-button-secondary" id="CC-paymentMethods-modal-cancel" data-bind="click: $data.hideModal">
+            <span id="CC-paymentMethods-modal-discard" data-bind="widgetLocaleText:'updateCancelModalClose'"></span>
+          </button>
+          <button class="btn cc-button-primary" id="CC-paymentMethods-modal-submit" data-bind="click:$data.discardFromModal">
+            <span id="CC-paymentMethods-modal-save" data-bind="widgetLocaleText:'continueText'"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

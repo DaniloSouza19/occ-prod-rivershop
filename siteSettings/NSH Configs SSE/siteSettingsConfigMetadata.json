@@ -1,0 +1,23 @@
+{
+  "titleResourceId": "title",
+  "descriptionResourceId": "description",
+  "properties": [
+    {
+      "helpTextResourceId": "urlExternalPricingHelpText",
+      "labelResourceId": "urlExternalPricingLabel",
+      "type": "stringType",
+      "id": "urlExternalPricing",
+      "name": "urlExternalPricing",
+      "maxLength": 1000
+    },
+    {
+      "helpTextResourceId": "urlExternalPricingPrePricingHelpText",
+      "labelResourceId": "urlExternalPricingPrePricingLabel",
+      "type": "stringType",
+      "id": "urlExternalPricingPrePricing",
+      "name": "urlExternalPricingPrePricing",
+      "maxLength": 1000
+    }
+  ],
+  "enableSiteSpecific": false
+}

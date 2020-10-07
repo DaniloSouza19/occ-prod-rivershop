@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_post",
+  "version": 1,
+  "displayName": "NSH_Post",
+  "elementized": true,
+  "global": false,
+  "i18nresources": "nsh_post",
+  "source": 101,
+  "javascript": "nsh_post"
+}

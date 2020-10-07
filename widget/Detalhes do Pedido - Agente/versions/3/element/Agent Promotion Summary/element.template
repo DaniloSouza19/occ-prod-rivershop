@@ -1,0 +1,113 @@
+<!-- ko if: $data.orderDetailsWrapper.isRenderComplete() -->    
+ <!-- ko with:  $data.orderDetailsWrapper.orderDetails() -->
+
+  <!-- ko if: $parent.showPromotionDetails() && ( discountInfo && ((discountInfo.orderImplicitDiscountList
+                   && discountInfo.orderImplicitDiscountList.length > 0)
+                   || ($parent.couponMultiPromotions() && $parent.couponMultiPromotions().length > 0))) -->
+          <div id="cc-orderDetails-promotions" class="col-md-12">
+            <div id="cc-orderDetails-promotions-container"
+              class="col-xs-12 ">
+              <h3 style=" margin-bottom: 5px !important;" class="cc-order-header-font-size" 
+               id="cc-promotion-summary-text"
+                data-bind="widgetLocaleText: 'promotionSummaryText'"></h3>
+              <table id="cc-orderDetails-orderPromotionsTable" data-bind="attr: {summary: $parent.
+                                      CCi18n.t('ns.orders:resources.promotionSummaryText')}">
+                <thead>
+                  <tr>
+                    <th scope="col" data-bind="widgetLocaleText: 'promotionNameText'" class="sr-only">
+                    </th>
+                    <th scope="col" data-bind="widgetLocaleText: 'promotionValueText'" class="sr-only">
+                    </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- ko foreach: discountInfo.orderImplicitDiscountList -->
+                  <tr>
+                    <!-- ko if: $data.promotionLevel === "order" -->
+                    <td scope="row" data-bind="attr: { id: 'cc-orderDetails-discountDescription-' + $index() },
+                                           widgetLocaleText: {value:'OrderDiscountDesc', attr: 'innerText', params: {discountDesc: $data.promotionDesc}}">
+                    </td>
+                    <!-- /ko -->
+                    <!-- ko if: $data.promotionLevel === "item" -->
+                    <td scope="row" data-bind="attr: { id: 'cc-orderDetails-discountDescription-' + $index() },
+                                           text: $data.promotionDesc">
+                    </td>
+                    <!-- /ko -->
+                    <!-- ko if: $data.promotionLevel === "shipping" -->
+                    <td>
+                      <span data-bind="attr: { id: 'cc-orderDetails-shippingDiscountDescription-' + $index() },
+                                       widgetLocaleText: {value:'shippingDiscountDesc',  attr: 'innerText',params: {discountDesc: $data.promotionDesc}}">
+                      </span>
+                    </td>
+                    <!-- /ko -->    
+                     <td>
+                    </td>
+                   <!-- ko if: $parents[1].orderDetailsWrapper.isPayShippingInSecondaryCurrency() &&  $parents[1].orderDetailsWrapper.orderDetails().secondaryCurrencyCode -->
+                      <!-- ko if: $data.secondaryCurrencyTotalAdjustment && $data.promotionLevel === "shipping" -->
+                        <td class="pull-right" scope="row" data-bind="currency: {price:-$data.secondaryCurrencyTotalAdjustment,
+                                                                       currencyObj: $parents[1].getSecondaryCurrency($parents[1].orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}">
+                        </td>
+                      <!-- /ko -->
+                      <!-- ko ifnot: $data.secondaryCurrencyTotalAdjustment && $data.promotionLevel === "shipping" -->
+                        <td class="pull-right" scope="row" data-bind="currency: {price: -$data.totalAdjustment,
+                                  currencyObj: $parents[1].orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </td>
+                      <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko ifnot:  $parents[1].orderDetailsWrapper.isPayShippingInSecondaryCurrency() -->
+                      <td class="pull-right" scope="row" data-bind="currency: {price: -$data.totalAdjustment,
+                                  currencyObj: $parents[1].orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </td>
+                    <!-- /ko -->
+                  </tr>
+                  <!-- /ko -->
+                  <!-- ko if: $parent.couponMultiPromotions() && $parent.couponMultiPromotions().length > 0 -->
+                  <!-- ko foreach: $parent.couponMultiPromotions() -->
+                  <tr>
+                    <td>
+                     <span data-bind="widgetLocaleText : {value:'multiPromotionCouponDisplayText', attr: 'innerText', params: {couponCode: $data.code}}"></span>
+                 
+                   </td>
+                   <td></td>
+                   <td></td>
+                   </tr>
+                 <!-- ko foreach: $data -->
+                 <tr class="cc-color-dimGray">
+                   <td>
+                   <!-- ko if: promotionLevel === 'order' -->
+                      <span class="padding-left-10" data-bind="widgetLocaleText : {value:'multiPromotionOrderDisplayText', attr: 'innerText', params: {description: promotionDesc}}"></span>
+                   <!-- /ko -->
+                    <!-- ko ifnot: promotionLevel === 'order' -->
+                       <span class="padding-left-10" data-bind="widgetLocaleText:{value:'multiPromotionItemDisplayText', attr: 'innerText', params: {description: promotionDesc}}"></span>
+                    <!-- /ko -->
+                   </td>
+                   <td></td>
+                  <!-- ko if: $parents[2].orderDetailsWrapper.isPayShippingInSecondaryCurrency()  && $parents[2].orderDetailsWrapper.orderDetails().secondaryCurrencyCode -->
+                      <!-- ko if: $data.secondaryCurrencyTotalAdjustment && $data.promotionLevel === "shipping" -->
+                        <td class="pull-right" scope="row" data-bind="currency: {price:-$data.secondaryCurrencyTotalAdjustment,
+                                                                       currencyObj: $parents[2].getSecondaryCurrency($parents[2].orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}">
+                        </td>
+                      <!-- /ko -->
+                      <!-- ko ifnot: $data.secondaryCurrencyTotalAdjustment && $data.promotionLevel === "shipping" -->
+                        <td class="pull-right" scope="row" data-bind="currency: {price: -$data.totalAdjustment,
+                                  currencyObj: $parents[2].orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </td>
+                      <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko ifnot:  $parents[2].orderDetailsWrapper.isPayShippingInSecondaryCurrency() -->
+                      <td class="pull-right" scope="row" data-bind="currency: {price: -$data.totalAdjustment,
+                                  currencyObj: $parents[2].orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </td>
+                    <!-- /ko -->
+                  </tr>
+           <!-- /ko -->
+                 <!-- /ko -->
+                  <!-- /ko -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /ko -->
+      <!-- /ko -->
+       <!-- /ko -->

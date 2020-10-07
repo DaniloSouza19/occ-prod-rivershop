@@ -1,0 +1,21 @@
+{
+  "stackType": "progressTrackerMultiShip",
+  "regions": [
+    {
+      "repositoryId": "progressTrackerMultiShipStageOne",
+      "name": "Um"
+    },
+    {
+      "repositoryId": "progressTrackerMultiShipStageTwo",
+      "name": "Dois"
+    },
+    {
+      "repositoryId": "progressTrackerMultiShipStageThree",
+      "name": "Três"
+    }
+  ],
+  "version": 1,
+  "displayName": "Grupo Rastreador de Andam. para Várias Entregas",
+  "maxVariants": 10,
+  "canEditSubRegion": true
+}

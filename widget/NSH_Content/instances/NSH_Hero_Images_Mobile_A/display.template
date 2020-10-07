@@ -1,0 +1,130 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "60096": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60096",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/ofertas_do_dia/category/ofertas_do_dia",
+      "src": "/file/v4783525533107582719/general/ofertas do dia.png",
+      "titleText": "${occ:widgetCustomText('800056')}",
+      "titleTextId": "800056",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60097": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60097",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/combo",
+      "src": "/file/v3880003795931196717/general/combos.png",
+      "titleText": "${occ:widgetCustomText('800057')}",
+      "titleTextId": "800057",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "60098": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "60098",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/limpeza/category/limpeza",
+      "src": "/file/v225441931644094724/general/limpeza.png",
+      "titleText": "${occ:widgetCustomText('800058')}",
+      "titleTextId": "800058",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "70011": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "70011",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/lancamento_havaianas/category/lancamento_havaianas",
+      "src": "/file/v4260294261659131038/general/DESTAQUE HAVAIANAS MOBILE.png",
+      "titleText": "${occ:widgetCustomText('800010')}",
+      "titleTextId": "800010",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+<!-- ko if: isMobile() -->
+<div class="nsh_content">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60096'"></span>
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60097'"></span>
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '70011'"></span>
+
+      <!-- /oc -->
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '60098'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+
+</div>
+<!-- /ko -->

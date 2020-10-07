@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-quantity",
+  "source": 100,
+  "type": "fragment",
+  "title": "Product Quantity",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

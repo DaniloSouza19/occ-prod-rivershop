@@ -1,0 +1,101 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<!-- ko if: $widgetViewModel.isReady() -->
+<!-- ko if: ($widgetViewModel.arrProducts() && $widgetViewModel.arrProducts().length > 0) -->
+<div class="slick_products_home">
+    <section class="card card-modify">
+        <div class="container">
+
+
+            <!--ko if: $widgetViewModel._slickTitle() && $widgetViewModel._slickTitle() != '' -->
+            <div class="section-title mb-40 instagram-title">
+                <h2 class="tituloCategoria" data-bind="text:_slickTitle"></h2>
+            </div>
+            <!--/ko-->
+
+
+
+
+
+
+            <!--ko ifnot: $widgetViewModel._slickTitle() != '' -->
+            <div class="section-title mb-40 instagram-title">
+                <h2 class="tituloCategoria" data-bind="text:_slickTitle"></h2>
+            </div>
+
+            <!--/ko-->
+
+            <div class="card text-center">
+                <div data-bind="attr:{id: id}, 
+                foreach:{ data: $widgetViewModel.arrProducts(), as: 'product'}, 
+                onRender: $widgetViewModel.addSlick()">
+                    <div class="card__item">
+                        <div class="card__inside flex-align">
+                            <a data-bind="ccLink: {route: route}">
+
+                                <!-- ko if: $data.hasOwnProperty('primaryFullImageURL') -->
+                                <figure class="image">
+                                    <img class="image__item"
+                                        data-bind="attr: {src: primaryFullImageURL, title: primaryImageTitle, alt: primaryImageAltText}"
+                                        style="width: 300px" />
+                                </figure>
+                                <!-- /ko -->
+                                <div class="title-txt-ad">
+                                    <p class="title title__subtitle font-bold font-color-one title__bold"
+                                        data-bind="text: displayName">
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="card-price clearfix">
+
+
+                                <!-- ko if: $data.hasOwnProperty('listPrice') &&  $data.listPrice != null -->
+                                <p class="font-color-eight font-bold  discounted-price ">
+                                    <a
+                                        data-bind="ccLink: {route: route},currency: {price: listPrice, currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency, nullReplace: '', prependNull: false}"></a>
+                                </p>
+                                <!-- /ko -->
+                            
+                                   <!-- ko if: $data.listPrice == null -->
+                                   <p class="font-color-eight font-bold  discounted-price ">
+                                    <a class="outStock">Produto Indisponíuve</a>
+                                </p>
+                                <!-- /ko -->
+                            </div>
+
+
+                            <div class="card__description">
+                                <div class="col-lg-12 col-reset">
+                                    <div class="col-lg-12 col-xs-12 col-l txt-productos-info">
+
+                                        <p class="text text-medium font-color-nine">
+                                            <br>
+                                            CÓD. PRODUTO: 1932<br>
+                                            CÓD. BARRAS: <br> 7894650112014
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <a class="default__link text-large" data-bind="ccLink: {route: route}"><span><img
+                                        src="/file/general/lnr-cart.svg" alt="Faça sua pesquisa..."> ADICIONAR AO
+                                    CARRINHO</span></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+</div>
+<!-- /ko -->
+<!-- /ko -->

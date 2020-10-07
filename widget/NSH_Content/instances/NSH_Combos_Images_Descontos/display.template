@@ -1,0 +1,580 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {
+  "10053": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": "0"
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "10053",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "src": "/file/v5748701268555398100/general/Combo.png",
+      "titleText": "${occ:widgetCustomText('100028')}",
+      "titleTextId": "100028",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110001": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110001",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/vodka_orloff/category/vodka_orloff",
+      "src": "/file/v2927417885880751506/general/CMV ORLOFF.png",
+      "titleText": "${occ:widgetCustomText('1200006')}",
+      "titleTextId": "1200006",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110005": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110005",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/fralda_huggies_jubinho/category/fralda_huggies_jubinho",
+      "src": "/file/v5313961429558296177/general/CMV FRALDA.png",
+      "titleText": "${occ:widgetCustomText('1200002')}",
+      "titleTextId": "1200002",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110036": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110036",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/chantily_amelia/category/chantily_amelia",
+      "src": "/file/v916084342704230734/general/CMV CHANTILY.png",
+      "titleText": "${occ:widgetCustomText('1200030')}",
+      "titleTextId": "1200030",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110043": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110043",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/lysoform/category/lysoform",
+      "src": "/file/v3946681410514362256/general/cmv lysoform.png",
+      "titleText": "${occ:widgetCustomText('1200037')}",
+      "titleTextId": "1200037",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110044": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110044",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/repelente_off/category/repelente_off",
+      "src": "/file/v5205773002299648535/general/cmv off.png",
+      "titleText": "${occ:widgetCustomText('1200038')}",
+      "titleTextId": "1200038",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110045": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110045",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/limpador_pato/category/limpador_pato",
+      "src": "/file/v3919746429922733455/general/cmv pato.png",
+      "titleText": "${occ:widgetCustomText('1200039')}",
+      "titleTextId": "1200039",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110046": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110046",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/cera_auto/category/cera_auto",
+      "src": "/file/v4742823943890782852/general/cmv cera.png",
+      "titleText": "${occ:widgetCustomText('1200040')}",
+      "titleTextId": "1200040",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110051": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110051",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/apar_barb_prest_ultragrip/category/apar_barb_prest_ultragrip",
+      "src": "/file/v1467779937417271279/general/cmv 3107.png",
+      "titleText": "${occ:widgetCustomText('1200045')}",
+      "titleTextId": "1200045",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "110053": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "110053",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/copo_americano/category/copo_americano",
+      "src": "/file/v4263498892204480721/general/cmv 485.png",
+      "titleText": "${occ:widgetCustomText('1200047')}",
+      "titleTextId": "1200047",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "80052": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "80052",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/alvejante_vanish/category/alvejante_vanish",
+      "src": "/file/v5977344881529971573/general/CMV VANISH.png",
+      "titleText": "${occ:widgetCustomText('900053')}",
+      "titleTextId": "900053",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "80053": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "80053",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/sh_co_tresemme/category/sh_co_tresemme",
+      "src": "/file/v2958913822314924901/general/CMV KIT TRESEMME.png",
+      "titleText": "${occ:widgetCustomText('900050')}",
+      "titleTextId": "900050",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "90020": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "90020",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/papel_a4_ink/category/papel_a4_ink",
+      "src": "/file/v3861280389116198027/general/CMV PAPEL A4.png",
+      "titleText": "${occ:widgetCustomText('1000018')}",
+      "titleTextId": "1000018",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "90021": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "90021",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/sand_hav_color/category/sand_hav_color",
+      "src": "/file/v9174948271669576027/general/HAVAIANAS.png",
+      "titleText": "${occ:widgetCustomText('1000019')}",
+      "titleTextId": "1000019",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "90022": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "90022",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/esponja_3m/category/esponja_3m",
+      "src": "/file/v4183875161416123860/general/esponja 3m.png",
+      "titleText": "${occ:widgetCustomText('1000020')}",
+      "titleTextId": "1000020",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  },
+  "90028": {
+    "border": {
+      "borderColor": "#000000",
+      "borderWidth": 0
+    },
+    "horizontalAlignment": {"horizontalAlignment": "left"},
+    "id": "90028",
+    "image": {
+      "altText": "${occ:widgetCustomText('null')}",
+      "isProductImage": false,
+      "link": "/marg_delicia/category/marg_delicia",
+      "src": "/file/v1160462905942472564/general/marg delicia.png",
+      "titleText": "${occ:widgetCustomText('1000026')}",
+      "titleTextId": "1000026",
+      "zoomEnabled": false
+    },
+    "padding": {
+      "paddingBottom": "0",
+      "paddingLeft": "0",
+      "paddingRight": "0",
+      "paddingTop": "0"
+    }
+  }
+}} --><!-- /ko -->
+
+
+
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+
+
+<div class="nsh_content container">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <div class="img-block" data-bind=" attr:{id: id}, onRender: $widgetViewModel.addSlick()">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110005'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-1-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '80053'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-2-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110051'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-3-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110053'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-4-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110043'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-5-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110044'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-6-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110045'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-7-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110046'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-8-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110036'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-9-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '110001'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-10-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '80052'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-11-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '90028'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-12-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '90020'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-13-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '90021'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-14-0">
+
+      <!-- oc section: image -->
+<span data-bind="element: 'image',id: '90022'"></span>
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+</div>
+
+</div>

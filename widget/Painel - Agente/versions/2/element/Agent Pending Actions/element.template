@@ -1,0 +1,59 @@
+<!-- ko if: initialized() -->
+<div id ="cc-my-pending-actions-section" class="section-right-margin">
+      <div tabindex="0" data-bind="widgetLocaleText:{attr:'aria-label', value:'myPendingActionsTableTitle'}">
+        <h2 id="cc-my-pending-actions-heading" class="dashboard-heading-reports" 
+          data-bind="widgetLocaleText: 'myPendingActionsText'">
+        </h2>
+      </div>
+      <div class="well" id= "cc-pending-actions-error-section" tabindex="0" 
+           data-bind="widgetLocaleText:{attr:'aria-label', value:'pendingActionsLoadingErrorText'}, 
+           visible: $data.pendingActionsLoadStatus() === $data.ERROR_STATUS">
+        <span data-bind="widgetLocaleText: 'pendingActionsLoadingErrorText'"></span>
+      </div>
+      <!-- ko if: $data.pendingActionsLoadStatus() === $data.SUCCESS_STATUS -->
+      <!-- ko if: $data.pendingActionsData().length === 0-->
+      <hr class="line agent-line"/>
+      <div id="cc-no-pending-actions-message" data-bind="widgetLocaleText:{attr:'aria-label', value:'noPendingActionsText'}" 
+      tabindex="0" class="col-xs-12">
+        <span data-bind="widgetLocaleText: 'noPendingActionsText'"></span>
+      </div>
+      <!-- /ko -->
+      <table class="table table-hover dashboard-table table-bordered col-xs-12" aria-labelledby="cc-my-pending-actions-heading"
+             summary="Pending-Actions-For-Agent"
+             data-bind="visible: pendingActionsData().length > 0">
+        <thead>
+          <tr>
+            <th scope="col" tabindex="0" data-bind="widgetLocaleText: {attr: 'title', value: 'referenceIdText'}">
+              <span data-bind="widgetLocaleText: 'referenceIdText'"></span></th>
+            <th scope="col" tabindex="0" data-bind="widgetLocaleText: {attr: 'title', value: 'typeText'}">
+              <span data-bind="widgetLocaleText: 'typeText'"></span></th>
+            <th scope="col" tabindex="0" data-bind="widgetLocaleText: {attr: 'title', value: 'pendingActionText'}">
+              <span data-bind="widgetLocaleText: 'pendingActionText'"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: pendingActionsData">
+            <tr>
+              <td>
+                <span tabindex="0" data-bind="attr:{'title': id}, text: id"></span>              
+              </td>
+              <td>
+                <span tabindex="0" data-bind="attr: {id: 'cc-pendingAction-type-for-' + id, 'title':itemType}, 
+                  text: itemType">
+                </span>
+               </td>
+              <td>
+              <!-- ko if: pendingAction === 'Refund'-->
+              <!-- TODO: redirect to refund orders link -->
+              <a href="#" id="cc-return-refund-link"
+               data-bind="attr: {href: '#', id: 'cc-pendingAction-for-' + id},
+                            click: $parent.refundClickHandler.bind($parent, id, orderId),
+                            widgetLocaleText: 'linkActionRefundText'"></a>
+              <!-- /ko -->
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    <!-- /ko --> 
+</div>
+<!-- /ko -->

@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-storecredit",
+  "source": 100,
+  "type": "fragment",
+  "title": "Store Credit",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

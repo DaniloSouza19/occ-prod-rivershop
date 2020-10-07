@@ -1,0 +1,56 @@
+<div class="wishlist_welcome">
+    <div class="SWM-welcome" data-oc-id="spaceWelcomeWidget">
+        <!-- ko if: $data.isLoggedIn() == false -->
+        <!-- oc layout: panels -->
+        <div data-bind="visible: $data.showWidget() == true" class="row">
+            <div class="oc-panel col-md-12">
+                <!-- ko with: user -->
+                <div data-bind="visible: !$parent.space().showSpace() == true" class="col-md-12">
+                    <div class="swm-welcome-title" data-bind="widgetLocaleText: 'welcomePageTitle'"></div>
+                    <div class="swm-welcome-subtitle" data-bind="widgetLocaleText: 'welcomePageSubtitle'"></div>
+                    <div class="swm-welcome-bulletlist">
+                        <ul>
+                            <li data-bind="widgetLocaleText: 'welcomePageBulletText1'"></li>
+                            <li data-bind="widgetLocaleText: 'welcomePageBulletText2'"></li>
+                            <li data-bind="widgetLocaleText: 'welcomePageBulletText3'"></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- oc section: welcome-login-account -->
+                <div data-oc-id="welcome-buttons">
+                    <span>
+                        <!-- ko with: user -->
+                        <span data-bind="visible: !$parent.space().showSpace() == true" class="swm-welcome-login">
+                            <a href="#CC-headermodalpane" data-original-title="login"
+                                data-bind="click:$parent.clickLogin.bind($parent)" data-toggle="modal"
+                                data-backdrop="static">
+                                <button class="btn cc-button-primary"
+                                    data-bind="widgetLocaleText: 'buttonLogin'"></button>
+                            </a>
+                        </span>
+                        <!-- /ko -->
+
+
+                    </span>
+                    <span>
+                        <!-- ko with: user -->
+                        <span data-bind="visible: !$parent.space().showSpace() == true"
+                            class="swm-welcome-registration">
+                            <a href="#CC-headermodalpane" data-original-title="registration"
+                                data-bind="click:$parent.clickRegistration.bind($parent)" data-toggle="modal"
+                                data-backdrop="static">
+                                <button class="btn cc-button-secondary"
+                                    data-bind="widgetLocaleText: 'buttonCreateAccount'"></button></a>
+                        </span>
+                        <!-- /ko -->
+                    </span>
+                </div>
+                <!-- /oc -->
+            </div>
+        </div>
+        <!-- /oc -->
+        <!-- /ko -->
+    </div>
+
+</div>

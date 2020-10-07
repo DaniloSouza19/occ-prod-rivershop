@@ -1,0 +1,17 @@
+{
+  "stackType": "popupStack",
+  "regions": [
+    {
+      "repositoryId": "popupStackSectionOne",
+      "name": "Princ."
+    },
+    {
+      "repositoryId": "popupStackSectionTwo",
+      "name": "Pop-up"
+    }
+  ],
+  "version": 1,
+  "displayName": "Grupo de Pop-up",
+  "maxVariants": 2,
+  "canEditSubRegion": false
+}

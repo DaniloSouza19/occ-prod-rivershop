@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "cancelReasonText": "Motivo do Cancelamento",
+    "cancelRequest": "Cancelar Solicitação:",
+    "requestOn": "Solicitado em:",
+    "quantityText": "Quantidade",
+    "statusText": "Status",
+    "itemText": "Item"
+  }
+}

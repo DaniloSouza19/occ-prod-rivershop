@@ -1,0 +1,16 @@
+{
+  "configuration": {
+    "shouldUseStyleBased": true,
+    "showListViewOption": false,
+    "viewModelCacheLimit": "3",
+    "showResultsPerPageOption": true,
+    "webApplicationConfigSection": "",
+    "displayOptionsSection": "",
+    "isScrollEnabled": false,
+    "isViewModelCacheEnabled": false,
+    "productsPerPage": "12",
+    "listType": "product",
+    "blockSize": "60"
+  },
+  "displayName": "NSH_Product_Listing_Collection"
+}

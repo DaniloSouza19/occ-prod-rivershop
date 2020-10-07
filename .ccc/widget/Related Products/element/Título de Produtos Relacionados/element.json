@@ -1,0 +1,8 @@
+{
+  "tag": "related-products-name",
+  "source": 100,
+  "type": "fragment",
+  "title": "Título de Produtos Relacionados",
+  "widgetType": "relatedProducts",
+  "version": 4
+}

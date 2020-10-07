@@ -1,0 +1,8 @@
+{
+  "tag": "product-shipping-surcharge",
+  "source": 100,
+  "type": "fragment",
+  "title": "Sobretaxa de Remessa",
+  "widgetType": "productDetails",
+  "version": 14
+}

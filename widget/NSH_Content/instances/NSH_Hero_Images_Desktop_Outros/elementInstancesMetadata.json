@@ -1,0 +1,80 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Imagem_10088",
+      "styles": {},
+      "tag": "image@30031",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "banner-2",
+        "zoomEnabled": "0",
+        "fileName": "banner-img-2.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10087",
+      "styles": {},
+      "tag": "image@30030",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "link": "https://ccadmin-test-z2za.oracleoutsourcing.com/dica-modelo2",
+        "titleText": "banner-1",
+        "zoomEnabled": "0",
+        "fileName": "banner-img-1.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10089",
+      "styles": {},
+      "tag": "image@30032",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "banner-3",
+        "zoomEnabled": "0",
+        "fileName": "banner-img-3.png"
+      }
+    }
+  ]
+}

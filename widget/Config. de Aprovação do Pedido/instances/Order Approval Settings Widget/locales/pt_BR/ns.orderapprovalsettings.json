@@ -1,0 +1,21 @@
+{
+  "resources": {
+    "invalidPurchaseLimit": "Limite de Compra Inválido",
+    "purchaseLimitSetByMerchant": "O comerciante exigiu que os limites de compra sejam ativados.",
+    "purchaseLimitCondition": "Se o campo estiver definido como 0, todos os pedidos precisarão de aprovação. Se esse campo estiver vazio, nenhum pedido precisará de aprovação.",
+    "updateCancelModalMessage": "Você tem alterações não salvas. Deseja salvá-las?",
+    "updateCancelModalClose": "Descartar",
+    "noApproversPresent": "Você deve ter pelo menos um Contato ativo definido como Aprovador, antes de ativar as Aprovações.",
+    "updateCancelModalSave": "Salvar",
+    "updateSuccessMsg": "Atualização salva com sucesso.",
+    "purchaselimitText": "Limite de Compra",
+    "approvalWebhookIsEnabled": "Não é possível definir o limite de compra porque o comerciante está usando um sistema externo para determinar se os pedidos precisam de aprovação.",
+    "requireApprovalsText": "Requer Aprovações",
+    "buttonSave": "Salvar",
+    "buttonCancel": "Cancelar",
+    "yesText": "Sim",
+    "orderApprovalSettingsText": "Configurações de Aprovação do Pedido",
+    "noText": "Não",
+    "updateCacelModalTitle": "Alterações Não Salvas"
+  }
+}

@@ -1,0 +1,46 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('additional-shopper-context') -->
+  <!-- ko with: $data.elements['additional-shopper-context'] -->
+    <!-- ko if: shopperContextViewModel && shopperContextViewModel.dynamicProperties() && shopperContextViewModel.dynamicProperties().length > 0-->
+      <!-- Select Event Data Starts-->
+      <div class="row">
+        <br>
+        <div class= "col-sm-12 form-group">
+          <span data-bind = "widgetLocaleText:'selectAdditionalCustomFactorsText'" style="margin-bottom:10px;"></span>
+          <span data-bind="text: ':'"></span>
+        </div>
+      </div>
+      <div data-bind="foreach: $data.shopperContextViewModel.dynamicProperties">
+        <!-- ko if: (type === 'shortText' || type==='richText' || type==='number') -->
+        <div class="row form-group">
+          <div class="col-sm-2">
+            <label data-bind="text: label"></label>
+          </div>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" data-bind="value:$parent.shopperContextViewModel.shopperContext[id], attr:{'id':id,'aria-label': label}"/>
+          </div>
+        </div>  
+        <!-- /ko -->
+        <!-- ko if: (type === 'checkbox') -->
+        <div class="row form-group">
+          <div class="col-sm-12">
+          <span class="col-sm-6">
+            <label data-bind="text: label"></label>
+            <input type="checkbox" class="form-control" data-bind="checked:$parent.shopperContextViewModel.shopperContext[id], attr:{'id':id,'aria-label': label}" style="margin-left:10px"/>
+          </span>
+          </div>
+        </div>  
+        <!-- /ko -->
+        <!-- ko if: (type == 'date') -->
+        <div class="row form-group">
+          <div class="col-sm-2">
+            <label data-bind="text: label"></label>
+          </div>
+          <div class="col-sm-6">   
+            <input type="text" class="form-control" data-bind="value:$parent.shopperContextViewModel.shopperContext[id], attr:{'id':id,'aria-label': label}"/>
+          </div>
+        </div>  
+        <!-- /ko -->
+      </div> 
+    <!-- /ko -->
+  <!-- /ko -->
+<!-- /ko -->

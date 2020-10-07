@@ -1,0 +1,27 @@
+<!-- ko if:initialized() -->
+<div id="cc-quickLinks" class="panel-group">
+  <div id="cc-dashboard-quickLinks-panel" class="panel panel-default">
+    <div id="cc-quickLinks-quickLinks-panel-heading" class="panel-heading">
+      <div id="cc-quickLinks-quickLinks-panel-row" class="row">
+        <div id="cc-dashboard-quickLinks-panel-title" tabindex="0" data-bind="widgetLocaleText: {attr: 'title', value: 'quickLinksText'}" class="col-md-12">
+          <h2 class="panel-title dashboard-heading-reports cc-dashboard-ellipse" data-bind="widgetLocaleText: 'quickLinksText'"></h2>
+        </div>
+      </div>
+    </div>
+    <div id="cc-dashboard-quicklinks-panel-body" class="panel-body">
+      <!-- ko if: quickLinks().length === 0 -->
+        <div tabindex="0" data-bind="widgetLocaleText:{attr:'aria-label', value:'noQuickLinksText'}">
+          <h5 data-bind="widgetLocaleText: 'noQuickLinksText'"></h5>
+        </div>
+      <!-- /ko -->
+      <!-- ko foreach: quickLinks -->
+        <!-- ko if: active === true -->
+        <div>
+          <a data-bind="attr: {href: linkURL, id: 'cc-dashboard-quickLink-' + id}, text: message" target="_blank"> </a>
+        </div>
+        <!-- /ko -->
+      <!-- /ko -->
+    </div>
+  </div>
+</div>
+<!-- /ko -->

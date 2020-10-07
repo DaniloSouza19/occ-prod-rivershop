@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_slick_images",
+  "version": 1,
+  "displayName": "NSH_Slick_Images",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_slick_images",
+  "source": 101,
+  "javascript": "nsh_slick_images"
+}

@@ -1,0 +1,20 @@
+{
+  "resources": {
+    "orderTotalText": "Total do pedido:",
+    "totalText": "Total: ",
+    "salesTaxText": "Imposto sobre vendas:",
+    "subTotalText": "Subtotal:",
+    "shippingLabel": "Remessa",
+    "viewDetailsText": "Exibir Detalhes",
+    "orderDoesNotExist": "O pedido não existe.",
+    "hideDetailsText": "Ocultar Detalhes",
+    "continueShoppingText": "Continuar comprando",
+    "pickupInStoreText": "Retirar na loja",
+    "orderSummaryText": "Resumo do pedido",
+    "includingTaxText": "(com imposto)",
+    "totalExcludingTaxText": "Total (sem imposto): ",
+    "delimiter": ":",
+    "excludingTaxAndShipping": "(excluindo imposto e remessa)",
+    "groupTotalText": "Total do Grupo"
+  }
+}

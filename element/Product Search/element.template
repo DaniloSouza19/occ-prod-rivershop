@@ -1,0 +1,39 @@
+<!-- ko if: initialized() && $data.elements.hasOwnProperty('product-search') -->
+  <!-- ko if: $data['elements']['product-search'].showAddByButton() -->
+    <button class="cc-button-secondary" style="margin-bottom:1rem;" 
+    data-bind="click: $data['elements']['product-search'].enableProductSearchInputBox.bind($data['elements']['product-search']),
+     disable: ($data['elements']['product-search'].showProductSearchInputBox && ($data.cart() && $data.cart().currentOrderState() == 'QUOTED'))">
+      <span class="glyphicon glyphicon-plus"></span>
+      <span data-bind="widgetLocaleText:'addByProductName'"></span>
+     </button>
+  <!-- /ko -->
+
+  <!-- ko if: $data['elements']['product-search'].showProductSearchInputBox() -->
+    <div class="form-group" id="cc-product-name-field">
+      <div data-bind="attr: {id: id()+'_search_product_row'}" class="row">
+        <div class="col-md-9">
+          <div class="right-inner-addon" style="position: relative;">
+            <!-- ko if: $parentContext.hasOwnProperty('$popupId') -->
+              <input class= "productSearchBox form-control" id="product-search-box" style="padding-right: 30px;" aria-required="true" type="text" data-bind="widgetLocaleText: {attr: 'placeholder', value:'productSearchPlaceholderText', params: {minimumCharacters: $data['elements']['product-search'].typeAheadMinimumNumberOfCharacters()}},onRender:$data['elements']['product-search'].initializer.bind($data, $element.id, $parent, $popupId),
+              textInput: $data['elements']['product-search'].productSearchValue">
+            <!-- /ko -->
+            <!-- ko ifnot: $parentContext.hasOwnProperty('$popupId') -->
+              <input id="product-search-box" class= "productSearchBox form-control" style="padding-right: 30px;" aria-required="true" type="text" class="form-control" data-bind="widgetLocaleText: {attr: 'placeholder', value:'productSearchPlaceholderText', params: {minimumCharacters: $data['elements']['product-search'].typeAheadMinimumNumberOfCharacters()}},onRender:$data['elements']['product-search'].initializer.bind($data, $element.id, $parent, ''),
+              textInput: $data['elements']['product-search'].productSearchValue">
+            <!-- /ko -->
+            <i class="glyphicon glyphicon-search" style="position: absolute;right: 0px;padding: 10px 12px;pointer-events: none;"></i>
+          </div>
+        </div>
+
+        <!-- ko if: $data['elements']['product-search'].showRemoveTextboxButton() -->
+          <div style="float: left; margin-top: 0.3rem">
+            <a href="#" data-bind="click: $data['elements']['product-search'].hideProductSearchInputBox.bind($data['elements']['product-search'])">
+              <img data-bind="widgetLocaleText : {value:'hideProductSearchInputBox', attr:'alt'}, attr:{
+                         id:'hideProductSearchInputBox' }" src="/img/remove.png" alt="Remove">
+            </a>
+          </div>
+        <!-- /ko -->
+      </div>
+    </div>
+  <!-- /ko -->
+<!-- /ko -->

@@ -1,0 +1,3 @@
+<button class="cc-button-secondary" tabindex="0" data-bind=" enable: $parent.orderDetailsWrapper.isRejectQuoteAllowed(), click: rejectQuote">
+  <span data-bind="widgetLocaleText: 'buttonRejectQuote'"></span>
+</button>

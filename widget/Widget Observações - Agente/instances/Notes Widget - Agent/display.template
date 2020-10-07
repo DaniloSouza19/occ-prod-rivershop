@@ -1,0 +1,13 @@
+<div class="row">
+<div class="col-xs-12 createOrderAgentnotes">
+  <!-- oc layout: panels -->
+    <div class="row">
+      <div class="oc-panel col-md-12" data-oc-id="panel-1">
+        <!-- oc section: agent-notes -->
+          <div data-bind="element: 'agent-notes', attr: { id: 'agent-notes-'+id()}"></div>
+        <!-- /oc -->
+      </div>
+</div>  
+<!-- /oc -->
+</div>
+</div>

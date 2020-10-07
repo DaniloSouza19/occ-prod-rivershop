@@ -1,0 +1,8 @@
+{
+  "tag": "add-from-catalog",
+  "source": 100,
+  "type": "fragment",
+  "title": "Add from Catalog",
+  "widgetType": "searchAndAddItemsToCart",
+  "version": 1
+}

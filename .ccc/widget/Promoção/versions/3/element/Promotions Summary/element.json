@@ -1,0 +1,8 @@
+{
+  "tag": "promotions-summary",
+  "source": 100,
+  "type": "fragment",
+  "title": "Promotions Summary",
+  "widgetType": "promotion",
+  "version": 3
+}

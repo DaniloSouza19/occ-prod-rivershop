@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-cash",
+  "source": 100,
+  "type": "fragment",
+  "title": "Cash Payment",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

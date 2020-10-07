@@ -1,0 +1,6 @@
+{
+  "widgetType": "accountCheckoutConfirmation",
+  "version": 5,
+  "displayName": "Order Confirmation with Additional Info (Deprecated)",
+  "elementized": false
+}

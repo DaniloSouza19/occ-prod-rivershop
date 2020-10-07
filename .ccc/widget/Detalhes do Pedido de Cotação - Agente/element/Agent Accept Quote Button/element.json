@@ -1,0 +1,8 @@
+{
+  "tag": "agent-accept-quote-button",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Accept Quote Button",
+  "widgetType": "agentQuoteOrderDetails",
+  "version": 1
+}

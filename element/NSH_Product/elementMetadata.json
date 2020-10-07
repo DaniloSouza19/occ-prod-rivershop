@@ -1,0 +1,224 @@
+{
+  "availableToAllWidgets": true,
+  "children": [],
+  "configOptions": [],
+  "inline": false,
+  "tag": "nsh_product",
+  "translations": [
+    {
+      "description": "",
+      "language": "th",
+      "title": "NSH_Product [th]"
+    },
+    {
+      "description": "",
+      "language": "pt_BR",
+      "title": "NSH_Product"
+    },
+    {
+      "description": "",
+      "language": "zh_CN",
+      "title": "NSH_Product [zh_CN]"
+    },
+    {
+      "description": "",
+      "language": "en_AU",
+      "title": "NSH_Product [en_AU]"
+    },
+    {
+      "description": "",
+      "language": "en_US",
+      "title": "NSH_Product [en_US]"
+    },
+    {
+      "description": "",
+      "language": "uk",
+      "title": "NSH_Product [uk]"
+    },
+    {
+      "description": "",
+      "language": "bg",
+      "title": "NSH_Product [bg]"
+    },
+    {
+      "description": "",
+      "language": "et",
+      "title": "NSH_Product [et]"
+    },
+    {
+      "description": "",
+      "language": "lv",
+      "title": "NSH_Product [lv]"
+    },
+    {
+      "description": "",
+      "language": "no",
+      "title": "NSH_Product [no]"
+    },
+    {
+      "description": "",
+      "language": "lt",
+      "title": "NSH_Product [lt]"
+    },
+    {
+      "description": "",
+      "language": "fr_CA",
+      "title": "NSH_Product [fr_CA]"
+    },
+    {
+      "description": "",
+      "language": "ro",
+      "title": "NSH_Product [ro]"
+    },
+    {
+      "description": "",
+      "language": "ja",
+      "title": "NSH_Product [ja]"
+    },
+    {
+      "description": "",
+      "language": "sl",
+      "title": "NSH_Product [sl]"
+    },
+    {
+      "description": "",
+      "language": "ru",
+      "title": "NSH_Product [ru]"
+    },
+    {
+      "description": "",
+      "language": "hr",
+      "title": "NSH_Product [hr]"
+    },
+    {
+      "description": "",
+      "language": "tr",
+      "title": "NSH_Product [tr]"
+    },
+    {
+      "description": "",
+      "language": "pl",
+      "title": "NSH_Product [pl]"
+    },
+    {
+      "description": "",
+      "language": "zh_TW",
+      "title": "NSH_Product [zh_TW]"
+    },
+    {
+      "description": "",
+      "language": "ko",
+      "title": "NSH_Product [ko]"
+    },
+    {
+      "description": "",
+      "language": "cs",
+      "title": "NSH_Product [cs]"
+    },
+    {
+      "description": "",
+      "language": "hu",
+      "title": "NSH_Product [hu]"
+    },
+    {
+      "description": "",
+      "language": "el",
+      "title": "NSH_Product [el]"
+    },
+    {
+      "description": "",
+      "language": "da",
+      "title": "NSH_Product [da]"
+    },
+    {
+      "description": "",
+      "language": "en",
+      "title": "NSH_Product [en]"
+    },
+    {
+      "description": "",
+      "language": "sr",
+      "title": "NSH_Product [sr]"
+    },
+    {
+      "description": "",
+      "language": "ar",
+      "title": "NSH_Product [ar]"
+    },
+    {
+      "description": "",
+      "language": "de",
+      "title": "NSH_Product [de]"
+    },
+    {
+      "description": "",
+      "language": "sr_Latn",
+      "title": "NSH_Product [sr_Latn]"
+    },
+    {
+      "description": "",
+      "language": "es",
+      "title": "NSH_Product [es]"
+    },
+    {
+      "description": "",
+      "language": "ca",
+      "title": "NSH_Product [ca]"
+    },
+    {
+      "description": "",
+      "language": "fr",
+      "title": "NSH_Product [fr]"
+    },
+    {
+      "description": "",
+      "language": "id",
+      "title": "NSH_Product [in]"
+    },
+    {
+      "description": "",
+      "language": "it",
+      "title": "NSH_Product [it]"
+    },
+    {
+      "description": "",
+      "language": "ms",
+      "title": "NSH_Product [ms]"
+    },
+    {
+      "description": "",
+      "language": "en_GB",
+      "title": "NSH_Product [en_GB]"
+    },
+    {
+      "description": "",
+      "language": "vi",
+      "title": "NSH_Product [vi]"
+    },
+    {
+      "description": "",
+      "language": "nl",
+      "title": "NSH_Product [nl]"
+    },
+    {
+      "description": "",
+      "language": "en_CA",
+      "title": "NSH_Product [en_CA]"
+    },
+    {
+      "description": "",
+      "language": "sv",
+      "title": "NSH_Product [sv]"
+    },
+    {
+      "description": "",
+      "language": "pt",
+      "title": "NSH_Product [pt]"
+    },
+    {
+      "description": "",
+      "language": "fi",
+      "title": "NSH_Product [fi]"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Rich_Text_10078",
+      "styles": {},
+      "tag": "rich-text@10078",
+      "text": null,
+      "richTextConfig": {
+        "content": "<p class=\"tituloCategoria\">MAIS PEDIDOS: BEBIDAS</p>\n"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      }
+    }
+  ]
+}

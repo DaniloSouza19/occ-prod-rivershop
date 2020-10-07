@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "colorText": "Cor: ",
+    "estimiatedShippingText": "Entrega estimada: ",
+    "seeAllProducts": "Ver todos os Produtos",
+    "instockText": "Em estoque",
+    "buttonEditCartSummary": "Editar",
+    "cartSummaryItemLimitText": "Mostrando __noOfItems__ itens do carrinho",
+    "outofstockText": "Esgotado",
+    "showAll": "Mostrar Tudo",
+    "sizeText": "Tamanho: ",
+    "cartSummaryText": "Resumo do carrinho",
+    "checkoutErrorMsg": "Verifique se preencheu todos os campos obrigatórios e corrigiu todas as entradas inválidas.",
+    "quantityText": "Quantidade: ",
+    "editCartText": "Editar carrinho"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Imagem_10070",
+      "styles": {},
+      "tag": "image@30060",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "335 x 420px 4.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_30061",
+      "styles": {},
+      "tag": "image@30061",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "teste",
+        "zoomEnabled": "0",
+        "fileName": "335 x 420px 4.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10067",
+      "styles": {},
+      "tag": "image@30057",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "335 x 420px 1.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10069",
+      "styles": {},
+      "tag": "image@30059",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "335 x 420px 3.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_10068",
+      "styles": {},
+      "tag": "image@30058",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Combo",
+        "zoomEnabled": "0",
+        "fileName": "335 x 420px 2.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_40001",
+      "styles": {},
+      "tag": "image@40001",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "dica",
+        "zoomEnabled": "0",
+        "fileName": "335 x 420px DICAS 1.png"
+      }
+    }
+  ]
+}

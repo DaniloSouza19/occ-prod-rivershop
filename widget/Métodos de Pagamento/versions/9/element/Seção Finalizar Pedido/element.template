@@ -1,0 +1,14 @@
+<div id="splitPaymentsPlaceOrderPanel">
+  <!-- Place Order button element-->
+  <fieldset>
+    <div id="CC-splitPayments-placeOrder" class="row">
+    	<div class="form-group col-sm-6">
+        <div class="checkout">
+          <button class="cc-button-primary" data-bind="click: handlePlaceOrder "> 
+            <span data-bind="widgetLocaleText:'placeOrderText' "></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>

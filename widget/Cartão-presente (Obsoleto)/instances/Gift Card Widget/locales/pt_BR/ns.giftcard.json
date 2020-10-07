@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "displayGiftCardDetailsText": "Pagar com Cartão-presente",
+    "giftCardLabelText": "Pagar com Cartão-presente",
+    "giftCardPinText": "PIN do Cartão-presente",
+    "duplicateGiftcardErrMsg": "Cartão-presente já aplicado.",
+    "paymentMethodNotAvilable": "(Esta opção de pagamento não pode ser usada para pedidos programados.)",
+    "giftCardApplyingText": "Aplicando Cartão-Presente",
+    "giftCardNumberText": "Número do Cartão-presente",
+    "giftCardApplyText": "Aplicar Cartão-Presente"
+  }
+}

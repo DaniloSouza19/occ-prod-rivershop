@@ -1,0 +1,9 @@
+{
+  "configuration": {
+    "timeoutMessageTypes": "info,success,warning",
+    "fixed": true,
+    "timeoutEnabled": true,
+    "timeout": "5"
+  },
+  "displayName": "Notifications Widget"
+}

@@ -1,0 +1,19 @@
+<!-- ko setContextVariable:{name:'widgetViewModel', value:$data} -->
+<!-- /ko -->
+<!-- ko if: $widgetViewModel.isReady() -->
+<!-- ko if: ($widgetViewModel.arrImagesDesktop() && $widgetViewModel.arrImagesDesktop().length > 0) || ($widgetViewModel.arrImagesMobile() && $widgetViewModel.arrImagesMobile().length > 0) -->
+<div class="slick_hero">
+    <div class="hero container">
+        <div class="hero__item" data-bind="attr:{id: id}, 
+        foreach:{ data: $widgetViewModel.isMobile() ? $widgetViewModel.arrImagesMobile() : $widgetViewModel.arrImagesDesktop(), as: 'image'}, 
+        onRender: $widgetViewModel.addSlick()">
+            <div class="hero__slide">
+                <a data-bind="attr: {href: link, target: newtab() ? '_blank' : '_self'}">
+                    <img class="hero__image" data-bind="attr: {src: src, title: title, alt: alt}" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->

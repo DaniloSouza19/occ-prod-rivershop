@@ -1,0 +1,36 @@
+<!-- ko if: initialized() -->
+<div id="cc-priceGroup-container" class="zero-pad section-right-margin" >
+  <!-- ko if: priceGroupsLoadStatus() === SUCCESS_STATUS -->
+    <div id="cc-priceGroups-dropDown-holder" class="form-group" >
+      <div id="cc-priceGroups-label-info-holder" align="left" class="col-md-3 priceGroupLabel-margin-top">
+        <div class="cc-dashboard-ellipse">
+          <label for="cc-priceGroups-DropDown"
+               data-bind="widgetLocaleText: 'priceGroupsText'"></label>
+          <button id="pricegroups-info-popover" class="btn return-pop zero-pad"
+              data-bind="infoPopover: {trigger: 'hover', 
+                                       container: '#cc-priceGroups-label-info-holder',
+                                        placement: 'right', 
+                                        name: 'info-popover', zIndex: 550,
+                                        minHeight: '70px', minWidth: '230px',
+                                        model: infoPopOverMessage,
+                                       },
+                                        attr: {'aria-label' : infoPopOverMessage}">
+            <span class="fa fa-info-circle"></span>
+          </button>
+        </div>
+      </div>
+      <div id="cc-priceGroups-DropDown-holder" class="col-md-3 col-lg-3 zero-pad">
+        <select class="form-control" name="priceGroups" 
+                id="cc-priceGroups-DropDown"
+                data-bind="options: priceListGroups,
+                           optionsText: function(item) { 
+                           return item.currency.currencyCode + ' - ' + 
+                           item.displayName;},
+                           optionsValue: function(item) { return item.id},
+                           value: selectedPriceListGroupId">
+        </select>
+      </div>
+    </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->

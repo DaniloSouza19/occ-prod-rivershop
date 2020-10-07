@@ -1,0 +1,8 @@
+{
+  "tag": "product-price-varies",
+  "source": 100,
+  "type": "hidden",
+  "title": "Intervalo preços",
+  "widgetType": "productDetails",
+  "version": 14
+}

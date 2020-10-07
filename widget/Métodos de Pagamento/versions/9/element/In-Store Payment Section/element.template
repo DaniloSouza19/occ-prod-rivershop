@@ -1,0 +1,27 @@
+<!-- ko if: isSinglePayment() -->
+  <!-- Single Payment In-Store Payment Section -->
+  <!-- ko if :  !$data.paymentsContainer().isPaypalVerified() && $data.paymentsContainer().isInStorePaymentEnabled() -->
+    <div class="collapse-heading" data-bind="disabled: !$data.isDisplayInStorePaymentDetails()">
+      <strong>
+        <span class="collapse-toggle collapsed" data-toggle="collapse" data-bind="attr:{'data-target':'#CC-singlepayment-inStore-checkbox'}">
+          <button data-bind="widgetLocaleText:'payInStoreText'"></button>
+        </span>
+      </strong>
+    </div>
+    <div id="CC-singlepayment-inStore">
+      <div id="CC-singlepayment-inStore-checkbox" class="row collapse">
+        <div class="col-sm-12">
+          <div class="checkbox">
+            <label for="CC-singlepayment-inStorePayment">
+              <input type="checkbox" name="inStorePayment"
+                 data-bind="checked: isInStorePaymentChecked, 
+                 disable: validateInStorePaymentToBeDisabled() || order().isPaymentDisabled()"
+                 id="CC-singlepayment-inStorePayment" class="checkbox" />
+              <span data-bind="widgetLocaleText:'inStorePaymentText'"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- /ko -->
+<!-- /ko -->

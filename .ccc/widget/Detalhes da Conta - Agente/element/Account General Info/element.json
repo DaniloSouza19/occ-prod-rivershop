@@ -1,0 +1,8 @@
+{
+  "tag": "account-general-info",
+  "source": 100,
+  "type": "fragment",
+  "title": "Account General Info",
+  "widgetType": "agentAccountDetails",
+  "version": 2
+}

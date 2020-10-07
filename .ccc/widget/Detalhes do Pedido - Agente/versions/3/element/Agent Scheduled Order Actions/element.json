@@ -1,0 +1,8 @@
+{
+  "tag": "scheduled-order-actions",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Scheduled Order Actions",
+  "widgetType": "agentAccountOrderDetails",
+  "version": 3
+}

@@ -1,0 +1,8 @@
+{
+  "tag": "product-image",
+  "source": 100,
+  "type": "fragment",
+  "title": "Imagem do Produto",
+  "widgetType": "productDetails",
+  "version": 14
+}

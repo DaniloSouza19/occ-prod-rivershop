@@ -1,0 +1,108 @@
+<!-- ko if: (user().loggedIn() || user().isUserSessionExpired()) -->
+<div id="CC-customerProfile" data-bind="onRender: addEventHandlersForAnchorClick" class="col-xs-12">
+  <div class="col-xs-12">
+  <!-- ko with: user -->
+  <fieldset id="CC-customerProfile-password-edit-fields">
+    <div id="CC-customerProfile-password-title" class="CC-customerProfile-password-title" data-bind="widgetLocaleText:'myPasswordText'"></div>
+    <hr>
+    <div id="CC-customerProfile-edit" class="row">
+      <!--  Edit begin -->
+      <div id="CC-customerProfile-edit-region">
+      
+          <div class="col-xs-12 first-row">
+            <div class="row">
+              <div class="col-md-8" >
+                <label class="control-label inline" for="CC-customerProfile-soldPassword-1" data-bind="widgetLocaleText:'oldPasswordText'" id="CC-customerProfile-soldPassword-label"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-8" >
+                <span class="text-danger visible-xs" id="CC-customerProfile-soldPassword-phone-error-1" data-bind="validationMessage: oldPassword" role="alert"></span>
+                <div class="control">
+                  <input aria-required="true" type="password" class="col-md-12 form-control" name="soldPassword" id="CC-customerProfile-soldPassword-1" data-bind="validatableValue: oldPassword, widgetLocaleText : {value:'oldPasswordText', attr:'placeholder'}, event: {focus: $parent.inputFieldFocused.bind($parent)} ">
+                </div>
+              </div>
+              <div class="col-md-4 hidden-xs">
+                <p class="text-danger" id="CC-customerProfile-spassword1-error-1" data-bind="validationMessage: oldPassword" role="alert"></p>
+              </div>
+            </div>
+            <div class="row no-outline" id="CC-customerProfile-password-header">
+              <p data-bind="widgetLocaleText: 'passwordHeaderText'" class="no-outline col-xs-12" id="CC-customerProfile-password-headerText" aria-required="true"></p>
+            </div>
+            <br/>
+            <div class="row password-errors" role="alert">
+              <div class="text-muted col-md-12" id="CC-customerProfile-spassword-embeddedAssistance-1" data-bind="embeddedAssistance: newPassword"></div>
+              <div class="col-md-8">
+                <div class="text-danger" id="CC-customerProfile-spassword-error-1" data-bind="validationMessage: newPassword"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8" >
+                <label class="control-label inline" for="CC-customerProfile-spassword-1" data-bind="widgetLocaleText:'newPasswordText'" id="CC-customerProfile-spassword-label"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-8" >
+                <div class="control">
+                  <input aria-required="true" type="password" class="col-md-12 form-control" name="spassword" id="CC-customerProfile-spassword-1"  data-bind="validatableValue: newPassword, widgetLocaleText : {value:'newPasswordText',attr:'placeholder'}, 
+                      valueUpdate: 'afterkeydown', event: {blur: $parent.passwordFieldLostFocus.bind($parent), focus: $parent.passwordFieldFocused.bind($parent)}">
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8" >
+              <label class="control-label inline" for="CC-customerProfile-sconfirmPassword" data-bind="widgetLocaleText:'newConfirmPasswordText'" id="CC-customerProfile-sconfirmPassword-label"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-8" >
+              <span class="text-danger visible-xs" id="CC-customerProfile-sconfirmPassword-phone-error" data-bind="validationMessage: confirmPassword" role="alert"></span>
+              <div class="control">
+                <input aria-required="true" type="password" class="col-md-12 form-control" name="sconfirmPassword" id="CC-customerProfile-sconfirmPassword"  data-bind="validatableValue: confirmPassword, widgetLocaleText : {value:'newConfirmPasswordText',attr:'placeholder'}, 
+                    valueUpdate: 'afterkeydown', event: {blur: $parent.confirmPwdFieldLostFocus.bind($parent), focus: $parent.confirmPwdFieldFocused.bind($parent)}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-customerProfile-sconfirmPassword-error" data-bind="validationMessage: confirmPassword" role="alert"></p>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <!-- Edit ends -->
+    </div>
+  </fieldset>
+  <!-- /ko -->
+  </div> 
+  <div id="CC-customerProfile-save-cancel-control" class="row cc-customer-profile-save-cancel">
+    <button class="cc-button-primary col-sm-2 col-xs-12 pull-right cc-customer-profile-button" id="CC-customerProfile-save" data-bind="click: handleUpdateProfileForUpdatePassword, event: { mousedown: handleMouseDown, mouseup: handleMouseUp}">
+      <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+    </button>
+    <button class="cc-button-secondary col-sm-2 col-xs-12 pull-right cc-customer-profile-button" id="CC-customerProfile-cancel" data-bind="click: handleCancelUpdateForUpdatePassword, event: { mousedown: handleMouseDown, mouseup: handleMouseUp}">
+      <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+    </button>
+  </div>
+  <!-- CC-customerProfileModalPane -->
+<div class="modal fade" id="CC-customerProfile-modal-2"
+     tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+  <div class="modal-dialog" id="CC-customerProfile-modal-dialog-2">
+    <div class="modal-content" id="CC-customerProfileModalContent-2">
+      <div class="modal-header cc-profile-modal-heading cc-profile-confirm-icon" id="CC-customerProfile-modal-header-2">
+        <button type="button" class="close" data-dismiss="modal" id="CC-customerProfile-modal-headerClose-2" aria-hidden="true">&times;</button>
+        <h4 data-bind="widgetLocaleText:'updateCacelModalTitle'" id="CC-customerProfile-modal-headerText-2"></h4>
+      </div>
+      <div class="modal-body cc-profile-body-modal" id="CC-customerProfile-modal-modalBody-2">
+        <p data-bind="widgetLocaleText:'updateCancelModalMessage'" align="center" id="CC-customerProfile-modal-bodyText-2"></p>
+      </div>
+      <div class="modal-footer cc-profile-modal-footer" id="CC-customerProfile-modal-footer-2">
+        <button class="btn cc-button-secondary" id="CC-customerProfile-modal-cancel-2" data-bind="click: handleModalCancelUpdateDiscard">
+          <span id="CC-customerProfile-modal-discard-2" data-bind="widgetLocaleText:'updateCancelModalClose'"></span>
+        </button>
+        <button class="btn cc-button-primary" id="CC-customerProfile-modal-submit-2"  data-bind="click: handleModalUpdateProfile">
+          <span id="CC-customerProfile-modal-save-2" data-bind="widgetLocaleText:'updateCancelModalSave'"></span>
+        </button>
+    </div> 
+    </div>
+  </div>
+</div>
+</div>
+<!-- /ko -->

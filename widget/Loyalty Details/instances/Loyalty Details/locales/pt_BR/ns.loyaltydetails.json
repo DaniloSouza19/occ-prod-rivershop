@@ -1,0 +1,9 @@
+{
+  "resources": {
+    "loyaltyDetails": "Detalhes do Programa de Fidelidade",
+    "membershipId": "ID de Associação -",
+    "category": "Categoria - ",
+    "totalPointsAccrued": "Total de pontos de fidelidade acumulados -",
+    "programId": "ID do Programa - "
+  }
+}

@@ -1,0 +1,427 @@
+<!-- ko if: loaded -->
+<div class="templateRegion" id="cc-product-details" data-oc-id="cc-product-details">
+    <!-- ko if: product -->
+
+    <!--  -->
+    <div class="row">
+        <div class="oc-panel col-md-6" data-oc-id="panel-1">
+
+            <!-- product-image -->
+            <div class="cc-image-area">
+                <div id="image-viewer" data-bind="visible: product().primaryFullImageURL">
+
+                    <!-- Desktop and tablet views -->
+                    <!-- ko ifnot: isMobile -->
+                    <div class="cc-viewer-pane hidden-xs hidden-sm">
+
+                        <div id="cc-image-viewer" data-bind="imageZoom: {
+                  magnifierPercent: 0.35,
+                  magnifierEnabled: false,
+                  smallImageUrl: product().mediumImageURLs()[activeImgIndex()],
+                  fullImageUrl: product().fullImageURLs()[activeImgIndex()],
+                  imageMetadataDefault: {alttext: (product().product.productImagesMetadata[activeImgIndex()] && product().product.productImagesMetadata[activeImgIndex()].altText) ? product().product.productImagesMetadata[activeImgIndex()].altText : product().displayName(),
+                                        title:(product().product.productImagesMetadata[activeImgIndex()] && product().product.productImagesMetadata[activeImgIndex()].titleText) ? product().product.productImagesMetadata[activeImgIndex()].titleText : product().displayName()},
+                  imageMetadatas: product().product.productImagesMetadata,
+                  index: activeImgIndex,
+                  spinnerDelay: 200,
+                  smallImageUrls: product().mediumImageURLs,
+                  fullImageUrls: product().fullImageURLs,
+                  replaceImageAtIndex : false,
+                  errorImageUrl: '/img/no-image.jpg'}">
+
+                            <img class="ccz-small img-responsive" data-bind="ccResizeImage: {
+                    isSrcSetEnabled : true,
+                    source:product().mediumImageURLs()[activeImgIndex()] , 
+                    alt: (product().product.productImagesMetadata[activeImgIndex()] && product().product.productImagesMetadata[activeImgIndex()].altText) ? product().product.productImagesMetadata[activeImgIndex()].altText : product().displayName(),
+                    title: (product().product.productImagesMetadata[activeImgIndex()] && product().product.productImagesMetadata[activeImgIndex()].titleText) ? product().product.productImagesMetadata[activeImgIndex()].titleText : product().displayName(),  
+                    errorSrc:'/img/no-image.jpg', 
+                    errorAlt:'No Image Found'}">
+                            </img>
+
+                        </div>
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- Mobile views -->
+                    <!-- ko if: isMobile -->
+                    <div data-bind="carouselSwipe" class="carousel slide visible-xs visible-sm"
+                        id="prodDetails-mobileCarousel">
+                        <div class="carousel-inner">
+                            <!-- ko foreach: product().fullImageURLs -->
+                            <div class="item" data-bind="css: {'active': $index() == 0}">
+
+                                <img class="img-responsive center-block" align="middle" data-bind="ccResizeImage: {
+                      isSrcSetEnabled : true,
+                      source:$data + '&height=300&width=300' ,
+                      xsmall:'300,300',    
+                      alt:$parent.displayName, 
+                      errorSrc:'/img/no-image.jpg', 
+                      errorAlt:'No Image Found'}">
+                                </img>
+
+                                <!-- Updated removed!!! 
+                    <a class="cc-viewer-pane" href="#" onclick="return false">
+                      <div data-bind="attr: {id: 'cc-carousel-img-viewer-'+$index()}"></div>
+                    </a>
+                    -->
+                            </div>
+                            <!-- /ko -->
+                        </div>
+                        <!-- ko if: product().thumbImageURLs && (product().thumbImageURLs().length > 1) -->
+                        <div class="row-fluid">
+                            <ol class="carousel-indicators" data-bind="foreach: product().fullImageURLs">
+                                <li data-target="#prodDetails-mobileCarousel"
+                                    data-bind="css: {'active': $index() == 0}, attr: {'data-slide-to': $index}"></li>
+                            </ol>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+
+                </div>
+            </div>
+
+            <!-- -->
+
+            <!-- product-image-carousel -->
+            <div id="prodDetails-imgCarousel" class="carousel slide hidden-sm hidden-xs"
+                data-bind="visible: product().primaryFullImageURL && (product().thumbImageURLs().length > 1) , carouselSwipe"
+                data-interval="false">
+                <!-- ko if: imgGroups() && (imgGroups().length > 1) -->
+                <a class="left carousel-control" href="#prodDetails-imgCarousel" data-slide="prev"
+                    data-bind="event: {keyup: handleCarouselArrows}, widgetLocaleText:{value:'previousImageText',attr:'title'}">
+                    <div class="cc-left-arrow"></div>
+                </a>
+                <!-- /ko -->
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <!-- ko foreach: imgGroups -->
+                    <div class="item" data-bind="css: {'active': $index()==0}, foreach: $data">
+                        <!-- ko if: $parents[1].imgMetadata && ($parents[1].imgMetadata.length>0) -->
+                        <div class="col-md-3 thumbnail-container">
+                            <a tabindex="0" class="thumbnail"
+                                data-bind="click: function(data,event){ $parents[1].loadImageToMain(data, event,($parentContext.$index() * 4) + $index());},
+                                                    event: {keyup: function(data, event){$parents[1].handleCycleImages(data, event, $index(), $parentContext.$index());}},
+                                                    attr: {id: 'carouselLink'+(($parentContext.$index() * 4) + $index())},
+                                                    css: {'active' : $parents[1].activeImgIndex() == ($parentContext.$index() * 4) + $index()}"
+                                href="#">
+                                <img data-bind="image: {src: $data}, attr: {id: 'carouselImg'+(($parentContext.$index() * 4) + $index()),
+                      alt: $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].altText ? $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].altText : $parents[1].product().displayName(),
+                      title: $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].titleText ? $parents[1].imgMetadata[(($parentContext.$index() * 4) + $index())].titleText : $parents[1].product().displayName()}"
+                                    onError="this.onError=null;this.src='/img/no-image.jpg';">
+                            </a>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if : !($parents[1].imgMetadata && $parents[1].imgMetadata.length>0)-->
+                        <div class="col-md-3 thumbnail-container">
+                            <a tabindex="0" class="thumbnail"
+                                data-bind="click: function(data,event){ $parents[1].loadImageToMain(data, event,($parentContext.$index() * 4) + $index());},
+                                                    event: {keyup: function(data, event){$parents[1].handleCycleImages(data, event, $index(), $parentContext.$index());}},
+                                                    attr: {id: 'carouselLink'+(($parentContext.$index() * 4) + $index())},
+                                                    css: {'active' : $parents[1].activeImgIndex() == ($parentContext.$index() * 4) + $index()}"
+                                href="#">
+                                <img data-bind="attr: {src: $data, id: 'carouselImg'+(($parentContext.$index() * 4) + $index()),
+                      alt: ($parents[1].product().product.productImagesMetadata[$index()] && $parents[1].product().product.productImagesMetadata[$index()].altText) ? $parents[1].product().product.productImagesMetadata[$index()].altText : $parents[1].product().displayName(),
+                      title: ($parents[1].product().product.productImagesMetadata[$index()] && $parents[1].product().product.productImagesMetadata[$index()].titleText) ? $parents[1].product().product.productImagesMetadata[$index()].titleText : $parents[1].product().displayName()}"
+                                    onError="this.onError=null;this.src='/img/no-image.jpg';">
+                            </a>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- ko if: imgGroups().length > 1 -->
+                <div class="row hidden-md hidden-lg">
+                    <ol class="carousel-indicators" data-bind="foreach: imgGroups" title="product images">
+                        <li data-target="#prodDetails-imgCarousel"
+                            data-bind="css: {'active': $index()==0}, attr: {'data-slide-to': $index}"></li>
+                    </ol>
+                </div>
+                <!-- /ko -->
+
+                <!-- Controls -->
+                <!-- ko if: imgGroups().length > 1 -->
+                <a class="right carousel-control" href="#prodDetails-imgCarousel" data-slide="next"
+                    data-bind="event: {keyup: handleCarouselArrows}, widgetLocaleText:{value:'nextImageText',attr:'title'}">
+                    <div class="cc-right-arrow"></div>
+                </a>
+                <!-- /ko -->
+            </div>
+
+            <!-- -->
+
+        </div>
+
+
+        <div class="oc-panel col-md-6" data-oc-id="panel-2">
+
+            <!-- product-title -->
+            <h1>
+                <!-- ko text: product().displayName() -->
+                <!-- /ko -->
+            </h1>
+            <!-- -->
+
+            <!-- product-price -->
+            <div data-bind="if: !priceRange() && (!salePrice || salePrice() === null)"
+                data-oc-id="product-list-price-only" role="alert">
+                <span
+                    data-bind="currency: {price: listPrice(), currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: $data.priceUnavailableText(), prependNull: false}, attr: {role: !salePrice() ? 'alert' : null}"
+                    aria-atomic="true" aria-live="polite"></span>
+
+
+            </div>
+
+            <div data-bind="if: !priceRange() && (salePrice && salePrice() !== null)" data-oc-id="product-on-sale"
+                role="alert">
+                <span
+                    data-bind="currency: {price: salePrice(), currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: $data.priceUnavailableText(), prependNull: false}"
+                    role="alert" aria-atomic="true" aria-live="polite"></span>
+
+            </div>
+
+            <div data-bind="if: priceRange()" data-oc-id="product-price-varies" role="alert">
+                <span role="alert" aria-atomic="true" aria-live="polite">
+                    <span class="sr-only" data-bind="widgetLocaleText:'priceRangeText'"></span>
+                    <span id="CC-prodDetails-priceMin"
+                        data-bind="currency: {price: product().minPrice, currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>&#45;
+                    <span class="sr-only" data-bind="widgetLocaleText:'toText'"></span>
+                    <span id="CC-prodDetails-priceMax"
+                        data-bind="currency: {price: product().maxPrice, currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+                </span>
+
+            </div>
+            <!-- -->
+
+            <!-- product-shipping-surcharge -->
+            <div data-bind="if: shippingSurcharge()">
+                <div id="cc-prodDetails-shipping-surcharge-element">
+                    <span data-bind="widgetLocaleText: resources().shippingSurchargeLabel"></span>
+                    <!-- ko if: showSecondaryShippingData() -->
+                    <span id="cc-prodDetails-shipping-surcharge"
+                        data-bind="currency: {price: secondaryCurrencyShippingSurcharge(),
+                                                currencyObj: $data.site().siteSecondaryCurrency(), nullReplace: '0.00', prependNull: true}">
+                    </span>
+                    <!-- /ko -->
+                    <!-- ko ifnot: showSecondaryShippingData() -->
+                    <span id="cc-prodDetails-shipping-surcharge"
+                        data-bind="currency: {price: shippingSurcharge(),
+                                                currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}">
+                    </span>
+                    <!-- /ko -->
+                    <small id="CC-shippingSurcharge-whatsThis" class="shippingSurchargePopover" data-bind="widgetLocaleText: resources().shippingSurchargeWhatsThis, event:{mouseover:shippingSurchargeMouseOver, focus:shippingSurchargeMouseOver},
+                               attr: {'aria-label':resources().shippingSurchargeWhatsThis}" data-toggle="popover"
+                        data-placement="right" tabindex="0">
+                    </small>
+                    <div id="cc-shippingSurcharge-details" class="a11y">
+                        <h3 data-bind="widgetLocaleText: resources().shippingSurchargePopupTitle"></h3>
+                        <div data-bind="widgetLocaleText: resources().shippingSurchargePopupText">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- -->
+
+            <!-- product-description -->
+            <div data-bind="text: product().description" id="CC-prodDetails-description"></div>
+            <!-- -->
+
+            <!-- product-variants -->
+            <!-- ko foreach: variantOptionsArray -->
+            <div class="row">
+                <div class="control-group col-xs-3">
+                    <label class="control-label"
+                        data-bind="attr: {for: 'CC-prodDetails-' + $data.optionId, id: 'CC-prodDetails-label-' + $data.optionId}, text: $data.optionDisplayName + ':'"></label>
+                </div>
+                <div class="col-sm-4 col-xs-8">
+                    <!-- ko if: $data.optionCaption -->
+                    <select class="form-control cc-skuDropdown"
+                        data-bind="validatableTarget: selectedOption, validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+            attr: {id: 'CC-prodDetails-' + $data.optionId}, optionsCaption: $data.optionCaption, value: $data.selectedOption, disable: $parent.disableOptions() || $data.disable">
+                    </select>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $data.optionCaption -->
+                    <select class="form-control cc-skuDropdown"
+                        data-bind="validatableTarget: selectedOption, validationOptions: {decorateElement: false, decorateElementOnModified:  false}, options: optionValues, optionsText: 'key',
+            attr: {id: 'CC-prodDetails-' + $data.optionId}, value: $data.selectedOption, disable: $parent.disableOptions() || $data.disable">
+                    </select>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <!-- /ko -->
+
+            <!-- -->
+
+            <!-- product-quantity -->
+            <div class="row">
+                <div class="control-group col-xs-3">
+                    <label class="control-label" for="CC-prodDetails-quantity"><span
+                            data-bind="widgetLocaleText: 'itemQuantityLabelText'"></span>:</label>
+                </div>
+                <div class="col-sm-2 col-xs-4">
+                    <input id="CC-prodDetails-quantity" type="text" class="cc-numericField form-control"
+                        data-bind="textInput: itemQuantity"></input>
+                </div>
+                <!-- ko if: variantOptionsArray().length == 0 || selectedSku -->
+                <div class="notify col-xs-6">
+                    <span id="CC-prodDetails-quantity-itemError" class="text-danger" role="alert" aria-live="assertive"
+                        data-bind="validationMessage: itemQuantity"></span>
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <!-- -->
+
+            <!-- product-long-description -->
+            <div data-bind="html: product().longDescription" id="CC-prodDetails-longDescription"></div>
+
+            <!-- -->
+
+            <!-- product-stock-availability -->
+            <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='IN_STOCK')"
+                data-oc-id="product-in-stock">
+                <span
+                    data-bind="widgetLocaleText:{custom: 'text.id', value: 'instockText', attr:'innerText'}"
+                    role="alert" aria-atomic="true" aria-live="polite"></span>
+
+            </div>
+
+            <div data-bind="if: (showStockStatus() && !stockStatus() )" data-oc-id="product-out-of-stock">
+                <span
+                    data-bind="widgetLocaleText:{custom: 'text.id', value: 'outofstockText', attr:'innerText'}"
+                    role="alert" aria-atomic="true" aria-live="polite"></span>
+
+            </div>
+            <div data-bind="if: (showStockStatus() && stockStatus() && stockState()==='PREORDERABLE')"
+                data-oc-id="product-preorder">
+                <span role="alert" aria-atomic="true" aria-live="polite">
+                    <span
+                        data-bind="widgetLocaleText:{custom: 'text.id', value: 'preorderableText', attr:'innerText'}"></span>
+                    <!-- ko if: $data.availabilityDate() != null-->
+                    <span data-bind="widgetLocaleText: 'availabilityDateText'"></span>
+                    <span data-bind="ccDate: {date: $data.availabilityDate()}"></span>
+                    <!-- /ko -->
+                </span>
+            </div>
+            <div data-bind="if: (showStockStatus() && stockStatus()&& stockState()==='BACKORDERABLE' )"
+                data-oc-id="product-backorder">
+                <span role="alert" aria-atomic="true" aria-live="polite">
+                    <span
+                        data-bind="widgetLocaleText:{custom: 'text.id', value: 'backorderableText', attr:'innerText'}"></span>
+                    <!-- ko if: $data.availabilityDate() != null-->
+                    <span data-bind="widgetLocaleText: 'availabilityDateText'"></span>
+                    <span data-bind="ccDate: {date: $data.availabilityDate()}"></span>
+                    <!-- /ko -->
+                </span>
+            </div>
+            <!-- -->
+
+            <!-- product-add-to-cart -->
+            <div id="CC-prodDetails-addToCart" data-bind="inTabFlow:(validateAddToCart())">
+                <button id="cc-prodDetailsAddToCart"
+                    data-bind="disabled: {condition: !validateAddToCart() || isAddToCartClicked, click: handleAddToCart}"
+                    class="cc-button-primary">
+                    <!-- ko ifnot: stockState() === 'PREORDERABLE'-->
+                    <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText: 'addToCartText'"></span>
+                    <!-- /ko -->
+                    <!-- ko if: stockState() === 'PREORDERABLE'-->
+                    <span id="cc-prodDetails-addToCart" data-bind="widgetLocaleText: 'preOrderButtonText'"></span>
+                    <!-- /ko -->
+                </button>
+            </div>
+
+            <!-- -->
+
+            <!-- product-add-to-space -->
+            <!-- ko if: showSWM  -->
+            <br><br>
+            <div class="btn-group swm-add-to-wishlist-selector">
+                <button id="cc-prodDetailsAddToSpaceSelector" data-backdrop="static"
+                    data-bind="disabled: {condition: !validateAddToSpace() || disableAddToSpace}, click: isAddToSpaceClicked() == false && addToSpaceClick"
+                    class="btn cc-button-secondary">
+                    <!-- ko ifnot: isAddToSpaceClicked -->
+                    <span id="CC-prodDetails-addToSpaceSelector"
+                        data-bind="widgetLocaleText:'socialAddToSpaceText'"></span>
+                    <!-- /ko -->
+                    <!-- ko if: isAddToSpaceClicked -->
+                    <span id="CC-prodDetails-addedToSpaceSelector"
+                        data-bind="widgetLocaleText:'socialAddedToSpaceText'"></span>
+                    <!-- /ko -->
+                </button>
+                <!-- ko if: $data.user().loggedIn() -->
+                <button id="cc-prodDetailsAddToSpaceDropdown" class="btn cc-button-secondary dropdown-toggle"
+                    data-backdrop="static" data-toggle="dropdown"
+                    data-bind="disabled: {condition: !validateAddToSpace() || disableAddToSpace}, click: $data.openAddToWishlistDropdownSelector.bind($data)">
+                    <span class="caret"></span>
+                    <span class="sr-only" data-bind="widgetLocaleText:'socialAddToSpaceText'"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="cc-prodDetailsAddToSpaceDropdown">
+                    <li role="presentation" class="dropdown-header" data-bind="widgetLocaleText: 'mySpacesGroupText'">
+                    </li>
+                    <!-- ko foreach : {data : $data.spaceOptionsGrpMySpacesArr, as : 'mySpaces'} -->
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"
+                            data-bind="text: mySpaces.spaceNameFull, click: $parent.addToSpaceSelect.bind($parent, mySpaces.spaceid)"></a>
+                    </li>
+                    <!-- /ko -->
+                    <li role="presentation" class="dropdown-header"
+                        data-bind="visible: spaceOptionsGrpJoinedSpacesArr().length > 0, widgetLocaleText: 'joinedSpacesGroupText'">
+                    </li>
+                    <!-- ko foreach : {data : $data.spaceOptionsGrpJoinedSpacesArr, as : 'joinedSpaces'} -->
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"
+                            data-bind="text: joinedSpaces.spaceNameFormatted, click: $parent.addToSpaceSelect.bind($parent, joinedSpaces.spaceid)"></a>
+                    </li>
+                    <!-- /ko -->
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href=""
+                            data-bind="widgetLocaleText: 'createNewSpaceOptText', click: addToSpaceSelectorClick"></a>
+                    </li>
+                </ul>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+            <!--  -->
+
+
+            <!-- product-social-share -->
+            <div class="row social-share-div">
+                <div class="col-xs-12">
+                    <span data-bind="widgetLocaleText:'shareText'"></span>
+                </div>
+            </div>
+            <div class="row social-share-div">
+                <div class="col-xs-12">
+                    <a
+                        data-bind="visible: $data.siteFbAppId(), attr : { href: '#', 'title' : $data.translate('shareOnFacebookButtonText') }, click: shareProductFbClick">
+                        <img src="/file/ccimg/icon32_facebook.png"
+                            data-bind="attr : { 'alt' : $data.translate('shareOnFacebookButtonText') }" width="32px"
+                            height="32px" />
+                    </a>
+                    <a
+                        data-bind="attr : { href: '#', 'title' : $data.translate('shareOnTwitterButtonText') }, click: shareProductTwitterClick">
+                        <img src="/file/ccimg/icon32_twitter.png"
+                            data-bind="attr : { 'alt' : $data.translate('shareOnTwitterButtonText') }" width="32px"
+                            height="32px" />
+                    </a>
+                    <a data-bind="attr : { href: '#', 'title' : $data.translate('shareOnPinterestButtonText') }, click: shareProductPinterestClick"
+                        data-pin-do="buttonPin" data-pin-tall="true" data-pin-round="true">
+                        <img src="/file/ccimg/icon32_pinterest.png"
+                            data-bind="attr : { 'alt' : $data.translate('shareOnPinterestButtonText') }" width="32px"
+                            height="32px" />
+                    </a>
+                    <a
+                        data-bind="attr : { href: '#', 'title' : $data.translate('shareByEmailButtonText') }, click: shareProductEmailClick">
+                        <img src="/file/ccimg/icon32_email.png"
+                            data-bind="attr : { 'alt' : $data.translate('shareByEmailButtonText') }" width="32px"
+                            height="32px" />
+                    </a>
+                </div>
+            </div>
+            <!--  -->
+
+
+        </div>
+    </div>
+    <!-- -->
+    <!-- /ko -->
+</div>
+<!-- /ko -->

@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "spaceSettingsSaveErrorTxt": "Ocorreu um problema ao salvar as suas alterações das configurações de notificação.",
+    "spaceSettingsSaveTxt": "Salvar",
+    "spaceSettingsCancelTxt": "Cancelar",
+    "spaceSettingsSaveSuccessTxt": "Suas configurações de notificação foram atualizadas e salvas.",
+    "spaceSettingsNotificationEnableHelpText": "Selecione \"Quero receber atualizações por e-mail\" na página Detalhes da Conta para ativar as notificações da lista de desejos.",
+    "spaceSettingsOnText": "Sim",
+    "spaceSettingsNotificationHeadingText": "Configurações de Notificação por E-mail",
+    "spaceSettingsCommentNotificationTxt": "Notificações de produtos e comentário",
+    "spaceSettingsOffText": "Não",
+    "spaceSettingsNewMemberNotificationTxt": "Notificações de novos membros",
+    "spaceSettingsNotificationIntroText": "Eu gostaria de receber:"
+  }
+}

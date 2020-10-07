@@ -1,0 +1,216 @@
+<div class="row"> 
+  <!-- ko if: $parent.display() -->
+  <!-- ko with: $parent.scheduledOrder -->
+  <div class="col-md-12">
+    <div class="row" id="cc-scheduleOrderInstructionHeader">
+      <div class="col-md-4 cc-scheduleOrderInstructionHeader-header"
+        id="cc-scheduleOrderInstructionHeader-header">
+        <h4 class="cc-order-header-font-size" id="cc-scheduled-order-instruction-title" 
+          data-bind="widgetLocaleText: 'scheduleInstructions'"></h4>
+      </div>
+    </div>
+    <div id="CC-scheduledOrder-scheduleForm" class="panel panel-default cc-spinner-container" >
+      <div class="panel-heading">
+        <form role="form" novalidate>
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label data-bind="widgetLocaleText:'nameText'"
+                class="control-label"
+                for="CC-scheduledOrder-name"></label>
+              <input data-bind="widgetLocaleText : {value:'nameText', attr:'aria-label'},disable : $parent.orderDetailsWrapper.disableScheduleOrderInstruction(), validatableValue: name,
+                widgetLocaleText : {
+                value: 'nameText',
+                attr: 'placeholder'
+                }"
+                type="text"
+                class="form-control"
+                name="name"
+                id="CC-scheduledOrder-name"
+                aria-required="true">
+              <span data-bind="validationMessage: name"
+                class="text-danger"
+                id="CC-scheduledOrder-name-error"
+                role="alert">
+              </span>
+            </div>
+            <div class="form-group col-sm-2">
+              <label data-bind="widgetLocaleText:'startDateText'"
+                class="control-label"
+                for="CC-scheduledOrder-startDate">
+              </label>
+              <div class="input-group">
+                <input data-bind="widgetLocaleText : {value:'startDateText', attr:'aria-label'},disable : $parent.orderDetailsWrapper.disableScheduleOrderInstruction(), validatableValue: $parent.parsedStartDate,
+                  datepicker: $parent.parsedStartDate,
+                  dpOptions: {
+                  autoclose: true,
+                  startDate: '+1d',
+                  format: 'mm/dd/yyyy',
+                  language: $parent.locale().replace('_','-')}"
+                  type="text"
+                  class="form-control"
+                  name="$parent.parsedStartDate"
+                  id="CC-scheduledOrder-startDate"
+                  aria-required="true"
+                  placeholder="mm/dd/yyyy">
+                <label class="input-group-btn" for="CC-scheduledOrder-startDate">
+                <button class="btn btn-default" type="button" data-bind="disable : $parent.orderDetailsWrapper.disableScheduleOrderInstruction()">
+                <span class="fa fa-calendar"></span>
+                </button>
+                </label>
+              </div>
+              <span data-bind="validationMessage: $data.startDate"
+                class="text-danger"
+                id="CC-scheduledOrder-startDate-error"
+                role="alert">
+              </span>
+            </div>
+            <div class="form-group col-sm-2">
+              <label data-bind="widgetLocaleText:'endDateText'"
+                class="control-label"
+                for="CC-scheduledOrder-endDate">
+              </label>
+              <div class="input-group">
+                <input data-bind="widgetLocaleText : {value:'endDateText', attr:'aria-label'},disable : $parent.orderDetailsWrapper.disableScheduleOrderInstruction(), validatableValue: $parent.parsedEndDate,
+                  datepicker: $parent.parsedEndDate,
+                  dpOptions: {
+                  autoclose: true,
+                  startDate: '+1d',
+                  format: 'mm/dd/yyyy',
+                  language: $parent.locale().replace('_','-')}"
+                  type="text"
+                  class="form-control"
+                  name="$parent.parsedEndDate"
+                  id="CC-scheduledOrder-endDate"
+                  aria-required="false"
+                  placeholder="mm/dd/yyyy">
+                <label class="input-group-btn" for="CC-scheduledOrder-endDate">
+                <button class="btn btn-default" type="button" data-bind="disable : $parent.orderDetailsWrapper.disableScheduleOrderInstruction()">
+                <span class="fa fa-calendar"></span>
+                </button>
+                </label>
+              </div>
+              <span data-bind="validationMessage: endDate"
+                class="text-danger"
+                id="CC-scheduledOrder-endDate-error"
+                role="alert">
+              </span>
+            </div>
+            <div class="form-group col-sm-2">
+              <label
+                data-bind="widgetLocaleText:'frequencyText'"
+                class="control-label"
+                for="CC-scheduledOrder-scheduleMode">
+              </label>
+              <select
+                data-bind="value: scheduleMode, disable : $parent.orderDetailsWrapper.disableScheduleOrderInstruction() ,foreach: $parent.scheduleModeOptGroups"
+                class="form-control"
+                name="scheduleMode"
+                id="CC-scheduledOrder-scheduleMode"
+                aria-required="true">
+                <optgroup data-bind="attr: {label: label}, foreach: options">
+                  <option data-bind="value: value, text: text">
+                  </option>
+                </optgroup>
+              </select>
+              <span
+                data-bind="validationMessage: scheduleMode"
+                class="text-danger"
+                id="CC-scheduledOrder-scheduleMode-error"
+                role="alert">
+              </span>
+            </div>
+            <div class="form-group col-sm-2">
+              <label data-bind="widgetLocaleText:'suspendOrderText'"
+                class="control-label"
+                for="CC-scheduledOrder-suspend">
+              </label>
+              <div id="CC-scheduledOrder-suspend">
+                <input data-bind="widgetLocaleText : {value:'suspendText', attr:'aria-label'},disable : $parent.orderDetailsWrapper.disableScheduleOrderInstruction(),checked: $parent.suspended"
+                  type="checkbox"
+                  id="CC-scheduledOrder-suspend-checkbox"
+                  aria-required="true">
+                <span data-bind="widgetLocaleText:'suspendText'"></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="panel-body" data-bind="visible: $parent.daysOfWeekEnabled() && $parent.weeksInMonthEnabled()">
+        <div class="col-sm-8">
+          <fieldset data-bind="visible: $parent.daysOfWeekEnabled()" class="form-group" >
+            <strong data-bind="widgetLocaleText: 'chooseDaysOfWeekText'"></strong><br>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 1">
+            <span data-bind="widgetLocaleText:'sundayAbbreviationText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 2">
+            <span data-bind="widgetLocaleText:'mondayAbbreviationText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 3">
+            <span data-bind="widgetLocaleText:'tuesdayAbbreviationText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 4">
+            <span data-bind="widgetLocaleText:'wednesdayAbbreviationText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 5">
+            <span data-bind="widgetLocaleText:'thursdayAbbreviationText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 6">
+            <span data-bind="widgetLocaleText:'fridayAbbreviationText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: daysOfWeek, checkedValue: 7">
+            <span data-bind="widgetLocaleText:'saturdayAbbreviationText'"></span>
+            </label>
+          </fieldset>
+          <span data-bind="validationMessage: daysOfWeek"
+            class="text-danger"
+            id="CC-scheduledOrder-daysOfWeek-error"
+            role="alert">
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <fieldset data-bind="visible: $parent.weeksInMonthEnabled()" class="form-group">
+            <strong data-bind="widgetLocaleText: 'chooseOccuranceText'"></strong><br>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 1, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'firstText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 2, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'secondText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 3, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'thirdText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 4, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'fourthText'"></span>
+            </label>
+            <label class="checkbox-inline">
+            <input type="checkbox" data-bind="checked: weeksInMonth, checkedValue: 5, disable: $parent.weeksInMonthReadonly($element)">
+            <span data-bind="widgetLocaleText:'lastText'"></span>
+            </label>
+          </fieldset>
+          <span data-bind="validationMessage: weeksInMonth"
+            class="text-danger"
+            id="CC-scheduledOrder-weeksInMonth-error"
+            role="alert">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div data-bind="widgetLocaleText: 'scheduledOrderTotalInstructionText'" class="pull-left CC-scheduledOrder-orderDetails-instructions"></div>
+  </div>
+  <div id="cc-horizontalLine-scheduled-order-history">
+    <hr class="line agent-line col-xs-12">
+  </div>
+  <!-- /ko -->
+  <!-- /ko -->
+</div>

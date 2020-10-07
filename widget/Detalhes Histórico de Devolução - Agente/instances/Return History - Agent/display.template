@@ -1,0 +1,114 @@
+<div class="row">
+<!--  ko if:   $data.orderDetailsWrapper.isRenderComplete() -->
+<!-- ko if : $data.populateReturnRequest() > 0 -->
+<div class="col-md-12" id="cc-returnRequestHistoryDetails">
+  <div class="row" id="cc-returnHistoryHeader">
+    <div class="col-md-4 cc-returnRequest-header"
+      id="cc-returnRequest-header"
+      data-bind="
+      visible: (returnRequests() != undefined && returnRequests().length > 0)">
+      <h4 class="cc-order-header-font-size" id="cc-return-requests-title" 
+      data-bind="widgetLocaleText: 'returnHistoryCaptionText'"></h4>
+    </div>
+  </div>
+  <table id="cc-returnHistoryTableHeader-table"
+    class="table-header-styling table table-bordered table-striped tableHeader cc-return-history-table-header-column-layout"
+    data-bind="attr: {summary: CCi18n.t('ns.common:resources.returnHistoryCaptionText')},
+     visible: (returnRequests() != undefined && returnRequests().length > 0)">
+    <thead>
+      <tr>
+        <th scope="col" data-bind="widgetLocaleText: 'returnRequestIdText'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'rmaNumberText'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'returnRequestDateText'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'returnTotalQuantityText'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'refundText'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'returnStatusText'"></th>
+        <th scope="col" data-bind="widgetLocaleText: 'returnActionText'"></th>
+      </tr>
+    </thead>
+  </table>
+  <div id="cc-returnHistoryTblBodyContainer"
+    class="cc-return-history-table-body-container"
+    data-bind="
+     visible: (returnRequests() != undefined && returnRequests().length > 0)">
+    <table role='presentation'
+      class="table table-bordered table-striped table-header 
+        cc-return-history-table-body-column-layout"
+      id="cc-returnRequestData-table"
+      data-bind="css: {'cc-return-history-table-body-column-layout-scrollbar':
+      (returnRequests().length >= 4), 'cc-return-history-table-body-column-layout'
+      :(returnRequests().length < 4)}">
+      <tbody data-bind="foreach:returnRequests">
+        <tr>
+          <td class="col-md-12"
+            data-bind="attr: {id: 'cc-return-request-id-' + returnRequestId }">
+            <!-- ko if: operation == ''-->
+            <a href="#" data-bind="attr: {
+                   id: 'cc-return-refund-link-'+$index()}, text: returnRequestId,
+                   click: $parent.showReturnRequest.bind($parent, returnRequestId, $parent.orderDetailsWrapper.orderDetails().id)">
+            </a>
+            <!-- /ko -->
+            <!-- ko ifnot: operation == ''-->
+              <span data-bind="text: returnRequestId"></span>
+            <!-- /ko -->
+          </td>
+          <td class="cc-table-column-word-wrap">
+              <span data-bind="text: returnRequestId != authorizationNumber ? authorizationNumber : '-'"></span>
+          </td>
+          <td
+            data-bind="attr: {id: 'cc-return-request-date-' + returnRequestId }">
+            <span data-bind="ccDateTime: {date: createdDate, format: 'datetime',
+                                 dateFormat: 'medium',
+                                 timeFormat: 'short'}">
+            </span>
+          </td>
+          <td
+            data-bind="attr: {id: 'cc-return-total-quanity-' + returnRequestId }">
+            <div data-bind="text: totalReturnQuantity"></div>
+          </td>
+          <td data-bind="attr: {id: 'cc-return-refund-' + returnRequestId }">
+           <!-- ko if: ($parents[0].isPayShippingInSecondaryCurrency() || $parents[0].isPayTaxInSecondaryCurrency()) -->
+              <div data-bind="text:$parent.convertToAmountInProperFormatForRefundOrExchange(totalRefundMap)"></div>
+              <!-- /ko -->
+         <!-- ko ifnot: ($parents[0].isPayShippingInSecondaryCurrency() || $parents[0].isPayTaxInSecondaryCurrency()) -->
+                    <div
+              data-bind="currency: {price: totalRefund,
+                                    currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency}"></div>
+                                    <!-- /ko -->
+          </td>
+          <td data-bind="attr: {id: 'cc-return-status-' + returnRequestId }">
+            <div data-bind="text: state"></div>
+          </td>
+          <td data-bind="attr: {id: 'cc-action-' + returnRequestId }">
+            <!-- ko if: operation === 'refund'-->
+            <a href="#" id="cc-return-refund-link"
+              data-bind="click: $parent.refundReturn.bind($parent, returnRequestId, $parent.orderDetailsWrapper.orderDetails().id)">
+                <span data-bind="widgetLocaleText: 'linkActionRefundText'"></span>
+            </a> 
+           <!-- /ko  --> 
+           <!-- ko if: operation === 'process'-->
+           <a href="#" id="cc-return-receive-link"
+            data-bind="click: $parent.processReturn.bind($parent, returnRequestId, $parent.orderDetailsWrapper.orderDetails().id)">
+            <span data-bind="widgetLocaleText: 'linkActionReceiveText'"></span>
+           </a>
+           <!-- /ko  -->
+           <!--  ko if: operation == 'markAsComplete'  -->
+             <!--  ko if: manualRefundAmount >= 0 -->
+             <a href="#" id="cc-mark_for_complete-link" data-toggle="modal"  
+                        data-bind="click: $parent.initReturnMarkForComplete.bind($parent,returnRequestId, manualRefundAmount)" data-target="#cc-return-mark-for-complete" >
+                 <span data-bind="widgetLocaleText: 'markComplete'"></span>
+               </a>
+             <!-- /ko -->
+          <!--  /ko -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="cc-return-mark-for-complete" class="modal width-fixed fade cc-modalForm" tabindex="-1"
+    data-bind="template: { name: $data.templateAbsoluteUrl('/templates/return-mark-complete.template'), templateUrl: '' }">
+  </div>
+</div>
+<!--  /ko -->
+<!--  /ko -->
+</div>

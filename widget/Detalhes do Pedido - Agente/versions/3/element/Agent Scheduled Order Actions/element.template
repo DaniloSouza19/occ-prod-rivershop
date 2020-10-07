@@ -1,0 +1,131 @@
+<div class="row">
+<!-- ko if: $parent.display() -->
+<!-- ko if: $parent.isOwner() -->
+<!-- ko if : !$parent.orderDetailsWrapper.disableScheduleOrderInstruction() -->
+<div class="col-md-12">
+  <div class="row" id="CC-scheduledOrder-orderDetails-button-group">
+    <div class="col-xs-6 button-group">
+      <button data-bind="widgetLocaleText:'buttonDelete'"
+        data-toggle="modal"
+        data-target="#cc-scheduleOrder-Modal"
+        type="button" class="cc-button-secondary secondarybackground">
+      </button>
+      <!-- ko if:($parent.orderDetailsWrapper.hasIncompleteOrder()) -->
+      <button data-bind="widgetLocaleText:'addItemsToCart'"
+        data-toggle="modal"
+        data-target="#cc-placeOrder-ModalContainer"
+        type="button"
+        class="cc-button-secondary secondarybackground">
+      </button>
+      <!-- /ko -->
+      <!-- ko ifnot:($parent.orderDetailsWrapper.hasIncompleteOrder()) -->
+      <button data-bind="click: $parent.mergeToCart.bind($parent),
+        widgetLocaleText:'addItemsToCart'"
+        type="button"
+        class="cc-button-secondary secondarybackground">
+      </button>
+      <!-- /ko -->
+    </div>
+    <div class="text-right button-group col-xs-6">
+      <button data-bind="click: $parent.closeScheduledOrder.bind($parent),
+        widgetLocaleText:'buttonCancel'"
+        type="button"
+        class=cc-button-secondary secondarybackground">
+      </button>
+      <button data-bind="click: $parent.saveScheduledOrder.bind($parent),
+        enable: $parent.scheduledOrder().dirtyFlag.isDirty(),
+        widgetLocaleText:'buttonSave'"
+        type="submit"
+        class="cc-button-primary">
+      </button>
+      <br>
+    </div>
+  </div>
+</div>
+<div id="cc-horizontalLine-scheduled-order-history">
+  <hr class="line agent-line col-xs-12">
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- Delete Modal -->
+<div data-bind="modal: 0,
+  modalTabbingContraint"
+  class="modal width-fixed fade cc-modalForm"
+  id="cc-scheduleOrder-Modal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <span data-bind="widgetLocaleText:'deleteScheduleModalMessage'"
+          class="modal-title text-center"></span>
+      </div>
+      <div class="modal-footer">
+        <button data-bind="click: $parent.deleteScheduledOrder.bind($parent),
+          widgetLocaleText:'buttonYes'"
+          type="button"
+          class="cc-button-secondary secondarybackground"></button>
+        <button data-bind="widgetLocaleText:'buttonNo'"
+          data-dismiss="modal"
+          type="button"
+          class="cc-button-secondary secondarybackground"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Place Order Modal-->
+<div data-bind="modal: 0,
+  modalTabbingContraint"
+  class="modal width-fixed fade cc-modalForm"
+  id="cc-placeOrder-ModalContainer">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <text data-bind="widgetLocaleText:'addItemsToCartModalMessage'"
+          class="modal-title text-center"></text>
+      </div>
+      <div class="modal-footer">
+        <div><button data-bind="click: $parent.mergeToCart.bind($parent),
+          widgetLocaleText:'buttonOk'"
+          data-dismiss="modal"
+          type="button"
+          class="cc-button-secondary secondarybackground"></button>
+          <button data-bind="widgetLocaleText:'buttonCancel'"
+            data-dismiss="modal"
+            type="button"
+            class="cc-button-secondary secondarybackground"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ko if: isEligibleToCompletePayment -->
+<div id="CC-scheduledOrderDetails-completePayment">
+  <button id="CC-scheduledOrder-details-completePayment-button"  data-bind="click: completePayment,
+    widgetLocaleText:'completePayment'" type="submit" class="btn btn-primary btn-sm"> </button>
+</div>
+<!-- /ko -->
+<!-- Cancel Modal -->
+<div data-bind="modal: 0,
+  modalTabbingContraint"
+  class="modal width-fixed fade cc-modalForm"
+  id="cc-cancel-scheduleOrder-ModalContainer">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" id="cc-cancel-scheduleOrder-ModalPane">
+      <div class="modal-body">
+        <span data-bind="widgetLocaleText:'cancelScheduleModalMessage'"
+          class="modal-title text-center"></span>
+      </div>
+      <div class="modal-footer">
+        <button data-bind="click: $parent.redirectToListingPage.bind($parent),
+          widgetLocaleText:'buttonYes'"
+          type="button"
+          class="cc-button-secondary secondarybackground"></button>
+        <button data-bind="widgetLocaleText:'buttonNo'"
+          data-dismiss="modal"
+          type="button"
+          class="cc-button-secondary secondarybackground"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /ko -->
+</div>

@@ -1,0 +1,124 @@
+{
+  "widgetDescriptorName": "nsh_slick_products",
+  "properties": [
+    {
+      "id": "_slickTitle",
+      "helpTextResourceId": "HelpSlickTitle",
+      "labelResourceId": "LabelSlickTitle",
+      "type": "stringType"
+    },
+    {
+      "id": "_slickProductsDesktop",
+      "helpTextResourceId": "HelpSlickDesktop",
+      "labelResourceId": "LabelSlickDesktop",
+      "type": "stringType"
+    },
+    {
+      "id": "_slickProductsDesktop_1400",
+      "helpTextResourceId": "HelpSlickDesktop_1400",
+      "labelResourceId": "LabelSlickDesktop_1400",
+      "type": "stringType"
+    },
+    {
+      "id": "_slickProductsDesktop_1200",
+      "helpTextResourceId": "HelpSlickDesktop_1200",
+      "labelResourceId": "LabelSlickDesktop_1200",
+      "type": "stringType"
+    },
+    {
+      "id": "_slickProductsTablet_983",
+      "helpTextResourceId": "HelpSlickTablet_983",
+      "labelResourceId": "LabelSlickTablet_983",
+      "type": "stringType"
+    },
+    {
+      "id": "_slickProductsTablet_800",
+      "helpTextResourceId": "HelpSlickTablet_800",
+      "labelResourceId": "LabelSlickTablet_800",
+      "type": "stringType"
+    },
+    {
+      "id": "_slickProductsMobile_600",
+      "helpTextResourceId": "HelpSlickMobile_600",
+      "labelResourceId": "LabelSlickMobile_600",
+      "type": "stringType"
+    },
+    {
+      "id": "_productsByCollection",
+      "labelResourceId": "LabelProductsByCollection",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableProductsByCollection",
+      "helpTextResourceId": "HelpEnableProductsByCollection",
+      "labelResourceId": "LabelEnableProductsByCollection",
+      "type": "booleanType"
+    },
+    {
+      "id": "_collections",
+      "helpTextResourceId": "HelpCollections",
+      "labelResourceId": "LabelCollections",
+      "type": "collectionType"
+    },
+    {
+      "id": "_productsById",
+      "labelResourceId": "LabelProductsById",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableProductsById",
+      "helpTextResourceId": "HelpEnableProductsById",
+      "labelResourceId": "LabelEnableProductsById",
+      "type": "booleanType"
+    },
+    {
+      "id": "_productIds",
+      "helpTextResourceId": "HelpProductIds",
+      "labelResourceId": "LabelProductIds",
+      "type": "stringType"
+    },
+    {
+      "id": "_productsRelated",
+      "labelResourceId": "LabelProductsRelated",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableProductsRelated",
+      "helpTextResourceId": "HelpEnableProductsRelated",
+      "labelResourceId": "LabelEnableProductsRelated",
+      "type": "booleanType"
+    },
+    {
+      "id": "_productsRecommendation",
+      "labelResourceId": "LabelProductsRecommendation",
+      "type": "sectionTitleType"
+    },
+    {
+      "defaultValue": false,
+      "id": "_enableProductsRecommendation",
+      "helpTextResourceId": "HelpEnableProductsRecommendation",
+      "labelResourceId": "LabelEnableProductsRecommendation",
+      "type": "booleanType"
+    },
+    {
+      "defaultValue": "12",
+      "name": "numRecs",
+      "pattern": "^[0-9]\\d*$",
+      "id": "numRecs",
+      "helpTextResourceId": "numRecsHelpText",
+      "labelResourceId": "numRecsLabel",
+      "type": "stringType",
+      "required": true
+    },
+    {
+      "name": "collections",
+      "id": "collections",
+      "helpTextResourceId": "collectionsHelpText",
+      "labelResourceId": "collectionsLabel",
+      "type": "stringType"
+    }
+  ]
+}

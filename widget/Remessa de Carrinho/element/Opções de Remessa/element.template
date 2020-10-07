@@ -1,0 +1,51 @@
+<!-- ko if: cart().items().length > 0 -->
+<div id="shipping-options" class="clearfix">
+  <!-- ko if: showShippingOptionDropDown() -->
+    <div id="CC-cartShippingDetails-shippingMethods" class="col-sm-7">
+      <div class="row">
+        <label id="CC-cartShippingDetails-options-legend" for="cc-shippingOptions-dropDown" data-bind="widgetLocaleText: 'selectShippingOptionsText'"></label>
+        <div class="dropdown cc-dropdown-sortby" id="cc-shippingOptions-dropDown" >
+          <button class="btn dropdown-toggle col-xs-12" data-toggle="dropdown" tabindex="0" data-bind="click: displayShippingMethodsDropdown, attr: {'aria-label': ''}" >
+            <span id="selectCartShippingOptionsCaption"  data-bind="text: $data.getDropdownCaption()" class="pull-left"></span>
+              <b class="caret pull-right"></b>
+          </button>
+          <!--  // START ACTION OPTIONS DROPDOWN -->
+          <ul class="dropdown-menu" data-bind="foreach: shippingOptions, visible: shippingOptions().length > 0">
+          <!-- ko if: $parent.cart().showSecondaryShippingData() -->
+            <li>
+              <a href="#" tabindex="0" class="cc-ws-normal"
+                data-bind="click: $parent.shippingMethodSelected.bind($data)">
+                 <span 
+                      data-bind="attr:{id: 'CC-cartShippingDetails-shippingMethodName-'+repositoryId},text: displayName"></span>&nbsp;(<span
+                      data-bind="attr:{id: 'CC-cartShippingDetails-shippingOptionPrice-'+repositoryId},currency: {price: secondaryCurrencyShippingCost(), currencyObj: $parent.cart().secondaryCurrency()}"></span>)
+                  </a>
+               </li>
+          <!-- /ko -->
+          <!-- ko ifnot: $parent.cart().showSecondaryShippingData() -->
+            <li>
+              <a href="#" tabindex="0" class="cc-ws-normal"
+                data-bind="click: $parent.shippingMethodSelected.bind($data)">
+                 <span 
+                      data-bind="attr:{id: 'CC-cartShippingDetails-shippingMethodName-'+repositoryId},text: displayName"></span>&nbsp;(<span
+                      data-bind="attr:{id: 'CC-cartShippingDetails-shippingOptionPrice-'+repositoryId},currency: {price: estimatedCostText(), currencyObj: $parent.site().selectedPriceListGroup().currency}"></span>)
+                  </a>
+               </li>
+          <!-- /ko -->
+             </ul>
+           </div>
+      </div>
+    </div>
+  <!-- /ko -->
+  <!-- ko ifnot: showShippingOptionDropDown() -->
+    <div id="CC-cartShippingDetails-feedback" class="col-sm-12">
+      <div class="row" role="alert" aria-live="rude">
+        <p class="text-danger" data-bind="widgetLocaleText: invalidShippingAddress() 
+          ? 'invalidShippingAddress' : noShippingMethods() 
+          ? 'noShippingMethodsText' : invalidShippingMethod()
+          ? 'invalidShippingMethod' : pricingError() 
+          ? 'pricingError' : 'shippingAddressRequired'"/>
+      </div>
+    </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->

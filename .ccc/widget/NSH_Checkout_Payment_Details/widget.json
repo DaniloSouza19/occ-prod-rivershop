@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_checkout_payment_details",
+  "version": 1,
+  "displayName": "NSH_Checkout_Payment_Details",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_checkout_payment_details",
+  "source": 101,
+  "javascript": "nsh_checkout_payment_details"
+}

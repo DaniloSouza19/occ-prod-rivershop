@@ -1,0 +1,4 @@
+<!-- ko if: getNotesHistory() -->
+<textarea class="form-control" rows="4" data-bind="attr: { 'aria-label': $data.resources().quoteNotesHeader},value: $parent.quoteNote()" readonly>
+</textarea>
+<!-- /ko -->

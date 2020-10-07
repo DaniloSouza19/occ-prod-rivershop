@@ -1,0 +1,21 @@
+{
+  "stackType": "progressTrackerBopis",
+  "regions": [
+    {
+      "repositoryId": "progressTrackerBopisStageOne",
+      "name": "Um"
+    },
+    {
+      "repositoryId": "progressTrackerBopisStageTwo",
+      "name": "Dois"
+    },
+    {
+      "repositoryId": "progressTrackerBopisStageThree",
+      "name": "Três"
+    }
+  ],
+  "version": 1,
+  "displayName": "Bopis - Rastreador de Andamento",
+  "maxVariants": 10,
+  "canEditSubRegion": true
+}

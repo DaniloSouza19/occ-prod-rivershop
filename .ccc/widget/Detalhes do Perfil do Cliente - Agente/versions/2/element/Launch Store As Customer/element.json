@@ -1,0 +1,8 @@
+{
+  "tag": "launch-store-as-customer",
+  "source": 100,
+  "type": "fragment",
+  "title": "Launch Store As Customer",
+  "widgetType": "customerProfileDetails",
+  "version": 2
+}

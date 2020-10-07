@@ -1,0 +1,113 @@
+<!-- ko if: ( user().isB2BUser() && user().isDelegatedAdmin()) -->
+<div id="CC-delegatedAdmin-purcaseLimit">
+<div class="col-sm-12">
+<div id="CC-delegatedAdminPurchaseLimit-purchaseLimit-title" data-bind="widgetLocaleText: 'orderApprovalSettingsText'" class="CC-delegatedAdminPurchaseLimit-purchaseLimit-title" name="Purchase Limits"></div>
+<hr>
+<div id="CC-delegatedAdmin-purcaseLimit-region">
+  <div class="row">
+    <div class="col-sm-12">
+      <span id ="CC-delegated-admin-requireApprovals-info" data-bind="visible: requiresApproval() && user().organizations()[0] && !user().organizations()[0].delegateApprovalManagement(), widgetLocaleText: 'purchaseLimitSetByMerchant'"></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <label>
+        <span id ="CC-delegated-admin-requireApprovals-label" data-bind="widgetLocaleText: 'requireApprovalsText'"></span>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="toggleswitch">
+        <input type="checkbox" name="requiresArrovalToggleSwitch" class="toggleswitch-checkbox" id="CC-delegatedAdmin-requiresArrovalToggle" data-bind="checked: requiresApproval, enable: (user().organizations()[0] && user().organizations()[0].delegateApprovalManagement() && user().organizations()[0].numberOfActiveApprovers() > 0),writable: (user().organizations()[0] && user().organizations()[0].delegateApprovalManagement() && user().organizations()[0].numberOfActiveApprovers() > 0), click: requiresApprovalchanged.bind($data)">
+        <label class="toggleswitch-label" for="CC-delegatedAdmin-requiresArrovalToggle">
+        <span class="toggleswitch-inner" data-bind="attr: {title: $data.requiresApprovalTranslation()}, css: { toggleswitchdisabled : user().organizations()[0] && (user().organizations()[0].delegateApprovalManagement() === false || user().organizations()[0].numberOfActiveApprovers() === 0)}"></span>
+        <span tabindex="0" class="toggleswitch-switch" data-bind="attr: {title: $data.requiresApprovalTranslation()},event: {keypress: $data.toggleSwitch.bind($data)}, css: { switchdisabled : user().organizations()[0] && (user().organizations()[0].delegateApprovalManagement() === false || user().organizations()[0].numberOfActiveApprovers() === 0)}"></span>
+        </label>
+      </div>
+    </div>
+    <div class="col-sm-12 hidden-xs hidden-sm">
+     <span class="text-danger" data-bind="visible: user().organizations()[0] && user().organizations()[0].numberOfActiveApprovers() <= 0, widgetLocaleText: 'noApproversPresent'" role="alert"></span>
+    </div>
+    <div class="col-sm-12 hidden-xs hidden-sm">
+     <span class="text-danger" data-bind="widgetLocaleText: 'approvalWebhookIsEnabled', visible: $data.isApprovalWebhookEnabled()" role="alert"></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <label>
+        <span data-bind="widgetLocaleText: 'purchaselimitText'"></span>
+      </label>
+ </div>
+    </div>  
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+        <span data-bind="widgetLocaleText: 'purchaseLimitCondition'"></span>
+    </div>
+  </div>  
+  <div class="row cc-order-approval-settings-vertical-align-row">
+     <div class="col-sm-3">
+      <input aria-required="true" type="text" class="form-control" data-bind=" value: purchaseLimit, validatableValue: purchaseLimit, valueUpdate: 'keyup', enable: user().organizations()[0] && user().organizations()[0].delegateApprovalManagement() && requiresApproval() && user().organizations()[0].numberOfActiveApprovers() > 0, widgetLocaleText:{value:'purchaselimitText',attr:'placeholder'}" id="CC-delegatedAdminPurchaseLimit-purchaseLimit-input" name="Purchase Limit Input">
+     </div>
+     <div class="col-sm-9">
+       <span data-bind="text: currencyCode"></span>&nbsp;-&nbsp;<span data-bind="text: priceListGroupName"></span>
+     </div>
+   </div>
+   <div class="row">
+    <div class="col-sm-3">
+        <span data-bind="validationMessage: purchaseLimit" class="text-danger" id="CC-delegaled-admin-purchase-limit-error" role="alert"></span>
+      </div>
+  </div>
+<br>
+<br>
+<div class="row hidden-xs">
+	<div id="CC-save-purcaseLimit-button">
+    <button id="cc-save-purcaseLimit-button" class="cc-button-primary pull-right col-md-2" data-bind="attr: {title: $data.translate('buttonSave')}, click: updatePurchaseLimit, enable: user().organizations()[0] && user().organizations()[0].delegateApprovalManagement() && user().organizations()[0].numberOfActiveApprovers() > 0">
+    	<span data-bind="widgetLocaleText: 'buttonSave'"></span>
+    </button>
+  </div>
+  <div id="CC-cancel-purcaseLimit-button">
+    <button id="cc-cancel-purcaseLimit-button" class="cc-button-secondary pull-right col-md-2" data-bind="attr: {title: $data.translate('buttonCancel')}, click: cancelModal, enable: user().organizations()[0] && user().organizations()[0].delegateApprovalManagement() && user().organizations()[0].numberOfActiveApprovers() > 0">
+    	<span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div id="CC-cancel-purcaseLimit-button-xs" class="visible-xs">
+    <button id="cc-cancel-purcaseLimit-button-xs" class="cc-button-secondary col-xs-12 col-sm-12" data-bind="attr: {title: $data.translate('buttonCancel')}, click: handleCancel, enable: user().organizations()[0] && user().organizations()[0].delegateApprovalManagement() && user().organizations()[0].numberOfActiveApprovers() > 0">
+      <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div id="CC-save-purcaseLimit-button-xs" class="visible-xs">
+    <button id="cc-save-purcaseLimit-button-xs" class="cc-button-primary col-xs-12 col-sm-12" data-bind="attr: {title: $data.translate('buttonSave')}, click: updatePurchaseLimit, enable: user().organizations()[0] && user().organizations()[0].delegateApprovalManagement() && user().organizations()[0].numberOfActiveApprovers() > 0">
+      <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+    </button>
+  </div>
+</div>
+</div>
+<div class="modal fade" id="cc-cancel-order-approval-settings-ModalContainer" tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+  <div class="modal-dialog" id="cc-cancel-order-approval-settings-ModalContainer-modal-dialog">
+    <div class="modal-content" id="cc-cancel-order-approval-settings-ModalContent">
+      <div class="modal-header cc-cancel-order-approval-settings-modal-heading cc-cancel-order-approval-settings-confirm-icon" id="CC-cancelcontacts-modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="CC-cancel-order-approval-settings-modal-headerClose" aria-hidden="true">&times;</button>
+        <h4 data-bind="widgetLocaleText:'updateCacelModalTitle'" id="CC-cancel-order-approval-settings-modal-headerText"></h4>
+      </div>
+      <div class="modal-body cc-cancel-order-approval-settings-body-modal">
+        <p data-bind="widgetLocaleText:'updateCancelModalMessage'" align="center" id="CC-cancel-order-approval-settings-modal-bodyText"></p>
+      </div>
+      <div class="modal-footer cc-cancel-order-approval-settings-modal-footer">
+        <button class="btn cc-button-secondary" id="CC-cancel-order-approval-settings-modal-cancel" data-bind="click: handleCancel">
+          <span id="CC-cancelcontacts-modal-discard" data-bind="widgetLocaleText:'updateCancelModalClose'"></span>
+        </button>
+        <button class="btn cc-button-primary" id="CC-order-approval-settings-modal-submit"  data-bind="click: updatePurchaseLimit">
+          <span id="CC-cancelcontacts-modal-save" data-bind="widgetLocaleText:'updateCancelModalSave'"></span>
+        </button>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- /ko -->

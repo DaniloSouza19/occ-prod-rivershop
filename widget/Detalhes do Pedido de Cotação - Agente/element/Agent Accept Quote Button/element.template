@@ -1,0 +1,3 @@
+<button class="cc-button-primary pull-right" tabindex="0" data-bind="enable: $parent.orderDetailsWrapper.isAcceptQuoteAllowed(), click: acceptQuote">
+  <span data-bind="widgetLocaleText: 'buttonAcceptQuote'"></span>
+</button>

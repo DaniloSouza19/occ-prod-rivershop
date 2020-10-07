@@ -1,0 +1,180 @@
+<!-- ko ifnot: isSinglePayment() -->
+  <div id="splitPaymentsGiftCardPanel">
+      <fieldset id="giftCard" data-bind="disable: order().isPaymentDisabled()">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <div class="control">
+            <input type="text" class="col-sm-12 form-control"
+              name="giftCardNumber" id="CC-splitPayments-giftcardNumber"
+              data-bind="validatableValue: $data.paymentViewModel().giftCardNumber, widgetLocaleText : {value:'giftCardNumberText', attr:'placeholder'},
+              css: {'sf-error' :$data.paymentViewModel().giftCardNumber ? ! $data.paymentViewModel().giftCardNumber.__valid__() : false}">
+          </div>
+        </div>
+        <!-- ko if: $data.paymentViewModel().paymentMethodType == "physicalGiftCard" || $data.isDisplayGiftCardDetails() -->
+          <div class="col-sm-6"
+            id="CC-splitPayments-giftcardNumber-error-container">
+            <p class="text-danger" id="CC-splitPayments-giftcardNumber-error"
+            data-bind="validationMessage: $data.paymentViewModel().giftCardNumber" role="alert"></p>
+          </div>
+        <!-- /ko -->
+      </div>
+      
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <div class="control">
+            <input type="password" class="col-sm-12 form-control"
+            name="giftCardPin" id="CC-splitPayments-giftCardPin"
+            data-bind="validatableValue: $data.paymentViewModel().giftCardPin, widgetLocaleText : {value:'giftCardPinText', attr:'placeholder'},
+            css: {'sf-error' : $data.paymentViewModel().giftCardPin ? ! $data.paymentViewModel().giftCardPin.__valid__() : false}">
+          </div>
+        </div>
+        <!-- ko if: $data.paymentViewModel().paymentMethodType == "physicalGiftCard" || $data.isDisplayGiftCardDetails() -->
+          <div class="col-sm-6">
+            <p class="text-danger" id="CC-splitPayments-giftcardPin-error"
+            data-bind="validationMessage: $data.paymentViewModel().giftCardPin" role="alert"></p>
+          </div>
+        <!-- /ko -->
+      </div>
+
+       <!-- oc section: payment-custom-properties -->
+        <!-- ko if: ($data.ASACustomPaymentPropertiesMetadataMap && $data.ASACustomPaymentPropertiesMetadataMap[selectedPaymentType()] && $data.ASACustomPaymentPropertiesMetadataMap[selectedPaymentType()].length > 0) -->
+          <!-- ko setContextVariable:{name: 'context', value: $data.ASACustomPaymentPropertiesMetadataMap[selectedPaymentType()]} -->
+            <div data-bind="element: 'dynamic-property'" ></div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <!-- /oc -->
+    </fieldset>
+  </div>
+<!-- /ko -->
+
+<!-- ko if: isSinglePayment() -->
+  <!-- Single Payment Gift Card Section -->
+  <!-- ko if : $.inArray("physicalGiftCard", $data.paymentsContainer().enabledTypes) > -1 -->
+    <!-- ko if: (order().showSchedule() && !$data.paymentsContainer().isGiftCardEnabledForScheduledOrder()) -->
+      <span id="CC-splitPayments-giftCardpaymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+    <!-- /ko -->
+    <div class="row" id="CC-singlepayment-giftcard-checkbox">
+      <div class="col-sm-12"> 
+        <div class="col-sm-4 checkbox">
+          <label for="CC-singlepayment-giftCard-displayGiftCardDetails"> <input
+            type="checkbox" name="displayGiftCardDetails"
+                data-bind="checked: isDisplayGiftCardDetails, disable: validateGiftCardToBeDisabled() || order().isPaymentDisabled()"
+            id="CC-singlepayment-giftCard-displayGiftCardDetails" class="checkbox" />
+            <span data-bind="widgetLocaleText:'displayGiftCardDetailsText'"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ko if: isDisplayGiftCardDetails() -->
+      <h2 id="CC-GiftCardDetails-header" class="a11y"
+      data-bind="widgetLocaleText: 'displayGiftCardDetailsText'"></h2>
+      <fieldset id="singleGiftCard" data-bind="disable: order().isPaymentDisabled()">
+      <legend id="CC-GiftCardDetails-legend"
+      data-bind="widgetLocaleText: 'displayGiftCardDetailsText'"></legend>
+      
+      <div id="singlepaymentGiftCardPanel">
+        <fieldset id="singleGiftCard">
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <div class="control">
+                <input type="text" class="col-sm-12 form-control"
+                  name="giftCardNumber" id="CC-singlepayment-giftcardNumber"
+                  data-bind="validatableValue: $data.giftCardViewModel().giftCardNumber, widgetLocaleText : {value:'giftCardNumberText', attr:'placeholder'},
+                  css: {'sf-error' :  ($data.giftCardViewModel().giftCardNumber ? !$data.giftCardViewModel().giftCardNumber.__valid__() : false)}">
+              </div>
+            </div>
+            <!-- ko if: $data.giftCardViewModel().paymentMethodType == "physicalGiftCard" || $data.isDisplayGiftCardDetails() -->
+              <div class="col-sm-6"
+                id="CC-singlepayment-giftcardNumber-error-container">
+                <p class="text-danger" id="CC-singlepayment-giftcardNumber-error"
+                data-bind="validationMessage: $data.giftCardViewModel().giftCardNumber" role="alert"></p>
+              </div>
+            <!-- /ko -->
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <div class="control">
+                <input type="password" class="col-sm-12 form-control"
+                name="giftCardPin" id="CC-singlepayment-giftCardPin"
+                data-bind="validatableValue: $data.giftCardViewModel().giftCardPin, widgetLocaleText : {value:'giftCardPinText', attr:'placeholder'},
+                css: {'sf-error' : ($data.giftCardViewModel().giftCardPin ? !$data.giftCardViewModel().giftCardPin.__valid__() : false)}">
+              </div>
+            </div>
+            <!-- ko if: $data.giftCardViewModel().paymentMethodType == "physicalGiftCard" || $data.isDisplayGiftCardDetails() -->
+              <div class="col-sm-6">
+                <p class="text-danger" id="CC-singlepayment-giftcardPin-error"
+                data-bind="validationMessage: $data.giftCardViewModel().giftCardPin" role="alert"></p>
+              </div>
+            <!-- /ko -->
+          </div>
+          
+           <!-- oc section: payment-custom-properties -->
+        <!-- ko if: ($data.ASACustomPaymentPropertiesMetadataMap && $data.ASACustomPaymentPropertiesMetadataMap["physicalGiftCard"] && $data.ASACustomPaymentPropertiesMetadataMap["physicalGiftCard"].length > 0) -->
+          <!-- ko setContextVariable:{name: 'context', value: $data.ASACustomPaymentPropertiesMetadataMap["physicalGiftCard"]} -->
+            <div data-bind="element: 'dynamic-property'" ></div>
+          <!-- /ko -->
+        <!-- /ko -->
+        <!-- /oc -->
+        </fieldset>
+      </div>
+      
+      <div id="CC-singlepayment-applyGiftCard-container" class="row">
+        <div class="form-group col-sm-4">
+          <a href="#" id="CC-singleGiftCard-applyCard"
+            class="cc-button-primary"
+            data-bind="disabled: {condition: isApplyGiftCardClicked, click: handleApplyGiftCard}">
+            <span id="CC-singlepayment-applyGiftCardButton"
+            data-bind="widgetLocaleText:'giftCardApplyText'"></span>
+          </a>
+        </div>
+      </div>
+     </fieldset>
+    <!-- /ko -->
+    
+    <!-- ko if: isDisplayErrorPins() -->
+    <div id="expiredGiftCards">
+      <fieldset>
+        <!--  ko foreach: paymentsContainer().pendingPayments() -->
+        <!-- ko if: $data.paymentMethodType == "physicalGiftCard" && !$data.isGiftCardReApplied() -->
+        <div class="row"
+          data-bind="attr:{id:'CC-splitPayment-giftCard-'+$index()+'-container'}">
+          <div class="form-group col-sm-3">
+            <div class="control">
+              <span
+                data-bind="attr:{id:'CC-splitPayment-giftCard-'+$index()+'-label' , for:'CC-splitPayment-giftCard-'+$index() }, text:$data.maskedNumber"></span>
+            </div>
+          </div>
+
+          <div class="form-group col-sm-3"
+            data-bind="attr:{id:'CC-splitPayment-giftCard-pin-'+$index()+'-container'}">
+            <div class="control">
+              <input type="password" class="col-sm-4 form-control"
+                data-bind="validatableValue: $data.giftCardPin, attr:{id:'CC-splitPayment-giftCard-pin-'+$index()}, widgetLocaleText : {value:'giftCardPinText', attr:'placeholder'},
+                css: {'sf-error' : $data.paymentViewModel().giftCardPin ? ! $data.giftCardPin.__valid__(): false}" />
+            </div>
+          </div>
+
+          <div class="form-group col-sm-3"
+            data-bind="attr:{id:'CC-splitPayment-giftCard-apply-'+$index()+'-container'}">
+            <a href="#" class="cc-button-primary"
+              data-bind="click: $parent.handleReApplyGiftCard.bind($parent, $data), attr:{id:'CC-splitPayment-giftCard-apply-'+$index()}">
+              <span  data-bind="attr:{id:'CC-splitPayment-giftCard-apply-'+$index()},
+                widgetLocaleText: {value:'giftCardApplyText', attr:'innerText'}"></span>
+            </a>
+          </div>
+
+          <div class="col-sm-3"
+            data-bind="attr:{id:'CC-splitPayment-giftCard-apply-pins-error-'+$index()+'-container'}">
+            <p class="text-danger"
+              data-bind="validationMessage:giftCardPin, attr:{id:'CC-splitPayment-giftCard-apply-pins-error-'+$index()}"></p>
+          </div>
+
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+      </fieldset>
+    </div>
+    <!-- /ko -->
+  <!-- /ko -->
+<!-- /ko -->

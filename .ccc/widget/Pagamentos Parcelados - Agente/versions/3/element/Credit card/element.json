@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-creditcard",
+  "source": 100,
+  "type": "fragment",
+  "title": "Credit card",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

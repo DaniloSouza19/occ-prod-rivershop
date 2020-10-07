@@ -1,0 +1,2 @@
+<span data-bind="currency: {price: listPrice(), currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: $data.priceUnavailableText(), prependNull: false}, attr: {role: !salePrice() ? 'alert' : null}" aria-atomic="true" aria-live="polite"></span>
+

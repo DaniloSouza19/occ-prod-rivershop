@@ -1,0 +1,1048 @@
+<!-- ko setContextVariable:{name:'widgetViewModel',value:$data} -->
+<div id="CC-checkoutAddressBook">
+
+    <fieldset id="shippingAddress" data-bind="disable: shippingCountries().length == 0 || (cart().currentOrderState() == 'PENDING_PAYMENT' || cart().currentOrderState() == 'PENDING_PAYMENT_TEMPLATE'), visible: cart().isSplitShipping">
+    <legend data-bind="widgetLocaleText: 'shippingOptionsText'">
+      Select Shipping Options
+    </legend>
+    <!--<button class="btn btn-link" data-bind="click: toggleSplitShipping, visible: !containsInStorePickup()">-->
+    <!--  Ship to single address-->
+    <!--</button>-->
+    <br>
+      <div data-bind="foreach: cart().items">
+          <!-- ko foreach: shippingGroupRelationships -->
+            <!-- ko setContextVariable:{name:'ShippingGroupIdVariable',value:shippingGroupId} -->
+              <div class="cart-item-row" data-bind="css: $index()+$parentContext.$index() != 0?'cart-item-notFirstRow':''">
+                <div class="row">
+                <!-- ko with: $parent.productData -->
+                  <div class="col col-xs-3 col-md-2 thumb-image">
+                    <img data-bind="productImageSource: {src: $data, imageType:'thumb', alt: displayName, errorSrc: '/img/no-image.jpg', errorAlt: 'Missing Product Image'}, attr:{id: 'CC-shoppingCart-productImage-' + $parent.productId + $parent.catRefId + $index() }"/>
+                  </div>
+                  <div class="col col-xs-9 col-md-4">
+                    <a data-bind="ccLink : $data, attr: {id: 'CC-shoppingCart-productName-' + $parent.productId + $parent.catRefId + $index()}">
+                    </a>
+                    <div><span class="currency-field-desktop" data-bind="currency: { price: $parent.unitPrice(), currencyObj: $parents[2].cart().currency}"></span></div>
+                    <div class="hidden-phone" data-bind="attr: { id: 'CC-shoppingCart-productVariant-' + $parent.productId + $parent.catRefId + $index()}">
+                      <!-- ko foreach: $parents[1].selectedOptions -->
+                        <small>
+                          <!-- ko if: $data.optionValue -->
+                            <span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName, optionValue: $data.optionValue}}, attr: { id: 'CC-shoppingCart-productOptions-'+ $parents[2].productId + $parents[2].catRefId + $parents[2].removeSpaces($data.optionValue)}">
+                            </span>
+                          <!-- /ko -->
+                        </small><br>
+                      <!-- /ko -->
+                    </div>
+                    <!-- ko if: ((configurable && $parents[1].configuratorId) || ($parents[1].childItems && $parents[1].childItems.length > 0)) -->
+                        <div class="hidden-xs" data-bind="attr: { id: 'CC-shippingOptions-productConfigurationDetails-' + $parents[1].productId + $parents[1].catRefId + $parents[1].commerceItemId + $parentContext.index}">
+                          <small>
+                            <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-shippingOptions-configDetails-' + $parents[1].commerceItemId + $parentContext.$index()}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a>
+                            <div data-bind="attr: { id: 'CC-shippingOptions-configDetails-' + $parents[1].commerceItemId + $parentContext.$index()}" class="collapse">
+                              <ul data-bind="template: {name: 'expand-item', foreach: $parents[1].childItems}">
+                                <li>
+                                  <a data-bind="ccLink: $data"><span data-bind="text: displayName"></span></a>
+                                  <!-- ko foreach: $data.selectedOptions -->
+                                    <!-- ko foreach: $data -->
+                                      <!-- ko if: $data.optionValue -->
+                                        (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                                        optionValue: $data.optionValue}},
+                                        attr: { id: 'CC-shippingOptions-childProductOptions-'+ $parent.productId + $parent.catRefId  + ($parent.commerceItemId ? $parent.commerceItemId: '') + $parent.removeSpaces($data.optionValue)}">
+                                        </span>)
+                                      <!-- /ko -->
+                                    <!-- /ko -->
+                                  <!-- /ko -->
+                                -x<span data-bind="text: quantity"></span>
+                                </li>
+                              </ul>
+                            </div>
+                          </small>
+                        </div>
+                    <!-- /ko -->
+                    <button class="btn btn-link delete-link" data-bind="click:$parents[2].removeShippingGroupRelationShip.bind($parents[1], $parent, $parentContext.$parentContext.$index()+'-'+$parentContext.$index())"><small data-bind="widgetLocaleText: 'deleteText'"></small></button>
+                  </div>
+                <!-- /ko -->
+                <div class="col col-md-2 qty-desktop">
+                  <div>
+                    <span class="quantity-label" data-bind="widgetLocaleText: 'quantityLabel'"></span>
+                  </div>
+                    <input type="text" name="quantity" class="form-control quantity-field" data-bind="textInput: updatableQuantity, event: {keyup: function(data, event){ return $parents[1].updateQuantity(data, $parent, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + $index());}}, 
+                                attr: {id: 'CC-shoppingCart-inputQuantity-' + productId + catRefId + $index()}">
+                    <a href="#" class="delete-icon" data-bind="click: $parents[1].removeShippingGroupRelationShip.bind($parent, $data)">
+                        <img src="/img/remove.png">
+                    </a>
+                    <p>
+                        <button class="cc-button-primary btn-update" type="button"
+                            data-bind="text : 'Update',
+                            click: function(data, event){ return $parents[1].updateQuantity(data, $parent, event, 'CC-shoppingCart-updateQuantity-' + productId + catRefId + $index());},
+                            attr:{id:'CC-shoppingCart-updateQuantity-' + productId + catRefId + $index() }">
+                        </button>
+                    </p>
+
+                    <div class="text-danger"  data-bind="validationMessage: updatableQuantity" role="alert">
+                    </div>
+                </div>
+                <!-- ko if: isPickupInStore -->
+                  <div class="col col-xs-12 col-md-4 shipto-field">
+                    <span class="shipTolabel" data-bind="widgetLocaleText: 'shipToLabel'"></span>
+                    <div data-bind="widgetLocaleText: 'pickupInStoreLabel'"></div>
+                    <!-- ko ifnot: $data.selectedStore() && $data.selectedStore().store && $data.selectedStore().store.name -->
+                      <div><button class="btn btn-link store-address" data-bind="widgetLocaleText: 'selectStoreText', click: function(data, event) { return $parents[1].openStorePickerModal($parent, $data, event) }"></button></div>
+                    <!-- /ko -->
+                    <!-- ko if: $data.selectedStore() && $data.selectedStore().store && $data.selectedStore().store.name -->
+                      <div><button class="btn btn-link store-address" data-bind="text:$data.selectedStore().store.name, click: function(data, event) { return $parents[1].openStorePickerModal($parent, $data, event) }"></button></div>
+                    <!-- /ko -->
+                    <button class="btn btn-link store-ship-instead" data-bind="widgetLocaleText: 'shipInsteadText', click: $parents[1].toggleShippingGroup.bind($parents[1], $parent, $data)"></button>
+                    
+                  </div>
+                <!-- /ko -->
+                <!-- ko ifnot: isPickupInStore -->
+                <div class="col col-xs-12 col-md-4 shipto-field">
+                  <span><span class="shipTolabel" data-bind="widgetLocaleText: 'shipToLabel'"></span>
+                  <!-- ko ifnot: $data.shippingAddress() || ($data.shippingAddress() && $data.shippingAddress().isValid()) -->
+                    <!-- ko if: $parents[1].user().loggedIn() -->
+                      <button class="btn btn-link toggle-addressbook" data-bind="widgetLocaleText: 'selectShippingAddressText', click: function(data, event) { return $parents[1].toggleAddressBook('show', $data, event) }"></button>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $parents[1].user().loggedIn() -->
+                      <button class="btn btn-link toggle-addressbook" data-bind="widgetLocaleText: 'addAddressLabel', click: function(data, event) { return $parents[1].toggleAddressBook('show', $data, event) }"></button>
+                    <!-- /ko -->
+                  <!-- /ko -->
+                  </span>
+                  <div data-bind="with: shippingAddress">
+
+                    <!-- ko if: $parents[2].user().isB2BUser() -->
+                      <input type="hidden" data-bind="value: type, fireChange: true, event: {change: $parents[2].lookupShippingOptions.bind($parent) }"/>
+                      <strong data-bind="text: companyName"></strong> - <strong data-bind="text: type"></strong>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $parents[2].user().isB2BUser() -->
+                      <input type="hidden" data-bind="value: alias, fireChange: true, event: {change: $parents[2].lookupShippingOptions.bind($parent) }"/>
+                      <strong data-bind="text: alias"></strong>
+                    <!-- /ko -->
+                    <!-- ko if: $parents[2].user().isB2BUser() && ($parents[2].currentShippingAddressSelection() == 'accountAddresses' || $parents[2].currentShippingAddressSelection() == 'inheritedAddresses') -->
+                      <div class="form-group">
+                        <label class="control-label inline" for="CC-checkoutAddressBook-sFirstName" data-bind="widgetLocaleText: 'firstNameText'"></label>
+                        <div class="control">
+                          <input type="text" class="col-md-12 name-field form-control" name="sFirstName" id="CC-checkoutAddressBook-sFirstName" data-bind="value: firstName" placeholder="First Name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label inline" for="CC-checkoutAddressBook-sLastName" data-bind="widgetLocaleText: 'lastNameText'"></label>
+                        <div class="control">
+                          <input type="text" class="col-md-12 name-field form-control" name="sLastName" id="CC-checkoutAddressBook-sLastName" data-bind="value: lastName" placeholder="Last Name">
+                        </div>
+                      </div>
+                    <!-- /ko -->
+                    <br>
+                    <!-- ko if: ($parents[2].user().isB2BUser() && ($parents[2].currentShippingAddressSelection() == 'profileAddresses')) || !$parents[2].user().isB2BUser() -->
+                      <span data-bind="text: firstName"></span> <span data-bind="text: lastName"></span>, 
+                    <!-- /ko -->
+                    <span data-bind="text: address1"></span>, <!-- ko if: address2 --><span data-bind="text: address2"></span>, <!-- /ko -->
+                    <span data-bind="text: city"></span>, <span data-bind="text: state"></span>, <span data-bind="text: postalCode"></span> <span data-bind="text: country"></span>
+                  </div>
+                  <!-- ko if: $data.shippingAddress() || ($data.shippingAddress() && $data.shippingAddress().isValid()) -->
+                  <div><button class="btn btn-link toggle-addressbook" data-bind="widgetLocaleText: 'changeAddressText', click: function(data, event) { return $parents[1].toggleAddressBook('show', $data, event) }"></button></div>
+                  <!-- /ko -->
+                  <!-- ko if: $data.shippingAddress() || ($data.shippingAddress() && $data.shippingAddress().isValid() && $parents[1].selectAddress($data.shippingAddress())) --><!-- /ko -->
+                  <div data-bind="widgetLocaleText: 'viaLabel'"></div>
+                  <select class="form-control" data-bind="attr: {name: 'shippingMethod'+'-'+$index()}, options: shippingOptions, optionsText: 'qualifiedDisplayName', value: shippingMethod, optionsAfterRender: $parents[1].selectedShippingMethod.bind($data), optionsCaption: 'Select shipping method', enable: shippingAddress, event: {change: $parents[1].priceSplitShippingCartForCheckout}">
+                  </select>
+                  <!-- ko if: $parents[1].canAddShippingGroupRelationship($parent, $data) -->
+                    <div>
+                      <button class="btn btn-link" data-bind="click: $parents[1].addShippingGroupRelationship.bind($parent, $data)">
+                        <small data-bind="widgetLocaleText: 'splitItemsText'"></small>
+                      </button>
+                    </div>
+                  <!-- /ko -->
+                  <!-- ko if: ($parent.productData() && !$parent.isOnlineOnly() && $parents[1].isStorePickupEnabled()) -->
+                  <div>
+                    <button class="btn btn-link ship-toggle" data-bind="widgetLocaleText: 'pickupInStoreInsteadText', click: function(data, event) { return $parents[1].openStorePickerModal($parent, $data, event) }"></button>
+                  </div>
+                  <!-- /ko -->
+                </div>
+                <!-- /ko -->
+                <div class="col col-xs-12 qty-mobile">
+                  <div class="row">
+                    <div class="col col-xs-2">
+                      <span class="quantity-label" data-bind="widgetLocaleText: 'quantityLabel'"></span>
+                    </div>
+                    <div class="col col-xs-4">
+                      <input type="text" name="quantity" class="form-control quantity-field" data-bind="value: updatableQuantity, event: {keypress: function(data, event){ return $parents[1].updateQuantity(data, $parent, event, 'CC-shoppingCart-mobile-updateQuantity-' + productId + catRefId + $index());}}, 
+                                  attr: {id: 'CC-shoppingCart-mobile-inputQuantity-' + productId + catRefId + $index()}">
+                      <a href="#" class="delete-icon" data-bind="click: $parents[1].removeShippingGroupRelationShip.bind($parent, $data)">
+                          <img src="/img/remove.png">
+                      </a>
+                      <p>
+                          <button class="cc-button-primary btn-update" type="button"
+                              data-bind="text : 'Update',
+                              click: function(data, event){ return $parents[1].updateQuantity(data, $parent, event, 'CC-shoppingCart-mobile-updateQuantity-' + productId + catRefId + $index());},
+                              attr:{id:'CC-shoppingCart-mobile-updateQuantity-' + productId + catRefId + $index() }">
+                          </button>
+                      </p>
+                    </div>
+                    <div class="col col-xs-6">
+                      <span class="currency-field-mobile" data-bind="currency: { price: $data.unitPrice(), currencyObj: $parents[1].cart().currency}"></span>
+                    </div>
+                    <div class="text-danger"  data-bind="validationMessage: updatableQuantity, style: { display: 'inline-block' }" role="alert">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ko if: isPickupInStore() -->
+                <div class="row bopis-props-row">
+                  <div class="pickup-details-title" data-bind="widgetLocaleText: 'pickUpDetailsLabel'"></div>
+                  <fieldset data-bind="attr: {id: 'bopis-properties'+'-'+$parentContext.$index()+'-'+$index()}">
+                    <div class="row first-row">
+                      <div class="form-group col-sm-6">
+                        <label class="control-label inline" data-bind="attr:{for: 'bopis-firstname-'+'-'+$parentContext.$index()+'-'+$index()}, widgetLocaleText:'firstNameText'"></label>
+                        <span class="text-danger visible-xs" data-bind="validationMessage: firstName" role="alert"></span>
+                        <div class="control">
+                          <input type="text" class="col-md-12 form-control" name="bopisFirstName" aria-required="false" data-bind="attr:{id: 'bopis-firstname-'+'-'+$parentContext.$index()+'-'+$index()}, validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}" >
+                        </div>
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label class="control-label inline" data-bind="attr:{for: 'bopis-lastname-'+'-'+$parentContext.$index()+'-'+$index()}, widgetLocaleText:'lastNameText'"></label>
+                        <span class="text-danger visible-xs" data-bind="validationMessage: lastName" role="alert"></span>
+                        <div class="control">
+                          <input type="text" class="col-md-12 form-control" name="bopisLastName" aria-required="false" data-bind="attr:{id: 'bopis-lastname-'+'-'+$parentContext.$index()+'-'+$index()}, validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}" >
+                        </div>
+                      </div>
+                      <div class="col-sm-4 hidden-xs">
+                        <p class="text-danger " data-bind="validationMessage: firstName" role="alert"></p>
+                        <p class="text-danger" data-bind="validationMessage: lastName" role="alert"></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <label class="control-label inline" data-bind="attr:{for: 'bopis-phoneNumber-'+'-'+$parentContext.$index()+'-'+$index()}, widgetLocaleText:'phoneNumberText'"></label>
+                        <span class="text-danger visible-xs" data-bind="validationMessage: phoneNumber" role="alert"></span>
+                        <div class="control">
+                          <input type="tel" class="col-md-12 form-control" name="bopisPhoneNumber" aria-required="false" data-bind="attr:{id: 'bopis-phoneNumber-'+'-'+$parentContext.$index()+'-'+$index()}, validatableValue: phoneNumber, widgetLocaleText : {value:'phoneNumberText', attr:'placeholder'}" >
+                        </div>
+                      </div>
+                      <!--<div class="form-group col-sm-4">-->
+                      <!--  <label class="control-label inline" data-bind="attr:{for: 'bopis-pickupTime-'+'-'+$parentContext.$index()+'-'+$index()}, widgetLocaleText:'pickupTimeText'"></label>-->
+                        <!--<span class="text-danger visible-xs" data-bind="validationMessage: preferredPickupOrShipDate" role="alert"></span>-->
+                      <!--  <div class="control">-->
+                      <!--    <input type="datetime-local" class="col-md-12 form-control" name="bopisPickupTime" aria-required="false" data-bind="attr:{id: 'bopis-pickupTime-'+'-'+$parentContext.$index()+'-'+$index()}, validatableValue: preferredPickupOrShipDate, widgetLocaleText : {value:'pickupTimeText', attr:'placeholder'}" >-->
+                      <!--  </div>-->
+                      <!--</div>-->
+                      <div class="col-sm-4 hidden-xs">
+                        <p class="text-danger " data-bind="validationMessage: phoneNumber" role="alert"></p>
+                        <!--<p class="text-danger" data-bind="validationMessage: preferredPickupOrShipDate" role="alert"></p>-->
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              <!-- /ko -->
+            </div>
+            <!-- /ko -->
+          <!-- /ko -->
+      </div>
+  </fieldset>
+
+</div>
+
+<div class="modal fade" id="B2BAddressBookModal" tabindex="-1" role="dialog" aria-labelledby="addressBookLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 data-bind="widgetLocaleText: 'addressBookText'"></h4>
+      </div>
+      <div class="modal-body b2c-ab-modal-body">
+        <div class="address">
+          <div class="defaultAddress">
+            <div>
+              <span><label class="address-type-label" data-bind="widgetLocaleText: 'defaultAddressesLabel'"></label></span>
+            </div>
+            <div id="defaultAddresses">
+              <!-- ko ifnot: organizationAddressBook().length === 0 -->
+              <!-- ko foreach: organizationAddressBook -->
+              <div class="panel panel-default" data-bind="if: (repositoryId === $parent.selectedShippingAddressId())">
+                <div class="panel-body row">
+                  <address id="addressbook-content" class="cc-customer-profile-shipping-address-view col col-sm-10">
+                    <span class="address-field" data-bind="text: $parent.defaultShippingAddressType()"></span><br>
+                    <b> <span class="address-field" data-bind="text: companyName"></span>,</b>
+                    <span class="address-field" data-bind="text: address1"></span>,
+                    <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                    <!-- /ko -->
+                    <span class="address-field" data-bind="text: city"></span>, <span class="address-field" data-bind="text: state"></span>, <span class="address-field" data-bind="text: postalCode"></span>,
+                    <span class="address-field" data-bind="text: country"></span>,
+                    <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                    <!-- /ko -->
+
+                  </address>
+                  <div class="col-sm-2 select-address">
+                    <button class="btn btn-primary btn-small" tabindex="1"
+                      data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent, $data, $parent.defaultShippingAddressType()),
+                      attr: {id: 'cc-checkout-select-shipping-address-account' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko ifnot: hasDefaultShippingAddress() -->
+              <div class="container-fluid">
+                <span data-bind="widgetLocaleText: 'noDefaultShippingAddressesText'"></span>
+              </div>
+              <!-- /ko -->
+            </div>
+          </div>
+          <div class="profileShippingAddress collapse-heading">
+            <div>
+              <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#profileAddresses"><label class="address-type-label" data-bind="widgetLocaleText: 'profileAddressLabel'"></label></span>
+            </div>
+            <div id="profileAddresses" class="collapse">
+              <!-- ko ifnot: profileAddressBook().length === 0 -->
+              <!-- ko foreach: profileAddressBook -->
+              <div class="panel panel-default">
+                <div class="panel-body row">
+                  <address id="profile-shipping-addressbook-content" class="cc-customer-profile-shipping-address-view col col-sm-10">
+                    <span class="address-field" data-bind="text: type"></span><br>
+                    <span data-bind="text: firstName"></span>
+                    <span data-bind="text: lastName"></span><br>
+                    <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                    <span class="address-field" data-bind="text: address1"></span>,
+                    <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                    <!-- /ko -->
+                    <span class="address-field" data-bind="text: city"></span>, 
+                    <span class="address-field" data-bind="text: state"></span>, 
+                    <span class="address-field" data-bind="text: postalCode"></span>,
+                    <span class="address-field" data-bind="text: country"></span>,
+                    <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                    <!-- /ko -->
+                  </address>
+                  <div class="col-sm-2 select-address">
+                    <button class="btn btn-primary btn-small" tabindex="1"
+                      data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent, $data, ''),
+                      attr: {id: 'cc-checkout-select-shipping-address-profile' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: loadMoreProfileAddresses() -->
+              <div class = "row zeroMargin">
+                <a data-bind="click: $data.loadProfileAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+                </a>
+              </div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: profileAddressBook().length === 0 -->
+              <span class="noAddressLabel" data-bind="widgetLocaleText: 'noProfileAddressesText'"></span>
+              <!-- /ko -->
+            </div>
+          </div>
+          <div class="accountAddress collapse-heading">
+            <div>
+              <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#accountAddresses"><label class="address-type-label" data-bind="widgetLocaleText: 'accountAddressLabel'"></label></span>
+            </div>
+            <div id="accountAddresses" class="collapse">
+              <!-- ko ifnot: accountAddressBook().length === 0 -->
+              <!-- ko foreach: accountAddressBook -->
+              <div class="panel panel-default">
+                <div class="panel-body row">
+                  <address id="account-addressbook-shipping-content" class="cc-customer-profile-shipping-address-view col col-sm-10">
+                    <span class="address-field" data-bind="text: type"></span><br>
+                    <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                    <span class="address-field" data-bind="text: address1"></span>,
+                    <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                    <!-- /ko -->
+                    <span class="address-field" data-bind="text: city"></span>, 
+                    <span class="address-field" data-bind="text: state"></span>,
+                    <span class="address-field" data-bind="text: postalCode"></span>,
+                    <span class="address-field" data-bind="text: country"></span>,
+                    <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                    <!-- /ko -->
+                  </address>
+                  <div class="col-sm-2 select-address">
+                    <button class="btn btn-primary btn-small" tabindex="1"
+                      data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent, $data, ''),
+                      attr: {id: 'cc-checkout-select-shipping-address-account' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: loadMoreAccountAddresses() -->
+              <div class = "row zeroMargin">
+                <a data-bind="click: $data.loadAccountAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href=""></a>
+              </div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: accountAddressBook().length === 0 -->
+              <span class="noAddressLabel" data-bind="widgetLocaleText: 'noAccountAddressesText'"></span>
+              <!-- /ko -->
+            </div>
+          </div>
+          <div class="inheritedAddress collapse-heading">
+            <div>
+              <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#inheritedAddresses"><label class="address-type-label" data-bind="widgetLocaleText: 'inheritedAddressLabel'"></label></span>
+            </div>
+            <div id="inheritedAddresses" class="collapse">
+              <!-- ko ifnot: inheritedAddressBook().length === 0 -->
+              <!-- ko foreach: inheritedAddressBook -->
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <address id="inherited-addressbook-shipping-content" class="cc-customer-profile-shipping-address-view col col-sm-10">
+                        <span class="address-field" data-bind="text: type"></span><br>
+                        <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                        <span class="address-field" data-bind="text: address1"></span>,
+                        <!-- ko if: address2 -->
+                        <span class="address-field" data-bind="text: address2"></span>,
+                        <!-- /ko -->
+                        <span class="address-field" data-bind="text: city"></span>, 
+                        <span class="address-field" data-bind="text: state"></span>, 
+                        <span class="address-field" data-bind="text: postalCode"></span>,
+                        <span class="address-field" data-bind="text: country"></span>,
+                        <!-- ko if: phoneNumber -->
+                        <span class="address-field" data-bind="text: phoneNumber"></span>
+                        <!-- /ko -->
+
+                  </address>
+                  <div class="col-sm-2 select-address">
+                    <button class="btn btn-primary btn-small" tabindex="1"
+                      data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent, $data, ''),
+                      attr: {id: 'cc-checkout-select-shipping-address-inherit' + $index()}">
+                    <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: showLoadMore() -->
+              <div class = "col-md-12 col-sm-12">
+                <a data-bind="click: $data.loadInheritedAddressess, widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+                </a>
+              </div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: inheritedAddressBook().length === 0 -->
+              <span class="noAddressLabel" data-bind="widgetLocaleText: 'noInheritedAddressesText'"></span>
+              <!-- /ko -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer b2c-ab-modal-footer">
+        <!-- ko if:(userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+          <button class="btn btn-link" data-dismiss="modal" data-bind="widgetLocaleText: 'addNewAddressText', click: $data.openAddAddress.bind($data)"></button>
+        <!-- /ko -->
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="B2CAddressBookModal" tabindex="-1" role="dialog" aria-labelledby="addressBookLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="addressBookLabel" data-bind="widgetLocaleText: 'addressBookText'"></h4>
+      </div>
+      <div class="modal-body b2c-ab-modal-body">
+        <div class="row" id="CC-customerProfile-shippingAddress-view">
+          <!-- View Begins -->
+          <div class="col-sm-12" id="CC-customerProfile-shippingAddress-view-region">
+            <!--<div class="row">-->
+            <!-- ko foreach: shippingAddressBook -->
+            <!-- ko if: postalCode -->
+            <div class="panel panel-default">
+              <div class="panel-body row">
+              <address class="CC-customerProfile-shipping-address cc-customer-profile-shipping-address-view col col-sm-10">
+                <!--<div class="pull-right">-->
+                  <!-- ko if: $parent.user().shippingAddressBook().length > 1 -->
+                <!--    <button class="btn btn-default btn-sm"-->
+                <!--            data-bind="disable: isDefaultShippingAddress(),-->
+                <!--                       attr: {id: 'CC-customerProfile-select-default-addr-btn-' + $index(),-->
+                <!--                              title: 'Make this my Default Address'},-->
+                <!--                              style:{'background-color': isDefaultAddress() ? 'dimgrey': ''},-->
+                <!--                              click: $parent.setDefaultShippingAddress.bind($parent, $data)">-->
+                      <!-- ko if: isDefaultAddress() -->
+                <!--        <i class="fa fa-truck" style="color:lightGrey"></i>-->
+                      <!-- /ko -->
+                      <!-- ko ifnot: isDefaultAddress() -->
+                <!--        <i class="fa fa-truck"></i>-->
+                      <!-- /ko -->
+                <!--    </button>-->
+                  <!-- /ko -->
+                <!--  <button class="btn btn-default btn-sm"-->
+                <!--          data-bind="attr: {id: 'CC-customerProfile-billing-addr-btn-' + $index(),-->
+                <!--                            title: 'Make this my Default Billing Address'},-->
+                <!--                            style:{'background-color':  (!$parent.defaultBillingAddress()) ? '' : $data.repositoryId ===-->
+                <!--                            $parent.defaultBillingAddress().repositoryId && $data.alias === $parent.defaultBillingAddress().alias ? 'dimgrey': ''},-->
+                <!--                            click: $parent.setDefaultBillingAddress.bind($parent, $data)">-->
+                <!--    <i class="fa fa-credit-card" data-bind="style:{color:  (!$parent.defaultBillingAddress()) ? '' : $data.repositoryId ===-->
+                <!--                            $parent.defaultBillingAddress().repositoryId && $data.alias === $parent.defaultBillingAddress().alias ? 'lightgrey': ''}"></i>-->
+                <!--  </button>-->
+                <!--  <button class="btn btn-default btn-sm"-->
+                <!--          data-bind="attr: {id: 'CC-customerProfile-edit-addr-btn-' + $index(),-->
+                <!--                            title: 'Edit Shipping Address'}">-->
+                <!--    <i class="fa fa-pencil"></i>-->
+                <!--    <span class="sr-only">Edit Shipping Address</span>-->
+                <!--  </button>-->
+                <!--  <button class="btn btn-default btn-sm"-->
+                <!--          data-bind="attr: {id: 'CC-customerProfile-remove-addr-btn-' + $index(),-->
+                <!--                            title: 'Remove Shipping Address'}">-->
+                <!--    <i class="fa fa-trash-o"></i>-->
+                <!--    <span class="sr-only">Remove Shipping Address</span>-->
+                <!--  </button>-->
+                <!--</div>-->
+                <!-- ko if: isDefaultAddress -->
+                <span class="cc-customer-profile-default-address"><b>Default Shipping Address</b></span> - 
+                <!-- /ko -->
+                <!-- ko if: $parent.defaultBillingAddress() && $parent.defaultBillingAddress().repositoryId == $data.repositoryId -->
+                <!--<span class="cc-customer-profile-default-billing-address"><b>Default Billing Address</b></span>-->
+                <!--<br />-->
+                <!-- /ko -->
+                <span class="address-field"><strong data-bind="text: alias"></strong></span>
+                <br/>
+                <span class="address-field" data-bind="text: firstName"></span>&nbsp;<span class="address-field" data-bind="text: lastName"></span>, 
+                <span class="address-field" data-bind="text: address1"></span>, 
+                <!-- ko if: address2 -->
+                  <span class="address-field" data-bind="text: address2"></span>, 
+                <!-- /ko -->
+                <span class="address-field" data-bind="text: city"></span>, <span class="address-field" data-bind="text: state"></span>, <span class="address-field" data-bind="text: postalCode"></span>, 
+                <!--<br/>-->
+                <span class="address-field" data-bind="text: country"></span>
+                <!-- ko if: phoneNumber -->
+                  <br/>
+                  <span class="address-field" data-bind="text: phoneNumber"></span>
+                <!-- /ko -->
+                <br />
+              </address>
+              <div class="select-address col col-sm-2"><button class="btn btn-primary btn-sm" data-bind="widgetLocaleText: 'selectAddressText', click: $parent.selectAddress.bind($parent, $data, '', true)"></button></div>
+            </div>
+            </div>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!--</div>-->
+            <!-- ko if: shippingAddressBook().length == 0 -->
+              <span data-bind="widgetLocaleText: 'noAddressesText'"></span>
+            <!-- /ko -->
+          </div>
+          <!-- View ends -->
+        </div>
+      </div>
+      <div class="modal-footer b2c-ab-modal-footer">
+        <button class="btn btn-link" data-dismiss="modal" data-bind="widgetLocaleText: 'addNewAddressText', click: $data.openAddAddress.bind($data)"></button>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel" data-bind="widgetLocaleText: 'addAddressLabel'"></h4>
+      </div>
+      <div class="modal-body">
+        <!-- ko with: newShippingAddress -->
+          <div class="row first-row">
+            <div class="form-group col-sm-8">
+              <!-- ko if: $parent.user().isB2BUser() -->
+                <label class="control-label inline" for="CC-checkoutAddressBook-stype" data-bind="widgetLocaleText:'nickNamePlaceHolderText'"></label>
+                <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-stype-error" data-bind="validationMessage: type" role="alert">
+                </span>
+                <div class="control">
+                  <input type="text" class="col-md-12 form-control" name="sType" id="CC-checkoutAddressBook-stype" aria-required="true" data-bind="validatableValue: type, widgetLocaleText : {value: 'nickNamePlaceHolderText', attr: 'placeholder'}">
+                </div>
+              <!-- /ko -->
+              <!-- ko ifnot: $parent.user().isB2BUser() -->
+                <label class="control-label inline" for="CC-checkoutAddressBook-salias" data-bind="widgetLocaleText:'aliasText'"></label>
+                <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-salias-error" data-bind="validationMessage: alias" role="alert">
+                </span>
+                <div class="control">
+                  <input type="text" class="col-md-12 form-control" name="sAlias" id="CC-checkoutAddressBook-salias" aria-required="false" data-bind="validatableValue: alias, widgetLocaleText : {value: 'aliasText', attr: 'placeholder'}">
+                </div>
+              <!-- /ko -->
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <!-- ko if: $parent.user().isB2BUser() -->
+                <p class="text-danger" id="CC-checkoutAddressBook-stype-error" data-bind="validationMessage: type" role="alert">
+                </p>
+              <!-- /ko -->
+              <!-- ko ifnot: $parent.user().isB2BUser() -->
+                <p class="text-danger" id="CC-checkoutAddressBook-salias-error" data-bind="validationMessage: alias" role="alert">
+                </p>
+              <!-- /ko -->
+            </div>
+          </div>
+          <div class="row" data-bind="ifnot: ($parent.user().isB2BUser() && saveToAccount())">
+            <div class="form-group col-sm-4">
+             <label class="control-label inline" for="CC-checkoutAddressBook-sfirstname" data-bind="widgetLocaleText:'firstNameText'">
+             </label>
+             <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-sfirstname-error" data-bind="validationMessage: firstName" role="alert">
+             </span>
+             <div class="control">
+               <input type="text" class="col-md-12 form-control" name="sFirstName" id="CC-checkoutAddressBook-sfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value: 'firstNameText', attr: 'placeholder'}">
+             </div>
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-slastname" data-bind="widgetLocaleText:'lastNameText'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-slastname-error" data-bind="validationMessage: lastName" role="alert">
+              </span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sLastName" id="CC-checkoutAddressBook-slastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value: 'lastNameText', attr: 'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-sfirstname-error" data-bind="validationMessage: firstName" role="alert">
+              </p>
+              <p class="text-danger" id="CC-checkoutAddressBook-slastname-error" data-bind="validationMessage: lastName" role="alert">
+              </p>
+            </div>
+          </div>
+          <div class="row" data-bind="if: $parent.user().isB2BUser()">
+            <div class="form-group col-sm-8">
+              <label class="control-label inline" for="CC-checkoutAddressBook-scompanyname">Company Name
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-scompanyname-error" data-bind="validationMessage: companyName" role="alert">
+              </span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sCompanyName" id="CC-checkoutAddressBook-scompanyname" aria-required="true" data-bind="validatableValue: companyName" placeholder="Company Name">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-scompanyname-error" data-bind="validationMessage: companyName" role="alert">
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-8">
+              <label class="control-label inline" for="CC-checkoutAddressBook-scountry" data-bind="widgetLocaleText:'countryText'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-scountry-error" data-bind="validationMessage: country" role="alert">
+              </span>
+              <div class="control">
+                <select class="col-md-12 form-control" name="sCountry" id="CC-checkoutAddressBook-scountry" aria-required="true"
+                  data-bind="enable: $parent.shippingCountries().length, options: $parent.shippingCountries, optionsText: 'displayName', optionsValue: 'countryCode', optionsCaption: $parent.resources().countryText, value: selectedCountry, validatableTarget: country, validationElement: country">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-scountry-error" data-bind="validationMessage: country" role="alert">
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-8">
+              <label class="control-label inline" for="CC-checkoutAddressBook-saddress1" data-bind="widgetLocaleText: 'addressLine1Text'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-saddress1-error" data-bind="validationMessage: address1" role="alert">
+              </span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sAddressLine1" id="CC-checkoutAddressBook-saddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText: {value: 'addressLine1Text', attr: 'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-saddress1-error" data-bind="validationMessage: address1" role="alert">
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-8">
+              <label class="control-label inline" for="CC-checkoutAddressBook-saddress2" data-bind="widgetLocaleText:'addressLine2Text'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-saddress2-error" data-bind="validationMessage: address2" role="alert">
+              </span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sAddressLine2" id="CC-checkoutAddressBook-saddress2" data-bind="validatableValue: address2, widgetLocaleText:{value:'addressLine2Text',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-saddress2-error" data-bind="validationMessage: address2" role="alert">
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-scity" data-bind="widgetLocaleText:'cityText'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-scity-error" data-bind="validationMessage: city" role="alert">
+              </span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sCity" id="CC-checkoutAddressBook-scity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText:{value:'cityText',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-sstate" data-bind="widgetLocaleText:'stateText'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-sstate-error" data-bind="validationMessage: state" role="alert">
+              </span>
+              <div class="control">
+                <select class="col-md-12 form-control" name="sState" id="CC-checkoutAddressBook-sstate" aria-required="true" data-bind="enable: stateList().length, options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation', optionsCaption: $parent.resources().stateRegionText, value: selectedState, validatableTarget: state, validationElement: state">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-scity-error" data-bind="validationMessage: city" role="alert">
+              </p>
+              <p class="text-danger" id="CC-checkoutAddressBook-sstate-error" data-bind="validationMessage: state" role="alert">
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-szipcode" data-bind="widgetLocaleText:'zipCodeText'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-szipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sZip" id="CC-checkoutAddressBook-szipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-sphone" data-bind="widgetLocaleText:'phoneNumberText'">
+              </label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-sphone-error" data-bind="validationMessage: phoneNumber" role="alert">
+              </span>
+              <div class="control">
+                <input type="tel" class="col-md-12 form-control" name="bPhone" id="CC-checkoutAddressBook-sphone" aria-required="true" data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'}">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-szipcode-error" data-bind="validationMessage: postalCode" role="alert">
+              </p>
+              <p class="text-danger" id="CC-checkoutAddressBook-sphone-error" data-bind="validationMessage: phoneNumber" role="alert">
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col col-sm-12">
+              <!-- ko if: $parent.userIsProfileAddressManager-->
+              <div class="radio">
+                <label>
+                  <input type="radio" class="form control" name="addAddressTo" data-bind="value: 'profileAddresses', checked: $parent.addShippingAddressTo, attr: { 'disabled': !$parent.userIsAccountAddressManager() }"/>
+                  <span data-bind="widgetLocaleText: 'saveToProfileText'"></span>
+                </label>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: $parent.userIsAccountAddressManager-->
+              <div class="radio">
+                <label>
+                  <input type="radio" class="form control" name="addAddressTo" data-bind="value:'accountAddresses', checked: $parent.addShippingAddressTo, attr: { 'disabled': !$parent.userIsProfileAddressManager() }"/>
+                  <span data-bind="widgetLocaleText: 'saveToAccountText'"></span>
+                  <span data-bind="widgetLocaleText: $parent.user().currentOrganization().name"></span>
+                </label>
+              </div>
+              <!-- /ko -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-12">
+              <div class=" checkbox">
+                <label for="CC-checkoutAddressBook-useAsBillingAddress">
+                  <input type="checkbox" name="useAsBillingAddress"
+                         data-bind="checked: $parent.useAsBillingAddress" id="CC-checkoutAddressBook-useAsBillingAddress">
+                  <span data-bind="widgetLocaleText:'useBillingAddressText'"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        <!-- /ko -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: addShippingAddress, enable: newShippingAddress().isValid()">
+          Save
+        </button>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="storePickUpModal" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span data-bind="widgetLocaleText: 'storePickerModalHeadingText'"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row item">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <span data-bind="widgetLocaleText: 'searchStoreLabelText'"></span>
+                    </div>
+                </div>
+                <div class="row item hidden-xs">
+                  <label class="control-label hidden" for="CC-storeSelect"><span data-bind="widgetLocaleText: 'storeSearchPlaceholderText'"></span>:</label>
+                  <div class="col-xs-8 col-sm-8 col-md-8">
+                    <input type="text" class="col-md-12 form-control" name="storeSearchQueryInModal" id="CC-storeSelect" aria-required="true"
+                        data-bind="value: storeSearchText, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'storeSearchPlaceholderText', attr:'placeholder'}, event: { keydown : function(data,event){return handleKeyPress.bind($data)(event)}}"/>
+                  </div>
+                  <span class="input-group-btn cell-padding">
+                      <button type="button" class="cc-button-primary button-text-nowrap" data-bind="click: showStoreSearchResults.bind($data, $parent)">
+                            <span data-bind="widgetLocaleText:'findStoresButtonText'"></span>
+                      </button>
+                  </span>
+                </div>
+                <div class="row item visible-xs">
+                  <label class="row-item control-label hidden" for="CC-storeSelect-mobile"><span data-bind="widgetLocaleText: 'storeSearchPlaceholderText'"></span>:</label>
+                  <div class="row-item col-xs-12 col-sm-12 col-md-12">
+                    <input type="text" class="col-md-12 form-control" name="storeSearchQueryInModal" id="CC-storeSelect-mobile" aria-required="true"
+                        data-bind="value: storeSearchText, valueUpdate: 'afterkeydown', widgetLocaleText : {value:'storeSearchPlaceholderText', attr:'placeholder'}"/>
+                  </div>
+                  <span class="row-item input-group-btn cell-padding">
+                      <button type="button" class="cc-button-primary button-text-nowrap" data-bind="click: showStoreSearchResults.bind($data, $parent)">
+                            <span data-bind="widgetLocaleText:'findStoresButtonText'"></span>
+                      </button>
+                  </span>
+                </div>
+                <div class="row-item">
+                  <span id="CC-storeSelect-itemError" class="text-danger" role="alert" aria-live="assertive" data-bind="validationMessage: storeSearchText"></span>
+                </div>
+            </div> 
+            <!-- ko if: stores().length === 0 -->
+                <div class="empty-stores">
+                    <!-- ko if: storeLookupStatus() === -1 -->
+                        <div align="center" class="row-item">
+                            <strong>
+                                <span data-bind="widgetLocaleText:{value: 'storeLookupFailed', params: {siteId : site().siteInfo.id}, attr : 'innerText'}"></span>
+                            </strong>
+                        </div>
+                    <!-- /ko -->
+                    <!-- ko if: stores().length === 0 && storeLookupStatus() == -2 -->
+                        <div align="center" class="row-item">
+                            <strong>
+                                <span data-bind="widgetLocaleText:'noStoresFound'"></span>
+                            </strong>
+                        </div>
+                    <!-- /ko -->
+                </div>
+            <!-- /ko -->
+            <!-- ko if: stores().length > 0 -->
+            <div style="border-bottom: 1px solid #e5e5e5;"></div>
+            <div class="stores">
+                <!-- ko foreach: stores -->
+                <div class="row store-item hidden-xs">
+                    <div class="col-xs-5 col-sm-5 col-md-5">
+                        <!-- ko if: $data.store.name -->
+                            <span data-bind="text: $data.store.name"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.address1 -->
+                            <span data-bind="text: $data.store.address1"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.address2 -->
+                            <span data-bind="text: $data.store.address2"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.address3 -->
+                            <span data-bind="text: $data.store.address3"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.city ||  $data.store.postalCode-->
+                            <span data-bind="text: $data.store.city"/><span class="cell-padding" data-bind="text: $data.store.postalCode"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.phoneNumber -->
+                            <span data-bind="text: $data.store.phoneNumber"/><br>
+                        <!-- /ko -->
+                    </div>
+                    <!-- ko if: $data.availabilityStatusMsg !== 'OUT_OF_STOCK' -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'IN_STOCK' -->
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                <span data-bind="widgetLocaleText:'instockText'"></span>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'PREORDERABLE' -->
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                <span data-bind="widgetLocaleText:'preorderableText'"></span>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'BACKORDERABLE' -->
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                <span data-bind="widgetLocaleText:'backorderableText'"></span>
+                            </div>
+                        <!-- /ko -->
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            <button type="button" class="cc-button-primary" data-bind="click: function() { $parent.handleStoreSelection($data)}">
+                                <span data-bind="widgetLocaleText:'storeSelectionButtonText'"></span>
+                            </button>
+                        </div>
+                    <!-- /ko -->
+                    <!-- ko if: $data.availabilityStatusMsg === 'OUT_OF_STOCK' -->
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <span class="non-availability-check"/><span class="cell-padding" data-bind="widgetLocaleText:'outofstockText'"></span>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="row store-item visible-xs">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <!-- ko if: $data.store.name -->
+                            <span data-bind="text: $data.store.name"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.address1 -->
+                            <span data-bind="text: $data.store.address1"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.address2 -->
+                            <span data-bind="text: $data.store.address2"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.address3 -->
+                            <span data-bind="text: $data.store.address3"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.city ||  $data.store.postalCode-->
+                            <span data-bind="text: $data.store.city"/><span class="cell-padding" data-bind="text: $data.store.postalCode"/><br>
+                        <!-- /ko -->
+                        <!-- ko if: $data.store.phoneNumber -->
+                            <span data-bind="text: $data.store.phoneNumber"/><br>
+                        <!-- /ko -->
+                    </div>
+                    <!-- ko if: $data.availabilityStatusMsg !== 'OUT_OF_STOCK' -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'IN_STOCK' -->
+                            <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                                <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                <span data-bind="widgetLocaleText:'instockText'"></span>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'PREORDERABLE' -->
+                            <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                                <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                <span data-bind="widgetLocaleText:'preorderableText'"></span>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: $data.availabilityStatusMsg === 'BACKORDERABLE' -->
+                            <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                                <span class="availability-check"/><span class="cell-padding" data-bind="text: $data.availableQuantity"/>
+                                <span data-bind="widgetLocaleText:'backorderableText'"></span>
+                            </div>
+                        <!-- /ko -->
+                        <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                            <button type="button" class="cc-button-primary" data-bind="click: function() { $parent.handleStoreSelection($data)}">
+                                <span data-bind="widgetLocaleText:'storeSelectionButtonText'"></span>
+                            </button>
+                        </div>
+                    <!-- /ko -->
+                    <!-- ko if: $data.availabilityStatusMsg === 'OUT_OF_STOCK' -->
+                    <div class="col-xs-12 col-sm-12 col-md-12 row-item">
+                        <span class="non-availability-check"/><span class="cell-padding" data-bind="widgetLocaleText:'outofstockText'"></span>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+            
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/html' id='expand-item'>
+  <li style="display : inline;">
+    <!-- Expanding the childItems -->
+    <!-- ko if: !$data.childItems -->
+      <!-- ko if: !$data.addOnItem -->
+        <div><a data-bind="ccLink: productData, attr: { id: 'CC-shippingOptions-configDetails-' + $data.repositoryId}"><span data-bind="text: displayName"></span></a>
+        <!-- ko foreach: $data.selectedOptions -->
+          <!-- ko if: $data.optionValue -->
+            (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+            optionValue: $data.optionValue}},
+            attr: { id: 'CC-shippingOptions-childProductOptions-'+ $parents[1].productId + $parents[1].catRefId  + ($parents[1].commerceItemId ? $parents[1].commerceItemId: '') + $parents[1].removeSpaces($data.optionValue)}">
+            </span>)
+          <!-- /ko --> 
+        <!-- /ko -->
+        <span data-bind="currency: { price: $data.externalPrice(), currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+        <!-- ko foreach: externalData -->
+        <div>
+          <small>
+            <!-- ko with: values -->
+              <span data-bind="text: $data.label"></span>:
+              <span data-bind="text: $data.displayValue"></span>
+            <!-- /ko -->
+            <!-- ko if: actionCode -->
+              (<span data-bind="text: actionCode"></span>)
+            <!-- /ko -->
+          </small>
+        </div>
+        <!-- /ko -->
+        </div>
+      <!-- /ko -->
+      <!-- ko if: $data.addOnItem -->
+      <!-- ko if: $data.productData -->
+      <br>
+      <div data-bind="attr: {id: 'CC-shippingOptions-productAddonItems-' + $parents[1].productId + $parents[1].catRefId + $parents[1].commerceItemId + $index()}">
+        <strong>
+          <span data-bind="text: $data.productData().displayName"></span>
+          <span>&nbsp; - &nbsp;</span>
+          <!-- ko if: ($data.detailedItemPriceInfo) -->
+            <span data-bind="currency:{price:$data.detailedItemPriceInfo()[0].detailedUnitPrice, currencyObj:$parents[4].site().selectedPriceListGroup().currency}"></span>
+          <!-- /ko -->
+          <a href="#" data-bind="click: $parents[4].handleRemoveAddonFromCart.bind($parents[4], $data) ">
+            <img data-bind="widgetLocaleText : {value:'handleRemoveAddonFromCart', attr:'alt'},
+            attr:{id:'CC-shippingOptions-removeAddonItem-' + productId + catRefId + (commerceItemId ? commerceItemId: '') }" src="/img/remove.png" alt="Remove">
+          </a>
+        </strong>
+        <br>
+        <!-- ko if: $data.shopperInput -->
+          <!-- ko foreach: Object.keys($data.shopperInput) -->
+            <span data-bind="text: $data"></span>
+            <span>: &nbsp;</span>
+            <span data-bind="text: $parents[0].shopperInput[$data]"></span><br>
+          <!-- /ko -->
+        <!-- /ko -->
+        <span data-bind="text: $data.productData().displayName"></span>
+        <span>: &nbsp;</span>
+        <span data-bind="text: $data.catRefId"></span>
+        <br>
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: $data.childItems -->
+    
+      <div class = "alignChild"><a data-bind="click: $widgetViewModel.setExpandedFlag.bind($data, $element), attr: { href: '#CC-shippingOptions-configDetails-' + $data.commerceItemId + $ShippingGroupIdVariable + $data.repositoryId}" data-toggle="collapse" class="configDetailsLink collapsed" role="configuration"></a> <a data-bind="ccLink: productData"><span data-bind="text: displayName"></span></a>
+        <!-- ko foreach: $data.selectedOptions -->
+                <!-- ko if: $data.optionValue -->
+                  (<span data-bind="widgetLocaleText : {value:'option', attr:'innerText', params: {optionName: $data.optionName,
+                  optionValue: $data.optionValue}},
+                  attr: { id: 'CC-shippingOptions-productOptions-'+ $parents[0].repositoryId + $parents[0].removeSpaces($data.optionValue)}">
+                  </span>)
+                <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko ifnot: ($data.expanded) -->
+         <span data-bind="if: $data.expanded,currency: { price: $data.itemTotal(), currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+        <!-- /ko -->
+        <!-- ko if: ($data.expanded) -->
+         <span data-bind="currency: { price: $data.externalPrice(), currencyObj: $widgetViewModel.site().selectedPriceListGroup().currency}"></span> -x<span data-bind="text: quantity"></span>
+         <!-- /ko -->
+        <!-- ko foreach: externalData -->
+          <div>
+            <small>
+              <!-- ko with: values -->
+                <span data-bind="text: $data.label"></span>:
+                <span data-bind="text: $data.displayValue"></span>
+              <!-- /ko -->
+              <!-- ko if: actionCode -->
+                (<span data-bind="text: actionCode"></span>)
+              <!-- /ko -->
+            </small>
+          </div>
+        <!-- /ko -->
+        <ul data-bind="template: {name: 'expand-item', foreach: $data.childItems}, attr: { id: 'CC-shippingOptions-configDetails-' + $data.commerceItemId + $ShippingGroupIdVariable + $data.repositoryId}" class="collapse">
+        </ul>
+      </div>
+    <!-- /ko -->
+  </li>
+</script>
+<!-- /ko -->

@@ -1,0 +1,8 @@
+{
+  "tag": "agent-pending-actions",
+  "source": 100,
+  "type": "fragment",
+  "title": "Agent Pending Actions",
+  "widgetType": "agentdashboard",
+  "version": 2
+}

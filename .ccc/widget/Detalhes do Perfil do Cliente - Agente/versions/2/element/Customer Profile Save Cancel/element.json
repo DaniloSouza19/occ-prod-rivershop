@@ -1,0 +1,8 @@
+{
+  "tag": "customer-profile-save-cancel",
+  "source": 100,
+  "type": "fragment",
+  "title": "Customer Profile Save/Cancel",
+  "widgetType": "customerProfileDetails",
+  "version": 2
+}

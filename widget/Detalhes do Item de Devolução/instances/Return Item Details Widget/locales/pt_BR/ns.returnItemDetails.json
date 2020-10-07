@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "requestOn": "Solicitado em:",
+    "returnReasonText": "Motivo da Devolução",
+    "returnRequest": "Solicitação de Devolução:",
+    "quantityText": "Quantidade",
+    "statusText": "Status",
+    "itemText": "Item"
+  }
+}

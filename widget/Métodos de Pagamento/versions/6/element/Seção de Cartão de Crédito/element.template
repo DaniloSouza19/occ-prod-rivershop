@@ -1,0 +1,155 @@
+<div id="splitPaymentsCreditCardPanel">
+  <fieldset id="paymentDetails" data-bind="disable:validateCardToBeDisabled() || order().isPaymentDisabled()"> <!-- TODO:revisit this when loyalty mix currency comes in -->
+    <!-- ko if: (order().showSchedule() && !$data.paymentsContainer().isCardEnabledForScheduledOrder()) -->
+      <span id="CC-splitPayments-cardpaymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+    <!-- /ko -->
+	<!-- Name on the Card -->
+  	<div class="row">
+  	  <div class="form-group col-sm-4">
+	      <label class="control-label inline" id="CC-splitPayments-nameOnCard-label"
+	      for="CC-splitPayments-nameOnCard" data-bind="widgetLocaleText: 'nameOnCardLabel'">Name on Card</label>
+	      <!-- ko if: $data.paymentViewModel().paymentMethodType == "card" -->
+	        <span class="text-danger visible-xs" id="CC-splitPayments-phone-nameOnCard-error"
+	        data-bind="validationMessage: $data.paymentViewModel().nameOnCard" role="alert"></span>
+	      <!-- /ko -->
+	      <div class="control">
+	        <input aria-required="true" type="text" class="col-md-12 form-control" id="CC-splitPayments-nameOnCard" name="nameOnCard"
+	        data-bind="validatableValue: paymentViewModel().nameOnCard, widgetLocaleText: {value:'nameOnCardPlaceholder', attr:'placeholder'}" placeholder="Name on Card"/>
+	      </div>
+	    </div>
+	    <!-- ko if: $data.paymentViewModel().paymentMethodType == "card" -->
+	      <div class="hidden-xs col-sm-offset-4 col-sm-4">
+	        <p class="text-danger" id="CC-splitPayments-nameOnCard-error"
+	        data-bind="validationMessage: $data.paymentViewModel().nameOnCard" role="alert"></p>
+	      </div>
+	    <!-- /ko -->
+  	</div>
+	
+  	<!-- card type -->
+  	<div class="row">
+  	  <!-- ko if: $data.paymentViewModel().paymentMethodType == "card" -->
+  	    <div class="form-group col-sm-4">
+          <label class="control-label inline" id="CC-splitPayments-cardType-label"
+          for="CC-splitPayments-cardType" data-bind="widgetLocaleText: 'cardTypeLabel'">Card Type</label>
+      
+          <span class="text-danger visible-xs" id="CC-splitPayments-phone-cardType-error"
+          data-bind="validationMessage: $data.paymentViewModel().cardType" role="alert"></span> <!-- cardType -->
+      
+          <div class="control">
+            <select aria-required="true" type="text" class="col-md-12 form-control" id="CC-splitPayments-cardType" name="cardType"
+              data-bind="options: paymentsContainer().cardTypeList, optionsText: 'name', optionsValue: 'value',
+              optionsCaption: cardTypePlaceholderText, value: $data.paymentViewModel().cardType,
+              validatableTarget: $data.paymentViewModel().cardType, validationElement: $data.paymentViewModel().cardType">  <!-- cardType -->
+            </select>
+          </div>
+        </div>
+        <div class="hidden-xs col-sm-4">
+          <!-- ko foreach: paymentsContainer().cardTypeList -->
+            <span class="paymentimages" data-bind="attr:{id: 'CC-splitPayments-payment'+value}, click:$parent.cardClicked,
+            css:{selectedCard: $parent.paymentViewModel().cardType() === value}">
+              <img data-bind="attr:{src: img, alt: name}"/>
+            </span>
+          <!-- /ko -->
+        </div>
+        <div class="hidden-xs col-sm-4">
+          <p class="text-danger" id="CC-splitPayments-cardType-error"
+          data-bind="validationMessage: $data.paymentViewModel().cardType" role="alert"></p> <!-- cardType -->
+        </div>
+  	  <!-- /ko -->
+  	</div>
+	
+  	<!-- card number & cvv -->
+  	<div class="row">
+  	  <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-splitPayments-cardNumber-label"
+        for="CC-splitPayments-cardNumber" data-bind="widgetLocaleText: 'cardNumberLabel'">Card Number</label>
+        <!-- ko if: $data.paymentViewModel().paymentMethodType == "card" -->
+          <span class="text-danger visible-xs" id="CC-splitPayments-phone-cardNumber-error"
+        	data-bind="validationMessage: $data.paymentViewModel().cardNumber" role="alert"></span>
+        <!-- /ko -->
+        <div class="control">
+        	<input aria-required="true" type="text" class="col-md-12 form-control" id="CC-splitPayments-cardNumber" name="cardNumber"
+        	data-bind="validatableValue: $data.paymentViewModel().cardNumber, widgetLocaleText: {value:'cardNumberPlaceholder', attr:'placeholder'}" placeholder="Card Number"/>
+        </div>
+      </div>
+  	
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" id="CC-splitPayments-cardCVV-label"
+        for="CC-splitPayments-cardCVV" data-bind="widgetLocaleText: 'cardCVVLabel'">CVV</label>
+        <small id="CC-checkoutPaymentDetails-cardCVV-whatsthis-phone" class="visible-xs cvvPopover"
+          data-bind="widgetLocaleText: 'cardCVVWhatsThis', event:{mouseover:cvvMouseOver, focus:cvvMouseOver}" 
+          data-toggle="popover" data-placement="bottom" tabindex="0">
+          What's This
+        </small>
+        <!-- ko if: $data.paymentViewModel().paymentMethodType == "card" -->
+          <span class="text-danger visible-xs" id="CC-splitPayments-phone-cardCVV-error"
+          data-bind="validationMessage: $data.paymentViewModel().cardCVV" role="alert"></span>
+        <!-- /ko -->
+        <div class="control row">
+          <div class="col-sm-6" >
+            <input aria-required="true" type="password" class="col-md-12 form-control" id="CC-splitPayments-cardCVV" name="cardCVV"
+              data-bind="validatableValue: $data.paymentViewModel().cardCVV, widgetLocaleText: {value:'cardCVVPlaceholder', attr:'placeholder'}" placeholder="CVV"/>
+          </div>
+          <!-- TODO Find a better way to change popover placement, without duplication -->
+          <div class="hidden-xs cc-checkout-payment-details-cvv-row">
+            <small id="CC-checkoutPaymentDetails-cardCVV-whatsthis" class="cvvPopover"
+              data-bind="widgetLocaleText: 'cardCVVWhatsThis', event:{mouseover:cvvMouseOver, focus:cvvMouseOver}, widgetLocaleText: {value:'cardCVVWhatsThis', attr:'aria-label'}" 
+              data-toggle="popover" data-placement="right" tabindex="0">
+              What's This
+            </small>
+          </div>
+          <div id="CC-splitPayments-cardCVV-details" class="a11y">
+            <h3 data-bind="widgetLocaleText: 'cardCVVPopupTitle'"></h3>
+            <div data-bind="widgetLocaleText: 'cardCVVPopupText'"></div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden-xs col-sm-4">
+        <!-- ko if: $data.paymentViewModel().paymentMethodType == "card" -->
+          <p class="text-danger" id="CC-checkoutPaymentDetails-cardNumber-error"
+          data-bind="validationMessage: $data.paymentViewModel().cardNumber" role="alert"></p>
+          <p class="text-danger" id="CC-checkoutPaymentDetails-cardCVV-error"
+          data-bind="validationMessage: $data.paymentViewModel().cardCVV" role="alert"></p>
+        <!-- /ko -->
+      </div>
+  	</div>
+	
+  	<!-- end month and year -->
+  	<div class="row">
+  	  <!-- ko if: $data.paymentViewModel().paymentMethodType == "card" -->
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" id="CC-splitPayments-endMonth-label"
+          for="CC-splitPayments-endMonth" data-bind="widgetLocaleText: 'endMonthLabel'">End Month</label>
+          <span class="text-danger visible-xs" id="CC-splitPayments-phone-endMonth-error"
+          data-bind="validationMessage: $data.paymentViewModel().expiryMonth" role="alert"></span> <!-- endMonth -->
+          <div class="control">
+            <select aria-required="true" type="text" class="col-md-12 form-control" id="CC-splitPayments-endMonth" name="endMonth"
+              data-bind="options:  monthList, optionsText: 'name', optionsValue: 'value',
+              optionsCaption: endMonthPlaceholderText, value: $data.paymentViewModel().expiryMonth,
+              validatableTarget: $data.paymentViewModel().expiryMonth, validationElement: $data.paymentViewModel().expiryMonth"> <!-- endMonth -->
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" id="CC-splitPayments-endYear-label"
+          for="CC-splitPayments-endYear" data-bind="widgetLocaleText: 'endYearLabel'">End Year</label>
+          <span class="text-danger visible-xs" id="CC-splitPayments-phone-endYear-error"
+          data-bind="validationMessage: $data.paymentViewModel().expiryYear" role="alert"></span>  <!-- endYear -->
+          <div class="control">
+            <select aria-required="true" type="text" class="col-md-12 form-control" id="CC-splitPayments-endYear" name="endYear"
+              data-bind="options: endYearList, optionsText: 'name', optionsValue: 'value',
+              optionsCaption: endYearPlaceholderText, value: $data.paymentViewModel().expiryYear,
+              validatableTarget: $data.paymentViewModel().expiryYear, validationElement: $data.paymentViewModel().expiryYear">  <!-- endYear -->
+            </select>
+          </div>
+        </div>
+        <div class="hidden-xs col-sm-4">
+        	<p class="text-danger" id="CC-splitPayments-endMonth-error"
+        	data-bind="validationMessage: $data.paymentViewModel().expiryMonth" role="alert"></p>  <!-- endMonth -->
+        	<p class="text-danger" id="CC-splitPayments-endYear-error"
+        	data-bind="validationMessage: $data.paymentViewModel().expiryYear" role="alert"></p>  <!-- endYear -->
+        </div>
+      <!-- /ko -->
+  	</div>
+  </fieldset>
+</div>

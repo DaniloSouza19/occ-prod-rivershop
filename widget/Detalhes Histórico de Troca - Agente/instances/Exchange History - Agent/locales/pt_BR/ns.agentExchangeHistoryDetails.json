@@ -1,0 +1,25 @@
+{
+  "resources": {
+    "returnMarkCompleteSucess": "Retornar solicitação marcada como concluída",
+    "refundText": "Total do Reembolso",
+    "rmaNumberText": "Número de RMA",
+    "returnActionText": "Ação",
+    "processExchangeOrderText": "Processar Pedido de Troca",
+    "buttonClearText": "Limpar",
+    "symbolAndAmountText": "__currencySymbol____amount__",
+    "linkActionRefundText": "Reembolso",
+    "returnStatusText": "Status",
+    "returnHistoryCaptionText": "Histórico de Devoluções",
+    "pendingRefund": "Reembolso Pendente",
+    "exchangeHistoryCaptionText": "Histórico de Trocas",
+    "returnRequestDateText": "Solicitada em",
+    "exchangeOrderText": "Pedido de Troca",
+    "linkActionReceiveText": "Receber",
+    "buttonCancelText": "Cancelar",
+    "returnTotalQuantityText": "Qtd. Total",
+    "mixedCurrencyAmountText": "__primaryCurrencySymbol__ __primaryCurrencyAmount__+__secondaryCurrencySymbol____secondaryCurrencyAmount__",
+    "returnRequestIdText": "Número da Solicitação",
+    "markComplete": "Marcar como concluído",
+    "errorHeader": "Erro: __result.message__ Código da Devolução: __result.errorCode__ "
+  }
+}

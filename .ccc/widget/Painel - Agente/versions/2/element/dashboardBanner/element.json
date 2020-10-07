@@ -1,0 +1,8 @@
+{
+  "tag": "dashboardBanner",
+  "source": 100,
+  "type": "fragment",
+  "title": "dashboardBanner",
+  "widgetType": "agentdashboard",
+  "version": 2
+}

@@ -1,0 +1,2 @@
+<textarea class="form-control" data-bind="widgetLocaleText: {value: 'enterQuoteRequestText' , attr:'aria-label'}, value: requesterNote, attr:{title: $parent.translate('requestQuoteHeader')}" rows="4" >
+</textarea>

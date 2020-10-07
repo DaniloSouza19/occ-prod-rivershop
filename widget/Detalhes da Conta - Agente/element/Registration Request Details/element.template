@@ -1,0 +1,61 @@
+<!-- ko if: initialized() -->
+<div class="cc-registration-request-details">
+  <div class="row">
+    <div class="form-group col-md-12" id="">
+      <div id="cc-account-registration-request" class="checkbox">
+        <label for="cc-registration-request-checkbox"  class="cc-aligment-label">
+          <input id="cc-registration-request-checkbox" type="checkbox" data-bind="checked: isOrgSourceSelfRegistration, enable: false"/>
+          <span data-bind="widgetLocaleText: 'accountSourceText'"></span>
+        </label>
+       </div>
+    </div>
+  </div>
+
+  <!-- ko if: isOrgSourceSelfRegistration -->
+    <!-- Site Where request Originated -->
+    <div class="row">
+      <div class="form-group col-md-12" id="">
+        <label class="account-details-label" for="cc-request-origin-site" data-bind="widgetLocaleText: 'registrationRequestOriginSiteText'"></label>
+          <input id="cc-request-origin-site" class="form-control disabled-input" data-bind="
+                 value: registrationRequestOriginSiteInfo,
+                 attr: {title : registrationRequestOriginSiteInfo, readonly: true}"/>
+      </div>
+    </div>
+
+    <!-- Related to existing Account -->
+    <div class="row">
+      <div class="form-group col-md-12" id="">
+        <label class="account-details-label" for="cc-request-requester-account-name" data-bind="widgetLocaleText: 'registrationRequestRelatedToAccountText'"></label>
+          <input id="cc-request-requester-account-name" class="form-control disabled-input" data-bind="
+                 value: requesterAccountName,
+                 attr: {title : requesterAccountName, readonly: true}"/>
+      </div>
+    </div>
+
+    <div id="collapsibleRegistrationNotes" class="collapse-heading row">
+      <button id="registrationNotesHeader" class="btn-link collapse-toggle collapsed" data-toggle="collapse" data-target="#registrationNotes"
+        data-bind="widgetLocaleText:'registrationNotesText'"></button>
+    </div>
+
+    <div id="registrationNotes" class="collapse row">
+      <div class="col-md-8">
+        <label class="account-details-label" for="cc-account-requester-notes" data-bind="widgetLocaleText: 'registrationRequestNotesText'"></label>
+        <textarea id="cc-account-requester-notes" data-bind="
+                    value: orgRegistrationRequesterComments,
+                    attr: {readonly: true},
+                    css: 'cc-account-registration-notes'">
+        </textarea>
+      </div>
+
+      <div class="col-md-8">
+        <label class="account-details-label" for="cc-account-external-notes" data-bind="widgetLocaleText: 'approvalCommentsHeaderText'"></label>
+        <textarea id="cc-account-external-notes" data-bind="
+                    value:  orgRegistrationApproverComments,
+                     attr: {readonly: true},
+                    css: 'cc-account-registration-notes'">
+        </textarea>
+      </div>
+    </div>
+  <!-- /ko -->
+</div>
+<!-- /ko -->

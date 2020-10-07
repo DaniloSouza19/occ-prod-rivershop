@@ -1,0 +1,236 @@
+<div id="CC-contactRegistration">
+<!-- ko if: $data.user().isDelegatedAdmin -->
+<!--ko ifnot:isDetailsView -->
+<div id="CC-contactRegistration-listing">
+ <div id="CC-contactRegistration-legend">
+    <h3 id="CC-contactRegistration-title" class="cc-profile-legend-title" data-bind="widgetLocaleText:'registrationRequestsText'"></h3>
+  </div>
+  <div class="row" id="CC-contactRegistration-filterContainer">
+  <!--  Filter menu   -->
+  <div class="col-sm-6 col-xs-7">
+    <!--<span class="fa fa-sliders" style="font-size: 20px;"></span>-->
+    <span class="fa fa-filter" style="font-size: 20px;"></span>
+    <select id="cc-registration-request-filter"  class="form-control" style="display: inline-block;width: auto;" data-bind="widgetLocaleText: {attr: 'aria-label', value: 'filterLabel'},
+      options: $data.filterOptions,
+      value: currentFilterOption,
+      optionsText: 'label', optionsValue: 'value',
+      event: {change: onFilterOptionChange.bind($data)}">
+    </select>
+  </div>
+  <div class="col-sm-4 col-xs-5 pull-right CC-contact-search-group">
+      <input type="text" class="form-control" id="CC-contact-search-text" aria-label="Contact Search" data-bind="value:contactSearchValue, valueUpdate: 'afterkeydown',event:{keypress: searchContactKeyPress.bind($data)},widgetLocaleText:{value:'searchContacts',attr:'placeholder'}">      
+      <span class="input-group-btn">
+      <button class="btn btn-default" id="CC-searchButton" aria-label="Search Contacts" data-bind="click:searchContactDetails" type="button"><span class="fa fa-search"></span></button>
+      </span>
+    </div>
+  </div>
+  <!-- Results table -->
+  <div class="row" data-bind="visible: registrationRequestSearchViewModel.resultsPresent">
+  <section id="CC-contactRegistrationList-tableSection" class="col-md-12">
+  <table class="table" id="cc-contactRequestsList-table" summary="contactRequestsList">
+  <thead>
+    <tr>
+      <!-- ko foreach: columnOptions -->
+      <th scope="col" data-bind="css: cloWidth">
+        <span data-bind="widgetLocaleText : columnNameHeader"></span>
+        <!-- ko if : ($parent.sortDirections()[columnSortKey] == "asc") -->
+          <span class="fa fa-sort-desc" data-bind="click : $parent.sort.bind($parent,columnSortKey,'desc'), event: {keypress: $parent.sort.bind($parent,columnSortKey,'desc')}" aria-hidden="true" tabindex="0"></span>
+        <!-- /ko -->
+        <!-- ko if : ($parent.sortDirections()[columnSortKey] == "desc") -->
+          <span class="fa fa-sort-asc" data-bind="click : $parent.sort.bind($parent,columnSortKey,'asc'), event: {keypress: $parent.sort.bind($parent,columnSortKey,'asc')}" aria-hidden="true" tabindex="0"></span>
+        <!-- /ko -->
+        <!-- ko if : ($parent.sortDirections()[columnSortKey] == "both") -->
+          <span class="fa fa-sort" data-bind="click : $parent.sort.bind($parent,columnSortKey,'asc'), event: {keypress: $parent.sort.bind($parent,columnSortKey,'asc')}" aria-hidden="true" tabindex="0"></span>
+        <!-- /ko -->
+      </th>
+      <!-- /ko -->
+    </tr>
+  </thead>
+  <tbody data-bind="foreach: registrationRequestSearchViewModel.recordsInCurrentPage">
+    <tr>
+     <td>
+        <a href="#" data-bind="attr: {id: 'cc-id-' + id, 'title': id }, click: $parent.redirectToRequestDetailsPage.bind($parent, id),
+                              text: id">
+        </a>
+      </td>  
+      <td scope="row"
+                  data-bind="text: email, attr: {id: 'cc-email-' + id, 'title': email }">
+      </td>
+      <td scope="row"
+                  data-bind="text: lastName, attr: {id: 'cc-lastName-' + id, 'title': lastName }">
+      </td>
+      <td scope="row"
+                  data-bind="text: firstName, attr: {id: 'cc-firstName-' + id, 'title': firstName }">
+      </td>
+      <!-- ko if: $data.productionUrl -->
+      <td scope="row">
+                  <a data-bind="attr: {id: 'cc-site-' + id, 'title': productionUrl,'href': productionUrl}"><span data-bind="text: productionUrl"></span></a>
+      </td>
+      <!-- /ko --> 
+      <!-- ko ifnot: $data.productionUrl -->
+      <td scope="row"
+                  data-bind="text: site, attr: {id: 'cc-site-' + id, 'title': site }">
+      </td>  
+      <!-- /ko --> 
+      <td
+                  data-bind="text: requestDate, attr: {id: 'cc-requestDate-' + id, 'title': requestDate }">
+      </td>
+      <td class="cc-text-overflow-table">         
+          <!-- ko if: $data.status === "rejected" -->
+          <div class="statusIcon">
+            <span class="cc-icon-select fa fa-times-circle rejectedIcon" role="img"></span>
+          </div>
+          <!-- /ko -->
+          <!-- ko if: $data.status === "moreInfoNeeded" -->
+          <div class="statusIcon">
+            <span class="cc-icon-select fa fa-question-circle moreInfoNeededIcon" role="img"></span>
+          </div>
+          <!-- /ko -->
+        <span data-bind="text: localizedStatus, attr: {id: 'cc-localizedStatus-' + id, 'title': localizedStatus }" style="padding-left: 0.5rem;"></span>
+      </td>      
+    </tr>
+  </tbody>
+</table>
+</section>
+</div>
+       
+<!-- ko with: registrationRequestSearchViewModel --> 
+  <!-- ko if: totalNumber() !== 0 -->      
+  <!-- Pagination control -->
+  <div id="cc-paginated-controls-bottom" class="row">
+    <div class="col-md-12">
+      <div class="pull-right">
+        <div class="bottom-margin"
+             data-bind="visible : (totalNumberOfPages() > 1),
+                       template: {name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''} ">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko-->
+<!-- /ko-->
+               
+<!-- End of Results table -->
+  
+<!-- Start : Empty container & No matched results -->
+<!-- ko ifnot:  registrationRequestSearchViewModel.resultsPresent-->
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 data-bind="widgetLocaleText:'noMatchingRequestsText'"></h4>
+      <div data-bind="widgetLocaleText:'noRequestsMatchedText'"></div>
+    </div>
+  </div>
+<!-- End : Empty container & No matched results -->
+<!--/ko-->   
+</div>
+<!-- /ko-->
+
+<!--START REGISTRATION REQUEST DETAILS RELATED VIEWS-->
+
+<!--ko if:isDetailsView -->
+<div id="CC-selfRegistrationProfile" class="container-fluid">
+  <!-- TO DO -->
+  <div class="row titleLeftPadding">
+     <h3 data-bind="text:contactHeader"></h3>
+  </div>
+  <!-- /// -->
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+    <div id="selfRegistrationProfileTabs" class="hidden-xs">
+      <ul class="nav nav-tabs" role="tablist">
+        <li id='selfRegistrationProfileTabs_request' class="nav-item active"><a class="nav-link" data-bind="widgetLocaleText:'requestText'" role="tab" data-toggle="tab" href="#request_selfRegistrationProfile"></a></li>
+        <li id='selfRegistrationProfileTabs_contact' data-bind="css:{disabled: isReadOnly(), pointerEventsClass: true}, attr:{class:'nav-item'}, click: loadContactTab" >
+            <a class="nav-link" role="tab" data-bind="widgetLocaleText : 'contactText'" data-toggle="tab" href="#contact_selfRegistrationProfile">
+            </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <nav class="navbar hidden-lg hidden-md hidden-sm" role="navigation" id="cc-mobile-menubar">
+    <div class="mega-menu">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle btn-navbar btn-inverse" data-toggle="collapse" data-target="#mobile-selfRegistrationProfileTabs" style="background-color: black;">
+          <span class="label-hidden" data-bind="widgetLocaleText: 'mobileNavBtnText'"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="mobile-selfRegistrationProfileTabs">
+      <ul class="nav">
+        <li class="active"><a data-toggle="tab" data-bind="widgetLocaleText : 'requestText'" href="#request_selfRegistrationProfile"></a></li>
+        <li id='selfRegistrationProfileTabsMobile_contact' data-bind="css:{disabled: isReadOnly(), pointerEventsClass: true}, click: loadContactTab"><a data-toggle="tab" data-bind="widgetLocaleText : 'contactText'" href="#contact_selfRegistrationProfile"></a></li>
+      </ul>
+      </div>
+      </div>
+   </nav>
+
+  <div class="container-fluid tab-content">
+    <div class="tab-pane active" id="request_selfRegistrationProfile">
+      <!-- ko template: {name: templateAbsoluteUrl('/templates/selfRegistrationProfilesRequestTab.template') , templateUrl: ''} -->
+      <!-- /ko -->
+      <!-- ko if: $data.requestTabDynamicProperties().length > 0 -->
+        <!-- ko setContextVariable:{name:'context', value: $data.requestTabDynamicProperties} -->
+          <div data-bind="element: 'dynamic-property', attr: {id: 'CC-' + $data.id() + 'dynamic-property-request-tab'}"></div>
+        <!-- /ko -->
+      <!-- /ko -->
+    </div>
+
+    <div class="tab-pane" id="contact_selfRegistrationProfile">
+      <!-- ko template: {name: templateAbsoluteUrl('/templates/selfRegistrationProfilesContactTab.template') , templateUrl: ''} -->
+      <!-- /ko -->
+      <!-- ko if: $data.contactTabDynamicProperties().length > 0 -->
+        <!-- ko setContextVariable:{name:'context', value: $data.contactTabDynamicProperties} -->
+          <div data-bind="element: 'dynamic-property', attr: {id: 'CC-' + $data.id() + 'dynamic-property-contact-tab'}"></div>
+        <!-- /ko -->
+      <!-- /ko -->
+    </div>
+   </div>
+
+  <div id="CC-customerProfile-save-cancel-control" class="row cc-customer-profile-save-cancel">
+    <button class="cc-button-primary col-sm-2 col-xs-4 pull-right cc-customer-profile-button" id="CC-customerProfile-save" data-bind="enable: !(isReadOnly()),click: handleSave">
+      <span data-bind="widgetLocaleText: 'buttonSave'"></span>
+    </button>
+    <button class="cc-button-secondary col-sm-2 col-xs-4 pull-right cc-customer-profile-button" id="CC-customerProfile-cancel" data-bind="click: handleCancel">
+      <span data-bind="widgetLocaleText: 'buttonCancel'"></span>
+    </button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="commentsModal" data-backdrop="static" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" data-bind="text: dialogHeader" ></h4>
+      </div>
+      <div class="modal-body">
+        <!-- Dialog Description Text -->
+        <div class="description">
+          <div data-bind="text: descriptionText"></div>
+        </div>
+        <div class="header">
+          <div class="text-area-label">
+            <span data-bind="text: headerText"></span>
+          </div>
+        </div>
+        <div class="comments">
+          <textarea class="comments-area" style="width:100%" data-bind="attr:{ placeholder: $data.placeholderText}, validatableValue: commentsText, validatableTarget: commentsText"></textarea>
+          <span role="alert" class="text-danger" id="CC-self-registration-approver-comment-error" data-bind="validationMessage: commentsText"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn cc-button-secondary" data-dismiss="modal" data-bind="widgetLocaleText: 'cancelText'"></button>
+        <button type="button" class="btn cc-button-primary" data-bind="click: acceptCommentsHandler, text: acceptOrRejectText"></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /ko-->
+
+<!--END REGISTRATION REQUEST DETAILS RELATED VIEWS-->
+<!-- /ko-->
+</div>

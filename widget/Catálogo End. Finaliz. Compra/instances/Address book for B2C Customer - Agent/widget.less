@@ -1,0 +1,129 @@
+/* -------------------------------------------------- */
+/*  Checkout Address Book
+/* -------------------------------------------------- */
+#CC-checkoutAddressBook {
+
+  fieldset {
+    margin-bottom: 36px;
+  }
+  
+  legend {
+    color: inherit;
+    margin-bottom: 10px;
+    border-bottom: 0px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .text-error {
+    margin-bottom: 2px;
+  }  
+  
+  .shipping-address-view {
+    .btn-xs;
+    
+    .address-field {
+      display: inline-block;
+    }
+    
+    padding: 8px 8px;
+    border: 1px solid gray;
+    
+    // Handle truncation on really narrow screens
+    overflow: auto;
+    //font-size:14px;
+    min-height:150px;
+  }
+  
+  .row > span {
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .default-address {
+    font-weight: bold;
+  }
+
+  #CC-addressBook-picker .modal-body {
+    overflow-y: auto;
+  }
+  border-right: 1px solid #CCC;
+
+  .cc-view-address-button {
+    float: right;
+    border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+  }
+  #cc-show-address-details{
+    .modal-content{
+      overflow-y: auto;
+    }
+    .modal-header{
+      padding: 0.85714rem;
+      background-color: #f0f0f0;
+      border-width: 0 0 1px 0;
+      border-style: solid;
+      border-bottom-color: #c4ced7;
+      font-size: 1.42857rem;
+      color: #252525;
+      font-weight: normal;
+    }
+    .modal-header h3{
+     line-height:20%;
+     display: inline-block;
+    }
+    .cc-margin-bottom {
+      margin-bottom: 0px !important;
+    }
+    .modal-body {
+      overflow: auto;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+      -webkit-flex: 1 1 auto;
+      flex: 1 1 auto;
+    }
+    .cc-modal-body {
+      height: 490px !important;
+      line-height: 0.8;
+      max-width: 660px !important;
+      max-height: 620px !important;
+      border-radius: 5px !important;
+    }
+    .address-label {
+      font-weight: bold;
+      color: #252525;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .address-data {
+      margin-bottom: 20px;
+    }
+    .cc-footer-background {
+      background-color: #F5F5F5;
+    }
+    .dialog-footer {
+      display: flex;
+      justify-content: flex-end;
+      -webkit-flex: 0 0 auto;
+      flex: 0 0 auto;
+      padding: 0.85714rem;
+      text-align: right;
+    }
+    .dialog-footer-separator {
+      border-top: 1px solid #c4ced7;
+    }
+}
+
+  
+  .text-danger {
+    color: #a94442 !important;
+  }
+
+  div input.invalid, div textarea.invalid, div select.invalid {
+    color: #373737 !important;
+    background-color: #f2dede !important;
+    border-color: #ee5f5b !important !important;
+  }
+}

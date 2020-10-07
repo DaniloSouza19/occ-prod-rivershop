@@ -1,0 +1,182 @@
+{
+  "imports": [],
+  "translations": [
+    {
+      "name": "NSH_Payment_Generic [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Payment_Generic",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Payment_Generic [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Payment_Generic [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Payment_Generic [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Payment_Generic [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Payment_Generic [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Payment_Generic [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Payment_Generic [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Payment_Generic [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Payment_Generic [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Payment_Generic [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Payment_Generic [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Payment_Generic [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Payment_Generic [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Payment_Generic [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Payment_Generic [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Payment_Generic [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Payment_Generic [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Payment_Generic [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Payment_Generic [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Payment_Generic [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Payment_Generic [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Payment_Generic [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Payment_Generic [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Payment_Generic [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Payment_Generic [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Payment_Generic [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Payment_Generic [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Payment_Generic [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Payment_Generic [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Payment_Generic [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Payment_Generic [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Payment_Generic [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Payment_Generic [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Payment_Generic [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Payment_Generic [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Payment_Generic [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Payment_Generic [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Payment_Generic [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Payment_Generic [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Payment_Generic [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Payment_Generic [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {}
+}

@@ -1,0 +1,189 @@
+{
+  "imports": [
+    "category",
+    "product",
+    "user"
+  ],
+  "translations": [
+    {
+      "name": "NSH_Breadcrumb [th]",
+      "language": "th"
+    },
+    {
+      "name": "NSH_Breadcrumb",
+      "language": "pt_BR"
+    },
+    {
+      "name": "NSH_Breadcrumb [zh_CN]",
+      "language": "zh_CN"
+    },
+    {
+      "name": "NSH_Breadcrumb [en_AU]",
+      "language": "en_AU"
+    },
+    {
+      "name": "NSH_Breadcrumb [en_US]",
+      "language": "en_US"
+    },
+    {
+      "name": "NSH_Breadcrumb [uk]",
+      "language": "uk"
+    },
+    {
+      "name": "NSH_Breadcrumb [bg]",
+      "language": "bg"
+    },
+    {
+      "name": "NSH_Breadcrumb [et]",
+      "language": "et"
+    },
+    {
+      "name": "NSH_Breadcrumb [lv]",
+      "language": "lv"
+    },
+    {
+      "name": "NSH_Breadcrumb [lt]",
+      "language": "lt"
+    },
+    {
+      "name": "NSH_Breadcrumb [no]",
+      "language": "no"
+    },
+    {
+      "name": "NSH_Breadcrumb [fr_CA]",
+      "language": "fr_CA"
+    },
+    {
+      "name": "NSH_Breadcrumb [ro]",
+      "language": "ro"
+    },
+    {
+      "name": "NSH_Breadcrumb [ja]",
+      "language": "ja"
+    },
+    {
+      "name": "NSH_Breadcrumb [sl]",
+      "language": "sl"
+    },
+    {
+      "name": "NSH_Breadcrumb [hr]",
+      "language": "hr"
+    },
+    {
+      "name": "NSH_Breadcrumb [ru]",
+      "language": "ru"
+    },
+    {
+      "name": "NSH_Breadcrumb [tr]",
+      "language": "tr"
+    },
+    {
+      "name": "NSH_Breadcrumb [pl]",
+      "language": "pl"
+    },
+    {
+      "name": "NSH_Breadcrumb [zh_TW]",
+      "language": "zh_TW"
+    },
+    {
+      "name": "NSH_Breadcrumb [ko]",
+      "language": "ko"
+    },
+    {
+      "name": "NSH_Breadcrumb [cs]",
+      "language": "cs"
+    },
+    {
+      "name": "NSH_Breadcrumb [hu]",
+      "language": "hu"
+    },
+    {
+      "name": "NSH_Breadcrumb [el]",
+      "language": "el"
+    },
+    {
+      "name": "NSH_Breadcrumb [da]",
+      "language": "da"
+    },
+    {
+      "name": "NSH_Breadcrumb [en]",
+      "language": "en"
+    },
+    {
+      "name": "NSH_Breadcrumb [sr]",
+      "language": "sr"
+    },
+    {
+      "name": "NSH_Breadcrumb [ar]",
+      "language": "ar"
+    },
+    {
+      "name": "NSH_Breadcrumb [de]",
+      "language": "de"
+    },
+    {
+      "name": "NSH_Breadcrumb [sr_Latn]",
+      "language": "sr_Latn"
+    },
+    {
+      "name": "NSH_Breadcrumb [ca]",
+      "language": "ca"
+    },
+    {
+      "name": "NSH_Breadcrumb [es]",
+      "language": "es"
+    },
+    {
+      "name": "NSH_Breadcrumb [fr]",
+      "language": "fr"
+    },
+    {
+      "name": "NSH_Breadcrumb [in]",
+      "language": "id"
+    },
+    {
+      "name": "NSH_Breadcrumb [it]",
+      "language": "it"
+    },
+    {
+      "name": "NSH_Breadcrumb [ms]",
+      "language": "ms"
+    },
+    {
+      "name": "NSH_Breadcrumb [en_GB]",
+      "language": "en_GB"
+    },
+    {
+      "name": "NSH_Breadcrumb [vi]",
+      "language": "vi"
+    },
+    {
+      "name": "NSH_Breadcrumb [nl]",
+      "language": "nl"
+    },
+    {
+      "name": "NSH_Breadcrumb [en_CA]",
+      "language": "en_CA"
+    },
+    {
+      "name": "NSH_Breadcrumb [sv]",
+      "language": "sv"
+    },
+    {
+      "name": "NSH_Breadcrumb [pt]",
+      "language": "pt"
+    },
+    {
+      "name": "NSH_Breadcrumb [fi]",
+      "language": "fi"
+    }
+  ],
+  "availableToAllPages": true,
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "config": {
+    "catalogId": "cloudCatalog",
+    "rootCategoryId": "rootCategory"
+  }
+}

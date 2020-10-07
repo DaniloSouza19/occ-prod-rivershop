@@ -1,0 +1,6 @@
+{
+  "widgetType": "agentOrdersPendingApproval",
+  "version": 1,
+  "displayName": "Pedidos com Aprovação Pendente - Agente",
+  "elementized": false
+}

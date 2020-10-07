@@ -1,0 +1,6 @@
+<span  role="alert" aria-atomic="true" aria-live="polite">
+  <span class="sr-only" data-bind="widgetLocaleText:'priceRangeText'"></span>
+  <span id="CC-prodDetails-priceMin"  data-bind="currency: {price: product().minPrice, currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>&#45;
+  <span class="sr-only" data-bind="widgetLocaleText:'toText'"></span>
+  <span id="CC-prodDetails-priceMax" data-bind="currency: {price: product().maxPrice, currencyObj: $data.site().selectedPriceListGroup().currency, nullReplace: '0.00', prependNull: true}"></span>
+</span>

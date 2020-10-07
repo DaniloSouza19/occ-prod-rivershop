@@ -1,0 +1,302 @@
+{
+  "elementInstances": [
+    {
+      "customTitle": "Imagem_50004",
+      "styles": {},
+      "tag": "image@60159",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Mondez",
+        "zoomEnabled": "0"
+      }
+    },
+    {
+      "customTitle": "Imagem_60169",
+      "styles": {},
+      "tag": "image@60169",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Reckitt",
+        "zoomEnabled": "0",
+        "fileName": "10675100_1548213439.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_60168",
+      "styles": {},
+      "tag": "image@60168",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Condor",
+        "zoomEnabled": "0",
+        "fileName": "00836800_1548213302.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_60167",
+      "styles": {},
+      "tag": "image@60167",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Pernod",
+        "zoomEnabled": "0",
+        "fileName": "74138300_1548213092.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_60166",
+      "styles": {},
+      "tag": "image@60166",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "KraftHeinz",
+        "zoomEnabled": "0",
+        "fileName": "71038700_1548212994.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_60164",
+      "styles": {},
+      "tag": "image@60164",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Colgate",
+        "zoomEnabled": "0",
+        "fileName": "08009500_1548212891.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_60163",
+      "styles": {},
+      "tag": "image@60163",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Unilever",
+        "zoomEnabled": "0",
+        "fileName": "75502800_1548212796.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_50003",
+      "styles": {},
+      "tag": "image@60162",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "UniLever",
+        "zoomEnabled": "0",
+        "fileName": "59516500_1548212705.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_50004",
+      "styles": {},
+      "tag": "image@60161",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "ScJohnson",
+        "zoomEnabled": "0",
+        "fileName": "30106300_1548212540.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_50003",
+      "styles": {},
+      "tag": "image@60160",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Loral",
+        "zoomEnabled": "0"
+      }
+    },
+    {
+      "customTitle": "Imagem_60171",
+      "styles": {},
+      "tag": "image@60171",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Mondez",
+        "zoomEnabled": "0",
+        "fileName": "logo_mondelez.png"
+      }
+    },
+    {
+      "customTitle": "Imagem_60170",
+      "styles": {},
+      "tag": "image@60170",
+      "text": null,
+      "borderConfig": {
+        "borderColor": "#000000",
+        "borderWidth": "0"
+      },
+      "paddingConfig": {
+        "paddingBottom": "0",
+        "paddingTop": "0",
+        "paddingLeft": "0",
+        "paddingRight": "0"
+      },
+      "horizontalAlignmentConfig": {
+        "horizontalAlignment": "left"
+      },
+      "imageConfig": {
+        "isProductImage": "0",
+        "titleText": "Loral",
+        "zoomEnabled": "0",
+        "fileName": "logo_lolreal.png"
+      }
+    }
+  ]
+}

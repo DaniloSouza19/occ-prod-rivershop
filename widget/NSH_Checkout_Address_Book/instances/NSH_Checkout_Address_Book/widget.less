@@ -1,0 +1,78 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+
+.checkout_address_book {
+    background-color: @color-zero;
+      
+
+        /* -------------------------------------------------- */
+        /*  Checkout Address Book
+        /* -------------------------------------------------- */
+        #CC-checkoutAddressBook {
+          
+          fieldset {
+            
+          }
+
+          legend {
+            font-family: rubik;
+            font-size: 23px;
+            background-color: @color-two;
+            color: @color-zero;
+            font-weight: 500;
+            display: flex;
+            justify-content: left;
+            padding-left: 20px;
+            align-items: center;
+            height: 45px;
+          }
+          
+          .text-error {
+            margin-bottom: 2px;
+          }  
+          
+          .shipping-address-view {
+            .btn-xs;
+            
+            .address-field {
+              display: inline-block;
+              font-family: rubik;
+              color: @color-four;
+            }
+            
+            padding: 8px 8px;
+            border: 1px solid gray;
+            margin-left: 15px;
+            
+            // Handle truncation on really narrow screens
+            overflow: auto;
+          }
+          
+          .row > span {
+            display: inline-block;
+            margin-top: 20px;
+          }
+        
+          .default-address {
+            font-weight: bold;
+          }
+          
+          #CC-addressBook-picker .modal-body {
+            overflow-y: auto;
+          }
+        }
+        .divisor{
+          width: 100%;
+          height: 35px;
+          background-color: #EDEAEA;
+        }
+        }
+        .payment-days{
+          padding: 0px 15px 15px 15px;
+        }
+        .address-view,span.default-address,.shipping-address-view{
+          font-size: 17px !important;
+        }
+        
+
+      
+}

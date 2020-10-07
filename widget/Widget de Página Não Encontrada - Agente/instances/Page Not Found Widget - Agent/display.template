@@ -1,0 +1,15 @@
+<div id="cc-agentError-widget">
+  <div class="jumbotron">
+    <div id="cc-agentError-siteAgentError">
+      <span id="cc-agentError-errorMessage" data-bind="widgetLocaleText: 'errorMessage'"></span>
+      <span id="cc-agentError-title" data-bind="widgetLocaleText: 'title'"></span>    
+      <p>
+        <span id="cc-agentError-pageNotFoundText" data-bind="widgetLocaleText: 'pageNotFoundText'"></span>
+      </p>
+      <div class="row">
+        <button id="cc-agentError-lnkBack" data-bind="click: historyFind" class="cc-button-secondary pull-left"><span id="cc-agentError-spanBack" data-bind="widgetLocaleText: 'lnkBack'"></span></button>        
+        <a id="cc-agentError-lnkHome" data-bind="ccLink: homePageLink" class="cc-button-secondary pull-right"><span id="cc-agentError-spanHome" data-bind="widgetLocaleText: 'lnkHome'"></span></a>         
+      </div>
+    </div>
+  </div>
+</div>

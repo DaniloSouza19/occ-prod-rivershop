@@ -1,0 +1,38 @@
+<!-- ko if: initialized() -->
+  <h2 id="cc-my-returnRequests-heading" class="cc-dashboard-ellipse dashboard-heading-reports" 
+    data-bind="widgetLocaleText: 'returnsChartHeading'">
+  </h2>
+  <div>
+    <!-- ko if: chartLoadStatus_returnRequests() === $data.ERROR_STATUS -->
+    <div class="well oj-chart-basic" id="cc-barChart-returnRequests-created-error-section"
+    tabindex="0"  data-bind="widgetLocaleText:{attr:'aria-label', value:'returnsChartLoadingErrorText'}">    
+      <span data-bind="widgetLocaleText: 'returnsChartLoadingErrorText'"></span>  
+    </div>
+    <!-- /ko -->
+    <!-- ko if: chartLoadStatus_returnRequests() === $data.SUCCESS_STATUS -->
+      <div  data-bind="ojComponent: {
+            component: 'ojChart', 
+            type: 'lineWithArea', 
+            orientation: orientationValue_returnRequests,
+            stack: stackValue_returnRequests,
+            series: series_returnRequests,
+            groups: groups_returnRequests,
+            dataCursor: 'on',
+            dataCursorBehavior: 'snap',
+            splitDualY: dualY_returnRequests,
+            animationOnDisplay: 'auto',
+            animationOnDataChange: 'auto',
+            y2Axis:  {title: $data.y2AxisText_returnRequests(), tickLabel: {scaling: 'none'}},
+            xAxis: {min : $data.minValueX_returnRequests(), max: $data.maxValueX_returnRequests()},
+            hoverBehavior: 'dim',
+            styleDefaults: {colors: {}, dataCursor:{lineColor:'#333333'}},
+            yAxis: {title: $data.yAxisText_returnRequests(), minStep: 1, tickLabel: {scaling: 'none'}},
+            valueFormats: [{type: 'y2', converter: ko.toJS(y2AxisConverter_returnRequests), scaling:'none'},
+                           {type: 'y', converter: ko.toJS(yAxisConverter_returnRequests), scaling:'none'}],
+            legend: {position: 'bottom'},
+            footnote: {text: $data.footNote_returnRequests(), halign: 'center'}
+            }, attr: {id: 'cc-chart-for-returnRequests'}" aria-labelledby="cc-my-returnRequests-heading" class="oj-chart-basic">
+      </div>
+    <!-- /ko -->
+  </div>
+<!-- /ko -->

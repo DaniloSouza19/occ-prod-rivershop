@@ -1,0 +1,27 @@
+<!-- ko if: initialized() -->
+<div id="cc-announcements" class="panel-group cc-announcement-panel">
+  <div id="cc-dashboard-announcements-panel" class="panel panel-default">
+    <div id="cc-announcements-panel-heading" class="panel-heading">
+      <div id="cc-announcements-panel-row" class="row">
+        <div id="cc-dashboard-announcements-panel-title" tabindex="0" data-bind="widgetLocaleText: {attr: 'aria-label', value: 'announcementsText'}" class="col-md-12">
+          <h2 class="panel-title dashboard-heading-reports cc-dashboard-ellipse" data-bind="widgetLocaleText: 'announcementsText'"></h2>
+        </div>
+      </div>
+    </div>
+    <div id="cc-announcements-body" tabindex="-1" class="panel-body dashboard-fixed-height-scrollable">
+      <!-- ko if: $data.announcements().length === 0 -->
+        <div tabindex="0" data-bind="widgetLocaleText: {attr: 'aria-label', value: 'noAnnouncementsText'}">
+          <h5 data-bind="widgetLocaleText: 'noAnnouncementsText'"></h5>
+        </div>
+      <!-- /ko -->
+      <!-- ko foreach: $data.announcements -->
+        <!-- ko if: active === true -->
+          <span class="dashboard-items-word-break" tabindex="0" data-bind="widgetLocaleText: {attr: 'aria-label', 
+          value: message}, html: message, attr: {id: 'cc-dashboard-announcement-' + id}"></span>
+          <hr class="dashboard-items-line">
+        <!-- /ko -->
+      <!-- /ko -->
+    </div>
+  </div>
+</div>
+<!-- /ko -->

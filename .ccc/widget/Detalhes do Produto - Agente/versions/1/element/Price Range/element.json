@@ -1,0 +1,8 @@
+{
+  "tag": "agent-product-details-product-price-range",
+  "source": 100,
+  "type": "subFragment",
+  "title": "Price Range",
+  "widgetType": "agentProductDetails",
+  "version": 1
+}

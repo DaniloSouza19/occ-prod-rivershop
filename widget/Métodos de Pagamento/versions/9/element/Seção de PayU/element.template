@@ -1,0 +1,191 @@
+<!-- ko if: initialized() && $data.hasOwnProperty('payULatamGateway') -->
+<!-- ko if: $data.paymentsContainer().isPayuLPaymentEnabled() && !(paymentsContainer().isPaypalVerified()) -->
+  <div class="collapse-heading">
+	<strong>  <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#CC-splitPayments-payULatam"><button data-bind="widgetLocaleText:'payWithPayuText'"></button></span></strong>
+  </div>
+  <div id="CC-splitPayments-payULatam" class="checkout row collapse">
+  <!-- ko if: payULatamGateway.showPayULatam() -->
+  <!-- ko if: (!order().approvalRequired()) -->
+    <!-- ko if: ((order().showSchedule() && !order().paymentDetails().isPayULEnabledForScheduledOrder()) || (order().approvalRequired() && !order().paymentDetails().isPayULEnabledForApproval())) -->
+    <span class="payment-disable-text-center text-center" id="CC-payULatam-paymentAvailablability" data-bind="widgetLocaleText: 'paymentMethodNotAvilable'"></span><br>
+    <img class="img-responsive" alt="checkoutWithPayULatam" src="/img/payumoney.png">
+    <!-- /ko -->
+    <!-- ko ifnot: ((order().showSchedule() && !order().paymentDetails().isPayULEnabledForScheduledOrder()) || (order().approvalRequired() && !order().paymentDetails().isPayULEnabledForApproval()))  -->
+    <a data-bind="attr : { id: 'CC-splitPayments-checkoutWithPayULatam'}, disabled: {condition: cart().items().length == 0}, click: handlePayUWebCheckout" href="#!">
+      <img class="img-responsive" alt="checkoutWithPayULatam" src="/img/payumoney.png">
+    </a>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- /ko -->
+
+    <!-- ko ifnot: payULatamGateway.showPayULatam() -->
+      <span data-bind="widgetLocaleText:'inValidBillingCountryForPaymentText'"></span>
+    <!-- /ko -->
+
+    <!-- ko if: billingAddressEnabled() && $data.user().loggedIn() && !$data.user().isB2BUser() && payuViewModel().isDefaultAddressValid() -->
+    <div class="form-group" >
+      <div class=" checkbox">
+        <label for="CC-splitpayments-payu-useAsBillingAddress">
+          <input type="checkbox" name="useDefaultBillingAddress"
+                 data-bind="checked: payuViewModel().useDefaultBillingAddress, event:{'change':setDefaultBillingAddress.bind($data, $data.payuViewModel())}"
+                 id="CC-splitpayments-payu-useDefaultBillingAddress">
+          <span data-bind="widgetLocaleText:'useDefaultBillingAddressText'"></span>
+        </label>
+      </div>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko if: !payuViewModel().useDefaultBillingAddress() || $data.user().isB2BUser() -->
+      <div id="collapsibleBillingAddress-payu">
+        <span class="billingAddressText" data-bind="widgetLocaleText:'billingAddressText'"></span>
+        <!-- ko if: user().loggedIn() && showAddressBook -->
+          <button class="cc-button-primary pull-right" id="cc-paymentMethods-show-address-book"
+            data-bind="widgetLocaleText: 'addressBookText', click: $data.toggleAddressBook.bind($data, 'show', 'payu', event.currentTarget)"></button>
+          <!-- ko if:(userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+          <span class="pull-right">
+            <button class="cc-button-primary" id="BillingAddressEditButton-payu"
+              data-bind="click: $data.confirmUnsavedChangesEditButton.bind($data, $element.id, 'payu'), attr:{'disabled' : !$data.billingAddressSelected()}, widgetLocaleText : {value: 'lockIconScreenMessage', attr: 'aria-label', attr: 'title' }">
+              <!-- ko ifnot: editPayUBillingAddress -->
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              <!-- /ko -->
+              <!-- ko if: editPayUBillingAddress -->
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              <!-- /ko -->
+            </button>
+          </span>
+          <!-- /ko -->
+        <!-- /ko -->
+        <fieldset id="billingAddress-payu" data-bind="with: payuViewModel().billingAddress">
+
+        <div class="row first-row">
+          <div class="form-group col-sm-4">
+            <label class="control-label inline" for="CC-splitpayments-payu-bfirstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-bfirstname-error" data-bind="validationMessage: firstName" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="bFirstName" id="CC-splitpayments-payu-bfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}" >
+            </div>
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="control-label inline" for="CC-splitpayments-payu-blastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-blastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="bLastName" id="CC-splitpayments-payu-blastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}">
+            </div>
+          </div>
+          <div class="col-sm-4 hidden-xs">
+            <p class="text-danger " data-bind="validationMessage: firstName" role="alert"></p>
+            <p class="text-danger" id="CC-splitpayments-payu-blastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label class="control-label inline" for="CC-splitpayments-payu-bcountry" data-bind="widgetLocaleText:'countryText'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-bcountry-error" data-bind="validationMessage: country" role="alert"></span>
+            <div class="control">
+              <select class="col-md-12 form-control" name="bCountry" id="CC-splitpayments-payu-bcountry" aria-required="true"
+                data-bind="options: $parent.billingCountries(), optionsText: 'displayName', optionsValue: 'countryCode',
+                             optionsCaption: $parent.resources().countryText, value: selectedCountry,
+                             validatableTarget: country, validationElement: country,attr: { 'disabled': !$parent.editPayUBillingAddress() }">
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-4 hidden-xs">
+            <p class="text-danger" id="CC-splitpayments-payu-bcountry-error" data-bind="validationMessage: country" role="alert"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-8">
+            <label class="control-label inline" for="CC-splitpayments-payu-baddress1" data-bind="widgetLocaleText:'addressLine1Text'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-baddress1-error" data-bind="validationMessage: address1" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="bAddressLine1" id="CC-splitpayments-payu-baddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText : {value : 'addressLine1Text', attr:'placeholder'},attr: { 'disabled': !$parent.editPayUBillingAddress() }">
+            </div>
+          </div>
+          <div class="col-sm-4 hidden-xs">
+            <p class="text-danger" id="CC-splitpayments-payu-baddress1-error" data-bind="validationMessage: address1" role="alert"></p>
+          </div>
+        </div>
+         <div class="row">
+          <div class="form-group col-sm-8">
+            <label class="control-label inline" for="CC-splitpayments-payu-baddress2" data-bind="widgetLocaleText:'addressLine2Text'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-baddress2-error" data-bind="validationMessage: address2" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="bAddressLine2" id="CC-splitpayments-payu-baddress2" data-bind="validatableValue: address2, widgetLocaleText : {value : 'addressLine2Text', attr:'placeholder'},attr: { 'disabled': !$parent.editPayUBillingAddress() }">
+            </div>
+          </div>
+          <div class="col-md-4 hidden-xs">
+            <p class="text-danger" id="CC-splitpayments-payu-baddress2-error" data-bind="validationMessage: address2" role="alert"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label class="control-label inline" for="CC-splitpayments-payu-bcity" data-bind="widgetLocaleText:'cityText'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-bcity-error" data-bind="validationMessage: city" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="bCity" id="CC-splitpayments-payu-bcity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText : {value : 'cityText', attr:'placeholder'},attr: { 'disabled': !$parent.editPayUBillingAddress() }">
+            </div>
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="control-label inline" for="CC-splitpayments-payu-bstate" data-bind="widgetLocaleText:'stateText'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-bstate-error" data-bind="validationMessage: state" role="alert"></span><div class="control">
+              <select class="col-md-12 form-control" name="bState" id="CC-splitpayments-payu-bstate" aria-required="true"
+                data-bind="options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation',
+                             optionsCaption: $parent.resources().stateRegionText, value: selectedState,
+                           validatableTarget: state, validationElement: state, enable: (stateList().length && $parent.editPayUBillingAddress())">
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-4 hidden-xs">
+            <p class="text-danger" id="CC-splitpayments-payu-bcity-error" data-bind="validationMessage: city" role="alert"></p>
+            <p class="text-danger" id="CC-splitpayments-payu-bstate-error" data-bind="validationMessage: state" role="alert"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label class="control-label inline" for="CC-splitpayments-payu-bzipcode" data-bind="widgetLocaleText:'zipCodeText'"></label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+            <div class="control">
+              <input type="text" class="col-md-12 form-control" name="bZip" id="CC-splitpayments-payu-bzipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'},attr: { 'disabled': !$parent.editPayUBillingAddress() }">
+            </div>
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="control-label inline" for="CC-splitpayments-payu-bphone" data-bind="widgetLocaleText:'phoneNumberText'">
+            </label>
+            <span class="text-danger visible-xs" id="CC-splitpayments-payu-phone-bphone-error" data-bind="validationMessage: phoneNumber" role="alert">
+            </span>
+            <div class="control">
+              <input type="tel" class="col-md-12 form-control" name="bPhone" id="CC-splitpayments-payu-bphone" aria-required="true" data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'},attr: { 'disabled': !$parent.editPayUBillingAddress() }">
+            </div>
+          </div>
+          <div class="col-sm-4 hidden-xs">
+            <p class="text-danger" id="CC-splitpayments-payu-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      </div>
+    <!-- /ko -->
+  </div>
+
+<div class="hidden-widget" style="display: none">
+ <form id="payULatam_payment_form" method="post" action="" accept-charset="UTF-8" autocomplete="off">
+  <input name="merchantId" id="merchantId" type="text"  data-bind="value: payULatamGateway.merchantId()">
+  <input name="accountId" id="accountId" type="text"  data-bind="value: payULatamGateway.accountId()">
+  <input name="description" id="description" type="text"  data-bind="value: payULatamGateway.description()">
+  <input name="referenceCode" id="referenceCode" type="text" data-bind="value: payULatamGateway.referenceCode()">
+  <input name="amount" id="amount" type="text"  data-bind="value: payULatamGateway.amount()">
+  <input name="tax" id="tax" type="text"  data-bind="value: payULatamGateway.tax()">
+  <input name="taxReturnBase" id="taxReturnBase" type="text"  data-bind="value: payULatamGateway.taxReturnBase()">
+  <input name="currency" id="currency" type="text"  data-bind="value: payULatamGateway.currency()">
+  <input name="signature" id="signature" type="text"  data-bind="value: payULatamGateway.signature()">
+  <input name="algorithmSignature" id="algorithmSignature" type="text"  data-bind="value: payULatamGateway.algorithmSignature()">
+  <input name="test" id="test" type="text"  data-bind="value: payULatamGateway.test()">
+  <input name="buyerEmail" id="buyerEmail" type="text"  data-bind="value: payULatamGateway.buyerEmail()">
+  <input name="responseUrl" id="responseUrl" type="text"  data-bind="value: payULatamGateway.responseUrl()">
+  <input name="confirmationUrl" id="confirmationUrl" type="text"  data-bind="value: payULatamGateway.confirmationUrl()">
+  <input name="lng" id="buyerLanguage" type="text"  data-bind="value: payULatamGateway.buyerLanguage()">
+  <input name="Submit"  type="submit"  value="Submit">
+ </form>
+</div>
+<!-- /ko -->
+<!-- /ko -->

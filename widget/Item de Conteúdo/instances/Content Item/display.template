@@ -1,0 +1,60 @@
+<!-- ko if:initialized && $data.hasOwnProperty("content") && $data.hasOwnProperty("info") -->
+  <div class="content-item">
+    <!-- ko if:info.hasOwnProperty("name") -->
+    <h2 class="content-title" data-bind="text:info().name"></h2>
+    <!-- /ko -->
+    <!-- ko if:info().hasOwnProperty("updateddate") -->
+    <p class="updated-date"
+      data-bind="widgetLocaleText : {value: 'updatedDateText', attr: 'innerText', params:{updateddate:info().updateddate.value}}"></p>
+    <!-- /ko -->
+
+    <!-- ## root content is an image, just show the image ## -->
+    <!-- ko if:content().hasOwnProperty("renditions") -->
+      <div data-bind="template: {name: 'imageTemplate', data: content() }"></div>
+    <!-- /ko -->
+
+    <!-- ko ifnot:content().hasOwnProperty("renditions") -->
+      <!-- ko foreach:content -->
+        <div data-bind="template: { name: 'dataItemTemplate', data: $data }"></div>
+      <!-- /ko -->
+    <!-- /ko -->
+  </div>
+
+  <script id="dataItemTemplate" type="text/html">
+
+    <!-- ko if:typeof $data == "object" -->
+      <!-- ko if:$data.hasOwnProperty("renditions") -->
+        <!-- ## this is an image -->
+          <div data-bind="template: { name: 'imageTemplate', data: $data }"></div>
+      <!-- /ko -->
+      <!-- ko if:$data.hasOwnProperty("timezone") && $data.hasOwnProperty("value") -->
+        <!-- ## this is a date field -->
+          <div data-bind="template: { name: 'dateTemplate', data: $data }"></div>
+      <!-- /ko -->
+      <!-- ko ifnot:$data.hasOwnProperty("renditions") || $data.hasOwnProperty("timezone") -->
+        <!-- ko foreach:Object.keys($data) -->
+          <div data-bind="template: { name: 'dataItemTemplate', data: $parent[$data] }"></div>
+        <!--  /ko -->
+      <!-- /ko -->        
+    <!-- /ko -->
+    <!-- ko ifnot:typeof $data == "object" -->
+      <p data-bind="html: $data"></p>
+    <!-- /ko -->
+
+  </script>
+
+  <script id="imageTemplate" type="text/html">
+
+    <!-- ko if:$data.hasOwnProperty('description') -->
+      <img data-bind="attr: {src: renditions[0].formats[0].links[0].href, alt: description}" />
+    <!-- /ko -->
+    <!-- ko ifnot:$data.hasOwnProperty('description') -->
+      <img data-bind="attr: {src: renditions[0].formats[0].links[0].href, alt: ''}" />
+    <!-- /ko -->
+  </script>
+
+  <script id="dateTemplate" type="text/html">
+    <div data-bind="ccDate: {date: value, returnedDate: 'long'}"></div>
+  </script>
+
+<!-- /ko -->

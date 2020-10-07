@@ -1,0 +1,8 @@
+{
+  "tag": "product-list-price",
+  "source": 100,
+  "type": "subFragment",
+  "title": "Preço da lista",
+  "widgetType": "productDetails",
+  "version": 14
+}

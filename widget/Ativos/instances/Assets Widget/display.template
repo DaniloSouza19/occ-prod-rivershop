@@ -1,0 +1,154 @@
+<div id="CC-assets" class="CC-services">
+
+  <div class="row">
+    <div class="col-sm-7">
+      <h2 data-bind="widgetLocaleText:'myAccount'"></h2>
+    </div>
+    <div class="col-sm-5 text-right">
+      <a  href="#" data-bind="
+        click: user().validatePrivilagePageRequest.bind(user()), 
+        ccNavigation: 'prevent',
+        ccLink: 'profile',
+        widgetLocaleText:'backToMyAccount'"></a>
+    </div>
+  </div>
+  
+  <span class="CC-assets-legend" data-bind="widgetLocaleText:'services'"></span>
+  
+  <table id="CC-assets-results" class="table table-striped" data-bind="widgetLocaleText:{value:'assetTableSummary', attr:'summary'}">
+    <thead>
+      <tr>
+        <th scope="col">
+          <span data-bind="widgetLocaleText:'assetKey'"></span>
+        </th>
+        <th scope="col">
+          <span data-bind="widgetLocaleText:'serviceId'"></span>
+        </th>
+        <th scope="col" class="hidden-xs">
+          <span data-bind="widgetLocaleText:'serviceAccountId'"></span>
+        </th>
+        <th scope="col">
+          <span data-bind="widgetLocaleText:'status'"></span>
+        </th>
+        <th scope="col" class="hidden-xs hidden-sm">
+          <span data-bind="widgetLocaleText:'dateAdded'"></span>
+        </th>
+        <th scope="col" class="hidden-xs hidden-sm">
+          <span data-bind="widgetLocaleText:'dateModified'"></span>
+        </th>
+        <th scope="col" class="hidden-xs">
+          <span data-bind="widgetLocaleText:'quantity'"></span>
+        </th>
+        <th scope="col" class="hidden-xs hidden-sm">
+          <span data-bind="widgetLocaleText:'price'"></span>
+        </th>
+        <th scope="col"><span class="sr-only" data-bind="widgetLocaleText:'assetDetailsLink'"></span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ko foreach: $data.assets -->
+        <tr>
+          <th scope="row">
+            <span data-bind="text: $data.assetKey"></span>
+          </th>
+          <th scope="row">
+            <span data-bind="text: $data.serviceId"></span>
+          </th>
+          <td class="hidden-xs">
+            <span data-bind="text: $data.serviceAccountId"></span>
+          </td>
+          <td>
+            <!-- ko if: $data.status -->
+              <span data-bind="text: $data.status.displayValue"></span>
+            <!-- /ko -->
+          </td>
+          <td class="hidden-xs hidden-sm">
+            <span data-bind="
+              ccDate: {
+                date: $data.dateAdded,
+                returnedDate: 'medium'
+              }"></span>
+          </td>
+          <td class="hidden-xs hidden-sm">
+            <span data-bind="
+              ccDate: {
+                date: $data.dateModified,
+                returnedDate: 'medium'
+              }"></span>
+          </td>
+          <td class="hidden-xs">
+            <span data-bind="text: $data.quantity"></span>
+          </td>
+          <td class="hidden-xs hidden-sm">
+            <span data-bind="
+              currency: {
+                price: $data.price.value,
+                currencyObj: $parents[0].site().currency
+              }"></span>
+          </td>
+          <td class="text-right">
+            <a href="#" class="cc-button-primary" data-bind="
+              ccLink: $data,
+              widgetLocaleText:'details'"></a>
+          </td>
+        </tr>
+      <!-- /ko -->
+      <!-- ko ifnot: ($data.assets() && $data.assets().length > 0) -->
+        <tr>
+          <td colspan="9">
+            <span data-bind="widgetLocaleText: 'noItemsToDisplay'"></span>
+          </td>
+        </tr>
+      <!-- /ko -->
+    </tbody>
+  </table>
+
+  <div class="text-right" data-bind="visible: isPagingRequired">
+
+    <div class="btn-group">
+        
+        <button class="btn btn-default"
+          data-bind="disable: onFirstPage,
+                     click: goToPage.bind( $data, 1 )">
+          <span class="sr-only" data-bind="widgetLocaleText:'goToFirstPage'"></span>
+          &lt;&lt;
+        </button>
+
+        <button class="btn btn-default"
+          data-bind="disable: onFirstPage,
+                     click: goToPage.bind( $data, previousPage() )">
+          <span class="sr-only" data-bind="widgetLocaleText:'goToPreviousPage'"></span>
+          &lt;
+        </button>
+      
+        <!-- ko foreach: pageLinks -->
+          <button class="btn btn-default hidden-xs"
+            data-bind="css: { active: $data.active },
+                       click: $parent.goToPage.bind( $data, $data.pageNumber )">
+            <span class="sr-only" data-bind="widgetLocaleText:'goToPage'"></span>
+            <span data-bind="text: $data.pageNumber"></span>
+          </button>
+        <!-- /ko -->
+
+        <button class="btn btn-default"
+          data-bind="disable: onLastPage,
+                     click: goToPage.bind( $data, nextPage() )">
+          <span class="sr-only" data-bind="widgetLocaleText:'goToNextPage'"></span>
+          &gt;
+        </button>
+        
+        <button class="btn btn-default"
+          data-bind="disable: onLastPage,
+                     visible: shouldShowGoToLastPage,
+                     click: goToPage.bind( $data, totalPages() )">
+          <span class="sr-only" data-bind="widgetLocaleText:'goToLastPage'"></span>
+          &gt;&gt;
+        </button>
+      
+    </div>
+
+  </div>
+
+  <div data-bind="onRender: goToPage(1)"></div>
+
+</div>

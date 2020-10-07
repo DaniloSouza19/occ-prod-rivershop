@@ -1,0 +1,13 @@
+{
+  "resources": {
+    "dateText": "Data",
+    "addNewNotesModalHeaderText": "Adicionar Nova Observação",
+    "buttonSaveText": "Salvar",
+    "buttonCancelText": "Cancelar",
+    "notesCaptionText": "Observações",
+    "closeText": "Fechar",
+    "buttonNewNotesText": "Nova Observação",
+    "buttonClearText": "Limpar",
+    "noNotesText": "Nenhuma observação disponível."
+  }
+}

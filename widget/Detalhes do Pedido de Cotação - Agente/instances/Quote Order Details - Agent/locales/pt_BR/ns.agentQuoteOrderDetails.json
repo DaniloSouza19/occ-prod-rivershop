@@ -1,0 +1,27 @@
+{
+  "resources": {
+    "quoteInitiatedDateLable": "Data de Início da Cotação",
+    "invalidQuoteNote": "Observações da Cotação Inválidas",
+    "quoteNotesHeader": "Observações da Cotação",
+    "buttonSaveText": "Salvar",
+    "linkOrderQuoteNotesText": "Observações da Cotação",
+    "requestQuoteSuccess": "Cotação solicitada com êxito",
+    "rejectQuoteSuccess": "Cotação rejeitada com êxito",
+    "quoteRejectDateLable": "Data da Rejeição da Cotação",
+    "reRequestQuoteOrderSuccessMessage": "A cotação foi solicitada com sucesso",
+    "quoteExpireDateLable": "Vencimento da Cotação",
+    "buttonClearText": "Limpar",
+    "invalidateOrderSuccessMessage": "Pedido Atualizado com Sucesso",
+    "quoteError": "Erro do sistema ao solicitar, rejeitar ou aceitar a cotação",
+    "quoteStatus": "Status da Cotação",
+    "buttonReRequestQuote": "Solicitar Nova Cotação",
+    "buttonAddNote": "Adicionar Observação de Cotação",
+    "addNewNotesModalHeaderText": "Adicionar Nova Observação de Cotação",
+    "rejectQuoteOrderSuccessMessage": "A cotação foi rejeitada com sucesso.",
+    "buttonCancelText": "Cancelar",
+    "closeText": "Fechar",
+    "notesHistoryHeader": "Histórico de Observações",
+    "buttonRejectQuote": "Rejeitar Cotação",
+    "buttonAcceptQuote": "Aceitar Cotação"
+  }
+}

@@ -1,0 +1,238 @@
+<!-- ko with: customerSearchViewModel -->
+  <div id="cc-customerSearch">
+    <!-- customer search grid -->
+    <div id="cc-customerSearch-grid" class="col-md-12">
+    <h3 id="cc-customerSearch-text"
+        data-bind="widgetLocaleText: 'customerSearchText'"></h3>
+    <hr class="line agent-line">
+  </div>
+  <br />
+  <!-- customer search form for entering search criteria -->
+  <div class="col-md-12 zero-pad" id="cc-customerDetails">
+    <form id="cc-customerSearch-form" class="container-fluid" autocomplete="off">
+      <div class="row" id="cc-customerDetails-firstName-lastName">
+        <div class="form-group col-md-3" id="cc-customerDetails-firstName-field">
+          <label for="cc-customerDetails-firstName-text"
+             class="control-label" data-bind="widgetLocaleText: 'firstNameText'"
+             id="cc-customerDetails-firstName-label"> </label>
+          <input type="text" class="form-control"
+               id="cc-customerDetails-firstName-text"
+               data-bind="value: $parent.firstName,
+                          valueUpdate: 'afterkeydown'" />
+        </div>
+        <div class="form-group col-md-3 col-md-offset-3" id="cc-customerDetails-lastName-field">
+          <label for="cc-customerDetails-lastName-text" class="control-label"
+               data-bind="widgetLocaleText: 'lastNameText'" id="cc-customer-lastName-label">
+          </label>
+        <input type="text" class="form-control "
+               id="cc-customerDetails-lastName-text"
+               data-bind="value: $parent.lastName,
+                          valueUpdate: 'afterkeydown'" />
+        </div>
+      </div>
+      <div class="row" id="cc-customerDetails-email-zipCode">
+        <div class="form-group col-md-3" id="cc-customerDetails-email-field">
+          <label for="cc-customer-email-text" class="control-label"
+              data-bind="widgetLocaleText: 'emailIdText'"
+              id="cc-customerDetails-email-label"> </label>
+          <input type="email" class="form-control "
+              id="cc-customer-email-text"
+              data-bind="value: $parent.email,
+                          valueUpdate: 'afterkeydown'" />
+        </div>
+        <div class="form-group col-md-3 col-md-offset-3" id="cc-customerDetails-zipCode-field">
+          <label for="cc-customer-zipCode-text"
+             class="control-label"
+             data-bind="widgetLocaleText: 'zipCodeText'"
+             id="cc-customer-zipCode-label"> </label>
+          <input type="text" class="form-control"
+             id="cc-customer-zipCode-text"
+             data-bind="value: $parent.postalCode,
+             valueUpdate: 'afterkeydown'" />
+        </div>
+      </div>
+      <div class="row" id="cc-customerDetails-phoneNumber-account-buttons">
+        <div class="form-group col-md-3" id="cc-customerDetails-phoneNumber-field">
+          <label for="cc-customer-phoneNumber-text"
+               class="control-label"
+               data-bind="widgetLocaleText: 'phoneNumberText'"
+               id="cc-customer-phoneNumber-label"> </label>
+          <input type="text" class="form-control "
+               id="cc-customer-phoneNumber-text"
+               data-bind=" value: $parent.phoneNumber,
+                           valueUpdate: 'afterkeydown', 
+                           hasFocus: $parent.isEditPhone" />
+        </div>
+        <div class="form-group col-md-3 col-md-offset-3" id="cc-search-criteria-account-field">
+          <!-- ko with: $parent -->
+            <div data-bind="element: 'account-search', attr: { id: 'account-search-$data.id()'}"></div>
+         <!-- /ko -->
+        </div>
+       </div>
+       <div class="oj-flex-bar">
+          <div class="oj-flex-bar-end pull-right" id="cc-customerDetails-reset-search-buttons-field">
+            <button type="button" id="cc-customer-reset-button" class="cc-button-secondary secondarybackground" data-bind="click: $parent.reset.bind($parent), enable: $parent.isSearchEnabled()">
+              <span data-bind="widgetLocaleText:'buttonResetText'"></span>
+            </button>
+            <button type="submit" id="cc-customer-search-button" class="cc-button-primary primarybackground" data-bind="click: $parent.customerSearch.bind($parent), enable: $parent.isSearchEnabled()">
+              <span data-bind="widgetLocaleText:'buttonSearchText'"></span>
+            </button>
+          </div>
+        </div>
+    </form>
+  </div>
+  </div>
+    <div id="cc-customerSearchResult-panel" 
+       class="col-md-12 table-responsive panel-body table-layout-fixed-break-word"
+       data-bind=" visible: isSearchPerformed()">
+    <div id="cc-customerSearchResult">
+      <!-- customer search result display section -->
+      <h3 data-bind="widgetLocaleText: 'customerResultText'"></h3>
+      <hr class="line agent-line" />
+    </div>
+    <!-- ko if: totalNumber() !== 0 -->
+      <!-- Pagination control - Top -->
+      <div id="cc-paginated-controls-top" class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <div class="bottom-margin"
+                 data-bind="visible : (totalNumberOfPages() > 1),
+                            template: {name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''} ">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Table to display customer result -->
+      <table class="table-header-styling table table-bordered table-striped"
+             id="cc-customerSearchResult-table" summary="customerSearchResult">
+        <thead>
+          <tr>
+            <th data-bind="widgetLocaleText: 'firstNameText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'lastNameText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'emailIdText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'phoneNumberText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'zipCodeText'" scope="col"></th>
+            <th data-bind="widgetLocaleText: 'accountText'" scope="col"></th>
+            <th class="text-center" data-bind="widgetLocaleText: 'latestOrderText'" scope="col"></th>
+            <th class="text-center" data-bind="widgetLocaleText: 'noOfOrderText'" scope="col"></th>
+            <th class="text-center" data-bind="widgetLocaleText: 'profileColumnHeaderText'" scope="col"></th>
+            <th class="text-center" data-bind="widgetLocaleText: 'cartColumnHeaderText'" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: recordsInCurrentPage">
+          <tr>
+
+              <td scope="row" class="cc-text-overflow-table" 
+                  data-bind="text: firstName, attr: {id: 'cc-firstName-' + id, 'title': firstName }">
+              </td>
+              <td class="cc-text-overflow-table"
+                  data-bind="text: lastName, attr: {id: 'cc-lastName-' + id, 'title': lastName }">
+              </td>
+              <td class="cc-text-overflow-table"
+                  data-bind="text: email, attr: {id: 'cc-email-link-' + id },
+                             attr: { 'title': email}">
+              </td>
+
+              <!-- ko if: shippingAddress -->
+                <td data-bind="text: shippingAddress.phoneNumber,
+                               attr: {id: 'cc-phoneNumber-' + id }">
+                </td>
+                <td data-bind="text: shippingAddress.postalCode,
+                              attr: {id: 'cc-postalCode-' + id }">
+                </td>
+              <!-- /ko -->
+
+              <!-- ko ifnot: shippingAddress -->
+                <td data-bind="text: ''"></td>
+                <td data-bind="text: ''"></td>
+              <!-- /ko -->
+                <!-- ko if: $parents[1].isB2BUser($data) -->
+                  <td class="cc-text-overflow-table" data-bind="text: $parents[1].getOrganizationNamesSeparatedWith($data),
+                                 attr: {id: 'cc-account-' + id,'title': $parents[1].getOrganizationNamesSeparatedWith($data,'\n') }">
+                  </td>
+                <!-- /ko -->
+                <!-- ko ifnot: $parents[1].isB2BUser($data) -->
+                  <td data-bind="text: ''"></td>
+                <!-- /ko -->
+
+            <!-- ko if: numberOfOrders > 0 -->
+              <td class="text-center">
+                <a href="#" data-bind="attr: {id: 'cc-latestOrder-link-' + latestOrderId },
+                              text: latestOrderId, click: $parents[1].clickOrderDetails.bind($parents[1], $data, latestOrderId)">
+                </a>
+              </td>
+              <td class="text-center">
+                <a href="#" data-bind="attr: {id: 'cc-noOfOrders-link-' + latestOrderId },
+                             click: $parents[1].clickOrders.bind($parents[1]),
+                             text: numberOfOrders">
+                </a>
+              </td>
+            <!-- /ko -->
+            <!-- ko if: numberOfOrders === 0 -->
+              <td  data-bind="attr: { id: 'cc-latestOrder-blank-' + $index() },
+                             text: ''">
+              </td>
+              <td class="text-center" data-bind="text: numberOfOrders">
+              </td>
+            <!-- /ko -->
+            <td class="text-center">
+              <a href="#" data-bind="attr: {id: 'cc-details-link-' + $index() },
+                            widgetLocaleText: {value:'userDetailsText', attr:'aria-label'},
+                            click: $parents[1].clickProfileDetails.bind($parents[1])">
+                <i class="fa fa-list-alt fa-lg"></i>
+              </a>
+            </td>
+            <td class="text-center">
+              <!-- ko if: $parents[1].isCreateOrderEnabled()  -->
+                <span class="glyphicon glyphicon-plus"></span>
+              <!-- /ko -->
+              <!-- ko if: !$parents[1].isCreateOrderEnabled()  -->
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+              <!-- /ko -->
+                <!-- ko if: $parentContext.hasOwnProperty("$popupId") -->
+                  <a  href="#" data-bind="click: $parents[1].showOrderDetails.bind($parents[1], $data, $data.hasIncompleteOrder, $popupId ),
+                                        attr: { id: 'cc-incompleteOrder-link-' + repositoryId }">
+                    <span data-bind="text: $parents[1].generateOrderText($parents[1], $data)"></span>
+                  </a>
+                <!-- /ko -->
+                <!-- ko ifnot: $parentContext.hasOwnProperty("$popupId") -->
+                  <a  href="#" data-bind="click: $parents[1].showOrderDetails.bind($parents[1], $data, $data.hasIncompleteOrder, null ),
+                                        attr: { id: 'cc-incompleteOrder-link-' + repositoryId }">
+                    <span data-bind="text: $parents[1].generateOrderText($parents[1], $data)"></span>
+                  </a>
+                <!-- /ko -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- /ko -->
+      <!-- Text to display if no customer found with given search criteria -->
+      <!-- ko if: (totalNumber() === 0 && isSearchPerformed() === true)-->
+        <div>
+          <span data-bind="widgetLocaleText: 'customerNotFoundText',
+                         attr: {'aria-label': $parent.resources().customerNotFoundText}" 
+                         role="status" aria-live="polite" id="cc-customerNotFound-text">
+          </span>
+        </div>
+      <!-- /ko -->
+      <!-- Text to display if no customer search performed -->
+      <!-- ko if: (isSearchPerformed() === false)-->
+        <div>
+          <span data-bind="widgetLocaleText: 'noSearchPerformedText'"
+                id="cc-noSearchPerformed-text"></span>
+        </div>
+      <!-- /ko -->
+          
+      <!-- Pagination control - Bottom -->
+      <div id="cc-paginated-controls-bottom" class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <div class="bottom-margin"
+                 data-bind="visible : (totalNumberOfPages() > 1),
+                            template: {name: $parent.templateAbsoluteUrl('/templates/paginationControls.template') , templateUrl: ''} ">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- /ko -->

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row form-group" data-bind="visible: $data.user().isB2BUser()">
+    <div class="col-sm-2">
+      <label data-bind="widgetLocaleText: 'accountText'"></label>
+     </div>
+     <div class="col-sm-6">
+       <label data-bind="text: accountAndSiteSelector.getCurrentOrganizationText()"></label>
+     </div>
+  </div>  
+  <div class="row form-group">
+    <div class="col-sm-2">
+      <label data-bind="widgetLocaleText: 'siteText'"></label>
+     </div>
+     <div class="col-sm-6">
+       <label data-bind="text: accountAndSiteSelector.getCurrentSiteText()"></label>
+     </div>
+  </div>  
+  <div data-bind="element: 'additional-shopper-context', attr: { id: 'additional-shopper-context'+id()}"></div>
+  <div class="row pull-right">
+    <button class="cc-button-primary" data-bind="click: handleLoadContext, widgetLocaleText: 'applyButtonText'"></button>
+  </div>
+</div>

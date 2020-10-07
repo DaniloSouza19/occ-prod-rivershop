@@ -1,0 +1,22 @@
+{
+  "configuration": {
+    "_productsByCollection": "",
+    "_slickProductsDesktop": "6",
+    "_productsRecommendation": "",
+    "_enableProductsById": false,
+    "_productsById": "",
+    "_productsRelated": "",
+    "numRecs": "12",
+    "_slickProductsDesktop_1400": "5",
+    "_slickTitle": "",
+    "_slickProductsMobile_600": "1",
+    "_slickProductsDesktop_1200": "4",
+    "_collections": "mais_pedidos_mercearia",
+    "_slickProductsTablet_800": "2",
+    "_enableProductsByCollection": true,
+    "_enableProductsRelated": false,
+    "_enableProductsRecommendation": false,
+    "_slickProductsTablet_983": "3"
+  },
+  "displayName": "NSH_Slick_Products_Home_image_Mercearia"
+}

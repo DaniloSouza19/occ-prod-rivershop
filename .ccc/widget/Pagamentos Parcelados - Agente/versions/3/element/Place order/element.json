@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-placeorder",
+  "source": 100,
+  "type": "fragment",
+  "title": "Place order",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

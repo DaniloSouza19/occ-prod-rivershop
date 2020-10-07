@@ -1,0 +1,9 @@
+<div class="cc-reset-password-margin cc-margin-top20">
+	<!--  Section to display the generate new password button -->
+	<button class="details-enabled-primary-button"
+		id="cc-customerDisplay-generate-password"
+		data-bind="click: $data.sendResetPasswordLink.bind($data), disable: $data.isAccountWithNoContracts(), css : {'details-disabled-primary-button' : $data.isAccountWithNoContracts()}">
+		<span data-bind="widgetLocaleText: 'resetPasswordText'"
+			id="cc-customerDisplay-generate-password-button-text"> </span>
+	</button>
+</div>

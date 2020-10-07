@@ -1,0 +1,7 @@
+{
+  "configuration": {
+    "catalogId": "cloudCatalog",
+    "rootCategoryId": "rootCategory"
+  },
+  "displayName": "NSH_Breadcrumb"
+}

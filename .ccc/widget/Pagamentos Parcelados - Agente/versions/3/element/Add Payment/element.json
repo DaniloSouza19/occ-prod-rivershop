@@ -1,0 +1,8 @@
+{
+  "tag": "agentsplitpayment-addpayment",
+  "source": 100,
+  "type": "fragment",
+  "title": "Add Payment",
+  "widgetType": "agentSplitPayments",
+  "version": 3
+}

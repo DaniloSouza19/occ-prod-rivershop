@@ -1,0 +1,223 @@
+<div id="organizationAddressWidget" class="container-fluid">
+  <div id="organizationAddressHeader">
+   <div id="organization-addresses-title" class="organization-addresses-title" data-bind="widgetLocaleText: 'accountAddressesText'"> </div>
+  </div>
+  <hr>
+  <!-- ko ifnot:isEditMode() -->
+ <div class="hidden-xs col-md-12 col-sm-12" >   
+  <!-- ko if: ($data.user().isProfileAddressManager() || $data.user().isAccountAddressManager() || $data.user().isDelegatedAdmin()) -->
+  <button class="cc-button-primary pull-right hidden-xs hidden-sm" id="organization-address-add1" data-bind="click:$data.handleCreateOrEditOrganizationAddress.bind($data, true)">
+    <span data-bind="widgetLocaleText: 'newText'"></span>
+  </button>
+  <!-- /ko -->
+  
+	<div class="collapse-heading col-md-8 col-sm-8 col-xs-8" >
+    <h4>
+      <a class="collapse-toggle" data-toggle="collapse" data-target="#defaultAddresses" data-bind="widgetLocaleText:'defaultAddressesLabel'" href="#"></a>
+    </h4>
+    </div>
+    <br>
+	<div id="defaultAddresses" class="collapse in col-md-12 col-sm-12 col-xs-12">  
+		<!-- ko if:addresses().length > 0 -->
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: addresses'>
+  
+    <div id="display-default-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template') , templateUrl: ''}">
+    </div>
+
+   	</div>
+   	<!-- /ko -->
+   	<!-- ko if: addresses().length == 0  -->
+   		<div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoDefaultAddressMessage' " ></div>
+   	<!-- /ko -->
+	</div>
+  
+  	<div class="collapse-heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  <a class="collapse-toggle collapsed" data-toggle="collapse" data-target="#profileAddresses" data-bind="widgetLocaleText:'profileAddressesLabel'" href="#"></a></h4>
+    </div>
+    <br>
+	<div id="profileAddresses" class="collapse col-md-12 col-sm-12 col-xs-12">  
+	  <!-- ko if:totalProfileAddresses() > 0 -->
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: profileAddresses'>
+  
+    <div id="display-profile-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template') , templateUrl: ''}">
+    </div>
+   	</div>  	
+  <!-- /ko -->
+  <!-- ko if: profileAddresses().length ==0 -->
+       <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoProfileAddressMessage' " ></div>
+   <!-- /ko -->
+   	<!-- ko if: showLoadMorePAddress() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadProfileAddresses.bind($data), widgetLocaleText: 'loadMoreText'" class="text-underline" href="javascript:void(0)">
+   		</a>
+     	</div>
+     <!-- /ko -->
+	</div>
+  
+  
+    <div class="collapse-heading col-md-12 col-sm-12 col-xs-12">
+        	
+    <h4>  <a class="collapse-toggle collapsed" data-toggle="collapse" data-target="#accountAddresses" data-bind="widgetLocaleText:'accountAddressesLabel'" href="#"></a></h4>
+    </div>
+    <br>
+	<div id="accountAddresses" class="collapse col-md-12 col-sm-12 col-xs-12">  
+		<!-- ko if:secondaryAddresses().length > 0 -->
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: secondaryAddresses'>
+  
+    <div id="display-organization-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template'), templateUrl: ''}">
+    </div>
+   	</div>
+   	<!-- /ko -->
+   	<!-- ko if:secondaryAddresses().length == 0 -->
+      <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoAccountAddressMessage' " ></div>
+   	<!-- /ko -->
+   	<!-- ko if: showLoadMoreAccountAddress() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadOrganizationAddresses.bind($data), widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+   		</a>
+     	</div>
+     <!-- /ko -->
+   	
+	</div>
+ 
+  
+ 
+  	<div class="collapse-heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  <a class="collapse-toggle collapsed" data-toggle="collapse" data-target="#inheritedAddresses" data-bind="widgetLocaleText:'inheritedAddressesLabel'" href="#"></a></h4>
+    </div>
+    <br>
+	<div id="inheritedAddresses" class="collapse col-md-12 col-sm-12 col-xs-12"> 
+	   <!-- ko if: showInherited --> 
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: inheritedAddresses'>
+  
+    <div id="display-inherited-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template') , templateUrl: ''}">
+    </div>
+   	</div>
+   	<!-- /ko -->
+   	<!-- ko ifnot: showInherited -->
+  		<div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoInheritedAddressMessage' " ></div>
+  	<!-- /ko -->
+   	<!-- ko if: showLoadMore() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadInheritedAddresses.bind($data), widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+   		</a>
+     	</div>
+     <!-- /ko -->
+	</div>
+  
+</div>
+
+<div class="visible-xs" > 
+  <!-- ko if: $data.addresses().length == 0 && $data.secondaryAddresses().length == 0 &&  $data.inheritedAddresses().length == 0 -->
+  	<div class= "col-sm-12 col-xs-12">
+  		<button class="cc-button-primary pull-right" id="organization-address-add" data-bind="click:$data.handleCreateOrEditOrganizationAddress.bind($data, true)">
+         <span data-bind="widgetLocaleText: 'newText'"></span>
+        </button>
+  	</div>
+  
+  <!-- /ko -->
+  <!-- ko if: $data.addresses().length == 0 -->
+       <div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoDefaultAddressMessage' " ></div>
+  <!-- /ko -->
+  <!-- ko if:addresses().length > 0 -->
+ 
+	<div class="heading col-md-12 col-sm-12 col-xs-12" >
+    <h4>
+      <span data-bind="widgetLocaleText:'defaultAddressesLabel'"></span>
+    </h4>
+    </div>
+    <br>
+	<div id="defaultAddresses_xs" class="col-md-12 col-sm-12 col-xs-12">  
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: addresses'>
+  
+    <div id="display-default-addresses-xs" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template') , templateUrl: ''}">
+    </div>
+
+   	</div>
+	</div>
+  <!-- /ko -->
+   <!-- ko if:totalProfileAddresses() > 0 -->
+   <div class="heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  <span data-bind="widgetLocaleText:'profileAddressesLabel'"></span></h4>
+    </div>
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: profileAddresses'>
+  
+    <div id="display-profile-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template') , templateUrl: ''}">
+    </div>
+   	</div>  	
+  <!-- /ko -->  
+  <!-- ko if: showLoadMorePAddress() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadProfileAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline">
+   		</a>
+     	</div>
+     <!-- /ko -->
+  <!-- ko if:secondaryAddresses().length > 0 -->
+    <div class="heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  <span data-bind="widgetLocaleText:'accountAddressesLabel'"></span></h4>
+    </div>
+    <br>
+	<div id="accountAddresses" class="col-md-12 col-sm-12 col-xs-12">  
+  	<div  class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: secondaryAddresses'>
+  
+    <div id="display-organization-addresses-xs" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template') , templateUrl: ''}">
+    </div>
+
+   	</div>
+	</div>
+  <!-- /ko -->
+  <!-- ko if: showLoadMoreAccountAddress() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadOrganizationAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline">
+   		</a>
+     	</div>
+     <!-- /ko -->
+  
+  	<div class="heading col-md-12 col-sm-12 col-xs-12">
+    <h4>  <span data-bind="widgetLocaleText:'inheritedAddressesLabel'"></span></h4>
+    </div>
+    <br>
+    <!-- ko if:showInherited -->
+		<div id="inheritedAddresses col-md-12 col-sm-12 col-xs-12">  
+  	<div class="col-md-12 col-sm-12 col-xs-12 organization-address-container" data-bind='foreach: inheritedAddresses'>
+  
+    <div id="display-inherited-addresses" class="row col-md-12 col-sm-12 col-xs-12"
+       data-bind="template: {name: $parent.templateAbsoluteUrl('/templates/manageAddresses.template') , templateUrl: ''}">
+    </div>
+   	</div>
+   	<!-- ko if: showLoadMore() -->
+     	<div class = "col-md-8 col-sm-8 col-xs-8">
+     		<a data-bind="click: $data.loadInheritedAddressess, widgetLocaleText: 'loadMoreText'" class="text-underline">
+   		</a>
+     	</div>
+     <!-- /ko -->
+	</div>
+  <!-- /ko -->
+  <!-- ko ifnot: showInherited -->
+  	<div class="col-md-12 col-sm-12 col-xs-12" data-bind="widgetLocaleText:'NoInheritedAddressMessage' " ></div>
+  <!-- /ko -->
+</div>  
+   <div class="row">
+        <div id="CC-add-new-address-xs" class="visible-xs visible-sm">
+        <!-- ko if: ($data.user().isProfileAddressManager() || $data.user().isAccountAddressManager() || $data.user().isDelegatedAdmin()) -->
+          <button id="cc-add-new-address-xs" class="cc-button-primary col-xs-12 col-sm-12" data-bind="attr: {title: $data.translate('addNewAddress')}, click: handleCreateOrEditOrganizationAddress.bind($data, true)">
+          <span data-bind="widgetLocaleText: 'addNewAddress'"></span>
+          </button>
+        <!-- /ko -->  
+        </div>
+   </div>
+   
+  <!-- /ko -->
+  <!-- ko if:isEditMode() -->
+  <div id="edit-organization-address" class="row"
+       data-bind="template: { name: templateAbsoluteUrl('/templates/manageAccountAddresses.template') , templateUrl: ''}">
+  </div>
+  <!-- /ko -->
+</div>

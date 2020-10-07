@@ -1,0 +1,66 @@
+<div id="cc-agent-account-details-container">
+  <!-- ko if: $data.user().isB2BUser() -->
+  <div id="cc-account-details-header" class="row">
+    <div class="col-md-12">
+      <h1 class="agent-headerText" id="cc-account-details-heading" data-bind="
+        widgetLocaleText: 'accountDetailsText'"></h1>
+    </div>
+  </div>
+
+  <!-- oc section : account-general-info -->
+    <div data-bind="element: 'account-general-info'"></div>
+  <!-- /oc -->
+
+  <!-- ko if: isSelfRegistrationEnabled -->
+    <!-- oc section : registration-request-details -->
+      <div data-bind="element: 'registration-request-details'"></div>
+    <!-- /oc -->
+  <!-- /ko -->
+
+  <!-- oc section : account-approval-setting -->
+    <div data-bind="element: 'account-approval-setting'"></div>
+  <!-- /oc -->
+
+  <script type="text/html" id="info-popover">
+    <div>
+      <div class="col-md-12 pull-right">
+        <a id="cc-info-popover-close" href="#" class="pull-right cc-popover-x" data-bind='click: close, makeAccess: {readerResource: "ns.common:resources.closeText"}'>
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
+      <div>
+        <span data-bind="text: $data.model"></span>
+      </div>
+    </div>
+  </script>
+
+  <!-- ko if: $data.user().currentOrganizationDetails() && $data.user().currentOrganizationDetails().dynamicProperties().length > 0 -->
+    <!-- ko setContextVariable:{name:'context', value: $data.user().currentOrganizationDetails().dynamicProperties} -->
+      <div data-bind="element:'dynamic-property'"></div>
+    <!-- /ko -->
+  <!-- /ko -->
+
+  <!-- ko if: $data.user().isDelegatedAdmin() && $data.user().active() && delegatedAdminAllowedThroughAgent-->
+    <div class="row">
+      <div class="col-md-12" id="cc-customerAccountDetails-save-cancel-button-group-container">
+        <div class="pull-right" id="cc-customerAccountDetails-save-cancel-button-group">
+          <button id="cc-customerAccountDetails-cancel" class="account-details-secondary-button" data-bind="click: handleCancelUpdate">
+            <span id="cc-customerAccountDetails-cancel-button-text" data-bind="widgetLocaleText:'buttonCancelText'"></span>
+          </button>
+          <button id="cc-customerAccountDetails-save" class="account-details-primary-button" data-bind="
+                  click: updateAccountDetails">
+            <span id="cc-customerAccountDetails-save-button-text" data-bind="widgetLocaleText:'buttonSaveText'"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  <!--/ko-->
+
+  <!--/ko-->
+
+  <!-- ko if: !$data.user().isB2BUser() -->
+  <div class="notDelAdminMessage alert alert-info">
+    <h4 data-bind="widgetLocaleText: 'notAB2BCustomerText'"></h4>
+  </div>
+  <!--  /ko -->
+</div>

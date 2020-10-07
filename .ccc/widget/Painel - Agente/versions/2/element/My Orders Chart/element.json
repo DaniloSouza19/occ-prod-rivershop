@@ -1,0 +1,8 @@
+{
+  "tag": "ordersChart",
+  "source": 100,
+  "type": "fragment",
+  "title": "My Orders Chart",
+  "widgetType": "agentdashboard",
+  "version": 2
+}

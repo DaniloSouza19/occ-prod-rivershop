@@ -1,0 +1,60 @@
+<div id="cc-customer-carts">
+<!-- ko if: $data.showIncompleteOrders -->
+  <div data-bind="element: 'account-selector', attr: { id: 'account-selector-'+id()}"></div>
+  <div data-bind="element: 'site-selector', attr: { id: 'site-selector-'+id()}"></div>
+  <!-- ko if: !$data.hasValidContracts() -->
+   <div class = "row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-6 text-danger">
+     <span data-bind="widgetLocaleText: 'noSiteForAccountError'"></span>
+    </div>
+   </div>
+  <!-- /ko -->
+  <div data-bind="element: 'additional-shopper-context', attr: { id: 'additional-shopper-context'}"></div>
+  
+    <!-- ko if: $data.customerCartsViewModel().incompleteOrdersDataSource() -->
+
+      <!-- ko with: $data.customerCartsViewModel().incompleteOrdersDataSource()[0] -->
+        <div class="incomplete-cart">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <!-- ko if: $data.organizationInfo -->
+          <span data-bind = "text: $data.organizationInfo.name, attr:{title: $data.organizationInfo.name}"></span>
+            <span data-bind="widgetLocaleText: 'delimiterText'"> </span>
+          <!-- /ko -->
+          <!-- ko if: $data.siteInfo.name -->
+            <span data-bind="text: $data.siteInfo.name, attr:{title: $data.siteInfo.name}"></span>
+          <!-- /ko -->
+          <!-- ko if: $data.siteInfo.productionURL -->
+            <span data-bind="text: ' - ' + $data.siteInfo.productionURL" ></span>
+          <!-- /ko -->
+          <a data-dismiss="modal" href="#" data-bind="click: $parent.onClickNewOrIncompleteCart.bind($parent)">
+            <span data-bind="text: $parent.generateLinkText.call($parent,$parent.customerCartsViewModel())"></span>
+          </a>
+        </div>
+      <!-- /ko -->
+
+      <div id="information-for-incompleteOrder-lines" data-bind="visible: ($data.customerCartsViewModel().incompleteOrdersDataSource().length != 0 ? true : false)">
+        <div class="pull-right">
+          <i class="fa fa-shopping-cart padding-right" aria-hidden="true"></i>
+          <!--  ko if: resources().B2BProfileType === profileDetail.profileType -->
+            <span id="cc-orderEdit-account-label" class="padding-right" data-bind="widgetLocaleText: 'accountText'"></span>
+            <span id="cc-orderEdit-site-delimiter" data-bind="widgetLocaleText: 'delimiterText'"> </span>
+          <!-- /ko -->
+          <span id="cc-cart-site-label" class="padding-right" data-bind="widgetLocaleText: 'siteText'"></span>
+          <span id="cc-orderEdit-cart-label" class="padding-right" data-bind="widgetLocaleText: 'cartColumnHeaderText'"></span>
+        </div>
+      </div>
+
+    <!-- /ko -->
+  <!-- /ko -->
+</div>
+<div class="modal-footer">
+  <!-- ko if: $data.showIncompleteOrders -->
+    <!-- ko if: $data.customerCartsViewModel() -->
+      <button data-dismiss="modal" type="submit" class="btn primary-button" id="cc-customer-carts-new-order-button" 
+                data-bind="visible:$data.customerCartsViewModel().incompleteOrdersDataSource().length == 0 ? true : false, enable: hasValidContracts ,click: $data.onClickNewOrIncompleteCart.bind($data)">                
+        <span data-bind="widgetLocaleText: 'newCart'"></span>
+      </button>
+    <!-- /ko -->
+  <!-- /ko -->
+</div>

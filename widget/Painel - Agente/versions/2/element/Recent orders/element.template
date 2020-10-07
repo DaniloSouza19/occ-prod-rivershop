@@ -1,0 +1,80 @@
+<!-- ko if: initialized() -->
+<div id ="cc-recent-orders-section" class="zero-pad section-right-margin" >
+  <div tabindex="0" data-bind="widgetLocaleText:{attr:'aria-label', value:'myRecentOrdersTableTitle'}">  
+    <h2 id="cc-recent-orders-heading" class="dashboard-heading-reports"
+    data-bind="widgetLocaleText: 'myRecentOrdersText'">
+    </h2>
+  </div>  
+  <div class="well" id="cc-recent-orders-error-section" tabindex="0" 
+    data-bind="widgetLocaleText:{attr:'aria-label', value:'recentOrdersLoadingErrorText'},
+    visible: recentOrdersLoadStatus() === ERROR_STATUS">
+    <span data-bind="widgetLocaleText: 'recentOrdersLoadingErrorText'"></span>
+  </div>
+  <!-- ko if: recentOrdersLoadStatus() === SUCCESS_STATUS -->
+  <!-- ko if: recentOrderData().length === 0 -->
+    <hr class="line agent-line"/>
+    <div id="cc-no-recent-orders-message" tabindex="0" class="col-xs-12"
+    data-bind="widgetLocaleText:{attr:'aria-label', value:'noRecentOrdersText'}">
+      <span data-bind="widgetLocaleText: 'noRecentOrdersText'"></span>
+    </div>
+  <!-- /ko -->
+  <table id="cc-recent-orders-table" aria-labelledby="cc-recent-orders-heading" 
+  class="table table-hover dashboard-table table-bordered col-xs-12" summary="Recent-Orders-For-Agent"
+    data-bind="visible: recentOrderData().length > 0">
+    <thead>
+      <tr>
+        <th scope="col" tabindex="0" data-bind="widgetLocaleText: {attr: 'aria-label', value: 'orderIdText'}">
+          <span data-bind="widgetLocaleText: 'orderIdText'"></span>
+        </th>
+        <th scope="col" tabindex="0" data-bind="widgetLocaleText: {attr: 'aria-label', value: 'customerNameText'}">
+          <span data-bind="widgetLocaleText: 'customerNameText'"></span>
+        </th>
+        <th scope="col" tabindex="0" data-bind="widgetLocaleText: {attr: 'aria-label', value: 'orderTotalText'}">
+         <span class="pull-right" data-bind="widgetLocaleText: 'orderTotalText'"></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: recentOrderData">
+      <tr>
+        <td>
+          <!-- ko if: $parent.doesSiteExist($data.siteId) -->
+            <a data-bind="attr: {href: '#',id: 'cc-orderId-' + orderId, 'title': orderId},
+              click: $parent.clickOrderId.bind($parent, $data),
+              text:orderId">
+            </a>
+          <!-- /ko -->
+          <!-- ko ifnot: $parent.doesSiteExist($data.siteId)-->
+            <a data-bind="widgetLocaleText: {attr: 'title', value: 'siteNotExistText'}, attr: {href: '#',id: 'cc-orderId-' + orderId, 'title': orderId},
+              text:orderId">
+            </a>
+          <!-- /ko -->
+        </td>
+        <td>
+          <a data-bind="attr: {href: '#',
+            id: 'cc-customerName-for-orderId-' + orderId, 'title': customerName},
+            click: $parent.clickCustomerName.bind($parent,$data),
+            text: customerName">
+          </a>
+        </td>
+        <td>
+          <!-- ko if: $parent.isMultiCurrencyOrder($data) -->
+            <div align="right" class="cc-dashboard-ellipse" tabindex="0" data-bind="attr: {id: 'cc-total-amount-for-' + orderId, title: $data.currency.symbol + $data.priceInfo.primaryCurrencyTotal + '+' + $data.secondaryCurrency.symbol 
+              + $data.priceInfo.secondaryCurrencyTotal}">
+                <span data-bind="currency: {price: $data.priceInfo.primaryCurrencyTotal, currencyObj: $data.currency}"></span><br>
+                <span data-bind="currency: {price: $data.priceInfo.secondaryCurrencyTotal, currencyObj: $data.secondaryCurrency, prependSymbol: '+'}"></span>
+            </div>
+          <!-- /ko -->
+          <!-- ko ifnot: $parent.isMultiCurrencyOrder($data) -->
+            <div align="right" class="cc-dashboard-ellipse"> 
+              <span tabindex="0" data-bind="currency: {price: amount, currencyObj: currency}, 
+                attr: {title : $data.currency.symbol + $data.amount, id: 'cc-total-amount-for-' + orderId}">
+              </span>
+            </div>
+          <!--  /ko  -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- /ko -->
+</div>
+<!-- /ko -->

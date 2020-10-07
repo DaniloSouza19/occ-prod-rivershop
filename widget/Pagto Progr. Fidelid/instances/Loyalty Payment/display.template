@@ -1,0 +1,15 @@
+<!-- ko if: ($data.paymentsContainer().isLoyaltyEnabled() &&
+                ((CCRestClient.profileType == CCConstants.PROFILE_TYPE_AGENT &&
+                 $data.user().selectedPriceListGroup().currency && $data.user().selectedPriceListGroup().currency.currencyType == CCConstants.LOYALTY_POINTS_PAYMENT_TYPE)
+                 || (CCRestClient.profileType != CCConstants.PROFILE_TYPE_AGENT &&
+                 $data.cart().currency && $data.cart().currency.currencyType == CCConstants.LOYALTY_POINTS_PAYMENT_TYPE))) -->
+  <div id="loyaltyPayment">
+    <!-- oc layout: panels -->
+      <div class="oc-panel" data-oc-id="panel-1">
+        <!-- oc section: select-redeem-points -->
+          <div data-bind="element: 'select-redeem-points'"></div>
+        <!-- /oc -->
+      </div>
+    <!-- /oc -->
+  </div>
+<!-- /ko -->

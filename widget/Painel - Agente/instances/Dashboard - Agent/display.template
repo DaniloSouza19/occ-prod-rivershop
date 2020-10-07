@@ -1,0 +1,75 @@
+<div id="cc-dashboard" class="container">
+  <!--  oc layout: panels -->
+    <div class="row">
+      <div class="oc-panel col-md-8" data-oc-id="panel-1">
+        <div class="row">
+          <!-- oc section: dashboardBanner -->
+            <div data-bind="element: 'dashboardBanner'"></div>
+          <!-- /oc --> 
+        </div>
+        <div class="row">
+          <div class="oc-panel col-md-6" data-oc-id="panel-2">
+            <!-- oc section: ordersChart -->
+              <div data-bind="element: 'ordersChart', attr: { id: 'cc-dashboard-' + 'ordersChart'}"></div>
+            <!-- /oc -->
+           </div>
+          <div class="oc-panel col-md-6" data-oc-id="panel-3">
+            <!-- oc section: returnRequestsChart -->
+              <div data-bind="element: 'returnRequestsChart', attr: { id: 'cc-dashboard-' + 'returnRequestsChart'}"></div>
+            <!-- /oc -->
+          </div>
+        </div>
+        <div class="row">
+          <!-- oc section: price-group-drop-down -->
+            <div data-bind="element: 'price-group-drop-down'"></div>
+          <!-- /oc -->
+        </div>
+      </div>
+      <div class="oc-panel col-md-4" data-oc-id="panel-4">
+        <!-- oc section: announcements -->
+           <div data-bind="element: 'announcements'"></div>
+         <!-- /oc -->
+        <!-- oc section : quick-links -->
+          <div data-bind="element: 'quick-links'"></div>
+        <!-- /oc -->
+      </div> 
+    </div>
+    <div class="row">
+      <div class="oc-panel col-md-4" data-oc-id="panel-5">
+        <!-- oc section: recent-orders -->
+          <div data-bind="element: 'recent-orders', attr: { id: 'cc-dashboard-' + 'recent-orders'}"></div>
+        <!-- /oc -->
+      </div>
+      <div class="oc-panel col-md-4" data-oc-id="panel-6">
+        <!-- oc section : agent-pending-actions -->
+          <div data-bind="element: 'agent-pending-actions'"></div>
+        <!-- /oc -->
+      </div>
+    </div>
+  <!-- /oc -->  
+  <script type="text/html" id="info-popover">
+    <div>
+      <div class="col-md-12 pull-right datepickerHeaderIcons">
+        <a id="cc-info-popover-close" href="#" class="pull-right cc-popover-x" data-bind='click: close, makeAccess: {readerResource: "ns.common:resources.closeText"}'>
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
+      <div class="margin-onepercent">
+        <span data-bind="text: $data.model"></span>
+      </div>
+    </div>
+  </script>
+  <style>
+    .oj-dvt-datatip {
+      background-color: #f9f9f9;
+      color: #222222;
+      border-style: solid;
+      border-color: black;
+      border-radius: 4px;
+      border-width: 2px;
+      padding: 2px;
+      font-size: 1rem;
+      font-family: Verdana, Arial, sans-serif;
+    }
+  </style>
+</div>

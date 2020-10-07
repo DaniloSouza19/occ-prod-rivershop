@@ -1,0 +1,8 @@
+{
+  "configuration": {
+    "miniCartDuration": "5",
+    "displayMiniCart": true,
+    "miniCartNumberOfItems": "3"
+  },
+  "displayName": "Header - Agent Catalog"
+}

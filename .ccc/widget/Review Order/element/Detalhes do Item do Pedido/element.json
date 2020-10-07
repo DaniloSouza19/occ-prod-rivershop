@@ -1,0 +1,8 @@
+{
+  "tag": "reviewOrder-order-item-details",
+  "source": 100,
+  "type": "fragment",
+  "title": "Detalhes do Item do Pedido",
+  "widgetType": "reviewOrder",
+  "version": 3
+}

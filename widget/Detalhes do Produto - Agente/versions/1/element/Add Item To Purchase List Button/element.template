@@ -1,0 +1,5 @@
+<button id="cc-productDetails-addToPurchaseListButton" class="btn cc-button-secondary"
+  data-bind="widgetLocaleText:'addToPurchaseListButton',
+             disabled: {condition: !$data.allOptionsSelected() || !$data.validateAddItemToPurchaseListButton()},
+             click: $data.addToPurchaseListWidget.bind($data)">
+</button>

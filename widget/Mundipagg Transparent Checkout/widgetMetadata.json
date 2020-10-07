@@ -1,0 +1,25 @@
+{
+  "imports": [
+    "order",
+    "payment",
+    "shippingmethods",
+    "paymentauthorization"
+  ],
+  "translations": [
+    {
+      "name": "Mundipagg Transparent Checkout",
+      "language": "en"
+    },
+    {
+      "name": "Mundipagg Checkout Transparente",
+      "language": "pt"
+    }
+  ],
+  "jsEditable": true,
+  "minWidth": 1,
+  "globalEnabled": true,
+  "pageTypes": [
+    "checkout"
+  ],
+  "config": {}
+}

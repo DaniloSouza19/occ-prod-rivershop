@@ -1,0 +1,21 @@
+{
+  "resources": {
+    "emailIdText": "E-mail",
+    "customersText": "Clientes",
+    "globalMarketingMailsTitleTextOn": "Quero ativar atualizações de e-mail de todos os sites.",
+    "customerUpdateSiteSpecifcPropertyFailureMsg": "Não é possível atualizar propriedades especificas do site.",
+    "lastNameText": "Sobrenome",
+    "firstNameInputText": "Informar Nome",
+    "marketingMailsText": "Quero receber atualizações por e-mail.",
+    "firstNameText": "Nome",
+    "lastNameInputText": "Informar Sobrenome",
+    "buttonCancel": "Cancelar",
+    "emailAddressInputText": "Informar Endereço de E-mail",
+    "closeText": "Fechar",
+    "customerUpdateSiteSpecifcPropertySuccessMsg": "Propriedades específicas do site atualizadas com sucesso.",
+    "createCustomerSuccessHeader": "Cliente Criado.",
+    "linkCreateNewCustomerText": "Criar Novo Cliente",
+    "globalMarketingMailsTitleTextOff": "Quero desativar atualizações de e-mail de todos os sites.",
+    "buttonCreateAccount": "Criar Conta"
+  }
+}

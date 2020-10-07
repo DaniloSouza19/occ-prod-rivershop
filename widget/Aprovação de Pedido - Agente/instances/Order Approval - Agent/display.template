@@ -1,0 +1,47 @@
+<!--  ko if:   $data.orderDetailsWrapper.isRenderComplete() -->
+  <!-- ko if :$data.orderDetailsWrapper.orderDetails() -->
+    <!-- ko with : $data.orderDetailsWrapper.orderDetails -->
+	  <div id="CC-orderApproval">
+        <div class="order-details-padding">
+          <!-- ko if : ($parent.orderDetailsWrapper.isApprovalAllowed() && $parent.orderDetailsWrapper.isApproverContext()) || $parent.isPendingApproval() -->
+	        <h4 for="cc-approvalComments" data-bind="widgetLocaleText: 'approvalCommentsText'" class="cc-summary-header"></h4>
+            <textarea id = "CC-orderApproval-comments"
+                placeholder = "Comments..."
+                data-bind = "value: $parent.approverComments, valueUpdate: 'keyup'"></textarea>
+            <span data-bind="widgetLocaleText : {value:'approverComments', attr:'placeholder'},
+                         validationMessage: $parent.approverComments"
+                         class="text-danger"
+                         id="CC-orderApproval-name-error"
+                         role="alert">
+            </span>
+            <div id = "CC-order-approval-buttonPanel" class = "text-right button-group">
+              <button id="CC-orderApproval-buttonReject" data-bind = "widgetLocaleText: 'buttonReject', click: $parent.rejectOrder.bind($parent)"
+                  type = "button" ,
+                  class = "btn btn-default btn-md">
+              </button>
+              <button id = "CC-orderApproval-buttonApprove" data-bind = "widgetLocaleText: 'buttonApprove', click: $parent.approveOrder.bind($parent)"
+                  type = "submit"
+                  class = "btn btn-primary btn-md">
+              </button>
+            </div>
+          <!-- /ko -->
+
+
+            <!-- ko if : $parent.orderDetailsWrapper.isOrderApproved() -->
+			  <h4 for="cc-approvalComments" data-bind="widgetLocaleText: 'approvalCommentsText'" class="cc-summary-header"></h4>
+              <textarea id = "CC-orderApproval-comments"
+                  data-bind = "attr: { 'aria-label': $parent.resources().approvalCommentsText},value: $parent.showApproverComments($data), valueUpdate: 'keyup', enable : !($data.hasOwnProperty('approvers') && approvers.length > 0)">
+			  </textarea>
+              <span data-bind="widgetLocaleText : {value:'approverComments', attr:'placeholder'},
+                         validationMessage: $parent.approverComments,"
+                         class="text-danger"
+                         id="CC-orderApproval-name-error"
+                         role="alert">
+              </span>
+			<!-- /ko -->
+
+        </div>
+      </div>
+    <!-- /ko -->
+  <!-- /ko -->
+<!-- /ko -->

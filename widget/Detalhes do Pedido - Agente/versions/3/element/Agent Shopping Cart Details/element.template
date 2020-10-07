@@ -1,0 +1,543 @@
+<!-- ko if: $parent.orderDetailsWrapper.isRenderComplete() -->
+<!-- ko setContextVariable:{name:'widgetViewModel',value:$data} -->
+<div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12" style="padding-left: 15px;">
+            <!--  ko if: $data.orderDetailsWrapper.orderDetails() -->
+            <!-- ko foreach: $data.orderDetailsWrapper.orderDetails().shippingGroups -->
+            <div class="col-md-12 cc-order-details-shopping-cart-border cc-order-header-font-size cc-order-details-shopping-cart-spacing">
+
+
+                <!-- ko if: shippingMethod && shippingMethod.shippingMethodDescription -->
+                  <span data-bind="text:shippingMethod.shippingMethodDescription, attr:{id: 'cc-orderDetails-shippingMethod-' +
+                            shippingGroupId}"> </span>
+                <!-- /ko -->
+                <!-- ko with: shippingAddress -->
+                <!-- ko if: alias -->
+                  <span data-bind="widgetLocaleText: 'hypenText',
+                  attr:{id: 'cc-orderDetails-shippingAdress-hypen-' +
+                            $parent.shippingGroupId}"></span>
+                  <span data-bind="text:alias,
+                  attr:{id: 'cc-orderDetails-shippingAddress-alias-' +
+                            $parent.shippingGroupId}"></span>
+                <!-- /ko -->
+                <!-- /ko -->
+
+
+            </div>
+            <div data-bind="attr:{id: 'cc-orderDetails-orderItems-header-' +
+                            shippingGroupId}"
+              class="cc-orderDetails-orderItems-header table-responsive
+              table-layout-fixed-break-word pull-left">
+              <table
+                class="table-header-styling table table-bordered table-striped tableHeader"
+                data-bind="css: { 'cc-orderDetails-table-header':
+                ($parent.totalItemsLength()>4)},
+                attr: {summary:
+                $parents[0].CCi18n.t('ns.agentAccountOrderDetails:resources.orderItemsText')}">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <div>
+                        <input type="checkbox" style="margin-left:14px" data-bind="attr: { 'aria-label': 'header-checkbox'}, checked:$data.selectedAllProduct" />
+                        <span data-bind="widgetLocaleText: 'productDisplayNameText'"></span>
+                      </div>
+                    </th>
+                    <th scope="col" data-bind="widgetLocaleText: 'paymentStatusText'"></th>
+
+                    <th scope="col" data-bind="widgetLocaleText: 'priceText'"
+                      class="text-right"></th>
+                    <th scope="col" data-bind="widgetLocaleText: 'itemQuantityText'"
+                      class="text-right"></th>
+
+                    <th scope="col" data-bind="widgetLocaleText: 'subTotalText'"
+                      class="text-right"></th>
+                    <!-- ko if: ($parent.totalItemsLength() > 4) -->
+                    <th scope="col" data-bind="text: ''"></th>
+                    <!-- /ko -->
+                  </tr>
+                </thead>
+              </table>
+              <div 
+                data-bind="css: { 'cc-orderDetails-orderItems-table-body'
+                :($parent.totalItemsLength() > 4)},
+                 attr:{id: 'cc-orderDetails-table-body-'+shippingGroupId}">
+                <table id="cc-orderDetails-orderItemsTable"
+                  role='presentation'
+                  class="table table-bordered table-striped">
+                  <tbody data-bind="foreach:items">
+                    <tr >
+                      <td  class="scrollableTableCell">
+                        <div class="col-md-1">
+                          <input type="checkbox" data-bind="attr: { 'aria-label': 'checkbox'}, 
+                          checkedValue:  $parent.shippingGroupId + ':' + ($data.commerceItemId || $data.commerceId),
+                            checked: $parent.selectedProduct" />
+                        </div>
+                        <div class="col-md-3">
+                          <img class="image"
+                            data-bind="productImageSource:
+                            {src: {'primaryThumbImageURL' : primaryThumbImageURL}, imageType:'thumb',
+                            alt: displayName,
+                            errorSrc: $parents[1].site().noImageSrc(),
+                            errorAlt: $data.hasOwnProperty('primaryImageAltText') ? primaryImageAltText : $parents[1].CCi18n.t('ns.common:resources.noImageFoundText')
+                            },
+                            attr:{id: 'cc-orderDetails-commerceItem-image-' +
+                            productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }">
+                        </div>
+                        <div class="col-md-8 cc-itemName">
+                          <span class="displayName title"
+                            data-bind="text: displayName,
+                            attr:{id: 'cc-orderDetails-displayName-'
+                            + productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }"></span>
+                            <!-- ko if: ($data.backOrderQuantity > 0 || $data.preOrderQuantity > 0) -->
+                              <span class="title" data-bind="widgetLocaleText: 'asteriskSymbol'"></span>
+                            <!-- /ko -->
+                          <!-- ko if: $data.actionCode -->
+                          (<span data-bind="text: actionCode"></span>)
+                          <!-- /ko -->
+                          <br /> <span
+                            data-bind="text: productId,
+                            attr:{id: 'cc-orderDetails-productId-'
+                            + productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }"
+                            class="name"></span> <br />
+                          <span
+                            data-bind="text: catRefId,
+                            attr:{id: 'cc-orderDetails-skuId-'
+                            +productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }"
+                            class="skuid"></span><br />
+                          <!-- ko if: shippingSurchargeValue > 0 && !($parents[1].isExchangeOrder())-->
+                          <div>
+                            <small>
+                              <span data-bind="widgetLocaleText: 'shippingSurchargeText'"></span>
+                              <!-- ko if: $parents[1].orderDetailsWrapper.isPayShippingInSecondaryCurrency()  &&  $parents[1].orderDetailsWrapper.orderDetails().secondaryCurrencyCode -->
+                              <span data-bind="currency: {price:secondaryCurrencyShippingSurchargeValue,
+                                currencyObj:$parents[1].getSecondaryCurrency($parents[1].orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}"></span>
+                              <!-- /ko -->
+                              <!-- ko ifnot: $parents[1].orderDetailsWrapper.isPayShippingInSecondaryCurrency() -->
+                              <span data-bind="currency: {price: shippingSurchargeValue, currencyObj: $parents[1].orderDetailsWrapper.orderDetails().priceListGroup.currency}"></span>
+                              <!-- /ko -->
+                            </small>
+                          </div>
+                          <!-- /ko -->
+                          <!--  ko foreach: variant -->
+                          <!-- ko if: optionValue -->
+                          <div>
+                            <small>
+                            <span data-bind="text: optionName + ': ' + optionValue, attr: { id: 'cc-orderDetails-option-' + $parent.catRefId + optionName + $index()}"></span>
+                            </small>
+                          </div>
+                          <!--   /ko -->
+                          <!--    /ko -->
+                          <!-- ko foreach: externalData -->
+                          <div>
+                            <small>
+                              <!-- ko with: values -->
+                              <span data-bind="text: $data.label"></span>:
+                              <span data-bind="text: $data.displayValue"></span>
+                              <!-- /ko -->
+                              <!-- ko if: actionCode -->
+                              (<span data-bind="text: actionCode"></span>)
+                              <!-- /ko -->
+                            </small>
+                          </div>
+                          <!-- /ko -->
+                          <!-- ko if: ($data.childItems && $data.childItems.length > 0) -->
+                          <div class="hidden-xs" data-bind="attr: { id: 'CC-orderDetails-productConfigurationDetails-' + productId + catRefId + $index()}">
+                            <small>
+                              <a data-bind="widgetLocaleText:'configurationDetails', attr: { href: '#CC-orderDetails-configDetails-' + productId + catRefId + $index()}" data-toggle="collapse" class="agentConfigDetailsLink collapsed" role="configuration"></a>
+                              <div data-bind="attr: { id: 'CC-orderDetails-configDetails-' + productId + catRefId + $index()}" class="collapse">
+                                <ul data-bind="template: {name: $parents[1].templateAbsoluteUrl('/templates/subSku-childItems-view.template'), foreach: $data.childItems}">
+                                </ul>
+                              </div>
+                            </small>
+                          </div>
+                          <!-- /ko -->
+                          <br/>
+                          <!--  ko foreach: dynamicProperties -->
+                          <!--    ko if: value != null-->
+                          <div>
+                            <small>
+                              <span data-bind = "text: $data.label,
+                              attr: { id: 'cc-orderDetails-option-'+ $data.id + '-'+
+                                                   $parent.commerceItemId}""></span> : <span data-bind = "text:
+                                                   $parents[2].orderDetailsWrapper.parseDynamicPropertyValue(id, value)"></span>
+                            </small>
+                          </div>
+                          <!--   /ko -->
+                        <!--    /ko -->
+
+                        <!-- ko if: $data.backOrderQuantity > 0 || $data.preOrderQuantity > 0 || $data.preOrderBackOrderStatusForChild -->
+                          <!-- ko if: $data.backOrderQuantity > 0 -->
+                            <span class="title" data-bind="widgetLocaleText: 'asteriskSymbol'"> </span>
+                            <span class="title" data-bind="widgetLocaleText: 'backOrderedText'"> </span>
+                          <!-- /ko -->
+                          <!-- ko if: ($data.backOrderQuantity == 0 && $data.preOrderQuantity > 0) -->
+                            <span class="title" data-bind="widgetLocaleText: 'asteriskSymbol'">*</span>
+                            <span class="title" data-bind="widgetLocaleText: 'preOrderedText'"> </span>
+                          <!-- /ko -->
+                          <!-- ko if: !($data.backOrderQuantity > 0 || $data.preOrderQuantity > 0) && $data.preOrderBackOrderStatusForChild -->
+                            <span class="title" data-bind="text: $data.preOrderBackOrderStatusForChild"> </span>
+                          <!-- /ko -->
+                          <div>
+                            <!-- ko if: $data.availabilityDate -->
+                              <span class="title" data-bind="widgetLocaleText: 'availabilityDateText'"> </span>
+                              <span class="title" data-bind="widgetLocaleText: 'hiphenText'"></span>
+                              <span class="title" data-bind="ccDate: {date: $data.availabilityDate, returnedDate: 'medium'}"></span>
+                            <!-- /ko -->
+                          </div>
+                        <!-- /ko -->
+
+                        </div>
+                      </td>
+
+                      <td data-bind="text: $parents[1].CCi18n.t('ns.common:resources.'+ $data.status + '_SG'),
+                       attr:{id: 'cc-orderDetails-status-'
+                                  + productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }"></td>
+                      <td class="text-right">
+                      <!--  ko if: (listPrice !== unitPrice) || ($data.externalPriceQuantity && ($data.externalPriceQuantity > 0 || $data.externalPriceQuantity ==-1)) -->
+                        <s class="strike-through"
+                          data-bind="currency: {price: listPrice,
+                            currencyObj: $parents[1].orderDetailsWrapper.orderDetails().priceListGroup.currency},
+                            attr:{id: 'cc-orderDetails-price-strikeoff'
+                            + productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }"></s></br>
+                      <!-- /ko -->
+                      <!-- ko if: $data.hasOwnProperty('detailedItemPriceInfo') -->
+                      <!-- ko foreach: detailedItemPriceInfo -->
+                        <span data-bind="text:quantity"></span>
+                        <span data-bind="widgetLocaleText: 'volumePriceSeparatorText'"></span>
+                        <span data-bind="currency: {price: detailedUnitPrice,
+                          currencyObj: $parents[2].orderDetailsWrapper.orderDetails().
+                          priceListGroup.currency},
+                          attr:{id: 'cc-orderDetails-price-'+ $index()+ '-'
+                          + $parent.productId + $parent.catRefId + ($parent.configuratorId ? $parent.configuratorId: '') }"></span></br>
+                      <!-- /ko -->
+                      <!-- /ko -->
+                      </td>
+                      <td class="text-right"
+                        data-bind="attr:{id: 'cc-orderDetails-quantity-' + productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }">
+                        <span data-bind="ccNumber: quantity"></span> <span
+                          data-bind="widgetLocaleText: 'leftParenthesisSymbol'"></span> <span
+                          data-bind="ccNumber: $data.returnedQuantity,
+                          attr:{id: 'cc-orderDetails-returnedQuantity-'
+                          + productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }"></span>
+                        <span data-bind="widgetLocaleText: 'rightParenthesisSymbol'"></span>
+                      </td>
+
+                      <td>
+                        <div
+                          data-bind="attr: { id: 'cc-orderDetails-itemTotalPrice-' + catRefId+'-'+($data.commerceItemId || $data.commerceId)+'-'+$index() }"
+                          class="pull-right">
+                          <!--  ko if: $parents[1].displayPriceOverrideProperties($data) -->
+                              <button  class="popover-dismiss order-pop" data-toggle="popover"
+                                       data-bind="infoPopover: {trigger: 'hover',
+                                       container: '#cc-orderDetails-shippingMethod-' + $parent.shippingGroupId,
+                                                placement: 'left',
+                                                name: 'itemPrice-info-popover', zIndex: 550,
+                                                minHeight: '70px', minWidth: '290px',
+                                                focusOn: '#cc-order-popover-close'},
+                                     attr: {id: 'cc-order-popover' + $data.catRefId}">
+                             <span class="fa fa-info-circle"></span>
+                           </button>
+                          <!--  /ko -->
+                          <!-- ko if: $parents[1].showStrikeThroughForItemSub($data) -->
+                          <s class="strike-through pull-right"
+                            data-bind="currency: {price: rawTotalPrice,
+                            currencyObj: $parents[1].orderDetailsWrapper.orderDetails().
+                            priceListGroup.currency},
+                            attr:{id: 'cc-orderDetails-rawTotalPrice-'
+                            + productId + catRefId + ($data.configuratorId ? $data.configuratorId: '') }, css: {'cc-orderDetails-subTotal': !($data.isPriceOverridden)} ">
+                          </s> <br />
+                          <!-- /ko -->
+                          <!-- ko if: $data.hasOwnProperty('detailedItemPriceInfo') -->
+                          <!-- ko foreach: detailedItemPriceInfo -->
+                          <span class="pull-right cc-orderDetails-subTotal"
+                            data-bind="currency: {price: amount,
+                            currencyObj: $parents[2].orderDetailsWrapper.orderDetails().
+                            priceListGroup.currency},
+                            attr:{id: 'cc-orderDetails-subTotal-'
+                            + $parent.productId + $parent.catRefId + ( $parent.configuratorId ?  $parent.configuratorId: '') }">
+                          </span></br>
+                          <!-- /ko -->
+                          <!-- /ko -->
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="row">
+             <div class="row">
+            <div class="col-md-12">
+              <h4 
+                class="cc-order-header-font-size col-xs-12 col-sm-5"
+                data-bind="widgetLocaleText: 'SHIPPING_ADDRESS_AND_METHOD_HEADER', 
+                attr:{id: 'cc-orderDetails-orderItemsHeader-' +
+                            shippingGroupId}" style="border-right-width: 0px;margin-left: 0px;">
+              </h4>
+            </div>
+            </div>
+
+            <div  data-bind="attr:{id: 'cc-orderDetails-shippingAddress-' +
+                            shippingGroupId}"
+              class="col-xs-5 summary-table rightVerticalLine">
+              <table   data-bind="attr:{id: 'cc-orderDetails-shippingAddress-table-' +
+                            shippingGroupId}">
+                <tbody>
+                  <tr>
+                    <td class="shipToColOnTop">
+                      <span  class="summary-table-title title"
+                        data-bind="widgetLocaleText: 'shipToAddressText', 
+                         attr:{id: 'cc-orderDetails-shipTo-TitleDescription-' +
+                            shippingGroupId}"></span>
+                      <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+                    </td>
+                    <td>
+                      <!-- ko with: shippingAddress -->
+                      <!-- ko if: firstName -->
+                      <div data-bind=" attr:{id: 'shippingAddressDetailsButton-' + $parent.shippingGroupId}" >
+                          <button href="#cc-orderAddressModal" data-toggle="modal" class="cc-orderDetails-view-address-btn" data-bind="click:  $parents[1].showAddressDetails.bind($parents[1], $data),
+                          attr: { title : $parents[1].translate('viewAddressToolTipText'),
+                          id: 'cc-orderdetails-multiship-' +  $parent.shippingGroupId} ">
+                          <i class="fa fa-info-circle"></i> <span class="sr-only"></span>
+                          </button>
+                      </div>
+                       <span data-bind="text: firstName + ' ' + lastName,
+                        attr:{id: 'cc-orderDetails-shippingAddress-name-' + $parent.shippingGroupId}"> </span> <br />
+                      <!-- ko if: companyName -->
+                      <span data-bind="text: companyName,
+                        attr:{id: 'cc-orderDetails-shippingAddress-companyName-' + $parent.shippingGroupId}"></span><br /> <!-- /ko -->
+                      <span data-bind="text: address1,
+                        attr:{id: 'cc-orderDetails-shippingAddress-address1-' + $parent.shippingGroupId}"></span><br /> <!-- ko if: address2 -->
+                      <span data-bind="text: address2,
+                        attr:{id: 'cc-orderDetails-shippingAddress-address2-' + $parent.shippingGroupId}"></span><br /> <!-- /ko -->
+                        <!-- ko if: address3 -->
+                      <span data-bind="text: address3,
+                        attr:{id: 'cc-orderDetails-shippingAddress-address3-' + $parent.shippingGroupId}"></span><br /> <!-- /ko -->
+                        <!-- ko if: county -->
+                      <span data-bind="text: county,
+                        attr:{id: 'cc-orderDetails-shippingAddress-county-' + $parent.shippingGroupId}"></span><br /> <!-- /ko -->
+                      <!-- ko if: $parents[1].getCityStatePostal($data) -->
+                      <span data-bind="text: $parents[1].getCityStatePostal($data),
+                        attr:{id: 'cc-orderDetails-shippingAddress-citySatePostal-' + $parent.shippingGroupId}">
+                      </span> <br />
+                      <!-- /ko -->
+                      <!-- ko if: $parents[1].getCountryName($data) -->
+                      <span  data-bind="text: $parents[1].getCountryName($data),
+                        attr:{id: 'cc-orderDetails-shippingAddress-country-' + $parent.shippingGroupId}">
+                      </span> <br />
+                      <!-- /ko -->
+                      <span  data-bind="widgetLocaleText: 'phoneNumberText', 
+                         attr:{id: 'cc-orderDetails-shippingAddress-phoneNumber-' + $parent.shippingGroupId}"></span>
+                      <span data-bind="text: phoneNumber"></span> <br /> <br />
+                      <!-- /ko --> <!-- ko ifnot: firstName --> <br />
+                      <p id="cc-orderDetails-shippingAddress-noData"
+                        data-bind="widgetLocaleText: 'noShippingAddressText'"></p>
+                      <!-- /ko -->
+                      <!-- /ko -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div  data-bind="attr:{id: 'cc-orderDetails-shippingMethod-Info-' + shippingGroupId}"
+              class="col-xs-7 summary-table">
+              <table data-bind=" attr:{id: 'cc-orderDetails-shippingMethod-table-' +
+                            shippingGroupId}">
+                <tbody>
+                  <tr>
+                    <td class="shipToColOnTop">
+                      <span class="summary-table-title title"
+                           data-bind="widgetLocaleText: 'shippingMethodText',
+                            attr:{id: 'cc-orderDetails-shipTo-Title-' +
+                            shippingGroupId}"></span>
+                      <span data-bind="widgetLocaleText: 'delimiterText'"></span>
+                    </td>
+                    <td>
+                      <!-- ko if: shippingMethod && shippingMethod.shippingMethodDescription -->
+                      <span  data-bind="text:shippingMethod.shippingMethodDescription, attr:{id: 'cc-orderDetails-shippingMethodDescription-' +
+                            shippingGroupId}"> </span> <br />
+                      <!-- ko if: hasOwnProperty("priceInfo") && priceInfo -->
+                      <span data-bind="widgetLocaleText: 'subTotalText',
+                          attr:{id: 'cc-orderDetails-sub-total-' +
+                            shippingGroupId}"> </span>
+                      <span  class= "pull-right" data-bind="currency: {price: priceInfo.subTotal,
+                        currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency},
+                         attr:{id: 'cc-orderDetails-sub-total-price-' +
+                            shippingGroupId}">
+                      </span>
+                      <br />
+                      <!-- /ko -->
+                      <!-- ko if: hasOwnProperty("priceInfo") && priceInfo && priceInfo.shipping -->
+                      <span data-bind="widgetLocaleText: 'shippingCostText', 
+                        attr:{id: 'cc-orderDetails-shippingMethod-priceInfo-' +
+                            shippingGroupId}"> </span>
+                      <!-- ko if: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency()  &&  $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode -->
+                      <span class= "pull-right" id="cc-orderDetails-Shipping-price"
+                        data-bind="currency: {price: priceInfo.secondaryCurrencyShippingAmount,
+                        currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}">
+                      </span>
+                      <br />
+                      <!-- /ko -->
+                      <!-- ko ifnot: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency()-->
+                      <span class= "pull-right" data-bind="attr:{id: 'cc-orderDetails-Shipping-price-' +
+                            shippingGroupId}, currency: {price: priceInfo.shipping,
+                        currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </span>
+                      <br />
+                      <!-- /ko -->
+                      <!-- /ko -->
+                      <!-- ko if: hasOwnProperty("priceInfo") && priceInfo && priceInfo.shippingSurchargeValue -->
+                      <span id="cc-orderDetails-shipping-surchargeValue"
+                        data-bind="widgetLocaleText:'shippingSurchargeText'"> </span>
+                      <!-- ko if: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency()  &&  $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode -->
+                      <span  class= "pull-right" id="cc-orderDetails-shipping-surchargeValue-price"
+                        data-bind="currency: {price: priceInfo.secondaryCurrencyShippingSurchargeValue,
+                        currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode)}">
+                      </span>
+                      <br/>
+                      <!-- /ko -->
+                      <!-- ko ifnot: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency() -->
+                      <span  class= "pull-right" id="cc-orderDetails-shipping-surchargeValue-price"
+                        data-bind="currency: {price: priceInfo.shippingSurchargeValue,
+                        currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </span>
+                      <br/>
+                      <!-- /ko -->
+                      <!-- /ko -->
+                      <!-- ko if: discountInfo && discountInfo.shippingDiscount -->
+                      <span id="cc-orderDetails-shipping-discountInfo"
+                        data-bind="widgetLocaleText:'shippingDiscountText'"> </span>
+                      <!-- ko if: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency()  &&  $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode  -->
+                      <span  class= "pull-right" id="cc-orderDetails-shipping-discountInfo-price"
+                        data-bind="currency: {price: discountInfo.secondaryCurrencyShippingDiscount,
+                        currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails()? 
+                        $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode: '')}">
+                      </span>
+                      <br/>
+                      <!-- /ko -->
+                      <!-- ko ifnot: $parent.orderDetailsWrapper.isPayShippingInSecondaryCurrency()  -->
+                      <span  class= "pull-right" id="cc-orderDetails-shipping-discountInfo-price"
+                        data-bind="currency: {price: discountInfo.shippingDiscount,
+                        currencyObj:$parent.orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </span>
+                      <br/>
+                      <!-- /ko -->
+                      <!-- /ko -->
+                      <!-- ko if: hasOwnProperty("priceInfo") && priceInfo && priceInfo.tax -->
+                      <span id="cc-orderDetails-shippingGroupTax"
+                        data-bind="widgetLocaleText:'salesTaxText'"> </span>
+                      <!-- ko if: $parent.orderDetailsWrapper.isPayTaxInSecondaryCurrency()  -->
+                      <span  class= "pull-right" id="cc-orderDetails-shippingGroupTax-price"
+                        data-bind="currency: {price: priceInfo.secondaryCurrencyTaxAmount,
+                        currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails()? 
+                        $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode: '')}">
+                      </span>
+                      <br />
+                      <!-- /ko -->
+                      <!-- ko ifnot: $parent.orderDetailsWrapper.isPayTaxInSecondaryCurrency()  -->
+                      <span  class= "pull-right" id="cc-orderDetails-shippingGroupTax-price"
+                        data-bind="currency: {price: priceInfo.tax,
+                        currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </span>
+                      <br />
+                      <!-- /ko -->
+                      <!-- /ko -->
+                      <!-- ko if: hasOwnProperty("priceInfo") && priceInfo && priceInfo.total -->
+                      <span data-bind="widgetLocaleText:'orderTotalText', 
+                        attr:{id: 'cc-orderDetails-shippingGroupTotal-' +
+                            shippingGroupId}"> </span>
+                      <!-- ko if: $parent.orderDetailsWrapper.isMultiCurrencyOrder()  -->
+                      <span  class= "pull-right padding-left-21-rm-right" 
+                        data-bind="currency: {price: priceInfo.primaryCurrencyTotal,
+                        currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency},
+                         attr:{id: 'cc-orderDetails-shippingGroupTotal-price-' +
+                            shippingGroupId}">
+                      </span>
+                      <br />
+                      <span id="cc-orderDetails-shippingGroupShippingAndTaxTotal"
+                        data-bind="text:$parents[1].localeTextForShippingAndTaxTotal()" class="cc-order-shippingAndTax"> </span>
+                      <span  class= "pull-right padding-left-21-rm-right" id="cc-orderDetails-shippingGroupShippingAndTaxTotal-price"
+                        data-bind="currency: {price: priceInfo.secondaryCurrencyTotal,
+                        currencyObj: $parent.getSecondaryCurrency($parent.orderDetailsWrapper.orderDetails()? 
+                        $parent.orderDetailsWrapper.orderDetails().secondaryCurrencyCode: '')}">
+                      </span>
+                      <!-- /ko -->
+                      <!-- ko ifnot: $parent.orderDetailsWrapper.isMultiCurrencyOrder()  -->
+                      <span  class= "pull-right padding-left-21-rm-right" id="cc-orderDetails-shippingGroupTotal-price"
+                        data-bind="currency: {price: priceInfo.total,
+                        currencyObj: $parent.orderDetailsWrapper.orderDetails().priceListGroup.currency}">
+                      </span>
+                      <!-- /ko -->
+                      <!-- /ko -->
+                      <!-- /ko -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- ko if: $data.trackingInfo -->
+              <!-- ko if: trackingInfo.length > 0 -->
+              <!-- // Tracking reference MODAL -->
+              <button id="cc-orderDetails-trackingReferences-btn"
+                class="cc-button-secondary secondarybackground"
+                data-toggle="modal"
+                data-bind="click: function() {$parents[1].setShippingGroupForTracking($index());}"
+                data-target="#cc-trackingReferencesModal">
+              <span id="cc-orderDetails-trackReferencesButton-label"
+                data-bind="widgetLocaleText: 'trackShipmentsText'"></span>
+              </button>
+              <!-- /ko -->
+              <!-- ko if: trackingInfo.length == 0 && trackingNumber != null-->
+              <div class="width-83">
+                <span class="row title" data-bind="widgetLocaleText: 'trackingDetailsText'"></span>
+                <span class="break-word-adj-mar-left" data-bind="text: trackingNumber"></span>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: trackingInfo.length == 0 && trackingNumber === null-->
+              <div class="margin-top-20">
+                <span data-bind="widgetLocaleText: 'noTrackingDetailsText'"></span>
+              </div>
+              <!-- /ko -->
+              <!-- /ko -->
+            </div>
+           </div>
+            <!-- /ko -->
+            <!-- /ko -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="cc-horizontaLine-shippingInfo">
+      <hr class="line agent-line col-xs-12">
+    </div>
+<!-- /ko -->
+<!-- /ko -->
+
+<script type="text/html" id="itemPrice-info-popover">
+<div>
+  <div class="cc-itemPrice-info-popover">
+    <div class="col-md-12 pull-right datepickerHeaderIcons cc-itemPrice-info-popover-header">
+      <span class="pull-left" data-bind="text: $data.model.priceOverrideHeaderText"></span>
+      <a id="cc-order-popover-close" href="#" class="pull-right cc-popover-x" data-bind='click: close, makeAccess: {readerResource: "ns.common:resources.closeText"}'><i class="fa fa-times"></i></a>
+    </div>
+    <div class="margin-onepercent">
+      <div class="col-md-7 cc-padding-zero">
+        <label data-bind="text: $data.model.priceOverrideReasonText"></label>
+      </div>
+      <div class="col-md-5 cc-padding-zero">
+        <span class="pull-left" data-bind="text: $data.model.priceOverrideReason.displayValue"></span>
+      </div>
+    </div>
+    <div class="margin-onepercent">
+      <div class="col-md-7 cc-padding-zero">
+        <label data-bind="text: $data.model.priceOverridenByText"></label>
+      </div>
+      <div class="col-md-5 cc-padding-zero">
+        <span class="pull-left" data-bind="text: $data.model.priceOverridenBy" id="cc-order-edit-info-overridden-By"></span>
+      </div>
+    </div>
+  </div>
+</div>
+</script>

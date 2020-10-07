@@ -1,0 +1,111 @@
+#WIDGET_ID-WIDGET_INSTANCE_ID {
+
+    .orderSummary {
+
+        #paymentMethod{
+            margin-bottom: 20px;
+        }
+
+        span#CC-OrderSummary-discountDescription-0 {
+            margin-left: 15px;
+        }
+        .cc-spinner-css{
+            left: 50% !important;
+            top: 40% !important;
+        }
+        .cc-spinner{
+            position: fixed;
+            z-index: 2;
+          
+        }
+        border-top      : 12px solid red;
+        background-color: @color-zero;
+        margin-top      : 17px;
+
+        @media screen and (max-width: 1024px) {
+            width : auto;
+            height: auto;
+        }
+
+        .text-block {
+            margin-top  : 15px;
+            margin-left : 15px;
+            margin-right: 15px;
+        }
+
+        img {
+            @media screen and (max-width:1024px) {
+                display: none;
+            }
+        }
+
+        .checkout {
+            display        : flex;
+            justify-content: center;
+        }
+
+        .cc-button-primary {
+            width           : 238px;
+            height          : 42px;
+            background-color: red !important;
+            border          : none;
+            margin-bottom   : 25px;
+        }
+
+        .btn-text {
+            font-size  : 14px;
+            font-family: rubik;
+            line-height: 17px;
+            text-align : center;
+            font-weight: bold;
+
+            @media screen and(max-width:1024px) {
+                font-size: 10px;
+            }
+        }
+
+        .bold-title {
+            font-family: rubik;
+            font-size  : 16px;
+            text-align : center;
+            color      : @color-four;
+            line-height: 19px;
+            font-weight: bold;
+        }
+
+        .text-default {
+            font-family  : rubik;
+            font-size    : 16px;
+            text-align   : center;
+            color        : @color-four;
+            line-height  : 19px;
+            font-weight  : normal;
+            margin-bottom: 30px;
+        }
+
+ 
+
+        
+    }
+    div#CC-orderSummary-checkout a span{
+        font-family  : rubik !important;
+        font-weight: bold !important;
+
+    }
+
+    .checkout.row.text-center.descont p {
+        line-height: 16px;
+        color: red;
+    }
+
+    #CC-orderSummary-checkout {
+        background: #fff;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+    }
+    option[value="500"] {
+        display: none;
+    }
+
+}

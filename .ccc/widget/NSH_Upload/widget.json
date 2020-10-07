@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_upload",
+  "version": 1,
+  "displayName": "NSH_Upload",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_upload",
+  "source": 101,
+  "javascript": "nsh_upload"
+}

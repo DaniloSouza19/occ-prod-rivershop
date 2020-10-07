@@ -1,0 +1,893 @@
+<div id="CC-organizationAddressSelector">
+<div id="CC-organizationShippingAddressSelector">
+<!-- ko if: (includeShippingInformation()) -->
+	<legend>
+	<span class="legendText" data-bind="widgetLocaleText:'shippingAddressText'"></span>
+	<!-- ko if: user().loggedIn() && showAddressBook -->
+        <button class="cc-button-primary pull-right" id="cc-checkout-show-address-book"
+                href="#CC-shippingAddressBook-picker" data-toggle="modal">
+          <span data-bind="widgetLocaleText: 'addressBookText'"></span>
+        </button>
+       
+        <!-- ko if:(userIsProfileAddressManager() || userIsAccountAddressManager()) -->							
+				 <span class="pull-right">				        	      		
+      		<button class="cc-button-primary" id="shippingAddressEditButton" data-bind="click: $data.confirmUnsavedChangesEditButton.bind($data, $element.id), attr:{'disabled' : !$data.shippingAddressSelected()}, widgetLocaleText : {value: 'lockIconScreenMessage', attr: 'aria-label', attr: 'title' }">
+      			<!-- ko ifnot: editShippingAddress -->
+      				<i class="fa fa-lock" aria-hidden="true"></i>
+      			<!-- /ko -->
+      			<!-- ko if: editShippingAddress -->
+      				<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      			<!-- /ko -->
+      		</button>
+      	</span>  
+   	     <!-- /ko -->  	
+    <!-- /ko -->
+	
+   </legend>
+	<!-- ko ifnot: (userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+  <fieldset id="CC-organizationShippingAddress" data-bind="disable: !(order().isOrderEditable())">
+      <!-- ko with: order().shippingAddress -->
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-organizationAddressSelector-shippingFirstName" data-bind="widgetLocaleText:'firstNameText'"></label>
+          <span class="text-danger visible-xs" id="CC-xs-organizationAddressSelector-shippingFirstName-error" data-bind="validationMessage: firstName" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="shippingFirstName" id="CC-organizationAddressSelector-shippingFirstName" aria-required="true" 
+                   data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-organizationAddressSelector-shippingLastName" data-bind="widgetLocaleText:'lastNameText'"></label>
+          <span class="text-danger visible-xs" id="CC-xs-organizationAddressSelector-shippingLastName-error" data-bind="validationMessage: lastName" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="sLastName" id="CC-organizationAddressSelector-shippingLastName" aria-required="true"
+                   data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText',attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+           <p class="text-danger" id="CC-organizationAddressSelector-shippingFirstName-error" data-bind="validationMessage: firstName" role="alert"></p>
+           <p class="text-danger" id="CC-organizationAddressSelector-shippingLastName-error" data-bind="validationMessage: lastName" role="alert"></p>
+        </div>
+      <!-- /ko -->
+  </fieldset>
+  <div class ="defaultAddresses addressselection" id="CC-shippingAddressSelection">  
+    <!-- ko with: order().shippingAddress -->
+    <div>
+      <div>
+          <span class="organization-address">
+           <b> <span class="address-field" data-bind="text: address1"></span></b>
+            <!-- ko if: address2 -->
+              <b><span class="address-field" data-bind="text: address2"></span></b>
+            <!-- /ko -->
+            <!-- ko if: city -->
+           <b> <span class="address-field" data-bind="text: city"></span>,</b>
+            <!-- /ko -->
+           <b> <span class="address-field" data-bind="text: state"></span></b>
+          </span>
+      </div>
+    </div>
+	<!-- /ko -->
+    <!-- ko if: organizationAddressBook().length === 0 -->
+      <span data-bind="widgetLocaleText: 'noAddressesText'"></span>
+    <!-- /ko -->
+  </div>
+	<!-- /ko -->
+	<!-- ko if: (userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+	<!-- ko with: order().shippingAddress -->
+          <div class="row first-row">
+          	<div class="form-group col-sm-8">      			                      
+      			 <label class="control-label inline" for="CC-orgAddressType" data-bind="widgetLocaleText:'nickNamePlaceHolderText'"></label>  	 
+      			  	<span class="text-danger visible-xs" id="CC-checkoutAddressBook-addressType-error" data-bind="validationMessage: type" role="alert"></span>              	
+      			  	<div class= "control">
+             		<input id="CC-orgAddressType" type="text" class="form-control input-md" aria-required="true" data-bind="validatableValue: type, widgetLocaleText: {value : 'nickNamePlaceHolderText', attr : 'placeholder'},attr: { 'disabled': !$parent.editShippingAddress() }">             
+             		</div>
+             	</div>  
+             	<div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-addressType-error" data-bind="validationMessage: type" role="alert"></p>
+            </div>    
+            </div>
+            <div class="row">             
+             <div class="form-group col-sm-4">
+             <label class="control-label inline" for="CC-checkoutAddressBook-sfirstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+             
+             <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-sfirstname-error" data-bind="validationMessage: firstName" role="alert"></span>
+             <div class="control">
+               <input type="text" class="col-md-12 form-control" name="sFirstName" id="CC-checkoutAddressBook-sfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'},disable: !($parent.order().isOrderEditable())">
+             </div>
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-slastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-slastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sLastName" id="CC-checkoutAddressBook-slastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText',attr:'placeholder'},disable: !($parent.order().isOrderEditable())">
+              </div>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-sfirstname-error" data-bind="validationMessage: firstName" role="alert"></p>
+              <p class="text-danger" id="CC-checkoutAddressBook-slastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+            </div>
+           </div>
+          <div class="row">
+            <div class="form-group col-sm-8">
+            	<span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-companyName-error" data-bind="validationMessage: companyName" role="alert"></span>             
+             	<input id="companyName" type="text" class="form-control input-md" data-bind="validatableValue: companyName, widgetLocaleText: {value : 'companyNamePlaceHolderText', attr : 'placeholder'},attr: { 'disabled': !$parent.editShippingAddress() }" required="required" placeholder="Nick Name" title="Nick Name">
+             </div>
+             <div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-companyName-error" data-bind="validationMessage: companyName" role="alert"></p>
+            </div>                     
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-8">
+              <label class="control-label inline" for="CC-checkoutAddressBook-scountry" data-bind="widgetLocaleText:'countryText'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-scountry-error" data-bind="validationMessage: country" role="alert"></span>
+              <div class="control">
+                <select class="col-md-12 form-control" name="sCountry" id="CC-checkoutAddressBook-scountry" aria-required="true"
+                  data-bind="enable: $parent.shippingCountriesPriceListGroup().length, options: $parent.shippingCountriesPriceListGroup, optionsText: 'displayName',
+                             optionsValue: 'countryCode', optionsCaption: $parent.resources().countryText, value: selectedCountry, 
+                             validatableTarget: country, validationElement: country, attr: { 'disabled': !$parent.editShippingAddress() }">
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-scountry-error" data-bind="validationMessage: country" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-8">
+              <label class="control-label inline" for="CC-checkoutAddressBook-saddress1" data-bind="widgetLocaleText:'addressLine1Text'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-saddress1-error" data-bind="validationMessage: address1" role="alert"></span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sAddressLine1" id="CC-checkoutAddressBook-saddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText:{value:'addressLine1Text',attr:'placeholder'}, attr: { 'disabled': !$parent.editShippingAddress() }">
+              </div>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-saddress1-error" data-bind="validationMessage: address1" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-8">
+              <label class="control-label inline" for="CC-checkoutAddressBook-saddress2" data-bind="widgetLocaleText:'addressLine2Text'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-saddress2-error" data-bind="validationMessage: address2" role="alert"></span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sAddressLine2" id="CC-checkoutAddressBook-saddress2" data-bind="validatableValue: address2, widgetLocaleText:{value:'addressLine2Text',attr:'placeholder'}, attr: { 'disabled': !$parent.editShippingAddress() }">
+              </div>
+            </div>
+            <div class="col-md-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-saddress2-error" data-bind="validationMessage: address2" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-scity" data-bind="widgetLocaleText:'cityText'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-scity-error" data-bind="validationMessage: city" role="alert"></span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sCity" id="CC-checkoutAddressBook-scity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText:{value:'cityText',attr:'placeholder'}, attr: { 'disabled': !$parent.editShippingAddress() }">
+              </div>
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-sstate" data-bind="widgetLocaleText:'stateText'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-sstate-error" data-bind="validationMessage: state" role="alert"></span>
+              <div class="control">
+                <select class="col-md-12 form-control" name="sState" id="CC-checkoutAddressBook-sstate" aria-required="true"
+                  data-bind="enable: (stateList().length && $parent.editShippingAddress()), options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation',
+                             optionsCaption: $parent.resources().stateRegionText, value: selectedState, 
+                             validatableTarget: state, validationElement: state">
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-scity-error" data-bind="validationMessage: city" role="alert"></p>
+              <p class="text-danger" id="CC-checkoutAddressBook-sstate-error" data-bind="validationMessage: state" role="alert"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-szipcode" data-bind="widgetLocaleText:'zipCodeText'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-szipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+              <div class="control">
+                <input type="text" class="col-md-12 form-control" name="sZip" id="CC-checkoutAddressBook-szipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'}, attr: { 'disabled': !$parent.editShippingAddress() }">
+              </div>
+            </div>
+            <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-sphone" data-bind="widgetLocaleText:'phoneNumberText'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-sphone-error" data-bind="validationMessage: phoneNumber" role="alert"></span>
+              <div class="control">
+                <input type="tel" class="col-md-12 form-control" name="sPhone" id="CC-checkoutAddressBook-sphone" data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'}, attr: { 'disabled': !$parent.editShippingAddress() }">
+              </div>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-szipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+              <p class="text-danger" id="CC-checkoutAddressBook-sphone-error" data-bind="validationMessage: phoneNumber" role="alert"></p>
+            </div>
+          </div>
+     <fieldset id="CC-radioButtonsShippingAddress" data-bind="visible: ($parent.order().isOrderEditable() && $parent.editShippingAddress() )">    
+     <div class="form-group">
+     <!-- ko if:$parent.userIsProfileAddressManager -->
+      <div class="radio">
+        <label>
+          <input type="radio" class="form control" name="addShippingAddressTo" data-bind="value: 'profileAddresses', checked: $parent.addShippingAddressTo, attr: { 'disabled': (!$parent.editShippingAddress() || !$parent.userIsAccountAddressManager()) }"/>
+          <span data-bind="widgetLocaleText: 'saveToProfileText'"></span>
+        </label>
+      </div>
+      <!-- /ko -->
+      <!-- ko if:$parent.userIsAccountAddressManager -->
+      <div class="radio">
+        <label>
+          <input type="radio" class="form control" name="addShippingAddressTo" data-bind="value:'accountAddresses', checked: $parent.addShippingAddressTo, attr: { 'disabled': (!$parent.editShippingAddress() || !$parent.userIsProfileAddressManager()) }"/>
+           <span data-bind="widgetLocaleText:{value:'saveToAccountText', attr: 'innerText', params: {companyName:$parent.user().currentOrganization().name}}"></span>
+        </label>
+      </div>
+      <!-- /ko -->
+    </div>
+    </fieldset>
+      <!-- /ko -->
+      <!-- /ko -->
+      
+         <!-- ko if:$data.includeUseAsBillingAddress() -->
+         <div class=" checkbox">
+           <label for="CC-checkoutAddressBook-useAsBillAddress">
+             <input type="checkbox" name="useAsBillAddress" 
+                    data-bind="checked: useAsBillAddress" id="CC-checkoutAddressBook-useAsBillAddress" 
+                    class="checkbox" >
+                <span data-bind="widgetLocaleText:'useBillingAddressText'"></span>
+             </label>
+         </div>
+         <!-- /ko -->
+<!-- /ko -->
+</div>
+<br>
+<div id="CC-organizationBillingAddressSelector" data-bind="visible: (!$data.order().shippingAddressAsBilling())">
+
+<!-- ko if: (includeBillingInformation()) -->
+	<legend>
+	<span class="legendText"  data-bind="widgetLocaleText:'billingAddressText'"></span>
+	<!-- ko if: user().loggedIn() -->
+        <button class="cc-button-primary pull-right" id="cc-checkout-show-address-book"
+                href="#CC-billingAddressBook-picker" data-toggle="modal">
+          <span data-bind="widgetLocaleText: 'addressBookText'"></span>
+        </button>
+    <!-- /ko -->
+	
+	<!-- ko if:(userIsProfileAddressManager() || userIsAccountAddressManager() ) -->
+				<div class="pull-right">
+        	<button class="cc-button-primary" id="editBillingAddressButton" data-bind="click: $data.confirmUnsavedChangesEditButton.bind($data, $element.id), attr: { 'disabled': !$data.billingAddressSelected()}, widgetLocaleText : {value: 'lockIconScreenMessage', attr: 'aria-label', attr: 'title' }">
+      			<!-- ko ifnot: editBillingAddress -->
+      				<i class="fa fa-lock" aria-hidden="true"></i>
+      			<!-- /ko -->
+      			<!-- ko if: editBillingAddress -->
+      				<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      			<!-- /ko -->
+      		</button>
+      </div>
+    <!-- /ko -->
+	  
+   </legend>
+  <!-- ko ifnot: (userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+  <fieldset id="CC-contactBillingAddress">
+      <!-- ko with: order().billingAddress -->
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-organizationAddressSelector-billingFirstName" data-bind="widgetLocaleText:'firstNameText'"></label>
+          <span class="text-danger visible-xs" id="CC-xs-organizationAddressSelector-billingFirstName-error" data-bind="validationMessage: firstName" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="bFirstName" id="CC-organizationAddressSelector-billingFirstName" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}" >
+          </div>
+        </div>
+        <div class="form-group col-sm-4">
+          <label class="control-label inline" for="CC-organizationAddressSelector-billingLastName" data-bind="widgetLocaleText:'lastNameText'"></label>
+          <span class="text-danger visible-xs" id="CC-xs-organizationAddressSelector-billingLastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+          <div class="control">
+            <input type="text" class="col-md-12 form-control" name="bLastName" id="CC-organizationAddressSelector-billlingLastName" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}">
+          </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+          <p class="text-danger " id="CC-organizationAddressSelector-billingFirstname-error" data-bind="validationMessage: firstName" role="alert"></p>
+          <p class="text-danger" id="CC-organizationAddressSelector-billingLastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+        </div>
+      <!-- /ko -->
+  </fieldset>
+  <div  class="defaultAddresses addressselection" id="CC-billingAddressSelection">
+    <!-- ko with: order().billingAddress -->
+    <div>
+      <div>
+          <span class="organization-address">
+           <b> <span class="address-field" data-bind="text: address1"></span></b>
+            <!-- ko if: address2 -->
+             <b> <span class="address-field" data-bind="text: address2"></span></b>
+            <!-- /ko -->
+            <!-- ko if: city -->
+            <b><span class="address-field" data-bind="text: city"></span>, </b>
+            <!-- /ko -->
+           <b> <span class="address-field" data-bind="text: state"></span> </b>
+	      </span>
+	  </div>
+    </div>
+	<!-- /ko -->
+    <!-- ko if: organizationAddressBook().length === 0 -->
+      <span data-bind="widgetLocaleText: 'noAddressesText'"></span>
+    <!-- /ko -->
+  </div>
+  <!-- /ko -->
+  
+  <!-- ko if: (userIsProfileAddressManager() || userIsAccountAddressManager()) -->
+  <!-- ko with: order().billingAddress -->
+  <div class="row first-row">
+  	<div class="form-group col-sm-8">
+  	 <label class="control-label inline" for="CC-billingAddressOrgAddressType" data-bind="widgetLocaleText:'nickNamePlaceHolderText'"></label>
+  	    <span class="text-danger visible-xs col-sm-4" id="CC-checkoutAddressBook-billing-addressType-error" data-bind="validationMessage: type" role="alert"></span>                             	       
+  	    <div class="control">
+        <input id="CC-billingAddressOrgAddressType" type="text" class="form-control input-md" data-bind="validatableValue: type, widgetLocaleText: {value : 'nickNamePlaceHolderText', attr : 'placeholder'}, attr: { 'disabled': !$parent.editBillingAddress() }">
+       </div>      
+     </div> 
+     	<div class="col-sm-4 hidden-xs">
+              <p class="text-danger" id="CC-checkoutAddressBook-addressType-error" data-bind="validationMessage: type" role="alert"></p>
+            </div>           
+   </div>
+       <div class="row">    
+     <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutAddressBook-bfirstname" data-bind="widgetLocaleText:'firstNameText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-bfirstname-error" data-bind="validationMessage: firstName" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bFirstName" id="CC-checkoutAddressBook-bfirstname" aria-required="true" data-bind="validatableValue: firstName, widgetLocaleText : {value:'firstNameText', attr:'placeholder'}" >
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutAddressBook-blastname" data-bind="widgetLocaleText:'lastNameText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-blastname-error" data-bind="validationMessage: lastName" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bLastName" id="CC-checkoutAddressBook-blastname" aria-required="true" data-bind="validatableValue: lastName, widgetLocaleText : {value:'lastNameText', attr:'placeholder'}">
+        </div>
+      </div>
+      <div class="col-sm-4 hidden-xs">
+        <p class="text-danger " id="CC-checkoutAddressBook-bfirstname-error" data-bind="validationMessage: firstName" role="alert"></p>
+        <p class="text-danger" id="CC-checkoutAddressBook-blastname-error" data-bind="validationMessage: lastName" role="alert"></p>
+      </div>                                
+     </div>
+     <div class = "row">
+     <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-bcompanyName-error" data-bind="validationMessage: companyName" role="alert"></span>
+     	 <div class="form-group col-sm-8">
+             	<input id="billingAddressCompanyName" type="text" class="form-control input-md" data-bind="validatableValue: companyName, widgetLocaleText: {value : 'companyNamePlaceHolderText', attr : 'placeholder'}, attr: { 'disabled': !$parent.editBillingAddress() }" required="required" placeholder="Nick Name" title="Nick Name">
+       </div>
+       <div class="col-sm-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutAddressBook-bcompanyName-error" data-bind="validationMessage: companyName" role="alert"></p>
+      </div>    
+     </div>
+    <div class="row">
+      <div class="form-group col-sm-8">
+        <label class="control-label inline" for="CC-checkoutAddressBook-bcountry" data-bind="widgetLocaleText:'countryText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-bcountry-error" data-bind="validationMessage: country" role="alert"></span>
+        <div class="control">
+          <select tabindex="1" class="col-md-12 form-control" name="bCountry" id="CC-checkoutAddressBook-bcountry" aria-required="true"
+            data-bind="options: $parent.billingCountries(), optionsText: 'displayName', optionsValue: 'countryCode',
+                         optionsCaption: $parent.resources().countryText, value: selectedCountry, 
+                         validatableTarget: country, validationElement: country, attr: { 'disabled': !$parent.editBillingAddress() }">
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutAddressBook-bcountry-error" data-bind="validationMessage: country" role="alert"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-8">
+        <label class="control-label inline" for="CC-checkoutAddressBook-baddress1" data-bind="widgetLocaleText:'addressLine1Text'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-baddress1-error" data-bind="validationMessage: address1" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bAddressLine1" id="CC-checkoutAddressBook-baddress1" aria-required="true" data-bind="validatableValue: address1, widgetLocaleText : {value : 'addressLine1Text', attr:'placeholder'}, attr: { 'disabled': !$parent.editBillingAddress() }">
+        </div>
+      </div>
+      <div class="col-sm-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutAddressBook-baddress1-error" data-bind="validationMessage: address1" role="alert"></p>
+      </div>
+    </div>
+     <div class="row">
+      <div class="form-group col-sm-8">
+        <label class="control-label inline" for="CC-checkoutAddressBook-baddress2" data-bind="widgetLocaleText:'addressLine2Text'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-baddress2-error" data-bind="validationMessage: address2" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bAddressLine2" id="CC-checkoutAddressBook-baddress2" data-bind="validatableValue: address2, widgetLocaleText : {value : 'addressLine2Text', attr:'placeholder'}, attr: { 'disabled': !$parent.editBillingAddress() }">
+        </div>
+      </div>
+      <div class="col-md-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutAddressBook-baddress2-error" data-bind="validationMessage: address2" role="alert"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutAddressBook-bcity" data-bind="widgetLocaleText:'cityText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-bcity-error" data-bind="validationMessage: city" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bCity" id="CC-checkoutAddressBook-bcity" aria-required="true" data-bind="validatableValue: city, widgetLocaleText : {value : 'cityText', attr:'placeholder'}, attr: { 'disabled': !$parent.editBillingAddress() }">
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutAddressBook-bstate" data-bind="widgetLocaleText:'stateText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-bstate-error" data-bind="validationMessage: state" role="alert"></span><div class="control">
+          <select tabindex="1" class="col-md-12 form-control" name="bState" id="CC-checkoutAddressBook-bstate" aria-required="true"
+            data-bind="enable: (stateList().length && $parent.editBillingAddress()), options: stateList, optionsText: 'displayName', optionsValue: 'abbreviation',
+                         optionsCaption: $parent.resources().stateRegionText, value: selectedState,
+                       validatableTarget: state, validationElement: state">
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-4 hidden-xs">
+        <p class="text-danger" id="CC-checkoutAddressBook-bcity-error" data-bind="validationMessage: city" role="alert"></p>
+        <p class="text-danger" id="CC-checkoutAddressBook-bstate-error" data-bind="validationMessage: state" role="alert"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <label class="control-label inline" for="CC-checkoutAddressBook-bzipcode" data-bind="widgetLocaleText:'zipCodeText'"></label>
+        <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></span>
+        <div class="control">
+          <input type="text" class="col-md-12 form-control" name="bZip" id="CC-checkoutAddressBook-bzipcode" aria-required="true" data-bind="validatableValue: postalCode, widgetLocaleText:{value:'zipCodeText',attr:'placeholder'}, attr: { 'disabled': !$parent.editBillingAddress() }">
+        </div>
+      </div>
+      <div class="form-group col-sm-4">
+              <label class="control-label inline" for="CC-checkoutAddressBook-bphone" data-bind="widgetLocaleText:'phoneNumberText'"></label>
+              <span class="text-danger visible-xs" id="CC-checkoutAddressBook-phone-bphone-error" data-bind="validationMessage: phoneNumber" role="alert"></span>
+              <div class="control">
+                <input type="tel" class="col-md-12 form-control" name="bPhone" id="CC-checkoutAddressBook-bphone" data-bind="validatableValue: phoneNumber, widgetLocaleText:{value:'phoneNumberText',attr:'placeholder'}, attr: { 'disabled': !$parent.editBillingAddress() }">
+              </div>
+            </div>
+       <div class="col-sm-4 hidden-xs">
+         <p class="text-danger" id="CC-checkoutAddressBook-bzipcode-error" data-bind="validationMessage: postalCode" role="alert"></p>
+         <p class="text-danger" id="CC-checkoutAddressBook-bphone-error" data-bind="validationMessage: phoneNumber" role="alert"></p>
+       </div>
+    </div>
+     <fieldset id="CC-radioButtonsBillingAddress" data-bind="visible: ($parent.order().isOrderEditable() && $parent.editBillingAddress())">  
+  	<div class="form-group">
+      <!-- ko if: $parent.userIsProfileAddressManager-->
+      <div class="radio">
+        <label>
+          <input type="radio" class="form control" name="addBillingAddressTo" data-bind="value: 'profileAddresses', checked: $parent.addBillingAddressTo, attr: { 'disabled': (!$parent.editBillingAddress() || !$parent.userIsAccountAddressManager()) }"/>
+          <span data-bind="widgetLocaleText: 'saveToProfileText'"></span>
+        </label>
+      </div>
+      <!-- /ko -->
+      <!-- ko if: $parent.userIsAccountAddressManager-->
+      <div class="radio">
+        <label>
+          <input type="radio" class="form control" name="addBillingAddressTo" data-bind="value:'accountAddresses', checked: $parent.addBillingAddressTo, attr: { 'disabled': (!$parent.editBillingAddress() || !$parent.userIsProfileAddressManager()) }"/>
+           <span data-bind="widgetLocaleText: 'saveToAccountText'"></span>
+           <span data-bind="widgetLocaleText: $parent.user().currentOrganization().name"></span>
+        </label>
+      </div>
+      <!-- /ko -->
+    </div>
+    </fieldset>
+    
+  <!-- /ko -->  
+  <!-- /ko -->
+  
+  <!-- /ko -->
+  </div>
+  
+  <!-- ko if: (includeShippingInformation()) -->
+  <div class="modal fade" id="CC-shippingAddressBook-picker" data-bind="modal: 0, modalTabbingContraint">
+        <div class="modal-dialog">
+          <div class="modal-content col-md-12 col-sm-12">
+        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="addressbook-header">
+              <h4 data-bind="widgetLocaleText: 'addressBookText'"style="MARGIN-LEFT: -7px;"></h4>
+            </div>
+            <div class="modal-body">
+            <div class="address">
+            <div class="defaultAddress">
+            
+            
+              <div style="background-color: #eee;margin-left: -1px;">
+                <span><label id="address-type-label" data-bind="widgetLocaleText: 'defaultAddressesLabel'"></label></span>
+              </div>
+              <div id="defaultAddresses">
+              <!-- ko ifnot: organizationAddressBook().length === 0 -->
+              <!-- ko foreach: organizationAddressBook -->
+              <div class="container-fluid" data-bind="if: (repositoryId === $parent.selectedShippingAddressId())">
+                <address id="addressbook-content" class="shipping-address-view row row-padding">
+				<div class="col-sm-9">
+		 <span class="address-field" data-bind="text: $parent.defaultShippingAddressType()"></span></br>
+		 <b> <span class="address-field" data-bind="text: companyName"></span>,</b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  
+                  <span class="address-field" data-bind="text: city"></span>, <span class="address-field" data-bind="text: state"></span>, <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-shipping-address-account' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div>
+                </address>
+                <hr>
+             </div>
+              <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko ifnot: hasDefaultShippingAddress() -->
+            	<div class="container-fluid">
+                <span data-bind="widgetLocaleText: 'noDefaultShippingAddressesText'"></span>
+                </div>
+              <!-- /ko -->
+              </div>
+              </div>
+              
+              <div class="profileShippingAddress collapse-heading">
+              <div style="background-color: #eee;margin-left: -1px;">
+                <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#profileAddresses"><label id="address-type-label" data-bind="widgetLocaleText: 'profileAddressLabel'"></label></span>
+              </div>
+              <div id="profileAddresses" class="collapse">
+               <!-- ko ifnot: profileAddressBook().length === 0 -->
+              <!-- ko foreach: profileAddressBook -->
+                <address id="profile-shipping-addressbook-content" class="shipping-address-view container-fluid row-padding">
+                <div class="row">
+                  <div class="col-sm-9">
+                  <span class="address-field" data-bind="text: type"></span></br>
+                  <span data-bind="text: firstName"></span>
+                  <span data-bind="text: lastName"></span></br>
+                  <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  
+                  <span class="address-field" data-bind="text: city"></span>, 
+                  <span class="address-field" data-bind="text: state"></span>, 
+                  <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-shipping-address-profile' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div>
+                  </div>
+                </address><hr>
+              <!-- /ko -->
+              <!-- ko if: loadMoreProfileAddresses() -->
+              	<div class = "row zeroMargin">
+              		<a data-bind="click: $data.loadProfileAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+            		</a>
+              	</div>
+              <!-- /ko -->
+               <!-- /ko -->
+              <!-- ko if: profileAddressBook().length === 0 -->
+               <span class="noAddressLabel" data-bind="widgetLocaleText: 'noProfileAddressesText'"></span>
+              <!-- /ko -->
+              </div>
+              </div>
+              
+              <div class="accountAddress collapse-heading">
+              <div style="background-color: #eee;margin-left: -1px;">
+                <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#accountAddresses"><label id="address-type-label" data-bind="widgetLocaleText: 'accountAddressLabel'"></label></span>
+              </div>
+              <div id="accountAddresses" class="collapse">
+              <!-- ko ifnot: accountAddressBook().length === 0 -->
+              <!-- ko foreach: accountAddressBook -->
+                <address id="account-addressbook-shipping-content" class="shipping-address-view container-fluid row-padding">
+                <div class="row">
+                  <div class="col-sm-9">
+                  <span class="address-field" data-bind="text: type"></span></br>
+                  <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  <span class="address-field" data-bind="text: city"></span>, 
+                  <span class="address-field" data-bind="text: state"></span>,
+                  <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-shipping-address-account' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div>
+                  </div>
+                </address>
+                <hr>
+              <!-- /ko -->
+              <!-- ko if: loadMoreAccountAddresses() -->
+              	<div class = "row zeroMargin">
+              		<a data-bind="click: $data.loadAccountAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+            		</a>
+              	</div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: accountAddressBook().length === 0 -->
+               <span class="noAddressLabel" data-bind="widgetLocaleText: 'noAccountAddressesText'"></span>
+              <!-- /ko -->
+              </div>
+              </div>
+              
+              <div class="inheritedAddress collapse-heading">
+              <div style="background-color: #eee;margin-left: -1px;">
+              	<span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#inheritedAddresses"><label id="address-type-label" data-bind="widgetLocaleText: 'inheritedAddressLabel'"></label></span>
+              </div>
+              <div id="inheritedAddresses" class="collapse">
+              <!-- ko ifnot: inheritedAddressBook().length === 0 -->
+              <!-- ko foreach: inheritedAddressBook -->
+                <address id="inherited-addressbook-shipping-content" class="shipping-address-view container-fluid row-padding">
+                <div class="row">
+                  <div class="col-sm-9">
+                  <span class="address-field" data-bind="text: type"></span></br>
+                  <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  
+                  <span class="address-field" data-bind="text: city"></span>, 
+                  <span class="address-field" data-bind="text: state"></span>, 
+                  <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-shipping-address-inherit' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div>
+                  </div>
+                </address><hr>
+              <!-- /ko -->
+              <!-- ko if: showLoadMore() -->
+              	<div class = "col-md-12 col-sm-12">
+              		<a data-bind="click: $data.loadInheritedAddressess, widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+            		</a>
+              	</div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: inheritedAddressBook().length === 0 -->
+               <span class="noAddressLabel" data-bind="widgetLocaleText: 'noInheritedAddressesText'"></span>
+              <!-- /ko -->
+              </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- /ko -->
+      
+<!-- ko if: (includeBillingInformation()) -->      
+        <div class="modal fade" id="CC-billingAddressBook-picker" data-bind="modal: 0, modalTabbingContraint">
+        <div class="modal-dialog">
+          <div class="modal-content col-md-12 col-sm-12">
+        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="addressbook-header">
+              <h4 data-bind="widgetLocaleText: 'addressBookText'"style="MARGIN-LEFT: -7px;"></h4>
+            </div>
+            <div class="modal-body">
+            <div class="address">
+            <div class="defaultAddress">
+              <div style="background-color: #eee;margin-left: -1px;">
+                <span><label id="address-type-label" data-bind="widgetLocaleText: 'defaultAddressesLabel'"></label></span>
+              </div>
+              <div id="defaultAddressesForBilling">
+              <!-- ko ifnot: organizationAddressBook().length === 0 -->
+              <!-- ko foreach: organizationAddressBook -->
+              <div data-bind="if: (repositoryId === $parent.selectedBillingAddressId())" class= "container-fluid">
+                <address id="addressbook-content" class="shipping-address-view row row-padding">
+                  <div class="col-sm-9">
+                  <span class="address-field" data-bind="text: $parent.defaultBillingAddressType()"></span></br>
+				<b> <span class="address-field" data-bind="text: companyName"></span>,</b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  <span class="address-field" data-bind="text: city"></span>, <span class="address-field" data-bind="text: state"></span>, <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-billing-address-account' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div>
+                </address><hr>
+             </div>
+              <!-- /ko -->
+              <!-- /ko -->
+             <!-- ko ifnot: hasDefaultBillingAddress() -->
+            	<div class="container-fluid">
+                <span data-bind="widgetLocaleText: 'noDefaultBillingAddressesText'"></span>
+                </div>
+              <!-- /ko -->
+              </div>
+              </div>
+              <div class="profileShippingAddress collapse-heading">
+              <div style="background-color: #eee;margin-left: -1px;">
+              	<span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#profileAddressesForBilling"><label id="address-type-label" data-bind="widgetLocaleText: 'profileAddressLabel'"></label></span>
+              </div>
+              <div id="profileAddressesForBilling" class="collapse">
+              <!-- ko ifnot: profileAddressBook().length === 0 -->
+              <!-- ko foreach: profileAddressBook -->
+                <address id="profile-shipping-addressbook-content" class="shipping-address-view container-fluid row-padding">
+                <div class="row">
+                  <div class="col-sm-9">
+                  <span class="address-field" data-bind="text: type"></span></br>
+                  <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  
+                  <span class="address-field" data-bind="text: city"></span>, 
+                  <span class="address-field" data-bind="text: state"></span>, 
+                  <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-billing-address-profile' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div>
+                  </div>
+                </address><hr>
+              <!-- /ko -->
+              <!-- ko if: loadMoreProfileAddresses() -->
+              	<div class = "row zeroMargin">
+              		<a data-bind="click: $data.loadProfileAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+            		</a>
+              	</div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: profileAddressBook().length === 0 -->
+               <span class="noAddressLabel" data-bind="widgetLocaleText: 'noProfileAddressesText'"></span>
+              <!-- /ko -->
+              </div>
+              </div>
+              
+              <div class="accountAddress collapse-heading">
+              <div style="background-color: #eee;margin-left: -1px;">
+              	<span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#accountAddressesForBilling"><label id="address-type-label" data-bind="widgetLocaleText: 'accountAddressLabel'"></label></span>
+              </div>
+              <div id="accountAddressesForBilling" class="collapse">
+              <!-- ko ifnot: accountAddressBook().length === 0 -->
+              <!-- ko foreach: accountAddressBook -->
+                <address id="account-addressbook-content" class="billing-address-view container-fluid row-padding">
+                <div class="row">
+                  <div class="col-sm-9">
+                  <span class="address-field" data-bind="text: type"></span></br>
+                  <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  <span class="address-field" data-bind="text: city"></span>, 
+                  <span class="address-field" data-bind="text: state"></span>,
+                  <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-billing-address-account' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div></div>
+                </address><hr>
+              <!-- /ko -->
+              <!-- ko if: loadMoreAccountAddresses() -->
+              	<div class = "row zeroMargin">
+              		<a data-bind="click: $data.loadAccountAddresses, widgetLocaleText: 'loadMoreText'" class="text-underline" href="">
+            		</a>
+              	</div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: accountAddressBook().length === 0 -->
+               <span class="noAddressLabel" data-bind="widgetLocaleText: 'noAccountAddressesText'"></span>
+              <!-- /ko -->
+              </div>
+              </div>
+              
+              <div class="inheritedAddress collapse-heading">
+              <div style="background-color: #eee;margin-left: -1px;">
+                <span class="collapse-toggle collapsed" data-toggle="collapse" data-target="#inheritedAddressesForBilling"><label id="address-type-label" data-bind="widgetLocaleText: 'inheritedAddressLabel'"></label></span>
+              </div>
+              <div id="inheritedAddressesForBilling" class="collapse">
+              <!-- ko ifnot: inheritedAddressBook().length === 0 -->
+              <!-- ko foreach: inheritedAddressBook -->
+                <address id="inherited-addressbook-content" class="billing-address-view container-fluid row-padding">
+                <div class="row">
+                  <div class="col-sm-9">
+                  <span class="address-field" data-bind="text: type"></span></br>
+                  <b> <span class="address-field" data-bind="text: companyName"></span> </b>
+                  <span class="address-field" data-bind="text: address1"></span>,
+                  <!-- ko if: address2 -->
+                    <span class="address-field" data-bind="text: address2"></span>,
+                  <!-- /ko -->
+                  
+                  <span class="address-field" data-bind="text: city"></span>, 
+                  <span class="address-field" data-bind="text: state"></span>, 
+                  <span class="address-field" data-bind="text: postalCode"></span>,
+                  <span class="address-field" data-bind="text: country"></span>,
+                  <!-- ko if: phoneNumber -->
+                    <span class="address-field" data-bind="text: phoneNumber"></span>
+                  <!-- /ko -->
+                  </div>
+                  <div class="col-sm-3 pull-right">
+                  <button class="btn btn-primary select-button" tabindex="1"
+                          data-bind="click: $parent.confirmUnsavedChangesSelectNewAddress.bind($data, $element.id,$parent),
+                                     attr: {id: 'cc-checkout-select-billing-address-inherit' + $index()}">
+                      <span data-bind="widgetLocaleText: 'selectAddressText'"></span>
+                  </button>
+                  </div></div>
+                </address><hr>
+              <!-- /ko -->
+              <!-- ko if: showLoadMore() -->
+              	<div class = "col-md-12 col-sm-12" >
+              		<a data-bind="click: $data.loadInheritedAddressess, widgetLocaleText: 'loadMoreText'" class="text-underline">
+            		</a>
+              	</div>
+              <!-- /ko -->
+              <!-- /ko -->
+              <!-- ko if: inheritedAddressBook().length === 0 -->
+               <span class="noAddressLabel" data-bind="widgetLocaleText: 'noinheritedAddressesText'"></span>
+              <!-- /ko -->
+              </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- /ko -->
+   <div class="modal fade" id="CC-checkout-address-modal-1"
+     tabindex="-1" role="alert" data-bind="modalTabbingContraint">
+  <div class="modal-dialog" id="CC-checkout-address-modal-dialog-1">
+    <div class="modal-content" id="CC-checkout-addressModalContent-1">
+      <div class="modal-header cc-profile-modal-heading cc-profile-confirm-icon" id="CC-checkout-address-modal-header-1">
+        <button type="button" class="close" data-dismiss="modal" id="CC-checkout-address-modal-headerClose-1" aria-hidden="true">&times;</button>
+        <h4 data-bind="widgetLocaleText:'updateCacelModalTitle'" id="CC-checkout-address-modal-headerText-1"></h4>
+      </div>
+      <div class="modal-body cc-profile-body-modal" id="CC-customerProfile-modal-modalBody-1">
+        <p data-bind="widgetLocaleText:'updateCancelModalMessage'" align="center" id="CC-checkout-address-modal-bodyText-1"></p>
+      </div>
+      <div class="modal-footer cc-profile-modal-footer" id="CC-checkout-address-modal-footer-1" >
+        <button class="btn cc-button-secondary" id="CC-checkout-address-modal-cancel-1" data-bind = "click: $data.hideModal">
+          <span id="CC-checkout-address-modal-discard-1" data-bind="widgetLocaleText:'updateCancelModalClose'"></span>
+        </button>
+        <button class="btn cc-button-primary" id="CC-checkout-address-modal-submit-1" data-bind = "click:$data.discardFromModal" >
+          <span id="CC-checkout-address-modal-save-1" data-bind="widgetLocaleText:'continueText'"></span>
+        </button>
+    </div> 
+    </div>
+  </div>
+</div>
+</div>

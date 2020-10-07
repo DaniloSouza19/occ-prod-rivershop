@@ -1,0 +1,12 @@
+<!-- ko if: $data.orderDetailsWrapper.isRenderComplete() -->
+  <!-- ko with: $data.orderDetailsWrapper.orderDetails() -->
+    <div id="cc-orderDetails-refresh" class="col-xs-12">
+        <button id="cc-orderDetails-refreshOrder-btn" class="cc-orderDetails-refreshOrder-btn pull-right
+        cc-button-secondary secondarybackground"
+          data-bind="click: $parent.orderRefresh.bind($parent)">
+          <i class="fa fa-refresh"></i>
+          <span data-bind="widgetLocaleText: 'buttonInvalidateOrderText'"></span>
+        </button>
+      </div>
+    <!-- /ko -->
+<!-- /ko -->

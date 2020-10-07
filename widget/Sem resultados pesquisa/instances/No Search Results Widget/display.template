@@ -1,0 +1,16 @@
+<div class="container">
+<div id="CC-noSearchResults-display" class="row" aria-live="polite">
+  <div class="col-sm-12">
+    <div id="CC-noSearchResults-searchText">
+      <h2 data-bind="widgetLocaleText: 'titleText'"></h2>
+    </div>
+    <div id="CC-noSearchResults-resultsText">      
+      <span data-bind="text: getResultsText()"></span>      
+    </div>
+    <br/>
+    <div id="CC-noSearchResults-resultsText">      
+      <a data-bind="ccLink: {route: '/'}">Clique aqui para voltar para o Início</a>      
+    </div>
+  </div>
+</div>
+</div>

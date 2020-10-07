@@ -1,0 +1,8 @@
+{
+  "tag": "product-add-to-cart",
+  "source": 100,
+  "type": "fragment",
+  "title": "Adicionar a botão Carrinho",
+  "widgetType": "productDetails",
+  "version": 14
+}

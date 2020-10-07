@@ -1,0 +1,10 @@
+{
+  "widgetType": "nsh_wishlist_welcome",
+  "version": 1,
+  "displayName": "NSH_WishList_Welcome",
+  "elementized": false,
+  "global": false,
+  "i18nresources": "nsh_wishlist_welcome",
+  "source": 101,
+  "javascript": "nsh_wishlist_welcome"
+}

@@ -1,0 +1,37 @@
+<!-- ko setContextVariable: {name: 'elementConfig', value: {"80036": {
+  "id": "80036",
+  "padding": {
+    "paddingBottom": "0",
+    "paddingLeft": "0",
+    "paddingRight": "0",
+    "paddingTop": "0"
+  },
+  "richText": {
+    "content": "${occ:localizedWebContent('m100028')}",
+    "sourceMedia": "m100028"
+  }
+}}} --><!-- /ko -->
+
+
+
+<div class="nsh_content container">
+  
+<div class="templateRegion" id="nsh_content" data-oc-id="nsh_content">
+  <!-- oc layout: panels -->
+  <div class="row">
+
+    <div class="oc-panel col-md-12" data-oc-id="panel-0-0">
+
+      <!-- oc section: rich-text -->
+<span data-bind="element: 'rich-text',id: '80036'"></span>
+
+      <!-- /oc -->
+
+    </div>
+
+
+  </div>
+  <!-- /oc -->
+</div>
+
+</div>

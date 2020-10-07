@@ -1,0 +1,241 @@
+#progressTrackerMultiShip-checkoutStackMultiShip {
+ #progressTrackerMultiShip-vars-checkoutStackMultiShip > .loadVariables();
+/* ---------------------------------------------------------------------- */
+/*  Progress Tacker Stack Styles
+/*  Note - IE9 specific overrides for storefront exist in storefront-ie.css
+/*         Any changes to selectors should be reflected there too.
+/* ---------------------------------------------------------------------- */
+
+.progressTracker {
+
+  .progressTracker-navigation {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    margin: 0 0 10px;
+    padding: 0;
+    list-style: none;
+
+    li {
+      -webkit-box-flex: 1 0 auto;
+      -moz-box-flex: 1 0 auto;
+      -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
+      width: 0;
+
+      a, a:hover {
+        background: @remainingBackgroundColor;
+        color: @remainingTextColor;
+        text-align: @stepNameAlignment;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        height: 3em;
+        padding: 0.8em 1.5em;
+        border-radius:0;
+        margin-left: 0.25em;
+
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: block;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 0;
+          height: 0;
+          border-top: 1.5em solid transparent;
+          border-left: 1em solid @SitePageBackgroundColor;
+          border-bottom: 1.5em solid transparent;
+        }
+
+        &:after {
+          z-index:5;
+          content: "";
+          position: absolute;
+          left: 100%;
+          top: 0;
+          width: 0;
+          height: 0;
+          border-top: 1.5em solid transparent;
+          border-left: 1em solid @remainingBackgroundColor;
+          border-bottom: 1.5em solid transparent;
+        }
+      }
+
+      &.active {
+        a, a:hover {
+          background: @activeBackgroundColor;
+          color: @activeTextColor;
+
+
+          &:after {
+            border-left: 1em solid @activeBackgroundColor;
+          }
+        }
+      }
+
+      &.done {
+        a {
+          background: @completedBackgroundColor;
+          color: @completedTextColor;
+          cursor: pointer;
+
+          &:after {
+            border-left: 1em solid  @completedBackgroundColor;
+          }
+        }
+        a:hover {
+          background: @activeBackgroundColor;
+          color: @activeTextColor;
+          cursor: pointer;
+
+          &:after {
+            border-left: 1em solid  @activeBackgroundColor;
+          }
+        }
+      }
+
+      &:first-child {
+        a {
+          margin-left: 0;
+
+          &:before {
+            border: none;
+          }
+        }
+      }
+
+      &:last-child {
+        a {
+          &:after {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+
+  .progressTracker-button-row {
+    margin-top: 1em;
+  }
+
+  .showButton(@a) when (@a = false) {
+    display: none;
+  }
+
+  .progressTracker-button-previous {
+    .showButton(@showPreviousButton);
+  }
+
+  .progressTracker-button-next {
+    text-align: right;
+  }
+  .progressTrackerStack-button-next {
+    text-align: right;
+  }
+  
+  .progressTracker-stage-title{
+    border-bottom: 1px solid #eee; 
+    padding-top: 18px; 
+    padding-bottom: 15px;  
+    color:#b3b3b3;
+  }
+  
+  .done{
+    color:#3d3d3d;
+  }
+  .progressTracker-title-text{
+    font-size:21px;
+    padding-left:25px;
+  }
+  .cc-button-secondary{
+    font-weight: bold;
+    background-color: white;  
+  }
+  .stacked-checkout-title{
+      padding-left:12px;
+  }
+}
+
+@media (max-width: 768px) {
+    .progressTracker h2 {
+    text-align: center !important;
+    padding-left: 0px;
+    }
+ }
+
+
+/* Collapse labels to counters for small mobile devices in portrait */
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (max-aspect-ratio: 14/9) {
+  
+  .progressTracker { 
+   
+    .progressTracker-title-text{
+      font-size:18px;
+    }
+  
+    ul.progressTracker-navigation {
+      counter-reset:pt_ctr;
+  
+      li {
+        counter-increment:pt_ctr;
+        width: initial;
+        
+        &:not(.active) {
+          max-width: 4em;
+
+          a {
+            padding-left: 2em;
+            padding-right: 0em;
+             
+            span {
+              visibility: hidden;
+              width: 0;
+            }  
+            span:before {
+              content:counter(pt_ctr);
+	      position: absolute;
+	      visibility: visible;
+            }
+          }
+        }
+        
+        &.active {
+          a, a:hover {
+            padding-right: 0.8em;
+            outline: none;
+          }
+        }
+        
+        &:first-child {
+          a {
+            &:not(.active) a {
+              padding-left: 1.4em;
+            }
+            &.active {
+              padding-left: 1.2em;
+              padding-right: 1.2em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+}

@@ -1,0 +1,8 @@
+{
+  "tag": "product-on-sale",
+  "source": 100,
+  "type": "container",
+  "title": "À venda",
+  "widgetType": "productDetails",
+  "version": 14
+}

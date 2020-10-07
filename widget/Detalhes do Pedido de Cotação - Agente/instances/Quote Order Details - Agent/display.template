@@ -1,0 +1,67 @@
+<!-- ko if :$data.orderDetailsWrapper.isRenderComplete() -->
+<!-- ko if :$data.orderDetailsWrapper.orderDetails() -->
+<!-- ko if: $data.orderDetailsWrapper.orderDetails().quoteInfo && $data.site().extensionSiteSettings && $data.site().extensionSiteSettings.CPQQuotingSettings && $data.site().extensionSiteSettings.CPQQuotingSettings.enabled -->
+<div class="templateRegion order-details-padding" id="cc-quote-details" >
+  <!-- ko if: $data.isQuoted() -->
+  <div id="cc-horizontalLine-quoteHeaderInfo" class="row agent-order-line">
+    <hr class="line agent-line col-xs-12">
+  </div>
+  <h4 data-bind="widgetLocaleText:'quoteNotesHeader'" class="cc-order-header-font-size row"></h4>
+  <!-- /ko -->
+  <!-- ko ifnot: $data.isQuoted() -->
+   <div id="cc-horizontalLine-quoteHistoryInfo" class="row agent-order-line">
+    <hr class="line agent-line col-xs-12">
+  </div>
+  <h4 data-bind="widgetLocaleText:'notesHistoryHeader'" class="cc-order-header-font-size row"></h4>
+  <!-- /ko -->
+  <!-- oc layout: panels -->
+  <div class="row">
+    <div class="oc-panel" data-oc-id="panel-1">
+      <!-- oc section: agent-notes-history-text-area -->
+      <div data-bind="element: 'agent-notes-history-text-area'"></div>
+      <!-- /oc -->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="oc-panel" data-oc-id="panel-2">
+      <!-- oc section: agent-quote-note-text-area -->
+      <div data-bind="element: 'agent-quote-note-text-area'"></div>
+      <!-- /oc -->
+    </div>
+  </div>
+  <!-- ko if: $data.orderDetailsWrapper.isAcceptQuoteAllowed() || $data.orderDetailsWrapper.isRejectQuoteAllowed() || $data.orderDetailsWrapper.isRequoteAllowed() -->
+  <div class="row">
+    <div class="oc-panel " data-oc-id="panel-3">
+      <!-- oc section: agent-add-note-button -->
+      <div data-bind="element: 'agent-add-note-button'"></div>
+      <!-- /oc -->
+    </div>
+  </div>
+  <!-- /ko -->
+  <!-- ko if: $data.orderDetailsWrapper.isAcceptQuoteAllowed() || $data.orderDetailsWrapper.isRejectQuoteAllowed() || $data.orderDetailsWrapper.isRequoteAllowed() -->
+
+
+  <div class="row">
+      <div class="oc-panel pull-right quote-margin" data-oc-id="panel-4">
+        <!-- oc section: agent-accept-quote-button -->
+          <div data-bind="element: 'agent-accept-quote-button'"></div>
+        <!-- /oc -->
+      </div>
+      <div class="oc-panel pull-right quote-margin" data-oc-id="panel-5">
+        <!-- oc section: agent-request-requote-button -->
+          <div data-bind="element: 'agent-request-requote-button'"></div>
+        <!-- /oc -->
+      </div>
+      <div class="oc-panel pull-right quote-margin" data-oc-id="panel-6">
+        <!-- oc section: agent-reject-quote-button -->
+          <div data-bind="element: 'agent-reject-quote-button'"></div>
+        <!-- /oc -->
+      </div>
+  </div>
+  <!-- /ko -->
+  <!-- /oc -->
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->
